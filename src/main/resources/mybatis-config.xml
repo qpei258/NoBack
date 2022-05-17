@@ -6,10 +6,12 @@
 
 	<typeAliases>
 		<typeAlias type="com.noback.group.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.noback.group.vo.SignVO" alias="SignVO" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="memberMapper.xml" />
+		<mapper resource="SignMapper.xml" />
 	</mappers>
 	
 </configuration>
