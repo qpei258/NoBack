@@ -43,7 +43,7 @@ td {
 }
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@200;300;400;500;600;700&display=swap');
 div{
-    border: 1px solid white;
+    border: 1px solid black;
     box-sizing: border-box;
     font-family: 'IBM Plex Sans KR', sans-serif;
     font-size: 30px;
