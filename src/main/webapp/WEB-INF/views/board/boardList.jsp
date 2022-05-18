@@ -12,6 +12,13 @@
     		width: 1258px;
     		height: 870px;
     		background-color: rgb(238, 238, 238);
+    		text-align: center;
+    		color: rgb(80, 80, 80);
+    	}
+    	table {
+    		width: 90%;
+    		height: 80%;
+    		font-size: 20px;
     	}
     </style>
 </head>
@@ -19,8 +26,45 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        	<div id="boardList" style="">
+        	<div id="boardList">
+        		<h3 style="margin: 10px;">자유게시판</h3>
         		<table>
+        			<tr>
+        				<th>글번호</th>
+        				<th>제목</th>
+        				<th>작성일</th>
+        				<th>작성자</th>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td></td>
+        			</tr>
         		</table>
         	</div>
         </div>
