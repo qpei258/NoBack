@@ -1,5 +1,7 @@
 package com.noback.group.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 
 
@@ -21,8 +23,9 @@ public class HomeController {
 	 * 메인 화면으로 이동
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpSession session) {
 		logger.info("홈 실행");
+		session.setAttribute("LoginId", "000000");
 		return "home";
 	}
 	
