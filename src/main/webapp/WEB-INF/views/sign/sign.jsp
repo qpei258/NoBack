@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/default.css">
-<title>전자결제</title>
+<title>전자 결제 내역리스트</title>
 </head>
 <body>
 		<div id="left">
@@ -30,11 +30,13 @@
             </div>
         </div>
         
+        <p><a href="sign/swrite">결제서류 작성</a></p>
+        
         <div id="containerBox">
 
 		<div style="border-top: 1px dashed #c9c9c9; margin-top: 50px;"></div>
 
-		<div class="docListTitle">전자결제 현황</div>
+		<div class="docListTitle">결제 내역 전체 서류</div>
 		
 			<c:if test="${signapprvoCount == 0}">
 				<div id="waitingDoc">
