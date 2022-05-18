@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="/blog/resources/css/default.css" />
 </head>
 <body>
     <div id="container">
