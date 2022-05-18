@@ -19,32 +19,56 @@
     	}
     	table {
     		width: 90%;
-    		height: 80%;
     		font-size: 20px;
     		margin: 10px auto;
     		border: 1px solid rgb(80, 80, 80);
     		border-spacing: 0;
     		
     	}
-    	tr, th{
+    	th{
+    		background-color: rgb(200, 200, 200);
     		border-bottom: 1px solid rgb(80, 80, 80);
-    		height: 40px;
+    		height: 55px;
+    	}
+    	td {
+    		background-color: rgb(250, 250, 250);
+    		height: 55px;
     	}
     </style>
+    <!-- 페이지 이동 스크립트  -->
+	<script>
+		function pagingFormSubmit(currentPage) {
+			var form = document.getElementById('pagingForm');
+			var page = document.getElementById('page');
+			page.value = currentPage;
+			form.submit();
+		}
+	</script>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="boardList">
-        		<h3 style="margin: 15px;">자유게시판</h3>
-        		
+        		<h2 style="margin: 30px;">자유게시판</h2>
+        		<div style="float: left; margin-bottom: 5px; margin-left: 63px;  border: 0px;">
+        			<button >글쓰기</button>
+        		</div>
+        		<div style="float: right; margin-bottom: 5px; margin-right: 62px; border: 0px;">
+				<!-- 검색폼 -->
+				<form id="pagingForm" method="get" action="list" >
+					<input type="hidden" name="page" id="page" />
+					<input type="text"  name="searchText" value="${searchText}" />
+					<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+				</form>
+				<!-- /검색폼 -->
+				</div>
         		<table>
         			<tr>
-        				<th>글번호</th>
-        				<th>제목</th>
-        				<th>작성일</th>
-        				<th>작성자</th>
+        				<th style="width: 10%;">글번호</th>
+        				<th style="width: 60%;">제목</th>
+        				<th style="width: 15%;">작성일</th>
+        				<th style="width: 15%;">작성자</th>
         			</tr>
         			<tr>
         				<td></td>
@@ -107,6 +131,23 @@
         				<td></td>
         			</tr>
         		</table>
+        		<div id="navigator" style="border: 0px;">
+				<!-- 페이지 이동 부분 -->                      
+					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
+				
+					<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+						<c:if test="${counter == navi.currentPage}"><b></c:if>
+							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+						<c:if test="${counter == navi.currentPage}"></b></c:if>
+					</c:forEach>
+					&nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+				
+				<!-- /페이지 이동 끝 -->                      
+			
+				</div>
         	</div>
         </div>
     </div>
