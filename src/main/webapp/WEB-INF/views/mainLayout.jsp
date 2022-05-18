@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="container">
-		<%@ include file="sidebar.jsp" %>
+		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         </div>
     </div>
