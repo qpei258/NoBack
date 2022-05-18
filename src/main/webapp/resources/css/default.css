@@ -13,18 +13,6 @@ h1 {
 	margin-bottom: 30px;
 }
 
-table {
-	margin: 10px;
-}
-
-th {
-	padding: 10px;
-}
-
-td {
-	padding: 10px;
-}
-
 .border {
 	border: 1px solid black;
 }
@@ -56,7 +44,7 @@ li {
     font-size: 26px;
     font-weight: 500;
     line-height: 45px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 #container {
     margin: 15px auto;
@@ -89,6 +77,8 @@ li {
     margin: 10px auto;
     width: 290px;
     height: 450px;
+    padding-top: 30px;
+    padding-left: 10px;
 }
 
 #schedule{
