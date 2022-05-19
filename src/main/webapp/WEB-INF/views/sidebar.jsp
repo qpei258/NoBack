@@ -11,7 +11,7 @@
 <body>
 		<div id="left">
             <div id="logo">
-                <a href='<c:url value="/"/>'><img src="/blog/resources/img/logo.png"></a>
+                <a href='<c:url value="/"/>'><img src='<c:url value="/resources/img/logo.png"/>'></a>
             </div>
             <div id="sidebar">
                 <ul style="list-style: none;">
