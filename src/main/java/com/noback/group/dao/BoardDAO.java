@@ -26,6 +26,6 @@ public class BoardDAO {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class); 
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
 		ArrayList<BoardVO> result = mapper.listBoard(search, rb);
-		return null;
+		return result;
 	}
 }

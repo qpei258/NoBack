@@ -10,11 +10,26 @@
 		from noback_board
 		<if test="_parameter != null">
 			where
-			upper(title) like '%' || upper(#{search}) || '%'
+			upper(board_title) like '%' || upper(#{search}) || '%'
 		</if>
 	</select>
 	
-	<select id="listBoard" parameterType="string" resultType="board"></select>
+	<select id="listBoard" parameterType="string" resultType="board">
+		select
+			board_num
+			, board_title
+			, board_content
+			, to_char(board_date, 'YY/MM/DD') board_date
+			, board_writer
+		from 
+			noback_board
+		<if test="_parameter != null">
+		where
+			upper(board_title) like '%' || upper(#{search}) || '%'
+		</if>
+		order by 
+			board_num desc
+	</select>
 
 </mapper>
 

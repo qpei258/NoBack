@@ -49,7 +49,7 @@ public class BoardController {
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("navi", navi);
-		model.addAttribute("searchText", search;
+		model.addAttribute("search", search);
 		
 		return "board/boardList";
 	}

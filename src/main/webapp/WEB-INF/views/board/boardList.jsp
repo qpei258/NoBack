@@ -18,25 +18,7 @@
     		text-align: center;
     		color: rgb(80, 80, 80);
     	}
-    	table {
-    		width: 90%;
-    		font-size: 20px;
-    		margin: 10px auto;
-    		
-    		border-spacing: 0;
-    	}
-    	th{
-    		background-color: rgb(200, 200, 200);
-    		
-    		height: 55px;
-    	}
-    	th:last-child {
-    		border-bottom: 0px solid rgb(80, 80, 80);
-    	}
-    	td {
-    		background-color: rgb(250, 250, 250);
-    		height: 55px;
-    	}
+    
     </style>
     <!-- 페이지 이동 스크립트  -->
 	<script>
@@ -55,11 +37,11 @@
         	<div id="boardList">
         		<h2 style="margin: 40px 0px 10px 0px;">자유게시판</h2>
         		<div style="float: left; margin-bottom: 5px ; margin-left: 63px;  border: 0px;">
-        			<button type="button" class="btn btn-outline-primary">글쓰기</button>
+        			<button type="button" class="btn btn-outline-primary" onclick="location.href='writeBoard'">글쓰기</button>
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="list" >
+				<form id="pagingForm" method="get" action="boardList" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
 						 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
 						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
@@ -68,9 +50,9 @@
 				</form>
 				<!-- /검색폼 -->
 				</div>
-				<table>
+				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 10px auto; border-spacing: 0;">
 				  	<thead>
-				      	<tr>
+				      	<tr style="background-color: rgb(200, 200, 200);">
         					<th style="width: 10%;">글번호</th>
 	        				<th style="width: 60%;">제목</th>
 	        				<th style="width: 15%;">작성일</th>
@@ -78,66 +60,14 @@
         				</tr>
 				  	</thead>
 				  	<tbody>
-					  	<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
-	        			<tr>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        				<td></td>
-	        			</tr>
+						  <c:forEach var="board" items="${boardlist }">
+						  	<tr style="background-color: white;" onclick="location.href='board'">
+						  		<td>${board.board_num }</td>
+						  		<td>${board.board_title }</td>
+						  		<td>${board.board_date }</td>
+						  		<td>${board.board_writer}</td>
+						  	</tr>
+						  </c:forEach>
 				  </tbody>
 				</table>
         		<div id="navigator" style="border: 0px; font-size: 20px;">
