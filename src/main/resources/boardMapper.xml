@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 정보 처리 SQL -->
+<mapper namespace="com.noback.group.dao.BoardMapper">
+
+
+</mapper>
+
+
+
+
+
