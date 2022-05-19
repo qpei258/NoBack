@@ -28,4 +28,10 @@ public class BoardDAO {
 		ArrayList<BoardVO> result = mapper.listBoard(search, rb);
 		return result;
 	}
+	
+	public BoardVO board(String num) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class); 
+		BoardVO result = mapper.board(num);
+		return result;
+	}
 }

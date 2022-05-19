@@ -30,7 +30,11 @@
 		order by 
 			board_num desc
 	</select>
-
+	
+	<select id="board" parameterType="string" resultType="board">
+		select * from noback_board
+		where board_num = #{num}
+	</select>
 </mapper>
 
 

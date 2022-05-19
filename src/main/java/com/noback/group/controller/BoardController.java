@@ -54,4 +54,11 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping(value = "board", method = RequestMethod.GET)
+	public String board(String num, Model model) {
+		logger.info("게시글 접속");
+		BoardVO board = dao.board(num);
+		model.addAttribute("board", board);
+		return "board/board";
+	}
 }

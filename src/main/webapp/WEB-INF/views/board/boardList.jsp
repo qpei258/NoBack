@@ -61,7 +61,7 @@
 				  	</thead>
 				  	<tbody>
 						  <c:forEach var="board" items="${boardlist }">
-						  	<tr style="background-color: white;" onclick="location.href='board'">
+						  	<tr style="background-color: white;" onclick="location.href='board?num=${board.board_num}'">
 						  		<td>${board.board_num }</td>
 						  		<td>${board.board_title }</td>
 						  		<td>${board.board_date }</td>
