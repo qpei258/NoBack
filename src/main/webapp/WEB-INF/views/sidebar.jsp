@@ -22,7 +22,7 @@
                     <li><a href="sign/smain">전자결재</a></li>
                     <li><a href="/blog/board/boardList">자유게시판</a></li>
                     <li><a href="messenger">메신저</a></li>
-                    <li><a href="login/">로그인</a></li>
+                    <li><a href="login">로그인</a></li>
                 </ul>
             </div>
             <div id="schedule">
