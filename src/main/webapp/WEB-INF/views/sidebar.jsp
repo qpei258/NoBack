@@ -19,7 +19,7 @@
                     <li><a href='<c:url value="/"/>'>홈</a></li>
                     <li><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></li>
                     <li><a href='<c:url value="/schedule/schedule"/>'>사내일정</a></li>
-                    <li><a href='<c:url value="/sigin/smain"/>'>전자결재</a></li>
+                    <li><a href='<c:url value="/sign/smain"/>'>전자결재</a></li>
                     <li><a href='<c:url value="/board/boardList"/>'>자유게시판</a></li>
                     <li><a href='<c:url value="/messenger/messenger"/>'>메신저</a></li>
                     <li><a href='<c:url value="/manager/login"/>'>로그인</a></li>
