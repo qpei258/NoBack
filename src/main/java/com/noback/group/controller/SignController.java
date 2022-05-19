@@ -55,18 +55,18 @@ public class SignController {
 		
 		logger.debug("page: {}, searchText: {}", page, searchText);
 		
-		int total = dao.getTotal(searchText);//전체 글 개수
+		//int total = dao.getTotal(searchText);//전체 글 개수
 		
 		//페이지 계산을 위한 객체 생성
-		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
+		//PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
 		
 		//검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
-		ArrayList<SignVO> signlist = dao.listSign(searchText, navi.getStartRecord(), navi.getCountPerPage());	
+		//ArrayList<SignVO> signlist = dao.listSign(searchText, navi.getStartRecord(), navi.getCountPerPage());	
 		
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
-		model.addAttribute("boardlist", signlist);
-		model.addAttribute("navi", navi);
-		model.addAttribute("searchText", searchText);
+		//model.addAttribute("signlist", signlist);
+	    //model.addAttribute("navi", navi);
+		//model.addAttribute("searchText", searchText);
 		
 		return "sign/main";	
 	}
@@ -106,4 +106,3 @@ public class SignController {
 		return "sign/scomplete";
 	}
 }
-

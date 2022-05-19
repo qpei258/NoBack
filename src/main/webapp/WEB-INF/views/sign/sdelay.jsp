@@ -33,6 +33,7 @@
 	<td>
 		<a href="scomplete?sign_num=${sign.sign_num}">${sign.title}</a>
 	</td>
+	<td>
 	<td class="center">${sign_sender}</td>
 	</td>
 </tr>
@@ -43,5 +44,3 @@
 
                    
 </div>
-</body>
-</html>

@@ -11,20 +11,22 @@
 	insert into 
 		noback_sign
 		(
-			sign_cdate
-			, sign_title
+		      sign_title
 			, sign_content
 			, sign_sender
+			, sign_dep;
+	        , sign_pos;
 			,sign_originfile<!-- 부서하고 직급을 어캐해야하지 -->
 		    , sign_savedfile
 		) 
 	values 
 		(
-			to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
-			, #{sign_title}
+			 #{sign_title}
 			, #{sign_content}
 			, #{sign_sender}
-			, #{sign_originfile}
+			, #{sign_dep}
+			, #{sign_sender}
+			, #{sign_pos}
 			, #{sign_savedfile}
 		)
 </insert>
@@ -65,5 +67,3 @@
 </select>
 
 </mapper>
-
-
