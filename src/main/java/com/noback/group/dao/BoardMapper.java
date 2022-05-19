@@ -12,4 +12,7 @@ public interface BoardMapper {
 
 	public ArrayList<BoardVO> listBoard(String search, RowBounds rb);
 
+	public BoardVO board(String num);
+	
+	public int boardWrite(BoardVO board);
 }

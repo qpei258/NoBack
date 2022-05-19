@@ -37,7 +37,7 @@
         	<div id="boardList">
         		<h2 style="margin: 40px 0px 10px 0px;">자유게시판</h2>
         		<div style="float: left; margin-bottom: 5px ; margin-left: 63px;  border: 0px;">
-        			<button type="button" class="btn btn-outline-primary" onclick="location.href='writeBoard'">글쓰기</button>
+        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
@@ -61,7 +61,7 @@
 				  	</thead>
 				  	<tbody>
 						  <c:forEach var="board" items="${boardlist }">
-						  	<tr style="background-color: white;" onclick="location.href='board'">
+						  	<tr style="background-color: white;" onclick="location.href='board?num=${board.board_num}'">
 						  		<td>${board.board_num }</td>
 						  		<td>${board.board_title }</td>
 						  		<td>${board.board_date }</td>

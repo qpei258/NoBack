@@ -30,7 +30,16 @@
 		order by 
 			board_num desc
 	</select>
-
+	
+	<select id="board" parameterType="string" resultType="board">
+		select * from noback_board
+		where board_num = #{num}
+	</select>
+	
+	<insert id="boardWrite" parameterType="board">
+		insert into noback_board
+		values(board_seq.nextval, #{board_title}, #{board_content}, (select employee_name from noback_member where employee_num = #{board_writer}), sysdate)
+	</insert>
 </mapper>
 
 
