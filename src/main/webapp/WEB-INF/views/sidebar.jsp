@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <div id="schedule">
-                <a href="schedule"><img src="/blog/resources/img/schedule.png"></a>
+                <a href="schedule"><img src='<c:url value="/resources/img/schedule.png"/>'></a>
             </div>
         </div>
 </body>
