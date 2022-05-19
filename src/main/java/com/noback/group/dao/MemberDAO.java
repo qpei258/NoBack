@@ -2,6 +2,7 @@ package com.noback.group.dao;
 
 import java.util.ArrayList;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,14 @@ import com.noback.group.vo.MemberVO;
 public class MemberDAO {
 	@Autowired
 	SqlSession sqlSession;
+
+	public MemberVO getMember(String employee_num) {
+		
+		return null;
+	}
+
+
+	
 	
 	/**
 	 * 회원 가입 처리
