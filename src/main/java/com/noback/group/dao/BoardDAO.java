@@ -34,4 +34,11 @@ public class BoardDAO {
 		BoardVO result = mapper.board(num);
 		return result;
 	}
+	
+	public int boardWrite(BoardVO board) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int result = mapper.boardWrite(board);
+		return result;
+	}
 }
+

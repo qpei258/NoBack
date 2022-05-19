@@ -61,4 +61,19 @@ public class BoardController {
 		model.addAttribute("board", board);
 		return "board/board";
 	}
+	
+	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
+	public String boardWrite() {
+		logger.info("게시글 작성 접속");
+		return "board/boardWrite";
+	}
+	
+	@RequestMapping(value = "boardWrite", method = RequestMethod.POST)
+	public String boardWrite(HttpSession session, BoardVO board) {
+		logger.info("게시글 접속");
+		String writer = (String) session.getAttribute("LoginId");
+		board.setBoard_writer(writer);
+		int result = dao.boardWrite(board);
+		return "redirect:boardList";
+	}
 }

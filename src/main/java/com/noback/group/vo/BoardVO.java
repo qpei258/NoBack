@@ -47,6 +47,11 @@ public class BoardVO {
 	public void setBoard_writer(String board_writer) {
 		this.board_writer = board_writer;
 	}
+	@Override
+	public String toString() {
+		return "BoardVO [board_num=" + board_num + ", board_title=" + board_title + ", board_content=" + board_content
+				+ ", board_date=" + board_date + ", board_writer=" + board_writer + "]";
+	}
 	
 	
 }

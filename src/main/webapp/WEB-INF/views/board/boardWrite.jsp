@@ -33,25 +33,20 @@
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="board">
-        		<table  class="table" style="width: 90%;font-size: 20px;margin: 140px auto 0px auto; border-spacing: 0; height: 600px;">
-        			<thead style="text-align: left;">
-        				<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="padding-left: 20px;">${board.board_title }</th>
-        				</tr>
-        			</thead>
-        			<tbody style="background-color: white;" >
-        				<tr style="text-align: right; height: 40px;">
-        					<td><b>작성자</b> ${board.board_writer } || <b>작성일</b> ${board.board_date }</td>
-        				</tr>
-        				<tr style="text-align: left;">
-        					<td><pre>${board.board_content }</pre></td>
-        				</tr>
-        			</tbody>
-        		</table>
-        		<div style="float: right; border: 1px solid rgb(238, 238, 238); margin-right: 60px;">
-        			<button type="button" class="btn btn-primary" onclick="">수정</button>
-        			<button type="button" class="btn btn-outline-secondary" onclick="">삭제</button>
-        		</div>
+        		<form action="boardWrite" method="post">
+	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 140px auto 0px auto;">
+					  	<span class="input-group-text" id="basic-addon1">제목</span>
+					  	<input type="text" class="form-control" placeholder="" aria-label="title" aria-describedby="basic-addon1" name="board_title">
+					</div>
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >내용</span>
+						 <textarea class="form-control" aria-label="With textarea" style="height: 500px; resize: none;" name="board_content"></textarea>
+						 
+					</div>
+					<div style="border: 1px solid rgb(238, 238, 238);">
+						<button type="submit" class="btn btn-primary">글쓰기</button>
+					</div>
+				</form>
         	</div>
         </div>
     </div>
