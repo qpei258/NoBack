@@ -57,7 +57,7 @@
         		<div style="float: left; margin-bottom: 5px ; margin-left: 63px;  border: 0px;">
         			<button type="button" class="btn btn-outline-primary">글쓰기</button>
         		</div>
-        		<div style="float: right; margin-bottom: 5px; margin-right: 62px; border: 0px; height: 50px;">
+        		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
 				<form id="pagingForm" method="get" action="list" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
