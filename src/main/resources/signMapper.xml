@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.noback.group.dao.SignMapper">
+
+<!-- 글 저장 -->
+<insert id="insertSign" parameterType="sign">
+	insert into 
+		noback_sign
+		(
+			sign_cdate
+			, sign_title
+			, sign_content
+			, sign_sender
+			,sign_originfile<!-- 부서하고 직급을 어캐해야하지 -->
+		    , sign_savedfile
+		) 
+	values 
+		(
+			to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+			, #{sign_title}
+			, #{sign_content}
+			, #{sign_sender}
+			, #{sign_originfile}
+			, #{sign_savedfile}
+		)
+</insert>
+<!-- E004 -->
+<select id="listSign" parameterType="string" resultType="sign">
+	select
+		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+		, sign_title
+		, sign_sender
+		<!--결제상태를 뭐라고해야되냐 진짜-->
+	from 
+		noback_sign 
+	order by 
+		sign_num desc
+</select>
+		
+<!-- 결제서류 읽기 -->
+<select id="getSign" parameterType="int" resultType="sign">
+	select 
+		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+		, sign_title
+		, sign_content
+		, sign_sender
+		, sign_originfile<!-- 부서하고 직급을 어캐해야하지 -->
+		, sign_savedfile
+	from 
+		noback_sign
+	where 
+		sign_num = #{sign_num}
+</select>
+
+<!-- 글개수 -->
+<select id="getTotal" parameterType="string" resultType="int">
+	select
+		count(*)
+	from 
+		noback_sign
+</select>
+
+</mapper>
+
+

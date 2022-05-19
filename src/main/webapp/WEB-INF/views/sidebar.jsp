@@ -19,7 +19,7 @@
                     <li><a href="/blog">홈</a></li>
                     <li><a href="notice">공지사항</a></li>
                     <li><a href="schedule">사내일정</a></li>
-                    <li><a href="sign/sign">전자결재</a></li>
+                    <li><a href="sign/smain">전자결재</a></li>
                     <li><a href="/blog/board/boardList">자유게시판</a></li>
                     <li><a href="messenger">메신저</a></li>
                     <li><a href="login">로그인</a></li>

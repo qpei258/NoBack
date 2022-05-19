@@ -5,13 +5,16 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="com.noback.group.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.noback.group.vo.MemberVO" alias="member" />
 		<typeAlias type="com.noback.group.vo.SignVO" alias="sign" />
+		<typeAlias type="com.noback.group.vo.ScheduleVO" alias="schedule" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="memberMapper.xml" />
-		<mapper resource="SignMapper.xml" />
+		<mapper resource="signMapper.xml" />
+		<mapper resource="boardMapper.xml" />
+        <mapper resource="ScheduleMapper.xml" />
 	</mappers>
 	
 </configuration>
