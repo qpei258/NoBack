@@ -6,9 +6,9 @@ package com.noback.group.vo;
 public class ScheduleVO {
 	
 	private int schedule_num;
-	private String subject;
-	private String startDate;
-	private String endDate;	
+	private String schedule_title;
+	private String schedule_start;
+	private String schedule_end;	
 	private String schedule_memo;	
 	private String schedule_writer;	
 	private String schedule_level;
@@ -17,13 +17,13 @@ public class ScheduleVO {
 		
 	}
 
-	public ScheduleVO(int schedule_num, String subject, String startDate, String endDate, String schedule_memo, String schedule_writer,
-			String schedule_level) {
+	public ScheduleVO(int schedule_num, String schedule_title, String schedule_start, String schedule_end,
+			String schedule_memo, String schedule_writer, String schedule_level) {
 		super();
 		this.schedule_num = schedule_num;
-		this.subject = subject;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.schedule_title = schedule_title;
+		this.schedule_start = schedule_start;
+		this.schedule_end = schedule_end;
 		this.schedule_memo = schedule_memo;
 		this.schedule_writer = schedule_writer;
 		this.schedule_level = schedule_level;
@@ -37,29 +37,28 @@ public class ScheduleVO {
 		this.schedule_num = schedule_num;
 	}
 
-
-	public String getSubject() {
-		return subject;
+	public String getSchedule_title() {
+		return schedule_title;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setSchedule_title(String schedule_title) {
+		this.schedule_title = schedule_title;
 	}
 
-	public String getStartDate() {
-		return startDate;
+	public String getSchedule_start() {
+		return schedule_start;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setSchedule_start(String schedule_start) {
+		this.schedule_start = schedule_start;
 	}
 
-	public String getEndDate() {
-		return endDate;
+	public String getSchedule_end() {
+		return schedule_end;
 	}
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setSchedule_end(String schedule_end) {
+		this.schedule_end = schedule_end;
 	}
 
 	public String getSchedule_memo() {
@@ -88,9 +87,9 @@ public class ScheduleVO {
 
 	@Override
 	public String toString() {
-		return "ScheduleVO [schedule_num=" + schedule_num + ", subject=" + subject + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", schedule_memo=" + schedule_memo + ", schedule_writer=" + schedule_writer
-				+ ", schedule_level=" + schedule_level + "]";
+		return "ScheduleVO [schedule_num=" + schedule_num + ", schedule_title=" + schedule_title + ", schedule_start="
+				+ schedule_start + ", schedule_end=" + schedule_end + ", schedule_memo=" + schedule_memo
+				+ ", schedule_writer=" + schedule_writer + ", schedule_level=" + schedule_level + "]";
 	}
 
 
