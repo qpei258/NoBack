@@ -37,7 +37,7 @@
         	<div id="boardList">
         		<h2 style="margin: 40px 0px 10px 0px;">자유게시판</h2>
         		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
-	        		<c:if test="${LoginId =! null }">
+	        		<c:if test="${LoginId != null }">
 	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
 	        		</c:if>
         		</div>
