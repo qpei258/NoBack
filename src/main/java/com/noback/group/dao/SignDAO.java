@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.SignVO;
+
 
 
 
@@ -55,6 +57,13 @@ public class SignDAO {
 		int result = 0;
 		result = mapper.getTotal(searchText);
 		return result;		
+	}
+
+	public MemberVO getMember(String name) {
+		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
+		MemberVO member = null;
+		member = mapper.getMember(name);
+		return member;
 	}
 
 }

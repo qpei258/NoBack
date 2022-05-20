@@ -33,18 +33,8 @@
 <c:forEach var="sign" items="${listSign}">
 <tr>
 	<td class="center">${sign.sign_cdate}</td>
-	<td class="center">${sign.title}</td>
-	<td class="center">${sign_sender}</td>
-	<td class="center">
-	<!-- 결제상태 -->
-<c:if test="${sign_ok1 == 1}">
-    <p>반려</p>
-	<c:if test="${sign_ok2 == 2}">
-		<p>승인</p>
-	</c:if>
-	<p>대기</p>
-</c:if>
-	</td>
+	<td class="center">${sign.sign_title}</td>
+	<td class="center">${sign.sign_sender}</td>
 </tr>
 </c:forEach>        
 <!-- 반복 끝 -->

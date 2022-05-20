@@ -36,8 +36,10 @@
         <div id="content">
         	<div id="boardList">
         		<h2 style="margin: 40px 0px 10px 0px;">자유게시판</h2>
-        		<div style="float: left; margin-bottom: 5px ; margin-left: 63px;  border: 0px;">
-        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
+        		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
+	        		<c:if test="${LoginId != null }">
+	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
+	        		</c:if>
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
@@ -50,7 +52,7 @@
 				</form>
 				<!-- /검색폼 -->
 				</div>
-				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 10px auto; border-spacing: 0;">
+				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
         					<th style="width: 10%;">글번호</th>
@@ -65,7 +67,7 @@
 						  		<td>${board.board_num }</td>
 						  		<td>${board.board_title }</td>
 						  		<td>${board.board_date }</td>
-						  		<td>${board.board_writer}</td>
+						  		<td>${board.board_writer_name}</td>
 						  	</tr>
 						  </c:forEach>
 				  </tbody>
