@@ -13,9 +13,7 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        </div>
-    </div>
- <div class="centerdiv">
+         <div class="centerdiv">
 <h2>[E004]</h2>
 
 <br>
@@ -41,6 +39,9 @@
 <!-- 반복 끝 -->
 </table>
 <br/><br/>
+        
+        </div>
+    </div>
 
                    
 </div>

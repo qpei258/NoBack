@@ -37,12 +37,11 @@
 <!-- E004 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
-		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+		to_char(sign_cdate, 'YYYY-MM-DD') as sign_cdate
 		, sign_title
 		, sign_sender
-		<!--결제상태를 뭐라고해야되냐 진짜-->
 	from 
-		noback_sign 
+		noback_sign
 	order by 
 		sign_num desc
 </select>
@@ -57,10 +56,11 @@
 		, sign_originfile
 		, sign_savedfile
 	from 
-		noback_sign
+		noback_sign 
 	where 
 		sign_num = #{sign_num}
 </select>
+
 
 <!-- 글개수 -->
 <select id="getTotal" parameterType="string" resultType="int">
@@ -74,5 +74,15 @@
 <select id="getMember" parameterType="string" resultType="member">
 	select * from noback_member where employee_name = #{employee_name}
 </select>
+
+<select id="member" parameterType="string" resultType="member">
+		select
+			m.employee_name
+			, m.employee_dep
+			, m.employee_pos
+		from 
+			noback_sign s, noback_member m
+		where s.sign_sender = m.employee_name
+	</select>
 
 </mapper>

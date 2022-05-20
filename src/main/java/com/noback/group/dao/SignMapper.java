@@ -24,6 +24,8 @@ public interface SignMapper {
 	public int getTotal(String searchText);
 
 	public MemberVO getMember(String name);
+
+	public MemberVO member(String num);
 	
 	
 
