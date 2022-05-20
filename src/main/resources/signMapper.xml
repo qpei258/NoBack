@@ -11,23 +11,31 @@
 	insert into 
 		noback_sign
 		(
-		      sign_title
+		      sign_num
+		    , sign_title
 			, sign_content
 			, sign_sender
-			, sign_dep;
-	        , sign_pos;
-			,sign_originfile<!-- 부서하고 직급을 어캐해야하지 -->
+			, sign_receiver
+			<!--, sign_dep-->
+	         <!--sign_pos -->
+	        <if test="sign_originfile != null and sign_savedfile != null">
+			,sign_originfile
 		    , sign_savedfile
+		    </if>
 		) 
 	values 
 		(
-			 #{sign_title}
+		      sign_seq.nextval
+		    , #{sign_title}
 			, #{sign_content}
 			, #{sign_sender}
-			, #{sign_dep}
-			, #{sign_sender}
-			, #{sign_pos}
+			, #{sign_receiver}
+			<!--, #{sign_dep}-->
+			<!--, #{sign_pos}-->
+			 <if test="sign_originfile != null and sign_savedfile != null">
+			, #{sign_originfile}
 			, #{sign_savedfile}
+			 </if>
 		)
 </insert>
 <!-- E004 -->
