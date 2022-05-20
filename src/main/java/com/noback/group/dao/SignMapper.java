@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.ReceiverVO;
 import com.noback.group.vo.SignVO;
 
@@ -21,6 +22,8 @@ public interface SignMapper {
 	public ArrayList<SignVO> listSign(String searchText, RowBounds rb);
 
 	public int getTotal(String searchText);
+
+	public MemberVO getMember(String name);
 	
 	
 

@@ -19,6 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
+import com.noback.group.vo.MemberVO;
+
+
+
 import com.noback.group.util.FileService;
 import com.noback.group.util.PageNavigator;
 
@@ -126,5 +130,22 @@ public class SignController {
 
 			
 		return "sign/scomplete";
+	}
+	
+	//사원검색 페이지로 이동
+	@RequestMapping(value = "check", method = RequestMethod.GET)
+	public String check() {
+		return "sign/check";
+	}
+		
+	//사원검색
+	@RequestMapping(value = "check", method = RequestMethod.POST)
+	public String idcheck(String searchname, Model model) {
+		logger.info("검색할 이름 : {}", searchname);
+		MemberVO member = dao.getMember(searchname);
+		model.addAttribute("member", member);
+		model.addAttribute("searchname", searchname);
+			
+			return "sign/check";
 	}
 }

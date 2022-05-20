@@ -16,8 +16,6 @@
 			, sign_content
 			, sign_sender
 			, sign_receiver
-			<!--, sign_dep-->
-	         <!--sign_pos -->
 	        <if test="sign_originfile != null and sign_savedfile != null">
 			,sign_originfile
 		    , sign_savedfile
@@ -30,8 +28,6 @@
 			, #{sign_content}
 			, #{sign_sender}
 			, #{sign_receiver}
-			<!--, #{sign_dep}-->
-			<!--, #{sign_pos}-->
 			 <if test="sign_originfile != null and sign_savedfile != null">
 			, #{sign_originfile}
 			, #{sign_savedfile}
@@ -72,6 +68,11 @@
 		count(*)
 	from 
 		noback_sign
+</select>
+
+<!-- 회원 정보 검색 -->
+<select id="getMember" parameterType="string" resultType="member">
+	select * from noback_member where employee_name = #{employee_name}
 </select>
 
 </mapper>
