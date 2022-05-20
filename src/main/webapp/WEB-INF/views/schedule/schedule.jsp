@@ -16,39 +16,55 @@
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
-    <meta charset="UTF-8">
-    <title>사내일정</title>
-    <link rel="stylesheet" type="text/css" href="/blog/resources/css/default.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>사내일정</title>
+<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>' />
+<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/calendal.css"/>' />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 	
-	<!-- 캘린더 css,js 불러오기 -->
-	<link rel='stylesheet' href='resources/css/calendar.css' />
-    <script src='resources/js/calendar.js'></script>
-	<script>
 	
-	<!-- fullcalendar 사용해서 캘린더 출력 --> 
-	document.addEventListener('DOMContentLoaded', function() {
-      	var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        	
-        	initialView: 'dayGridMonth',  // 초기 이벤트 설정
-			events: [{
-  				title:'휴가',
-				start:'2022-05-07',
- 				end:'2022-05-10'
-			}],
-			locale: "ko", //한글 설정
-			editable: true
-          
-		});
-        calendar.render();
-      });
-      
-    </script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-	</script>
+<!-- 캘린더 css,js 불러오기 -->
+
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous">
+</script>
+<style>
+
+	.border {
+		border: 1px solid white;
+	}
+	
+	.box {
+		margin: 10px auto;
+		width: 1258px;
+		height: 800px;
+		color: rgb(80, 80, 80);
+		border: white;
+		
+	}
+	
+	div {
+		border: white;
+	}
+	
+	.calendar {
+		font-size: 1px;
+		border: white;
+	}
+	
+	.header {
+		font-size: 1px;
+		border: white;
+	}
+	
+</style>
 </head>
 <body>
     <div id="container">
@@ -56,34 +72,69 @@
 		
         <div id="content">
         
-        <!-- 모달 버튼 (일정 등록)  -->
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+        <!-- 헤더 -->
+		<nav class="navbar bg-light">
+  			<div class="container-fluid">
+    			<span class="navbar-brand mb-0 h1">사내일정</span>
+  			</div>
+		</nav>
+		
+			<!-- 달력 박스 -->
+        	<div class="box">   	
+        		<!-- 달력 -->	
+        		<div class="calendar" style="width: 1000px;">
+                    <div class="header">
+                        <div class="year-month" style="color: rgb(108,117,125);"></div>
+                        
+                        <div class="nav">
+                            <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                            <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
+                            <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="days">
+                            <div class="day">일</div>
+                            <div class="day">월</div>
+                            <div class="day">화</div>
+                            <div class="day">수</div>
+                            <div class="day">목</div>
+                            <div class="day">금</div>
+                            <div class="day">토</div>
+                        </div>
+                        <div class="dates"></div>
+                    </div>
+                </div>
+        		
+        		
+      		<!-- 모달 버튼 (일정 등록)  -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
   			일정 추가
-		</button>
+			</button>
 
-		<!-- 모달 처리 (일정 등록) -->
-		<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
-        					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-      				</div>
+			<!-- 모달 처리 (일정 등록) -->
+			<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+    				<div class="modal-content">
+      					<div class="modal-header">
+        					<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
+        						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+      					</div>
       				
-      				<!-- 등록 내용 입력 -->
-      				<div class="modal-body">
-      				<label class="schedule_title">일정 제목</label>
-  					<input type="text" class="form-control border-primary" id="schedule_title" placeholder="ex) 미팅">
+      					<!-- 등록 내용 입력 -->
+      					<div class="modal-body">
+      					<label class="schedule_title">일정 제목</label>
+  						<input type="text" class="form-control border-primary" id="add_title" placeholder="ex) 미팅">
 					
-					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" id="schedule_start" placeholder="ex) 2022-11-22 33-44">
+						<label class="schedule_start">시작 날짜</label>
+  						<input type="text" class="form-control border-primary" id="add_start" placeholder="ex) 2022-11-22 33-44">
   					
-  					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" id="schedule_end" placeholder="ex) 2022-11-22 33-44">
+  						<label class="schedule_end">종료 날짜</label>
+  						<input type="text" class="form-control border-primary" id="add_end" placeholder="ex) 2022-11-22 33-44">
   					
-  					<label class="schedule_memo">메모</label>
-  					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="schedule_memo" placeholder="ex) 무한상사"></textarea>
-      				</div>
+  						<label class="schedule_memo">메모</label>
+  						<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="add_memo" placeholder="ex) 무한상사"></textarea>
+      					</div>
       				
       				<!-- 등록 완료 버튼 -->
       				<div class="modal-footer">
@@ -92,7 +143,7 @@
       				</div>
     			</div>
   			</div>
-		</div>
+		</div> <!-- 등록 모달 끝  -->
 		
 		
 		<!-- 모달 버튼 (일정 수정/삭제) -->
@@ -112,16 +163,16 @@
       				<!-- 수정 내용 입력 -->
       				<div class="modal-body">
       				<label class="schedule_title">일정 제목</label>
-  					<input type="text" class="form-control border-primary" id="schedule_title" placeholder="ex) 미팅">
+  					<input type="text" class="form-control border-primary" id="update_title" placeholder="ex) 미팅">
 					
 					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" id="schedule_start" placeholder="ex) 2022-11-22 33-44">
+  					<input type="text" class="form-control border-primary" id="update_start" placeholder="ex) 2022-11-22 33-44">
   					
   					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" id="schedule_end" placeholder="ex) 2022-11-22 33-44">
+  					<input type="text" class="form-control border-primary" id="update_end" placeholder="ex) 2022-11-22 33-44">
   					
   					<label class="schedule_memo">메모</label>
-  					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="schedule_memo" placeholder="ex) 무한상사"></textarea>
+  					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="update_memo" placeholder="ex) 무한상사"></textarea>
       				</div>
       				
       				<!-- 수정 완료 버튼 -->
@@ -132,13 +183,14 @@
       				</div>
     			</div>
   			</div>
-		</div>
-		
-       		<div id='calendar' style="width: 1200px;"></div>
+		</div> <!-- 수정 모달 끝  -->
         
-        </div>
-    </div>
+        	</div> <!-- box 끝 -->
+        </div> <!-- content 끝 -->
+    </div> <!-- container 끝 -->
 </body>
-</html>
+
+<script src='resources/js/index.js'></script>
+<script src="resources/js/jquery-3.3.1.min.js"></script>
 
 </html>
