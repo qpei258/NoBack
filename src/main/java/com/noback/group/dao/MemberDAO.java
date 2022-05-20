@@ -19,7 +19,7 @@ public class MemberDAO {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		MemberVO result = null;
 
-		result = mapper.getMemberVO(employee_num);
+		result = mapper.getMember(employee_num);
 		return result;
 	}
 
