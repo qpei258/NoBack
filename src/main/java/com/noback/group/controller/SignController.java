@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
+import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 
 
@@ -84,26 +85,28 @@ public class SignController {
 	
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
-	public String swrite() {
+	public String swrite(String num, Model model) {
+		logger.info("게시글 접속");
+	    MemberVO member = dao.member(num);
+		model.addAttribute("member", member);
 		return "sign/swrite";
 	}
 	
 	//글쓰기 처리
-
 	@RequestMapping(value = "swrite", method = RequestMethod.POST)
-	public String swrite2(HttpSession session, SignVO sign, MultipartFile upload) {
+	public String swrite2(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
 		logger.info("저장할 글정보 {}", sign);
 		logger.info("파일정보:{}", upload.getContentType());
 		logger.info("파일정보:{}", upload.getName());
 		logger.info("파일정보:{}", upload.getOriginalFilename());
 		logger.info("파일정보:{}", upload.getSize());
 		logger.info("파일정보:{}", upload.isEmpty());
+		
 			
 			
 		//String id = (String) session.getAttribute("loginId");
 		sign.setSign_sender("000000");
-			
-			//첨부파일이 있는 경우 지정된 경로에 저장하고, 원본 파일명과 저장된 파일명을 Board객체에 세팅
+			//첨부파일이 있는 경우 지정된 경로에 저장하고, 원본 파일명과 저장된 파일명을 sign객체에 세팅
 		if (!upload.isEmpty()) {
 			String savedfile = FileService.saveFile(upload, uploadPath);
 			sign.setSign_originfile(upload.getOriginalFilename());

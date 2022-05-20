@@ -67,24 +67,24 @@ crossorigin="anonymous">
 	</td>
 </tr>
 
-<c:if test="${sessionScope.loginId == MemberVO.employee_num}">
+<c:if test="${sessionScope.loginId == member.employee_num}">
 <tr>
 	<th>작성자</th> 
 	<td>
-		<input type="text" name="sign_sender" id="sign_sender" size="30" placeholder="${MemberVO.employee_name}" readonly="readonly">
+		<input type="text" name="sign_sender" id="sign_sender" size="30" value="${member.employee_name}" readonly="readonly">
 	</td>
 </tr>
 
 <tr>
 	<th>부서</th> 
 	<td>
-		<input type="text" name="sign_dep" size="30" placeholder="${MemberVO.employee_dep}" readonly="readonly">
+		<input type="text" name="sign_dep" size="30" value="${member.employee_dep}" readonly="readonly">
 	</td>
 </tr>
  <tr>
 	<th>직급</th> 
 	<td>
-		<input type="text" name="sign_pos" size="30" placeholder="${MemberVO.employee_pos}" readonly="readonly">
+		<input type="text" name="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">
 	</td>
 </tr>
 </c:if>
