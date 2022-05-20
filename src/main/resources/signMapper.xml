@@ -54,7 +54,7 @@
 		, sign_title
 		, sign_content
 		, sign_sender
-		, sign_originfile<!-- 부서하고 직급을 어캐해야하지 -->
+		, sign_originfile
 		, sign_savedfile
 	from 
 		noback_sign
