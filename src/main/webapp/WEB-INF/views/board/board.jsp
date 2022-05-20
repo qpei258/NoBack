@@ -41,7 +41,7 @@
         			</thead>
         			<tbody style="background-color: white;" >
         				<tr style="text-align: right; height: 40px;">
-        					<td><b>작성자</b> ${board.board_writer } || <b>작성일</b> ${board.board_date }</td>
+        					<td><b>작성자</b> ${board.board_writer_name } || <b>작성일</b> ${board.board_date }</td>
         				</tr>
         				<tr style="text-align: left;">
         					<td><pre>${board.board_content }</pre></td>
@@ -49,8 +49,10 @@
         			</tbody>
         		</table>
         		<div style="float: right; border: 1px solid rgb(238, 238, 238); margin-right: 60px;">
-        			<button type="button" class="btn btn-primary" onclick="">수정</button>
-        			<button type="button" class="btn btn-outline-secondary" onclick="">삭제</button>
+        			<c:if test="${LoginId == board.board_writer || LoginLevel >= 3 }">
+	        			<button type="button" class="btn btn-primary" onclick="">수정</button>
+	        			<button type="button" class="btn btn-outline-secondary" onclick="">삭제</button>
+        			</c:if>
         		</div>
         	</div>
         </div>

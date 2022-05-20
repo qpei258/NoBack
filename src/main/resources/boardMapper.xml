@@ -16,29 +16,37 @@
 	
 	<select id="listBoard" parameterType="string" resultType="board">
 		select
-			board_num
-			, board_title
-			, board_content
-			, to_char(board_date, 'YY/MM/DD') board_date
-			, board_writer
+			b.board_num
+			, b.board_title
+			, b.board_content
+			, to_char(b.board_date, 'YY/MM/DD') as board_date
+			, m.employee_name as board_writer_name
 		from 
-			noback_board
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num
 		<if test="_parameter != null">
-		where
-			upper(board_title) like '%' || upper(#{search}) || '%'
+			and upper(b.board_title) like '%' || upper(#{search}) || '%'
 		</if>
 		order by 
-			board_num desc
+			b.board_num desc
 	</select>
 	
 	<select id="board" parameterType="string" resultType="board">
-		select * from noback_board
-		where board_num = #{num}
+		select
+			b.board_num
+			, b.board_title
+			, b.board_content
+			, to_char(b.board_date, 'YY/MM/DD HH24:MI:SS') as board_date
+			, b.board_writer
+			, m.employee_name as board_writer_name
+		from 
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num and board_num = #{num}
 	</select>
 	
 	<insert id="boardWrite" parameterType="board">
 		insert into noback_board
-		values(board_seq.nextval, #{board_title}, #{board_content}, (select employee_name from noback_member where employee_num = #{board_writer}), sysdate)
+		values(board_seq.nextval, #{board_title}, #{board_content}, #{board_writer}, sysdate)
 	</insert>
 </mapper>
 

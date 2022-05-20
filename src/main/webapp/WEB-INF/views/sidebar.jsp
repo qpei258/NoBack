@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/blog/resources/css/default.css" />
 <title>Insert title here</title>
 </head>
 <body>

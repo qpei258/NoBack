@@ -37,9 +37,9 @@ public class BoardController {
 			, @RequestParam(value="search", defaultValue="") String search
 			, Model model) {
 		logger.info("게시판 접속");
-		
+		  
 		int total = dao.getTotal(search);			//전체 글 개수
-		
+		System.out.println(session.getAttribute("LoginId") + "확인1");
 		//페이지 계산을 위한 객체 생성
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
 		
@@ -50,7 +50,7 @@ public class BoardController {
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("navi", navi);
 		model.addAttribute("search", search);
-		
+		System.out.println(session.getAttribute("LoginId") + "확인2");
 		return "board/boardList";
 	}
 	
@@ -63,8 +63,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
-	public String boardWrite() {
+	public String boardWrite(HttpSession session) {
 		logger.info("게시글 작성 접속");
+		System.out.println(session.getAttribute("LoginId") + "확인");
 		return "board/boardWrite";
 	}
 	
@@ -72,7 +73,9 @@ public class BoardController {
 	public String boardWrite(HttpSession session, BoardVO board) {
 		logger.info("게시글 접속");
 		String writer = (String) session.getAttribute("LoginId");
+		System.out.println(session.getAttribute("LoginId") + "확인");
 		board.setBoard_writer(writer);
+		  
 		int result = dao.boardWrite(board);
 		return "redirect:boardList";
 	}
