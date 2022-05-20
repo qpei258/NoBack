@@ -9,7 +9,7 @@ public interface MemberMapper {
 	
 	// 로그인
 
-	MemberVO getMember(String employee_num);
+	MemberVO getMemberVO(String employee_num);
 
 
 }

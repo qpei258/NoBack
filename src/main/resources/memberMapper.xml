@@ -7,9 +7,9 @@
 <mapper namespace="com.noback.group.dao.MemberMapper">
 
 	<!-- 로그인 -->
-	<select id="login" resultType="member" parameterType="string">
+	<select id="getMemberVO" resultType="member" parameterType="string">
 		select * from noback_member where 
-			id = #{employee_num} 		
+			employee_num = #{employee_num} 		
 	</select>
 	
 
