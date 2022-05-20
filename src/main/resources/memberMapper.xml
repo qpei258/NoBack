@@ -6,4 +6,15 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.noback.group.dao.MemberMapper">
 
+	<!-- 로그인 -->
+	<select id="login" resultType="member">
+	 select
+	     employee_num, employee_password, employee_level
+	 from
+	     noback_member
+	 where employee_num = #{employee_num}
+	     and employee_password = #{employee_password}
+	     	and employee_level = #{employee_level}
+	</select>
+
 </mapper>
