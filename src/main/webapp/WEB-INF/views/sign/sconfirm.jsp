@@ -5,36 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>결제서류작성</title>
-<script type="text/javascript" src="jquery-3.6.0.js"></script>
-<script>
-function formCheck() {
-	let sign_title = document.getElementById('sign_title'); 
-	let sign_content = document.getElementById('sign_content'); 
-	let sign_sender = document.getElementById('sign_sender'); 
-	let sign_receiver = document.getElementById('sign_receiver'); 
-	
-	if (sign_title.value.length < 3 || sign_title .value.length > 10) {
-		alert('제목은 3~10자로 입력하세요.');
-		return false;
-	}
-	if (sign_content.value.length < 1 || pw1.value.length > 100) {
-		alert('내용은 1~100자로 입력하세요.');
-		return false;
-	}
-	if (sign_sender.value == '') {
-		alert('보내는사람을 입력하세요.');
-		return false;
-	}
-	if (sign_receiver.value == '') {
-		alert('수신자를 입력하세요.');
-		return false;
-	}
-	return true;
-}
-
-function receiverOpen() {
-	window.open('check', 'receiver', 'top=300,left=500,width=400,height=300,location=no,status=no');
-}
 </script>
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>'  />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -89,9 +59,9 @@ function receiverOpen() {
 					</div>
 					</c:if>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" >수신자1(보내는곳)</span>
+						 <span class="input-group-text" >수신자(보내는곳)</span>
 						 <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자">
-			             <input type="button" value="부서검색" onclick="receiverOpen()">						  
+			             <input type="button" value="부서검색" onclick="receiverOpen()">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
