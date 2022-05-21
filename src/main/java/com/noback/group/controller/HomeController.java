@@ -26,7 +26,7 @@ public class HomeController {
 	public String home(HttpSession session) {
 		logger.info("홈 실행");
 		session.setAttribute("LoginId", "000000");
-		System.out.println(session.getAttribute("LoginId"));
+		
 		return "home";
 	}
 	

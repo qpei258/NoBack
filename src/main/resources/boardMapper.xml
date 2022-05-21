@@ -48,6 +48,17 @@
 		insert into noback_board
 		values(board_seq.nextval, #{board_title}, #{board_content}, #{board_writer}, sysdate)
 	</insert>
+	
+	<delete id="boardDelete" parameterType="string">
+		delete from noback_board
+		where board_num = #{board_num}
+	</delete>
+	
+	<update id="boardUpdate" parameterType="board">
+		update noback_board
+		set board_title = #{board_title}, board_content = #{board_content}
+		where board_num = #{board_num}
+	</update>
 </mapper>
 
 

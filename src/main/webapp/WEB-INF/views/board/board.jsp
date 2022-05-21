@@ -33,7 +33,8 @@
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="board">
-        		<table  class="table" style="width: 90%;font-size: 20px;margin: 140px auto 0px auto; border-spacing: 0; height: 600px;">
+	        	<h2 style="margin: 100px 0px 30px 0px;">게시글</h2>
+        		<table  class="table" style="width: 90%;font-size: 20px;margin: 0px auto 0px auto; border-spacing: 0; height: 600px;">
         			<thead style="text-align: left;">
         				<tr style="background-color: rgb(200, 200, 200);">
         					<th style="padding-left: 20px;">${board.board_title }</th>
@@ -50,8 +51,14 @@
         		</table>
         		<div style="float: right; border: 1px solid rgb(238, 238, 238); margin-right: 60px;">
         			<c:if test="${LoginId == board.board_writer || LoginLevel >= 3 }">
-	        			<button type="button" class="btn btn-primary" onclick="">수정</button>
-	        			<button type="button" class="btn btn-outline-secondary" onclick="">삭제</button>
+        				<form action="boardUpdate" method="post" style="display: inline-block;">
+        					<input type="hidden" value="${board.board_num }" name="board_num">
+	        				<button type="submit" class="btn btn-primary" onclick="">수정</button>
+	        			</form>
+	        			<form action="boardDelete" method="post" style="display: inline-block;">
+		        			<input type="hidden" value="${board.board_num }" name="board_num">
+		        			<button type="submit" class="btn btn-outline-secondary" onclick="">삭제</button>
+	        			</form>
         			</c:if>
         		</div>
         	</div>

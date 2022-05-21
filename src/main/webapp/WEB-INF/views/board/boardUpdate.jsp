@@ -33,19 +33,21 @@
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="board">
-	        	<h2 style="margin: 100px 0px 30px 0px;">게시글 쓰기</h2>
-        		<form action="boardWrite" method="post">
+        		<h2 style="margin: 100px 0px 30px 0px;">게시글 수정</h2>
+        		<div style="float: right; font-size: 15px; border: 0px; margin-right: 68px;"><b>작성자</b> ${board.board_writer_name } || <b>작성일</b> ${board.board_date }</div>
+        		<form action="boardUpdateDo" method="post">
 	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1">제목</span>
-					  	<input type="text" class="form-control" placeholder="" aria-label="title" aria-describedby="basic-addon1" name="board_title">
+					  	<input type="text" class="form-control" placeholder="" aria-label="title" aria-describedby="basic-addon1" name="board_title" value="${board.board_title}">
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >내용</span>
-						 <textarea class="form-control" aria-label="With textarea" style="height: 500px; resize: none;" name="board_content"></textarea>
+						 <textarea class="form-control" aria-label="With textarea" style="height: 500px; resize: none;" name="board_content" >${board.board_content }</textarea>
 						 
 					</div>
+					<input type="hidden" name="board_num" value="${board.board_num }"> 
 					<div style="border: 1px solid rgb(238, 238, 238);">
-						<button type="submit" class="btn btn-primary">글쓰기</button>
+						<button type="submit" class="btn btn-primary">수정</button>
 					</div>
 				</form>
         	</div>

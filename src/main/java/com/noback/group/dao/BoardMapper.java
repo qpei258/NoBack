@@ -15,4 +15,8 @@ public interface BoardMapper {
 	public BoardVO board(String num);
 	
 	public int boardWrite(BoardVO board);
+	
+	public int boardDelete(String board_num);
+	
+	public int boardUpdate(BoardVO board);
 }
