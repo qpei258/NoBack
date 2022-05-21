@@ -17,55 +17,55 @@
     </div>
 <div class="centerdiv">
 <h1>[결제 서류]</h1>
-<form id="swrite" action="swrite"  method="post" enctype="multipart/form-data">
+<form id="scomplete" action="scomplete"  method="post" enctype="multipart/form-data">
 	
 <table>
 <tr>
 	<th>기안일</th>
 	<td>
-		<input type="text" name="sign_cdate" id="sign_cdate" style="width:400px;">
+		<td>${signsign_cdate }</td>
 	</td>
 </tr>
 <tr>
 	<th>결제제목</th>
 	<td>
-		<input type="text" name="sign_title" id="sign_title" style="width:400px;">
+		<td>${sign.sign_title }</td>
 	</td>
 </tr>
 <tr>
 	<th>결제내용</th> 
 	<td>
-		<textarea name="sign_content" id="sign_content" style="width:400px;height:200px;resize:none;"></textarea>
+		<td>${sign.sign_content }</td>
 	</td>
 </tr>
 <tr>
 	<th>작성자</th> 
 	<td>
-		<input type="text" name="sign_sender" id="sign_sender" size="30">
+		<td>${sign.sign_sender }</td>
 	</td>
 </tr>
 <tr>
 	<th>부서</th> 
 	<td>
-		<input type="text" name="department" id="department" size="30">
+		<td>${member.employee_dep}</td>
 	</td>
 </tr>
 <tr>
 	<th>직급</th> 
 	<td>
-		<input type="text" name="position" id="position" size="30">
+		<td>${member.employee_pos }</td>
 	</td>
 </tr>
 <tr>
 	<th>수신자(보내는곳)</th> 
 	<td>
-		<input type="text" name="sign_receiver" id="sign_receiver" size="30">
+		<td>${sign.sign_receiver }</td>
 	</td>
 </tr>
 <tr>
 	<th>첨부파일</th> 
 	<td>
-		<input type="file" name="upload" size="30">
+		<a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>
 	</td>
 </tr>
 <tr>

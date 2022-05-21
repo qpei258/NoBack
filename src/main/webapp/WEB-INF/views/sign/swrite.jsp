@@ -78,7 +78,7 @@ crossorigin="anonymous">
 <tr>
 	<th>부서</th> 
 	<td>
-		<input type="text" name="sign_dep" size="30" value="${member.employee_dep}" readonly="readonly">
+		<input type="text" name="sign_dep" size="30" value="${member.employee_dep}" readonly="readonly" >
 	</td>
 </tr>
  <tr>

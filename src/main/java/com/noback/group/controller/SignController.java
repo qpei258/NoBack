@@ -127,6 +127,7 @@ public class SignController {
 	public String read(int sign_num, Model model) {
 		//글 번호를 전달
 		SignVO sign = dao.getSign(sign_num);
+		logger.info("검색할 글 : {}", sign_num);
 			//결과가 없으면 글 목록으로 이동
 		if (sign == null) {
 			return "redirect:smain";
