@@ -7,10 +7,13 @@ public class NoticeVO {
 	String notice_date;
 	String notice_writer;
 	String notice_writer_name;
+	String notice_originfile;
+	String notice_savedfile;
 	public NoticeVO() {
 		super();
 	}
-	public NoticeVO(int notice_num, String notice_title, String notice_content, String notice_date, String notice_writer, String notice_writer_name) {
+	public NoticeVO(int notice_num, String notice_title, String notice_content, String notice_date,
+			String notice_writer, String notice_writer_name, String notice_originfile, String notice_savedfile) {
 		super();
 		this.notice_num = notice_num;
 		this.notice_title = notice_title;
@@ -18,52 +21,65 @@ public class NoticeVO {
 		this.notice_date = notice_date;
 		this.notice_writer = notice_writer;
 		this.notice_writer_name = notice_writer_name;
+		this.notice_originfile = notice_originfile;
+		this.notice_savedfile = notice_savedfile;
 	}
-	public int getnotice_num() {
+	public int getNotice_num() {
 		return notice_num;
 	}
-	public void setnotice_num(int notice_num) {
+	public void setNotice_num(int notice_num) {
 		this.notice_num = notice_num;
 	}
-	public String getnotice_title() {
+	public String getNotice_title() {
 		return notice_title;
 	}
-	public void setnotice_title(String notice_title) {
+	public void setNotice_title(String notice_title) {
 		this.notice_title = notice_title;
 	}
-	public String getnotice_content() {
+	public String getNotice_content() {
 		return notice_content;
 	}
-	public void setnotice_content(String notice_content) {
+	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
 	}
-	public String getnotice_date() {
+	public String getNotice_date() {
 		return notice_date;
 	}
-	public void setnotice_date(String notice_date) {
+	public void setNotice_date(String notice_date) {
 		this.notice_date = notice_date;
 	}
-	public String getnotice_writer() {
+	public String getNotice_writer() {
 		return notice_writer;
 	}
-	public void setnotice_writer(String notice_writer) {
+	public void setNotice_writer(String notice_writer) {
 		this.notice_writer = notice_writer;
 	}
-	
-	public String getnotice_writer_name() {
+	public String getNotice_writer_name() {
 		return notice_writer_name;
 	}
-	public void setnotice_writer_name(String notice_writer_name) {
+	public void setNotice_writer_name(String notice_writer_name) {
 		this.notice_writer_name = notice_writer_name;
+	}
+	public String getNotice_originfile() {
+		return notice_originfile;
+	}
+	public void setNotice_originfile(String notice_originfile) {
+		this.notice_originfile = notice_originfile;
+	}
+	public String getNotice_savedfile() {
+		return notice_savedfile;
+	}
+	public void setNotice_savedfile(String notice_savedfile) {
+		this.notice_savedfile = notice_savedfile;
 	}
 	@Override
 	public String toString() {
-		return "noticeVO [notice_num=" + notice_num + ", notice_title=" + notice_title + ", notice_content=" + notice_content
-				+ ", notice_date=" + notice_date + ", notice_writer=" + notice_writer + ", notice_writer_num="
-				+ notice_writer_name + "]";
+		return "NoticeVO [notice_num=" + notice_num + ", notice_title=" + notice_title + ", notice_content="
+				+ notice_content + ", notice_date=" + notice_date + ", notice_writer=" + notice_writer
+				+ ", notice_writer_name=" + notice_writer_name + ", notice_originfile=" + notice_originfile
+				+ ", notice_savedfile=" + notice_savedfile + "]";
 	}
-	
-	
+
 	
 	
 }

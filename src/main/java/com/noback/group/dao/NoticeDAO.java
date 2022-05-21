@@ -7,8 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.noback.group.vo.BoardVO;
-import com.noback.group.vo.SignVO;
+import com.noback.group.vo.NoticeVO;
 
 @Repository
 public class NoticeDAO {
@@ -16,40 +15,40 @@ public class NoticeDAO {
 	SqlSession sqlSession;
 	
 	public int getTotal(String search) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class); 
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class); 
 		
 		int result = mapper.getTotal(search);
 		return result;
 	}
 
-	public ArrayList<BoardVO> list(String search, int startRecord, int countPerPage) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class); 
+	public ArrayList<NoticeVO> list(String search, int startRecord, int countPerPage) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class); 
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		ArrayList<BoardVO> result = mapper.listBoard(search, rb);
+		ArrayList<NoticeVO> result = mapper.listNotice(search, rb);
 		return result;
 	}
 	
-	public BoardVO board(String num) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class); 
-		BoardVO result = mapper.board(num);
+	public NoticeVO notice(String num) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class); 
+		NoticeVO result = mapper.notice(num);
 		return result;
 	}
 	
-	public int boardWrite(BoardVO board) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		int result = mapper.boardWrite(board);
+	public int noticeWrite(NoticeVO notice) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+		int result = mapper.noticeWrite(notice);
 		return result;
 	}
 	
-	public int boardDelete(String board_num) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		int result = mapper.boardDelete(board_num);
+	public int noticeDelete(String notice_num) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+		int result = mapper.noticeDelete(notice_num);
 		return result;
 	}
 	
-	public int boardUpdate(BoardVO board) {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		int result = mapper.boardUpdate(board);
+	public int noticeUpdate(NoticeVO notice) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+		int result = mapper.noticeUpdate(notice);
 		return result;
 	}
 }

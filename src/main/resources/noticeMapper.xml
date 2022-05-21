@@ -7,57 +7,61 @@
 <mapper namespace="com.noback.group.dao.NoticeMapper">
 	<select id="getTotal" parameterType="string" resultType="int">
 		select count(*)
-		from noback_board
+		from noback_notice
 		<if test="_parameter != null">
 			where
-			upper(board_title) like '%' || upper(#{search}) || '%'
+			upper(notice_title) like '%' || upper(#{search}) || '%'
 		</if>
 	</select>
 	
-	<select id="listBoard" parameterType="string" resultType="board">
+	<select id="listNotice" parameterType="string" resultType="notice">
 		select
-			b.board_num
-			, b.board_title
-			, b.board_content
-			, to_char(b.board_date, 'YY/MM/DD') as board_date
-			, m.employee_name as board_writer_name
+			b.notice_num
+			, b.notice_title
+			, b.notice_content
+			, to_char(b.notice_date, 'YY/MM/DD') as notice_date
+			, m.employee_name as notice_writer_name
+			, b.notice_originfile
+			, b.notice_savedfile
 		from 
-			noback_board b, noback_member m
-		where b.board_writer = m.employee_num
+			noback_notice b, noback_member m
+		where b.notice_writer = m.employee_num
 		<if test="_parameter != null">
-			and upper(b.board_title) like '%' || upper(#{search}) || '%'
+			and upper(b.notice_title) like '%' || upper(#{search}) || '%'
 		</if>
 		order by 
-			b.board_num desc
+			b.notice_num desc
 	</select>
 	
-	<select id="board" parameterType="string" resultType="board">
+	<select id="notice" parameterType="string" resultType="notice">
 		select
-			b.board_num
-			, b.board_title
-			, b.board_content
-			, to_char(b.board_date, 'YY/MM/DD HH24:MI:SS') as board_date
-			, b.board_writer
-			, m.employee_name as board_writer_name
+			b.notice_num
+			, b.notice_title
+			, b.notice_content
+			, to_char(b.notice_date, 'YY/MM/DD HH24:MI:SS') as notice_date
+			, b.notice_writer
+			, m.employee_name as notice_writer_name
+			, b.notice_originfile
+			, b.notice_savedfile
 		from 
-			noback_board b, noback_member m
-		where b.board_writer = m.employee_num and board_num = #{num}
+			noback_notice b, noback_member m
+		where b.notice_writer = m.employee_num and notice_num = #{notice_num}
 	</select>
 	
-	<insert id="boardWrite" parameterType="board">
-		insert into noback_board
-		values(board_seq.nextval, #{board_title}, #{board_content}, #{board_writer}, sysdate)
+	<insert id="noticeWrite" parameterType="notice">
+		insert into noback_notice
+		values(notice_seq.nextval, #{notice_title}, #{notice_content}, #{notice_writer}, sysdate, #{notice_originfile}, #{notice_savedfile})
 	</insert>
 	
-	<delete id="boardDelete" parameterType="string">
-		delete from noback_board
-		where board_num = #{board_num}
+	<delete id="noticeDelete" parameterType="string">
+		delete from noback_notice
+		where notice_num = #{notice_num}
 	</delete>
 	
-	<update id="boardUpdate" parameterType="board">
-		update noback_board
-		set board_title = #{board_title}, board_content = #{board_content}
-		where board_num = #{board_num}
+	<update id="noticeUpdate" parameterType="notice">
+		update noback_notice
+		set notice_title = #{notice_title}, notice_content = #{notice_content}, notice_originfile = #{notice_originfile}, notice_savedfile = #{notice_savedfile}
+		where notice_num = #{notice_num}
 	</update>
 </mapper>
 

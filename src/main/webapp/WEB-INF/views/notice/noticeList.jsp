@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>' />
     <style type="text/css">
     	
-    	#boardList{
+    	#noticeList{
     		margin:10px auto;
     		width: 1258px;
     		height: 870px;
@@ -34,16 +34,16 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        	<div id="boardList">
+        	<div id="noticeList">
         		<h2 style="margin: 40px 0px 10px 0px;">공지사항</h2>
         		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
 	        		<c:if test="${LoginLevel > 2 }">
-	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
+	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='noticeWrite'">글쓰기</button>
 	        		</c:if>
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="boardList" >
+				<form id="pagingForm" method="get" action="noticeList" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
 						 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
 						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
@@ -63,7 +63,7 @@
 				  	</thead>
 				  	<tbody>
 						  <c:forEach var="notice" items="${noticelist }">
-						  	<tr style="background-color: white;" onclick="location.href='board?num=${notice.notice_num}'">
+						  	<tr style="background-color: white;" onclick="location.href='notice?num=${notice.notice_num}'">
 						  		<td>${notice.notice_num }</td>
 						  		<td>${notice.notice_title }</td>
 						  		<td>${notice.notice_date }</td>
