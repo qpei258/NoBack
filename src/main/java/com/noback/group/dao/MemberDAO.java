@@ -1,6 +1,7 @@
 package com.noback.group.dao;
 
 import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,15 +23,29 @@ public class MemberDAO {
 		result = mapper.getMemberVO(employee_num);
 		return result;
 	}
-
-
-	
-
-	
 	
 	/**
 	 * 회원 가입 처리
 	 * @param member 사용자가 입력한 가입 정보
 	 */
+	
+	// 사원등록 처리
+	public int insertMember(MemberVO member) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		int result = 0;
+		try {
+			result = mapper.insertMember(member);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
+
+	
+	
 
 }
