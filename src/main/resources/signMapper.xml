@@ -77,12 +77,12 @@
 
 <select id="member" parameterType="string" resultType="member">
 		select
-			m.employee_name
-			, m.employee_dep
-			, m.employee_pos
+			employee_name
+			, employee_dep
+			, employee_pos
 		from 
-			noback_sign s, noback_member m
-		where s.sign_sender = m.employee_name
+			noback_member m
+		where employee_num = #{employee_num}
 	</select>
 
 </mapper>

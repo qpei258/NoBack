@@ -33,7 +33,6 @@ public class ScheduleController {
 	/**
 	 * 사내 일정 페이지로 이동
 	 */
-	
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
 	public String showSchedule()
 			throws Exception {
@@ -41,5 +40,23 @@ public class ScheduleController {
 		
 		return "schedule/schedule"; 
 	}
+	
+	/**
+	 * 일정 등록 
+	 */
+	
+	
+	/**
+	 * 일정 수정
+	 */
+	
 
+	/**
+	 * 일정 삭제
+	 */
+	
+
+	/**
+	 * 일정 출력
+	 */
 }

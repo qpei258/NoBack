@@ -72,5 +72,7 @@ public class SignDAO {
 		MemberVO result = mapper.member(num);
 		return result;
 	}
+	
+
 
 }
