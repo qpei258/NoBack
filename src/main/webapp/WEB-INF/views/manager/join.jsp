@@ -42,7 +42,81 @@
 	crossorigin="anonymous">
 	
 </script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
 <script type="text/javascript">
+
+function formCheck() {
+	let employee_name = document.getElementById('employee_name'); 
+	let employee_num = document.getElementById('employee_ssn');
+	let employee_num = document.getElementById('employee_address'); 
+	let employee_num = document.getElementById('employee_phone'); 
+	let employee_num = document.getElementById('employee_dep'); 
+	let employee_num = document.getElementById('employee_pos'); 
+	let employee_num = document.getElementById('employee_num'); 
+	let employee_num = document.getElementById('employee_level'); 
+	
+	if (employee_name.value == '') {
+		alert('이름을 입력하세요.');
+		return false;
+	}
+	
+	if (employee_ssn.value == '') {
+		alert('주민번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_address.value == '') {
+		alert('주소를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_phone.value == '') {
+		alert('연락처를 입력하세요.');
+		return false;
+	}
+
+	if (employee_dep.value == '') {
+		alert('부서를 입력하세요.');
+		return false;
+	}
+
+	if (employee_pos.value == '') {
+		alert('직함을 입력하세요.');
+		return false;
+	}
+	
+	if (employee_num.value.length < 6 || employee_num.value.length > 6) {
+		alert('사원번호를 입력하세요.');
+		return false;
+	}
+
+	if (employee_num.value == '') {
+		alert('사원 번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_level.value == '') {
+		alert('권한 등급을 선택하세요.');
+		return false;
+	}
+	
+	return true;
+}
+
+window.onload = function(){
+    document.getElementById("employee_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("employee_address").value = data.address; // 주소 넣기
+                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
 
 </script>
 </head>
@@ -50,30 +124,68 @@
 	<div id="container">
 		<%@ include file="../sidebar.jsp"%>
 		<div id="content">
-			<div class='topmenu'
-				style="line-height: 30px; font-size: 20px; font-weight: 700;">사원
-				등록 사원 리스트</div>
+			<!-- 상단 메뉴 -->
+			<nav class="topmenu">
+				<a href='<c:url value="../manager/join"/>'>사원 등록&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../manager/memberlist"/>'>&nbsp;사원 리스트</a>
+			</nav>
+			<!-- 회색 배경 -->
 			<div class='square'>
-				<form id="join" action="join">
-					<div class="row mb-3">
-						<label for="inputname3" class="col-sm-2 col-form-label">이름</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputname3">
-							
-						
-							
-
-
-						
-							<button type="submit" style="width: 100px;"
-								class="btn btn-primary">등록</button>
-							<button type="reset" style="width: 100px;"
-								class="btn btn-primary">초기화</button>
-							</div>
-						</div>
+				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
+					<table>
+				        <tr>
+				            <th>이름</th>
+				            <td><input type="text" id="employee_name" name="employee_name"></td>
+				        </tr>
+				        <tr>
+				            <th>주민번호</th>
+				            <td><input type="text" id="employee_ssn" name="employee_ssn"  maxlength="13" placeholder="' - '빼고 13자리 입력"></td>
+				        </tr>
+				        <tr>
+				            <th>주소</th>
+				            <td><input type="text" id="employee_address" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
+				        </tr>
+				        <tr>
+				            <th>상세 주소</th>
+				            <td><input type="text" name="address_detail" /></td>
+				        </tr>
+				        <tr>
+				            <th>연락처</th>
+				            <td><input type="text" id="employee_phone" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
+				        </tr>
+				        <tr>
+				            <th>부서</th>
+				            <td><input type="text" id="employee_dep" name="employee_dep"></td>
+				        </tr>
+				        <tr>
+				            <th>직함</th>
+				            <td><input type="text" id="employee_pos" name="employee_pos"></td>
+				        </tr>
+				        <tr>
+				            <th>사원 번호</th>
+				            <td><input type="text" id="employee_num" name="employee_num" maxlength="6"></td>
+				        </tr>
+				        <tr>
+				            <th>권한 등급</th>
+				            <td>
+					            <select name='employee_level' id="employee_level">
+									  <option value='' selected>-- 선택 --</option>
+									  <option value='1'>1 </option>
+									  <option value='2'>2</option>
+									  <option value='3'>3</option>
+									  <option value='4'>4</option>
+								</select>
+							</td>	
+				        </tr>
+				        
+				        
+				    </table>
+								
+					<button type="submit" style="width: 100px;" class="btn btn-primary">등록</button>
+					<button type="reset" style="width: 100px;" class="btn btn-primary">초기화</button>
 				</form>
+				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
