@@ -85,9 +85,12 @@ public class SignController {
 	
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
-	public String swrite(String num, Model model) {
+	public String swrite(String num, Model model, HttpSession session, MemberVO member) {
 		logger.info("게시글 접속");
-	    MemberVO member = dao.member(num);
+		//String searchId = (String) session.getAttribute("LoginId");
+		//MemberVO member = dao.member(searchId);
+	    //String id = member.setEmployee_num("00000");
+		
 		model.addAttribute("member", member);
 		return "sign/swrite";
 	}
@@ -104,8 +107,8 @@ public class SignController {
 		
 			
 			
-		//String id = (String) session.getAttribute("loginId");
-		sign.setSign_sender("000000");
+		String id = (String) session.getAttribute("loginId");
+		sign.setSign_sender(id);
 			//첨부파일이 있는 경우 지정된 경로에 저장하고, 원본 파일명과 저장된 파일명을 sign객체에 세팅
 		if (!upload.isEmpty()) {
 			String savedfile = FileService.saveFile(upload, uploadPath);
