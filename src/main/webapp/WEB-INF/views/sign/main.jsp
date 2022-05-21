@@ -52,7 +52,7 @@
                             <tr>
 	                        <td class="center">${sign.sign_cdate}</td>
 	                       <td>
-		                    <a href="scomplete?sign_num=${sign.sign_num}">${sign.sign_title}</a>
+		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                        </td>
 	                        <td class="center">${sign.sign_sender}</td>
 	                     <td class="center">${sign.sign_ok}</td>
