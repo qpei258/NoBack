@@ -37,13 +37,13 @@
 <!-- E004 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
-		to_char(sign_cdate, 'YYYY-MM-DD') as sign_cdate
+		to_char(sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, sign_title
 		, sign_sender
 	from 
 		noback_sign
 	order by 
-		sign_num desc
+		sign_cdate desc
 </select>
 		
 <!-- 결제서류 읽기 -->
@@ -72,7 +72,12 @@
 
 <!-- 회원 정보 검색 -->
 <select id="getMember" parameterType="string" resultType="member">
-	select * from noback_member where employee_name = #{employee_name}
+	select
+	employee_name
+	,employee_dep
+	,employee_pos
+	from noback_member
+	where employee_name = #{employee_name}
 </select>
 
 <select id="member" parameterType="string" resultType="member">
