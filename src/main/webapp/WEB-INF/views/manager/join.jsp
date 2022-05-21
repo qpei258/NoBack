@@ -47,6 +47,23 @@
 
 
 <script type="text/javascript">
+
+function formCheck() {
+	let employee_name = document.getElementById('employee_name'); 
+	let employee_num = document.getElementById('employee_num'); 
+	
+	if (employee_name.value == '') {
+		alert('이름을 입력하세요.');
+		return false;
+	}
+	
+	if (employee_num.value.length < 6 || employee_num.value.length > 6) {
+		alert('사원번호를 입력하세요.');
+		return false;
+	}
+	return true;
+}
+
 window.onload = function(){
     document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
@@ -71,51 +88,51 @@ window.onload = function(){
 			</nav>
 			<!-- 회색 배경 -->
 			<div class='square'>
-			
-				<table>
-			        <tr>
-			            <th>이름</th>
-			            <td><input type="text" name="employee_name"></td>
-			        </tr>
-			        <tr>
-			            <th>주민번호</th>
-			            <td><input type="text" name="employee_ssn"></td>
-			        </tr>
-			        <tr>
-			            <th>주소</th>
-			            <td><input type="text" id="address_kakao" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
-			        </tr>
-			        <tr>
-			            <th>상세 주소</th>
-			            <td><input type="text" name="address_detail" /></td>
-			        </tr>
-			        <tr>
-			            <th>연락처</th>
-			            <td><input type="text" name="employee_phone"></td>
-			        </tr>
-			        <tr>
-			            <th>부서</th>
-			            <td><input type="text" name="employee_dep"></td>
-			        </tr>
-			        <tr>
-			            <th>직함</th>
-			            <td><input type="text" name="employee_pos"></td>
-			        </tr>
-			        <tr>
-			            <th>사원 번호</th>
-			            <td><input type="text" name="employee_num"></td>
-			        </tr>
-			        <tr>
-			            <th>권한 등급</th>
-			            <td><input type="text" name="employee_level"></td>
-			        </tr>
-			        
-			        
-			    </table>
+				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
+					<table>
+				        <tr>
+				            <th>이름</th>
+				            <td><input type="text" id="employee_name" name="employee_name"></td>
+				        </tr>
+				        <tr>
+				            <th>주민번호</th>
+				            <td><input type="text" name="employee_ssn"  maxlength="13" placeholder="' - '빼고 13자리 입력"></td>
+				        </tr>
+				        <tr>
+				            <th>주소</th>
+				            <td><input type="text" id="address_kakao" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
+				        </tr>
+				        <tr>
+				            <th>상세 주소</th>
+				            <td><input type="text" name="address_detail" /></td>
+				        </tr>
+				        <tr>
+				            <th>연락처</th>
+				            <td><input type="text" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
+				        </tr>
+				        <tr>
+				            <th>부서</th>
+				            <td><input type="text" name="employee_dep"></td>
+				        </tr>
+				        <tr>
+				            <th>직함</th>
+				            <td><input type="text" name="employee_pos"></td>
+				        </tr>
+				        <tr>
+				            <th>사원 번호</th>
+				            <td><input type="text" id="employee_num" name="employee_num" maxlength="6"></td>
+				        </tr>
+				        <tr>
+				            <th>권한 등급</th>
+				            <td><input type="text" name="employee_level"></td>
+				        </tr>
+				        
+				        
+				    </table>
 								
 					<button type="submit" style="width: 100px;" class="btn btn-primary">등록</button>
 					<button type="reset" style="width: 100px;" class="btn btn-primary">초기화</button>
-			
+				</form>
 				</div>
 			</div>
 		</div>

@@ -8,8 +8,9 @@ import com.noback.group.vo.MemberVO;
 public interface MemberMapper {
 	
 	// 로그인
-
 	MemberVO getMemberVO(String employee_num);
-
+	//사원 정보 저장
+	int insertMember(MemberVO member);
+	
 
 }
