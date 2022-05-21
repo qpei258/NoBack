@@ -50,10 +50,41 @@
 
 function formCheck() {
 	let employee_name = document.getElementById('employee_name'); 
+	let employee_num = document.getElementById('employee_ssn');
+	let employee_num = document.getElementById('employee_address'); 
+	let employee_num = document.getElementById('employee_phone'); 
+	let employee_num = document.getElementById('employee_dep'); 
+	let employee_num = document.getElementById('employee_pos'); 
 	let employee_num = document.getElementById('employee_num'); 
+	let employee_num = document.getElementById('employee_level'); 
 	
 	if (employee_name.value == '') {
 		alert('이름을 입력하세요.');
+		return false;
+	}
+	
+	if (employee_ssn.value == '') {
+		alert('주민번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_address.value == '') {
+		alert('주소를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_phone.value == '') {
+		alert('연락처를 입력하세요.');
+		return false;
+	}
+
+	if (employee_dep.value == '') {
+		alert('부서를 입력하세요.');
+		return false;
+	}
+
+	if (employee_pos.value == '') {
+		alert('직함을 입력하세요.');
 		return false;
 	}
 	
@@ -61,20 +92,32 @@ function formCheck() {
 		alert('사원번호를 입력하세요.');
 		return false;
 	}
+
+	if (employee_num.value == '') {
+		alert('사원 번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_level.value == '') {
+		alert('권한 등급을 선택하세요.');
+		return false;
+	}
+	
 	return true;
 }
 
 window.onload = function(){
-    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+    document.getElementById("employee_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("address_kakao").value = data.address; // 주소 넣기
+                document.getElementById("employee_address").value = data.address; // 주소 넣기
                 document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
             }
         }).open();
     });
 }
+
 </script>
 </head>
 <body>
@@ -96,11 +139,11 @@ window.onload = function(){
 				        </tr>
 				        <tr>
 				            <th>주민번호</th>
-				            <td><input type="text" name="employee_ssn"  maxlength="13" placeholder="' - '빼고 13자리 입력"></td>
+				            <td><input type="text" id="employee_ssn" name="employee_ssn"  maxlength="13" placeholder="' - '빼고 13자리 입력"></td>
 				        </tr>
 				        <tr>
 				            <th>주소</th>
-				            <td><input type="text" id="address_kakao" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
+				            <td><input type="text" id="employee_address" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
 				        </tr>
 				        <tr>
 				            <th>상세 주소</th>
@@ -108,15 +151,15 @@ window.onload = function(){
 				        </tr>
 				        <tr>
 				            <th>연락처</th>
-				            <td><input type="text" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
+				            <td><input type="text" id="employee_phone" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
 				        </tr>
 				        <tr>
 				            <th>부서</th>
-				            <td><input type="text" name="employee_dep"></td>
+				            <td><input type="text" id="employee_dep" name="employee_dep"></td>
 				        </tr>
 				        <tr>
 				            <th>직함</th>
-				            <td><input type="text" name="employee_pos"></td>
+				            <td><input type="text" id="employee_pos" name="employee_pos"></td>
 				        </tr>
 				        <tr>
 				            <th>사원 번호</th>
@@ -124,7 +167,15 @@ window.onload = function(){
 				        </tr>
 				        <tr>
 				            <th>권한 등급</th>
-				            <td><input type="text" name="employee_level"></td>
+				            <td>
+					            <select name='employee_level' id="employee_level">
+									  <option value='' selected>-- 선택 --</option>
+									  <option value='1'>1 </option>
+									  <option value='2'>2</option>
+									  <option value='3'>3</option>
+									  <option value='4'>4</option>
+								</select>
+							</td>	
 				        </tr>
 				        
 				        
