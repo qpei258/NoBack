@@ -42,38 +42,82 @@
 	crossorigin="anonymous">
 	
 </script>
-<script type="text/javascript">
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+<script type="text/javascript">
+window.onload = function(){
+    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address_kakao").value = data.address; // 주소 넣기
+                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
 </script>
 </head>
 <body>
 	<div id="container">
 		<%@ include file="../sidebar.jsp"%>
 		<div id="content">
-			<div class='topmenu'
-				style="line-height: 30px; font-size: 20px; font-weight: 700;">사원
-				등록 사원 리스트</div>
+			<!-- 상단 메뉴 -->
+			<nav class="topmenu">
+				<a href='<c:url value="../manager/join"/>'>사원 등록&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../manager/memberlist"/>'>&nbsp;사원 리스트</a>
+			</nav>
+			<!-- 회색 배경 -->
 			<div class='square'>
-				<form id="join" action="join">
-					<div class="row mb-3">
-						<label for="inputname3" class="col-sm-2 col-form-label">이름</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputname3">
-							
-						
-							
-
-
-						
-							<button type="submit" style="width: 100px;"
-								class="btn btn-primary">등록</button>
-							<button type="reset" style="width: 100px;"
-								class="btn btn-primary">초기화</button>
-							</div>
-						</div>
-				</form>
+			
+				<table>
+			        <tr>
+			            <th>이름</th>
+			            <td><input type="text" name="employee_name"></td>
+			        </tr>
+			        <tr>
+			            <th>주민번호</th>
+			            <td><input type="text" name="employee_ssn"></td>
+			        </tr>
+			        <tr>
+			            <th>주소</th>
+			            <td><input type="text" id="address_kakao" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
+			        </tr>
+			        <tr>
+			            <th>상세 주소</th>
+			            <td><input type="text" name="address_detail" /></td>
+			        </tr>
+			        <tr>
+			            <th>연락처</th>
+			            <td><input type="text" name="employee_phone"></td>
+			        </tr>
+			        <tr>
+			            <th>부서</th>
+			            <td><input type="text" name="employee_dep"></td>
+			        </tr>
+			        <tr>
+			            <th>직함</th>
+			            <td><input type="text" name="employee_pos"></td>
+			        </tr>
+			        <tr>
+			            <th>사원 번호</th>
+			            <td><input type="text" name="employee_num"></td>
+			        </tr>
+			        <tr>
+			            <th>권한 등급</th>
+			            <td><input type="text" name="employee_level"></td>
+			        </tr>
+			        
+			        
+			    </table>
+								
+					<button type="submit" style="width: 100px;" class="btn btn-primary">등록</button>
+					<button type="reset" style="width: 100px;" class="btn btn-primary">초기화</button>
+			
+				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

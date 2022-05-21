@@ -58,5 +58,11 @@ public class MemberController {
 		public String join() {
 			return "manager/join";
 		}
+		
+		// 사원리스트로 이동
+		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
+		public String memberlist() {
+			return "manager/memberlist";
+		}
 	
 }
