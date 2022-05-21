@@ -45,12 +45,18 @@ public class MemberController {
 		return "redirect:login";
 	}
 	
-	//로그아웃
+		//로그아웃
 		@RequestMapping(value = "logout", method = RequestMethod.GET)
 		public String logout(HttpSession session) {
 			session.removeAttribute("LoginId");
 			session.removeAttribute("LoginLevel");
 			return "redirect:/";
+		}
+		
+		// 사원등록으로 이동
+		@RequestMapping(value = "join", method = RequestMethod.GET)
+		public String join() {
+			return "manager/join";
 		}
 	
 }
