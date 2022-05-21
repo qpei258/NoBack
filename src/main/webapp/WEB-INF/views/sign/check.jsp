@@ -33,13 +33,28 @@ function searchname() {
 	검색할 사원 <input type="text" name="searchname" id="searchname" />
 			<input type="submit" value="검색" />
 </form>
-
-<!-- 검색 후 -->
-<c:if test="${searchname != null}">
-	    <p>${searchname}</p>
-		<p><input type="button" value="선택하기" onclick="searchname()"></p>
-</c:if>
-
+<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
+				  	<thead>
+				      	<tr style="background-color: rgb(200, 200, 200);">
+        					<th style="width: 30%;">이름</th>
+	        				<th style="width: 35%;">제목</th>
+	        				<th style="width: 35%;">기안자</th>
+        				</tr>
+				  	</thead>
+				  	<tbody>
+						 <c:if test="${searchname != null}">
+                            <tr>
+	                        <td class="center">${member.employee_name}</td>
+	                       <td>
+		                    <td class="center">${member.employee_dep}</td>
+	                        </td>
+	                        <td class="center">${member.employee_pos}</td>
+	                        <p><input type="button" value="선택하기" onclick="searchname()"></p>
+                         </tr>
+                   </c:if>
+				  </tbody>
+				</table>
 </div>
 </body>
 </html>
+

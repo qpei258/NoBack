@@ -23,6 +23,25 @@ public class SignVO {
 	public int getSign_num() {
 		return sign_num;
 	}
+	public SignVO(int sign_num, String sign_title, String sign_content, String sign_sender, String sign_receiver,
+			String sign_originfile, String sign_savedfile, int sign_ok, String sign_cdate, String sign_memo,
+			String sign_sdate) {
+		super();
+		this.sign_num = sign_num;
+		this.sign_title = sign_title;
+		this.sign_content = sign_content;
+		this.sign_sender = sign_sender;
+		this.sign_receiver = sign_receiver;
+		this.sign_originfile = sign_originfile;
+		this.sign_savedfile = sign_savedfile;
+		this.sign_ok = sign_ok;
+		this.sign_cdate = sign_cdate;
+		this.sign_memo = sign_memo;
+		this.sign_sdate = sign_sdate;
+	}
+	public SignVO() {
+		super();
+	}
 	public void setSign_num(int sign_num) {
 		this.sign_num = sign_num;
 	}

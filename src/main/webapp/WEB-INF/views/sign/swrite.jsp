@@ -12,7 +12,7 @@ function formCheck() {
 	let sign_content = document.getElementById('sign_content'); 
 	let sign_sender = document.getElementById('sign_sender'); 
 	let sign_receiver = document.getElementById('sign_receiver'); 
-	
+	alert(sign_sender.value);
 	if (sign_title.value.length < 3 || sign_title .value.length > 10) {
 		alert('제목은 3~10자로 입력하세요.');
 		return false;

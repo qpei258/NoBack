@@ -98,16 +98,9 @@ public class SignController {
 	//글쓰기 처리
 	@RequestMapping(value = "swrite", method = RequestMethod.POST)
 	public String swrite2(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
-		logger.info("저장할 글정보 {}", sign);
-		logger.info("파일정보:{}", upload.getContentType());
-		logger.info("파일정보:{}", upload.getName());
-		logger.info("파일정보:{}", upload.getOriginalFilename());
-		logger.info("파일정보:{}", upload.getSize());
-		logger.info("파일정보:{}", upload.isEmpty());
-		
+		logger.info("저장할 글정보 {}", sign);	
 			
-			
-		String id = (String) session.getAttribute("loginId");
+		String id = (String) session.getAttribute("LoginId");
 		sign.setSign_sender(id);
 			//첨부파일이 있는 경우 지정된 경로에 저장하고, 원본 파일명과 저장된 파일명을 sign객체에 세팅
 		if (!upload.isEmpty()) {
@@ -116,7 +109,6 @@ public class SignController {
 			sign.setSign_savedfile(savedfile);
 		}
 
-			logger.info("저장할 글정보 {}", sign);
 			dao.write(sign);
 			return "redirect:smain";
 		}
