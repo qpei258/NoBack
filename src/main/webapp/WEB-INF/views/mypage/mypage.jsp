@@ -18,12 +18,12 @@
 
 	function validation() {
 
-		let pw = document.getElementById('password');
+		let pw = document.getElementById('employee_password');
 		let pwc = document.getElementById('passwordcheck');
 
-		let ph = document.getElementById('phone');
-		let adr = document.getElementById('address');
-		let email = document.getElementById('email');
+		let ph = document.getElementById('employee_phone');
+		let adr = document.getElementById('employee_address');
+		let email = document.getElementById('employee_email');
 
 		if (pw.value.length < 3 || pw.value.length > 10){
 			alert('비번은 3~10자로 입력하세요.');
@@ -73,28 +73,28 @@
 					<tr>
 						<td><h2>비밀번호</h2></td>
 					<td>
-						<input type="password" name ="password" id="password" placeholder="비밀번호 입력"><br>
+						<input type="password" name ="password" id="employee_password" placeholder="비밀번호 입력"><br>
 						<input type="password" name ="passwordcheck" id="passwordcheck" placeholder="비밀번호 다시 입력">
 					</td>
 				</tr>
 				<tr>
 					<td><h2>주소</h2></td>
 					<td>
-						<input type="text" name ="address" id="address" 
+						<input type="text" name ="address" id="employee_address" 
 						value = "${member.employee_address}" style = "width:300;">
 					</td>
 				</tr>
 				<tr>
 					<td><h2>이메일</h2></td>
 					<td>
-						<input type="text" name ="email" id="email" 
+						<input type="text" name ="email" id="employee_email" 
 						value = "${member.employee_email}">
 					</td>
 				</tr>
 				<tr>
 					<td><h2>연락처</h2></td>
 					<td>
-						<input type="text" name ="phone" id="phone" 
+						<input type="text" name ="phone" id="employee_phone" 
 						value = "${member.employee_phone}">
 					</td>
 				</tr>

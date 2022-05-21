@@ -17,6 +17,7 @@
 		<mapper resource="signMapper.xml" />
 		<mapper resource="boardMapper.xml" />
         <mapper resource="ScheduleMapper.xml" />
+        <mapper resource="mypageMapper.xml" />
 	</mappers>
 	
 </configuration>
