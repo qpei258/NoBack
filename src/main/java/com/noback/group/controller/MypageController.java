@@ -1,3 +1,8 @@
+/**
+ * @author 정수현
+ * 마이페이지  컨트롤러
+ */
+
 package com.noback.group.controller;
 
 import java.util.ArrayList;

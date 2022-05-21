@@ -11,4 +11,5 @@ public interface ScheduleMapper {
 	// 개인 스케줄 삭제
 
 	// 개인 스케줄 목록 가져오기
+
 }

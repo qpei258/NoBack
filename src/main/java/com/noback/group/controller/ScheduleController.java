@@ -1,7 +1,5 @@
 package com.noback.group.controller;
 
-
-
 import org.slf4j.Logger;
 
 
@@ -23,6 +21,7 @@ import com.noback.group.dao.ScheduleDAO;
  * 사내 일정 콘트롤러
  */
 @Controller
+@RequestMapping("schedule")
 public class ScheduleController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ScheduleController.class);

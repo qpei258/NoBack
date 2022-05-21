@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.noback.group.vo.ScheduleVO;
 
 /**
- * 회원 관련 DAO
+ * 사내일정 관련 DAO
  */
 @Repository
 public class ScheduleDAO {
