@@ -64,6 +64,7 @@ public class MemberController {
 		//사원등록 처리
 		@RequestMapping(value = "join", method = RequestMethod.POST)
 		public String join(MemberVO member) {
+			logger.info("{}", member);
 			int result = dao.insertMember(member);
 			if (result != 1) {
 				//DB저장에 실패한 경우 가입폼으로 이동

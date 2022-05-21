@@ -6,7 +6,7 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.noback.group.dao.MypageMapper">
 
-	<!-- 로그인 -->
+	<!-- 개인정보 출력 -->
 	<select id="getMemberVO" resultType="member" parameterType="string">
 		select * from noback_member where 
 			employee_num = #{employee_num} 		
@@ -25,4 +25,45 @@
 			employee_num = #{employee_num}
 	</update>
 	
+	<!-- 내 게시글 출력 -->
+	<select id="listBoard" parameterType="string" resultType="board">
+		select
+			b.board_num
+			, b.board_title
+			, to_char(b.board_date, 'YY/MM/DD') as board_date
+			, m.employee_num as board_writer
+		from 
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num
+		<if test="_parameter != null">
+			and upper(b.board_title) like '%' || upper(#{searchText}) || '%'
+		</if>
+		order by 
+			b.board_num desc
+	</select>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="getBoard" parameterType="string" resultType="board">
+		select
+			b.board_num
+			, b.board_title
+			, b.board_content
+			, to_char(b.board_date, 'YY/MM/DD HH24:MI:SS') as board_date
+			, b.board_writer
+			, m.employee_num as board_writer
+		from 
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num 
+			and board_num = #{board_num}
+	</select>
+	
+	<!-- 내가 쓴 글 총개수 -->
+	<select id="getTotal" parameterType="string" resultType="int">
+		select count(*)
+		from noback_board
+		<if test="_parameter != null">
+			where
+			upper(board_title) like '%' || upper(#{searchText}) || '%'
+		</if>
+	</select>
 </mapper>

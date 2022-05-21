@@ -19,7 +19,7 @@ public class MypageDAO {
 	SqlSession sqlSession;
 	
 	
-	// 로그인
+	// 개인정보 출력
 	public MemberVO getMember(String employee_num) {
 		MypageMapper mapper = sqlSession.getMapper(MypageMapper.class);
 		MemberVO result = null;
@@ -29,14 +29,14 @@ public class MypageDAO {
 	}
 	
 	// 개인정보 수정
-	public int updateMember(String employee_num) {
+	public int updateMember(MemberVO member) {
 		MypageMapper mapper = sqlSession.getMapper(MypageMapper.class);
 		int result = 0;
-		result = mapper.updateMember(employee_num);
+		result = mapper.updateMember(member);
 		return result;
 	}
 	
-	// 마이게시글 리스트	
+	// 마이게시글 리스트	(내가쓴 글만)
 	public ArrayList<BoardVO> list(String searchText, int startRecord, int countPerPage) {
 		MypageMapper mapper = sqlSession.getMapper(MypageMapper.class);
 		
@@ -47,10 +47,10 @@ public class MypageDAO {
 	}
 	
 	//게시글 선택하나 출력
-	public BoardVO getBoard(String boardnum){
+	public BoardVO board(String board_num){
 		MypageMapper mapper = sqlSession.getMapper(MypageMapper.class);
 		//해당번호의 글정보 읽기
-		BoardVO result = mapper.getBoard(boardnum);
+		BoardVO result = mapper.getBoard(board_num);
 		return result;
 	}
 
