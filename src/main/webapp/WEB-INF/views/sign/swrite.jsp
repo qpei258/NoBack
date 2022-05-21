@@ -105,6 +105,7 @@ crossorigin="anonymous">
 <tr>
 	<td colspan="2" class="white center">
 		<input type="submit" value="작성" />
+		<input type = "reset" value ="초기화">
 	</td> 
 </tr>
 </table>

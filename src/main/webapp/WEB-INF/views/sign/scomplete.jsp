@@ -69,6 +69,14 @@
 	</td>
 </tr>
 <tr>
+<td>
+<label for="sign_ok">승인</label>
+<input type = "checkbox" id="sign_ok" name="sign_ok" value="1">
+<label for="sign_ok">반려</label>
+<input type = "checkbox" id="sign_ok" name="sign_ok" value="-1">
+</td>
+</tr>
+<tr>
 	<td colspan="2" class="white center">
 		<input type="submit" value="처리완료" />
 	</td> 

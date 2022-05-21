@@ -21,7 +21,7 @@
                     <li><a href='<c:url value="/sign/smain"/>'>전자결재</a></li>
                     <li><a href='<c:url value="/board/boardList"/>'>자유게시판</a></li>
                     <li><a href='<c:url value="/messenger/messenger"/>'>메신저</a></li>
-                    <li><a href='<c:url value="/manager/login"/>'>로그인</a></li>
+                    <li><a href='<c:url value="/manager/join"/>'>로그인</a></li>
                 </ul>
             </div>
             <div id="schedule">
