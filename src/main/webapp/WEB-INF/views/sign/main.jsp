@@ -37,7 +37,9 @@
 <c:forEach var="sign" items="${listSign}">
 <tr>
 	<td class="center">${sign.sign_cdate}</td>
-	<td class="center">${sign.sign_title}</td>
+	<td>
+		<a href="scomplete?sign_num=${sign.sign_num}">${sign.sign_title}</a>
+	</td>
 	<td class="center">${sign.sign_sender}</td>
 	<td class="center">${sign.sign_ok}</td>
 </tr>
