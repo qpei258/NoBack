@@ -39,7 +39,7 @@ public class BoardController {
 		logger.info("게시판 접속");
 		  
 		int total = dao.getTotal(search);			//전체 글 개수
-		System.out.println(session.getAttribute("LoginId") + "확인1");
+		
 		//페이지 계산을 위한 객체 생성
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
 		
@@ -50,7 +50,7 @@ public class BoardController {
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("navi", navi);
 		model.addAttribute("search", search);
-		System.out.println(session.getAttribute("LoginId") + "확인2");
+		
 		return "board/boardList";
 	}
 	
@@ -65,7 +65,7 @@ public class BoardController {
 	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
 	public String boardWrite(HttpSession session) {
 		logger.info("게시글 작성 접속");
-		System.out.println(session.getAttribute("LoginId") + "확인");
+		
 		return "board/boardWrite";
 	}
 	
@@ -73,10 +73,32 @@ public class BoardController {
 	public String boardWrite(HttpSession session, BoardVO board) {
 		logger.info("게시글 접속");
 		String writer = (String) session.getAttribute("LoginId");
-		System.out.println(session.getAttribute("LoginId") + "확인");
+		
 		board.setBoard_writer(writer);
 		  
 		int result = dao.boardWrite(board);
 		return "redirect:boardList";
+	}
+	
+	@RequestMapping(value = "boardUpdate", method = RequestMethod.POST)
+	public String boardUpdate(String board_num, Model model) {
+		logger.info("게시글 수정 접속 : {}");
+		BoardVO board = dao.board(board_num);
+		model.addAttribute("board", board);
+		return "board/boardUpdate";
+	}
+	
+	@RequestMapping(value = "boardDelete", method = RequestMethod.POST)
+	public String boardDelete(String board_num) {
+		logger.info("게시글 삭제");
+		int result = dao.boardDelete(board_num);
+		return "redirect:boardList";
+	}
+	
+	@RequestMapping(value = "boardUpdateDo", method = RequestMethod.POST)
+	public String boardUpdate(BoardVO board) {
+		logger.info("게시글 수정  : {}", board);
+		int result = dao.boardUpdate(board);
+		return "redirect:board?num=" + board.getBoard_num();
 	}
 }

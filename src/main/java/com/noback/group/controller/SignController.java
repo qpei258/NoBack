@@ -85,11 +85,11 @@ public class SignController {
 	
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
-	public String swrite(String num, Model model, HttpSession session, MemberVO member) {
+	public String swrite(String num, Model model, HttpSession session) {
 		logger.info("게시글 접속");
-		//String searchId = (String) session.getAttribute("LoginId");
-		//MemberVO member = dao.member(searchId);
-	    //String id = member.setEmployee_num("00000");
+		String searchId = (String) session.getAttribute("LoginId");
+		MemberVO member = dao.member(searchId);
+		logger.info("{}",member);
 		
 		model.addAttribute("member", member);
 		return "sign/swrite";

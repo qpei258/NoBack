@@ -10,6 +10,5 @@
 <p><a href="main">결제내역리스트</a></p>
 <p><a href="sdelay">결제대기중인 서류 리스트</a></p>
 <p><a href="swrite">결제서류 작성</a></p>
-<p><a href="scomplete">결제문서 확인 및 처리</a></p>
 </body>
 </html>

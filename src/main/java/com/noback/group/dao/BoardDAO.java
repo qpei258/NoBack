@@ -40,5 +40,17 @@ public class BoardDAO {
 		int result = mapper.boardWrite(board);
 		return result;
 	}
+	
+	public int boardDelete(String board_num) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int result = mapper.boardDelete(board_num);
+		return result;
+	}
+	
+	public int boardUpdate(BoardVO board) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int result = mapper.boardUpdate(board);
+		return result;
+	}
 }
 

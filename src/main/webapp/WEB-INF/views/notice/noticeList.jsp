@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>' />
     <style type="text/css">
     	
-    	#signList{
+    	#noticeList{
     		margin:10px auto;
     		width: 1258px;
     		height: 870px;
@@ -34,30 +34,42 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        	<div id="signList">
-        		<h2 style="margin: 40px 0px 10px 0px;">결제 작성 리스트</h2>
+        	<div id="noticeList">
+        		<h2 style="margin: 40px 0px 10px 0px;">공지사항</h2>
+        		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
+	        		<c:if test="${LoginLevel > 2 }">
+	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='noticeWrite'">글쓰기</button>
+	        		</c:if>
+        		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
+				<!-- 검색폼 -->
+				<form id="pagingForm" method="get" action="noticeList" >
+					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
+						 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
+						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
+					</div>
+					<input type="hidden" name="page" id="page" />
+				</form>
+				<!-- /검색폼 -->
 				</div>
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 30%;">기안일</th>
-	        				<th style="width: 40%;">제목</th>
-	        				<th style="width: 15%;">기안자</th>
-	        				<th style="width: 15%;">결제상태</th>
+        					<th style="width: 10%;">글번호</th>
+	        				<th style="width: 60%;">제목</th>
+	        				<th style="width: 15%;">작성일</th>
+	        				<th style="width: 15%;">작성자</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
-						  <c:forEach var="sign" items="${listSign}">
-                            <tr>
-	                        <td class="center">${sign.sign_cdate}</td>
-	                       <td>
-		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
-	                        </td>
-	                        <td class="center">${sign.sign_sender}</td>
-	                     <td class="center">${sign.sign_ok}</td>
-                         </tr>
-                   </c:forEach> 
+						  <c:forEach var="notice" items="${noticelist }">
+						  	<tr style="background-color: white;" onclick="location.href='notice?num=${notice.notice_num}'">
+						  		<td>${notice.notice_num }</td>
+						  		<td>${notice.notice_title }</td>
+						  		<td>${notice.notice_date }</td>
+						  		<td>${notice.notice_writer_name}</td>
+						  	</tr>
+						  </c:forEach>
 				  </tbody>
 				</table>
         		<div id="navigator" style="border: 0px; font-size: 20px;">
@@ -82,5 +94,3 @@
     </div>
 </body>
 </html>
-
-

@@ -40,7 +40,6 @@ public class SignDAO {
 	//결제서류 읽기
 	public SignVO getSign(int sign_num) {
 		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
-		
 		SignVO sign = mapper.getSign(sign_num);
 		return sign;
 	}
