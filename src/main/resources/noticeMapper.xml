@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 정보 처리 SQL -->
+<mapper namespace="com.noback.group.dao.NoticeMapper">
+	<select id="getTotal" parameterType="string" resultType="int">
+		select count(*)
+		from noback_board
+		<if test="_parameter != null">
+			where
+			upper(board_title) like '%' || upper(#{search}) || '%'
+		</if>
+	</select>
+	
+	<select id="listBoard" parameterType="string" resultType="board">
+		select
+			b.board_num
+			, b.board_title
+			, b.board_content
+			, to_char(b.board_date, 'YY/MM/DD') as board_date
+			, m.employee_name as board_writer_name
+		from 
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num
+		<if test="_parameter != null">
+			and upper(b.board_title) like '%' || upper(#{search}) || '%'
+		</if>
+		order by 
+			b.board_num desc
+	</select>
+	
+	<select id="board" parameterType="string" resultType="board">
+		select
+			b.board_num
+			, b.board_title
+			, b.board_content
+			, to_char(b.board_date, 'YY/MM/DD HH24:MI:SS') as board_date
+			, b.board_writer
+			, m.employee_name as board_writer_name
+		from 
+			noback_board b, noback_member m
+		where b.board_writer = m.employee_num and board_num = #{num}
+	</select>
+	
+	<insert id="boardWrite" parameterType="board">
+		insert into noback_board
+		values(board_seq.nextval, #{board_title}, #{board_content}, #{board_writer}, sysdate)
+	</insert>
+	
+	<delete id="boardDelete" parameterType="string">
+		delete from noback_board
+		where board_num = #{board_num}
+	</delete>
+	
+	<update id="boardUpdate" parameterType="board">
+		update noback_board
+		set board_title = #{board_title}, board_content = #{board_content}
+		where board_num = #{board_num}
+	</update>
+</mapper>
+
+
+
+
+
