@@ -47,7 +47,7 @@
         				</tr>
 				  	</thead>
 				  	<tbody>
-						  <c:forEach var="sign" items="${listSign}">
+						  <c:forEach var="sign" items="${listSign2}">
                           <tr>
 	                      <td class="center">${sign.sign_cdate}</td>
 	                      <td>

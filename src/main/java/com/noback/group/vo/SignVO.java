@@ -5,19 +5,36 @@ package com.noback.group.vo;
  */
 public class SignVO {
 
+	
 	int sign_num;	  
 	String sign_title;
 	String sign_content;	
 	String sign_sender;  
-	String sign_receiver;	
+	String sign_receiver;
+	String sign_dep;
+	String sign_pos;
 	String sign_originfile;	
 	String sign_savedfile;
 	int sign_ok;
 	String sign_cdate;
 	String sign_memo;
 	String sign_sdate;
-	//String sign_dep;
-	//String sign_pos;
+
+	
+	public String getSign_dep() {
+		return sign_dep;
+	}
+	public void setSign_dep(String sign_dep) {
+		this.sign_dep = sign_dep;
+	}
+	public String getSign_pos() {
+		return sign_pos;
+	}
+	public void setSign_pos(String sign_pos) {
+		this.sign_pos = sign_pos;
+	}
+
+
 	
 	
 	public int getSign_num() {
@@ -109,9 +126,9 @@ public class SignVO {
 	@Override
 	public String toString() {
 		return "SignVO [sign_num=" + sign_num + ", sign_title=" + sign_title + ", sign_content=" + sign_content
-				+ ", sign_sender=" + sign_sender + ", sign_receiver=" + sign_receiver + ", sign_originfile="
-				+ sign_originfile + ", sign_savedfile=" + sign_savedfile + ", sign_ok=" + sign_ok + ", sign_cdate="
-				+ sign_cdate + ", sign_memo=" + sign_memo + ", sign_sdate=" + sign_sdate;
+				+ ", sign_sender=" + sign_sender + ", sign_receiver=" + sign_receiver + ", sign_dep=" + sign_dep
+				+ ", sign_pos=" + sign_pos + ", sign_originfile=" + sign_originfile + ", sign_savedfile="
+				+ sign_savedfile + ", sign_ok=" + sign_ok + ", sign_cdate=" + sign_cdate + ", sign_memo=" + sign_memo
+				+ ", sign_sdate=" + sign_sdate + "]";
 	}
-	
 }

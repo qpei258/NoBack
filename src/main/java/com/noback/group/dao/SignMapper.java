@@ -26,7 +26,9 @@ public interface SignMapper {
 	public MemberVO getMember(String name);
 
 	public MemberVO member(String num);
-	
-	
+
+	public int complete(SignVO sign);
+
+	public ArrayList<SignVO> listSign2(String searchText, RowBounds rb);
 
 }

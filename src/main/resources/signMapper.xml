@@ -16,6 +16,8 @@
 			, sign_content
 			, sign_sender
 			, sign_receiver
+			, sign_dep
+			, sign_pos
 	        <if test="sign_originfile != null and sign_savedfile != null">
 			,sign_originfile
 		    , sign_savedfile
@@ -28,6 +30,8 @@
 			, #{sign_content}
 			, #{sign_sender}
 			, #{sign_receiver}
+			, #{sign_dep}
+			, #{sign_pos}
 			 <if test="sign_originfile != null and sign_savedfile != null">
 			, #{sign_originfile}
 			, #{sign_savedfile}
@@ -37,11 +41,27 @@
 <!-- E004 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
-		to_char(sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
-		, sign_title
-		, sign_sender
+		to_char(s,sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+		, s.sign_title
+		, s.sign_sender
 	from 
-		noback_sign
+		noback_sign, noback_member m
+	where 
+	    s.sign_sender = m.employee_name	
+	order by 
+		sign_cdate desc
+</select>
+
+<!-- E004 -->
+<select id="listSign2" parameterType="string" resultType="sign">
+	select
+		to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+		, s.sign_title
+		, s.sign_sender
+	from 
+		noback_sign s, noback_member m
+	where 
+	    s.sign_receiver = m.employee_name
 	order by 
 		sign_cdate desc
 </select>
@@ -88,6 +108,6 @@
 		from 
 			noback_member m
 		where employee_num = #{employee_num}
-	</select>
+</select>
 
 </mapper>

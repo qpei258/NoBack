@@ -57,7 +57,8 @@ public class SignController {
 	public String main(
 			@RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="searchText", defaultValue="") String searchText
-			, Model model) {
+			, Model model,SignVO sign) {
+		logger.info("{}",sign);
 		
 		logger.debug("page: {}, searchText: {}", page, searchText);
 		
@@ -79,8 +80,56 @@ public class SignController {
 	
 	//결재 대기 중인 서류 리스트(내가 결제해야하는것)
 	@RequestMapping(value = "sdelay", method = RequestMethod.GET)
-	public String sdelay() {
-			return "sign/sdelay";
+	public String sdelay(
+			@RequestParam(value="page", defaultValue="1") int page
+			, @RequestParam(value="searchText", defaultValue="") String searchText
+			, Model model,SignVO sign) {
+		logger.info("{}",sign);
+		
+		logger.debug("page: {}, searchText: {}", page, searchText);
+		
+		int total = dao.getTotal(searchText);//전체 글 개수
+		
+		//페이지 계산을 위한 객체 생성
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
+		
+		//검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
+		ArrayList<SignVO> listSign2 = dao.listSign2(searchText, navi.getStartRecord(), navi.getCountPerPage());	
+		
+		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
+		model.addAttribute("listSign2", listSign2);
+	    model.addAttribute("navi", navi);
+		model.addAttribute("searchText", searchText);
+		
+		
+		return "sign/sdelay";
+	}
+	
+	//결제 서류 읽기
+	@RequestMapping (value="scomplete", method=RequestMethod.GET)
+	public String scomplete(int sign_num, Model model) {
+		//글 번호를 전달
+		logger.info("검색할 글 : {}", sign_num);
+		SignVO sign = dao.getSign(sign_num);
+			//결과가 없으면 글 목록으로 이동
+		if (sign == null) {
+			return "redirect:smain";
+		}
+				//결과가 있으면 모델에 글 정보 저장하고 JSP로 포워딩
+		model.addAttribute("sign", sign);
+		return "sign/scomplete";
+	}
+	
+	//결제 서류 처리
+	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
+	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
+	logger.info("저장할 글정보 {}", sign);	
+				
+	String id = (String) session.getAttribute("LoginId");
+	sign.setSign_sender(id);
+	
+	dao.complete(sign);
+	return "redirect:smain";
 	}
 	
     //결제서류작성 페이지
@@ -114,22 +163,6 @@ public class SignController {
 		}
 	
 	
-	//글 읽기
-	@RequestMapping (value="scomplete", method=RequestMethod.GET)
-	public String read(int sign_num, Model model) {
-		//글 번호를 전달
-		SignVO sign = dao.getSign(sign_num);
-		logger.info("검색할 글 : {}", sign_num);
-			//결과가 없으면 글 목록으로 이동
-		if (sign == null) {
-			return "redirect:smain";
-		}
-			//결과가 있으면 모델에 글 정보 저장하고 JSP로 포워딩
-		model.addAttribute("sign", sign);
-
-			
-		return "sign/scomplete";
-	}
 	
 	//사원검색 페이지로 이동
 	@RequestMapping(value = "check", method = RequestMethod.GET)

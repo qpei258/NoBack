@@ -81,11 +81,11 @@ function receiverOpen() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >부서</span>
-						 <input type="text" name="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
+						 <input type="text" name="sign_dep" id="sign_dep" size="30" value="${member.employee_dep}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >직위</span>
-						 <input type="text" name="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
+						 <input type="text" name="sign_pos" id="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
 					</div>
 					</c:if>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">

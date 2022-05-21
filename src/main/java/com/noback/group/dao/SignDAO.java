@@ -7,9 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.SignVO;
+
 
 
 
@@ -36,6 +36,15 @@ public class SignDAO {
 		ArrayList<SignVO> result = mapper.listSign(searchText, rb);
 		return result;
 		}
+	public ArrayList<SignVO> listSign2(String searchText, int startRecord, int countPerPage) {
+		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
+		//전체 검색 결과 중 읽을 시작위치와 개수
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+			
+		//검색어와 읽을 범위를 전달
+		ArrayList<SignVO> result = mapper.listSign2(searchText, rb);
+		return result;
+	}
 		
 	//결제서류 읽기
 	public SignVO getSign(int sign_num) {
@@ -71,7 +80,12 @@ public class SignDAO {
 		MemberVO result = mapper.member(num);
 		return result;
 	}
-	
+
+	public int complete(SignVO sign) {
+		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
+		int result = mapper.complete(sign);
+		return result;
+	}
 
 
 }
