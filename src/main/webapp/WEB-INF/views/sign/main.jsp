@@ -41,8 +41,9 @@
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 30%;">기안일</th>
-	        				<th style="width: 40%;">제목</th>
+				      	    <th style="width: 15%;">글번호</th>
+        					<th style="width: 20%;">기안일</th>
+	        				<th style="width: 35%;">제목</th>
 	        				<th style="width: 15%;">기안자</th>
 	        				<th style="width: 15%;">결제상태</th>
         				</tr>
@@ -50,12 +51,21 @@
 				  	<tbody>
 						  <c:forEach var="sign" items="${listSign}">
                             <tr>
+                            <td class="center">${sign.sign_num}</td>
 	                        <td class="center">${sign.sign_cdate}</td>
 	                       <td>
 		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                        </td>
 	                        <td class="center">${sign.sign_sender}</td>
-	                     <td class="center">${sign.sign_ok}</td>
+	                     <c:if test="${sign.sign_ok == 0}">
+	                     <td class="center">대기</td>
+	                     </c:if> 
+	                     <c:if test="${sign.sign_ok == 1}">
+	                     <td class="center">승인</td>
+	                     </c:if>
+	                     <c:if test="${sign.sign_ok == -1}">
+	                     <td class="center">반려</td>
+	                     </c:if>  
                          </tr>
                    </c:forEach> 
 				  </tbody>

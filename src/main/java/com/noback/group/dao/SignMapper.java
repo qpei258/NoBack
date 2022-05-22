@@ -15,7 +15,8 @@ import com.noback.group.vo.SignVO;
 public interface SignMapper {
 
 	public SignVO getSign(int sign_num);
-
+	public SignVO getSignn(int sign_num);
+	
 	public int insertSign(SignVO sign);
 	public int insertReceiver(ReceiverVO receiver);
 	
@@ -30,5 +31,8 @@ public interface SignMapper {
 	public int complete(SignVO sign);
 
 	public ArrayList<SignVO> listSign2(String searchText, RowBounds rb);
+
+
+
 
 }

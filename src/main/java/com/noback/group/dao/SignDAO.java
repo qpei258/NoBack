@@ -18,6 +18,8 @@ import com.noback.group.vo.SignVO;
 
 
 
+
+
 /**
  * 전자결제 관련 DAO
  */
@@ -50,6 +52,13 @@ public class SignDAO {
 	public SignVO getSign(int sign_num) {
 		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
 		SignVO sign = mapper.getSign(sign_num);
+		return sign;
+	}
+	
+	//본인 결제서류 확인
+	public SignVO getSignn(int sign_num) {
+		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
+		SignVO sign = mapper.getSignn(sign_num);
 		return sign;
 	}
 	
@@ -86,6 +95,7 @@ public class SignDAO {
 		int result = mapper.complete(sign);
 		return result;
 	}
+	
 
-
+	
 }

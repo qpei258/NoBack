@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
+
+
 import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 
@@ -105,11 +107,23 @@ public class SignController {
 		return "sign/sdelay";
 	}
 	
+	//자기 글 확인폼으로 이동
+	@RequestMapping (value="sconfirm", method=RequestMethod.GET)
+	public String sconfirm(int sign_num, Model model) {
+		//글 번호를 전달
+		SignVO sign = dao.getSignn(sign_num);
+		//결과가 없으면 글 목록으로 이동
+		if (sign == null) {
+			return "redirect:smain";
+		}
+		model.addAttribute("sign", sign);
+		return "sign/sconfirm";
+	}
+	
 	//결제 서류 읽기
 	@RequestMapping (value="scomplete", method=RequestMethod.GET)
 	public String scomplete(int sign_num, Model model) {
 		//글 번호를 전달
-		logger.info("검색할 글 : {}", sign_num);
 		SignVO sign = dao.getSign(sign_num);
 			//결과가 없으면 글 목록으로 이동
 		if (sign == null) {
@@ -123,14 +137,11 @@ public class SignController {
 	//결제 서류 처리
 	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
-	logger.info("저장할 글정보 {}", sign);	
-				
-	String id = (String) session.getAttribute("LoginId");
-	sign.setSign_sender(id);
-	
+	logger.info("저장할 글정보 {}", sign);
 	dao.complete(sign);
 	return "redirect:smain";
 	}
+	
 	
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
@@ -143,6 +154,8 @@ public class SignController {
 		model.addAttribute("member", member);
 		return "sign/swrite";
 	}
+	
+	
 	
 	//글쓰기 처리
 	@RequestMapping(value = "swrite", method = RequestMethod.POST)
@@ -180,4 +193,6 @@ public class SignController {
 			
 			return "sign/check";
 	}
+	
+		
 }
