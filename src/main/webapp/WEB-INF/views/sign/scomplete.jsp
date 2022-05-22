@@ -61,7 +61,7 @@ function receiverOpen() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >내용</span>
-						 <textarea name="sign_content" id="sign_content" style="width:400px;height:200px;resize:none;" ></textarea>						 
+						 <input type="text" name="sign_content" id="sign_content" style="width:400px;" style="height:200px;" value="${sign.sign_content}" readonly="readonly" >					 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >작성자</span>

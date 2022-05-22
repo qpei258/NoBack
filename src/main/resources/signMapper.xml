@@ -41,21 +41,22 @@
 <!-- E004 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
-		to_char(s,sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+		to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
-		, s.sign_sender
+		, s.sign_sender	
 	from 
-		noback_sign, noback_member m
+		noback_sign s, noback_member m
 	where 
-	    s.sign_sender = m.employee_name	
+	    s.sign_sender = m.employee_num	
 	order by 
-		sign_cdate desc
+		s.sign_cdate desc
 </select>
 
 <!-- E004 -->
 <select id="listSign2" parameterType="string" resultType="sign">
 	select
-		to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+	     s.sign_num
+		,to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_sender
 	from 
@@ -70,9 +71,13 @@
 <select id="getSign" parameterType="int" resultType="sign">
 	select 
 		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+		, sign_num
 		, sign_title
 		, sign_content
 		, sign_sender
+		, sign_dep
+		, sign_pos
+		, sign_receiver
 		, sign_originfile
 		, sign_savedfile
 	from 

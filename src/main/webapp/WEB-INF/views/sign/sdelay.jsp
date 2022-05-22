@@ -41,20 +41,22 @@
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 40%;">기안일</th>
-	        				<th style="width: 30%;">제목</th>
-	        				<th style="width: 30%;">기안자</th>
+				      	    <th style="width: 20%;">글번호</th>
+        					<th style="width: 30%;">기안일</th>
+	        				<th style="width: 35%;">제목</th>
+	        				<th style="width: 15%;">기안자</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
 						  <c:forEach var="sign" items="${listSign2}">
                           <tr>
+                          <td class="center">${sign.sign_num}</td>
 	                      <td class="center">${sign.sign_cdate}</td>
 	                      <td>
 		                  <a href="scomplete?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                      </td>
 	                      <td>
-	                     <td class="center">${sign_sender}</td>
+	                     <td class="center">${sign.sign_sender}</td>
                   	</td>
                       </tr>
                     </c:forEach>  

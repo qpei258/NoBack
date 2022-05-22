@@ -36,9 +36,10 @@ function searchname() {
 <table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 30%;">이름</th>
-	        				<th style="width: 35%;">제목</th>
-	        				<th style="width: 35%;">기안자</th>
+        					<th style="width: 25%;">이름</th>
+	        				<th style="width: 25%;">부서</th>
+	        				<th style="width: 25%;">직위</th>
+	        				<th style="width: 25%;">선택</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
@@ -49,7 +50,9 @@ function searchname() {
 		                    <td class="center">${member.employee_dep}</td>
 	                        </td>
 	                        <td class="center">${member.employee_pos}</td>
+	                        <td>
 	                        <p><input type="button" value="선택하기" onclick="searchname()"></p>
+	                         </td>
                          </tr>
                    </c:if>
 				  </tbody>
