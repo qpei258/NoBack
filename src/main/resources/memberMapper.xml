@@ -14,10 +14,20 @@
 	
 	<!-- 회원 정보 저장 -->
 	<insert id="insertMember" parameterType="member">
-		insert into 
-			noback_member
-		values 
-			(#{employee_num}
+		insert into noback_member(
+			employee_num
+			, employee_password
+			, employee_name
+			, employee_ssn
+			, employee_address
+			, employee_dep
+			, employee_pos
+			, employee_email
+			, employee_level
+			, employee_phone
+		)
+		values (
+			#{employee_num}
 			, #{employee_password}
 			, #{employee_name}
 			, #{employee_ssn}
@@ -26,7 +36,8 @@
 			, #{employee_pos}
 			, #{employee_email}
 			, #{employee_level}
-			, #{employee_phone})
+			, #{employee_phone}
+		)
 	</insert>
 
 </mapper>

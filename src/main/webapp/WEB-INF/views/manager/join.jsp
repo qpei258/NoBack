@@ -44,68 +44,7 @@
 </script>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-
-<script type="text/javascript">
-
-function formCheck() {
-	let employee_name = document.getElementById('employee_name'); 
-	let employee_num = document.getElementById('employee_ssn');
-	let employee_num = document.getElementById('employee_address'); 
-	let employee_num = document.getElementById('employee_phone'); 
-	let employee_num = document.getElementById('employee_dep'); 
-	let employee_num = document.getElementById('employee_pos'); 
-	let employee_num = document.getElementById('employee_num'); 
-	let employee_num = document.getElementById('employee_level'); 
-	
-	if (employee_name.value == '') {
-		alert('이름을 입력하세요.');
-		return false;
-	}
-	
-	if (employee_ssn.value == '') {
-		alert('주민번호를 입력하세요.');
-		return false;
-	}
-	
-	if (employee_address.value == '') {
-		alert('주소를 입력하세요.');
-		return false;
-	}
-	
-	if (employee_phone.value == '') {
-		alert('연락처를 입력하세요.');
-		return false;
-	}
-
-	if (employee_dep.value == '') {
-		alert('부서를 입력하세요.');
-		return false;
-	}
-
-	if (employee_pos.value == '') {
-		alert('직함을 입력하세요.');
-		return false;
-	}
-	
-	if (employee_num.value.length < 6 || employee_num.value.length > 6) {
-		alert('사원번호를 입력하세요.');
-		return false;
-	}
-
-	if (employee_num.value == '') {
-		alert('사원 번호를 입력하세요.');
-		return false;
-	}
-	
-	if (employee_level.value == '') {
-		alert('권한 등급을 선택하세요.');
-		return false;
-	}
-	
-	return true;
-}
-
+<script>
 window.onload = function(){
     document.getElementById("employee_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
@@ -117,6 +56,30 @@ window.onload = function(){
         }).open();
     });
 }
+</script>
+
+
+<script type="text/javascript">
+
+function formCheck() {
+	let employee_name = document.getElementById('employee_name'); 
+	let employee_num = document.getElementById('employee_num'); 
+	
+	
+	if (employee_name.value == '') {
+		alert('이름을 입력하세요.');
+		return false;
+	}
+	
+	
+	if (employee_num.value.length < 6 || employee_num.value.length > 6) {
+		alert('사원번호를 입력하세요.');
+		return false;
+	}
+	
+	return true;
+}
+
 
 </script>
 </head>
