@@ -144,9 +144,6 @@
 	set
 		sign_ok = #{sign_ok}
 		, sign_ok = #{sign_memo}	
-	    ,sign_originfile = #{sign_originfile}
-		,sign_savedfile = #{sign_savedfile}
-		,sign_sdate = #{sign_sdate}
 	where
 		sign_num = #{sign_num}
 </update>
