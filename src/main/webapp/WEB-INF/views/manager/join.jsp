@@ -117,6 +117,10 @@ function formCheck() {
 				            <td><input type="text" id="employee_phone" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
 				        </tr>
 				        <tr>
+				            <th>이메일</th>
+				            <td><input type="text" id="employee_email" name="employee_email"></td>
+				        </tr>
+				        <tr>
 				            <th>부서</th>
 				            <td><input type="text" id="employee_dep" name="employee_dep"></td>
 				        </tr>
