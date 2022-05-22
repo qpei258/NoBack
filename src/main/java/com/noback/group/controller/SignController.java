@@ -19,6 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
+
+import global.sesoc.web5.vo.Board;
+
 import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 
@@ -105,11 +108,22 @@ public class SignController {
 		return "sign/sdelay";
 	}
 	
+	//자기 글 확인폼으로 이동
+	@RequestMapping (value="sconfirm", method=RequestMethod.GET)
+	public String sconfirm(int sign_num, Model model) {
+		SignVO sign = dao.getSignn(sign_num);
+		//결과가 없으면 글 목록으로 이동
+		if (sign == null) {
+			return "redirect:smain";
+		}
+		model.addAttribute("sign", sign);
+		return "sign/sconfirm";
+	}
+	
 	//결제 서류 읽기
 	@RequestMapping (value="scomplete", method=RequestMethod.GET)
 	public String scomplete(int sign_num, Model model) {
 		//글 번호를 전달
-		logger.info("검색할 글 : {}", sign_num);
 		SignVO sign = dao.getSign(sign_num);
 			//결과가 없으면 글 목록으로 이동
 		if (sign == null) {
@@ -123,14 +137,28 @@ public class SignController {
 	//결제 서류 처리
 	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
-	logger.info("저장할 글정보 {}", sign);	
+	logger.info("저장할 글정보 {}", sign);
+	SignVO Oldsign = dao.getSign(sign.getSign_num());
+	//수정 시 새로 첨부한 파일이 있으면 기존 파일을 삭제하고 새로 업로드
+		if (!upload.isEmpty()) {
+			//기존 글에 첨부된 파일의 실제 저장된 이름
+			String savedfile = Oldsign.getSign_savedfile();
+			//기존 파일이 있으면 삭제
+			if (savedfile != null) {
+				FileService.deleteFile(uploadPath + "/" + savedfile);
+		}
 				
-	String id = (String) session.getAttribute("LoginId");
-	sign.setSign_sender(id);
-	
+				//새로 업로드한 파일 저장
+			savedfile = FileService.saveFile(upload, uploadPath);
+				
+				//수정 정보에 새로 저장된 파일명과 원래의 파일명 저장
+			sign.setSign_originfile(upload.getOriginalFilename());
+			sign.setSign_savedfile(savedfile);
+		}
 	dao.complete(sign);
 	return "redirect:smain";
 	}
+	
 	
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
@@ -143,6 +171,8 @@ public class SignController {
 		model.addAttribute("member", member);
 		return "sign/swrite";
 	}
+	
+	
 	
 	//글쓰기 처리
 	@RequestMapping(value = "swrite", method = RequestMethod.POST)
@@ -180,4 +210,6 @@ public class SignController {
 			
 			return "sign/check";
 	}
+	
+		
 }

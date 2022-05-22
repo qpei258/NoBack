@@ -86,6 +86,27 @@
 		sign_num = #{sign_num}
 </select>
 
+<!--내가 작성한 결제서류 확인 -->
+<select id="getSignn" parameterType="int" resultType="sign">
+	select 
+		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
+		, sign_num
+		, sign_title
+		, sign_content
+		, sign_sender
+		, sign_dep
+		, sign_pos
+		, sign_receiver
+		, sign_originfile
+		, sign_savedfile
+		, sign_ok
+		, sign_memo
+	from 
+		noback_sign 
+	where 
+		sign_num = #{sign_num}
+</select>
+
 
 <!-- 글개수 -->
 <select id="getTotal" parameterType="string" resultType="int">
@@ -114,5 +135,22 @@
 			noback_member m
 		where employee_num = #{employee_num}
 </select>
+
+<!-- 글 수정 -->
+<update id="complete" parameterType="sign">
+	update
+		noback_sign
+	set
+		sign_ok = #{sign_ok}
+		, sign_ok = #{sign_memo}
+		 <if test="sign_originfile != null and sign_savedfile != null">
+			,sign_originfile = #{sign_originfile}
+		    ,sign_savedfile = #{sign_savedfile}
+		 </if>
+	where
+		sign_num = #{sign_num}
+</update>
+
+
 
 </mapper>
