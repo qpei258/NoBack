@@ -68,10 +68,24 @@
 						 <span class="input-group-text" >첨부파일</span>
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
+					<c:if test="${sign.sign_ok == 0}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 					       <span class="input-group-text" >결제상태</span>
-                           <input type="text" name="sign_ok" id="sign_ok" size="30" value="${sign.sign_ok}" readonly="readonly">	
+                           <input type="text" name="sign_ok" id="sign_ok" size="30" value="대기" readonly="readonly">	
 					</div>
+					<c:if test="${sign.sign_ok == 1}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+					       <span class="input-group-text" >결제상태</span>
+                           <input type="text" name="sign_ok" id="sign_ok" size="30" value="승인" readonly="readonly">	
+					</div>
+					</c:if>
+					<c:if test="${sign.sign_ok == -1}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+					       <span class="input-group-text" >결제상태</span>
+                           <input type="text" name="sign_ok" id="sign_ok" size="30" value="반려" readonly="readonly">	
+					</div>
+					</c:if>
+					</c:if>
 					<c:if test="${sign.sign_memo != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>

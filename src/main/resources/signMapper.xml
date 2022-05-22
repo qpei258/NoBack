@@ -41,7 +41,8 @@
 <!-- E004 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
-		to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+	     s.sign_num
+		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_sender	
 	from 
@@ -64,7 +65,7 @@
 	where 
 	    s.sign_receiver = m.employee_name
 	order by 
-		sign_cdate desc
+		s.sign_cdate desc
 </select>
 		
 <!-- 결제서류 읽기 -->
@@ -142,11 +143,10 @@
 		noback_sign
 	set
 		sign_ok = #{sign_ok}
-		, sign_ok = #{sign_memo}
-		 <if test="sign_originfile != null and sign_savedfile != null">
-			,sign_originfile = #{sign_originfile}
-		    ,sign_savedfile = #{sign_savedfile}
-		 </if>
+		, sign_ok = #{sign_memo}	
+	    ,sign_originfile = #{sign_originfile}
+		,sign_savedfile = #{sign_savedfile}
+		,sign_sdate = #{sign_sdate}
 	where
 		sign_num = #{sign_num}
 </update>
