@@ -8,7 +8,7 @@ public class MemberVO {
 	private String employee_num;
 	private String employee_password;
 	private String employee_name;	    
-	private int employee_ssn;	
+	private String employee_ssn;	
 	private String employee_address;	
 	private String employee_dep;    
 	private String employee_pos;	    
@@ -21,7 +21,7 @@ public class MemberVO {
 	public MemberVO() {}
 
 
-	public MemberVO(String employee_num, String employee_password, String employee_name, int employee_ssn,
+	public MemberVO(String employee_num, String employee_password, String employee_name, String employee_ssn,
 			String employee_address, String employee_dep, String employee_pos, String employee_email,
 			int employee_level, String employee_phone, String employee_picture) {
 		super();
@@ -69,12 +69,12 @@ public class MemberVO {
 	}
 
 
-	public int getEmployee_ssn() {
+	public String getEmployee_ssn() {
 		return employee_ssn;
 	}
 
 
-	public void setEmployee_ssn(int employee_ssn) {
+	public void setEmployee_ssn(String employee_ssn) {
 		this.employee_ssn = employee_ssn;
 	}
 

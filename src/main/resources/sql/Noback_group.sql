@@ -1,4 +1,4 @@
--- 사원 정보 테이블
+
 Drop table noback_member;
 Drop table noback_notice;
 Drop table noback_schedule;
@@ -8,11 +8,12 @@ Drop table noback_messenger;
 Drop table noback_alarm;
 
 
+-- 사원 정보 테이블
 CREATE TABLE noback_member (
 	employee_num	    varchar2(20)    PRIMARY KEY,
     employee_password	varchar2(20)	default '0000',
 	employee_name	    varchar2(20)	NOT NULL,
-	employee_ssn	    number	        NOT NULL,
+	employee_ssn	    varchar2(20)	NOT NULL,
 	employee_address	varchar2(100)	NOT NULL,
 	employee_dep	    varchar2(30)	NOT NULL,
 	employee_pos	    varchar2(20)	NOT NULL,
@@ -136,3 +137,7 @@ insert into noback_member
 select * from noback_member;
 
 commit;
+
+Drop table noback_messenger;
+Drop table noback_alarm;
+Drop table noback_member;
