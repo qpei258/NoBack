@@ -57,7 +57,15 @@
 		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                        </td>
 	                        <td class="center">${sign.sign_sender}</td>
-	                     <td class="center">${sign.sign_ok}</td>
+	                     <c:if test="${sign.sign_ok == 0}">
+	                     <td class="center">대기</td>
+	                     </c:if> 
+	                     <c:if test="${sign.sign_ok == 1}">
+	                     <td class="center">승인</td>
+	                     </c:if>
+	                     <c:if test="${sign.sign_ok == -1}">
+	                     <td class="center">반려</td>
+	                     </c:if>  
                          </tr>
                    </c:forEach> 
 				  </tbody>
