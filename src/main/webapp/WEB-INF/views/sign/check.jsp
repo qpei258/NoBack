@@ -43,8 +43,8 @@ function searchname(employee_num) {
 <h2>[사원 검색]</h2>
 
 <form action="check" method="post" onSubmit="return formCheck();">
-	검색할 사원 <input type="text" name="searchname" id="searchname" />
-			<input type="submit" value="검색" />
+	<h3 class="centerdiv" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
+			<input type="submit" value="검색" /></h3>
 </form>
 <table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>

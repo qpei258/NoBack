@@ -64,15 +64,15 @@ function receiverOpen() {
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="sign">
-        	<h1>[결제 서류]</h1>
+        	<h2 style="margin: 100px 0px 30px 0px;">결제 서류</h2>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
 	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
-					  	<span class="input-group-text" id="basic-addon1">제목</span>
-					  	<input type="text" name="sign_title" id="sign_title" style="width:400px;">
+					  	<span class="input-group-text" id="basic-addon1" >제목</span>
+					  	<input type="text" name="sign_title" id="sign_title" style="width:500px;">
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >내용</span>
-						 <textarea name="sign_content" id="sign_content" style="width:400px;height:200px;resize:none;"></textarea>						 
+						 <textarea name="sign_content" id="sign_content" style="width:500px;height:200px;resize:none;"></textarea>						 
 					</div>
 					<c:if test="${sessionScope.loginId == member.employee_num}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
