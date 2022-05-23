@@ -35,10 +35,21 @@ public class ScheduleController {
 	@Autowired
 	ScheduleDAO dao;
 	
+	
+
+	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
+	public String showSchedule()
+			throws Exception {
+		logger.info("사내 일정 페이지 로딩성공");
+
+		
+		return "schedule/schedule2"; 
+	}
+	
 	/**
 	 * 사내 일정 페이지로 이동
 	 * 일정 전체 출력
-	 */
+	
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
 	public String showSchedule(Model model, String schedule_num)
 			throws Exception {
@@ -51,6 +62,7 @@ public class ScheduleController {
 		
 		return "schedule/schedule"; 
 	}
+	 */
 	
 	/**
 	 * 일정 개별 출력
@@ -62,7 +74,7 @@ public class ScheduleController {
 		ScheduleVO schedule = dao.selectSchedule(schedule_num);
 		model.addAttribute("schedule", schedule);
 		
-		return "schedule/scheduleInfo"; 
+		return "schedule/schedule"; 
 	}
 	
 	/**
