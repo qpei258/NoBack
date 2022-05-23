@@ -32,8 +32,8 @@ function formCheck() {
 	return true;
 }
 
-function searchname(employee_num) {
-	opener.document.getElementById('sign_receiver').value = employee_num;
+function searchname(string) {
+	opener.document.getElementById('sign_receiver').value = string;
 	this.close();
 }
 </script>

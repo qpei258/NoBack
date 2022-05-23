@@ -135,7 +135,7 @@
 			, employee_dep
 			, employee_pos
 		from 
-			noback_member m
+			noback_member
 		where employee_num = #{employee_num}
 </select>
 

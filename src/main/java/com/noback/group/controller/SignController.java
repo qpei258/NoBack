@@ -226,6 +226,7 @@ public class SignController {
 	public String idcheck(String searchname, Model model) {
 		logger.info("검색할 이름 : {}", searchname);
 		ArrayList<MemberVO> member = dao.getMember(searchname);
+		logger.info("검색한 이름 : {}", member);
 		model.addAttribute("member", member);
 		model.addAttribute("searchname", searchname);
 			

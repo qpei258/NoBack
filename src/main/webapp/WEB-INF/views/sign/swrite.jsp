@@ -33,8 +33,27 @@ function formCheck() {
 }
 
 function receiverOpen() {
-	window.open('check', 'receiver', 'top=300,left=500,width=400,height=300,location=no,status=no');
+	window.open('check', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
 }
+
+const add_textbox = () => {
+    const box = document.getElementById("box");
+    const newP = document.createElement('p');
+    newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
+    box.appendChild(newP);
+}
+const remove = (obj) => {
+    document.getElementById('box').removeChild(obj.parentNode);
+}
+
+$(document).ready(function() {
+	//추가 버튼 이벤트 처리
+	$('#addbtn').on('click', function() {
+		$('#group').append('<input type="text"  class="form-control groupname" name="name" value="" placeholder="수신자"><br>');
+	});
+});
+
+
 </script>
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>'  />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -88,17 +107,16 @@ function receiverOpen() {
 						 <input type="text" name="sign_pos" id="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
 					</div>
 					</c:if>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" >수신자1(보내는곳)</span>
-						 <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자">
-			             <input type="button" value="부서검색" onclick="receiverOpen()">
-						  
-					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
-						 <input type="file" name="upload" size="30">	
-						 					 
+						 <input type="file" name="upload" size="30"> 					 
 					</div>
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
+	                  <span class="input-group-text" >수신자</span>
+	                   <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly">
+			             <input type="button" value="부서검색" onclick="receiverOpen()">
+		                <button id="addbtn" type="button">입력란 추가</button>
+                    </div>	  
 					<div style="border: 1px solid rgb(238, 238, 238);">
 						<input type="submit" value = "작성" />
 		                <input type = "reset" value ="초기화">
@@ -106,9 +124,9 @@ function receiverOpen() {
 				</form>
         	</div>
         </div>
-    </div>
 </body>
 </html>
+
 
 
   
