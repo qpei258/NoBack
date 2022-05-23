@@ -72,7 +72,7 @@ CREATE TABLE noback_messenger (
 	employee_num	    varchar2(20)	 NOT NULL,
 	messenger_content	varchar2(600)   NOT NULL,
 	messenger_date	    date	        default sysdate,
-	messenger_receiver	number	        NOT NULL,
+	messenger_receiver	varchar2(20)	        NOT NULL,
     constraint messenger_fk foreign key(employee_num)
         references noback_member(employee_num) on delete cascade
 );
