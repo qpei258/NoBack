@@ -1,7 +1,13 @@
 package com.noback.group.controller;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
-
 
 import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
@@ -137,7 +143,7 @@ public class SignController {
 	//결제 서류 처리
 	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
-	logger.info("저장할 글정보 {}", sign);
+	logger.info("수정할 글정보 {}", sign);
 	dao.complete(sign);
 	return "redirect:smain";
 	}
@@ -175,7 +181,39 @@ public class SignController {
 			return "redirect:smain";
 		}
 	
-	
+	@RequestMapping(value = "download", method = RequestMethod.GET)
+	public String fileDownload(int sign_num, Model model, HttpServletResponse response) {
+		SignVO sign = dao.getSign(sign_num);
+		
+		//원래의 파일명
+		String originalfile = new String(sign.getSign_originfile());
+		try {
+			response.setHeader("Content-Disposition", " attachment;filename="+ URLEncoder.encode(originalfile, "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		//저장된 파일 경로
+		String fullPath = uploadPath + "/" + sign.getSign_savedfile();
+		
+		//서버의 파일을 읽을 입력 스트림과 클라이언트에게 전달할 출력스트림
+		FileInputStream filein = null;
+		ServletOutputStream fileout = null;
+		
+		try {
+			filein = new FileInputStream(fullPath);
+			fileout = response.getOutputStream();
+			
+			//Spring의 파일 관련 유틸 이용하여 출력
+			FileCopyUtils.copy(filein, fileout);
+			
+			filein.close();
+			fileout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	//사원검색 페이지로 이동
 	@RequestMapping(value = "check", method = RequestMethod.GET)
@@ -187,11 +225,11 @@ public class SignController {
 	@RequestMapping(value = "check", method = RequestMethod.POST)
 	public String idcheck(String searchname, Model model) {
 		logger.info("검색할 이름 : {}", searchname);
-		MemberVO member = dao.getMember(searchname);
+		ArrayList<MemberVO> member = dao.getMember(searchname);
 		model.addAttribute("member", member);
 		model.addAttribute("searchname", searchname);
 			
-			return "sign/check";
+		return "sign/check";
 	}
 	
 		

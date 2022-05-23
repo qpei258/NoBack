@@ -11,10 +11,10 @@ public interface MypageMapper {
 
 	// 로그인
 	public MemberVO getMemberVO(String employee_num);
-
+	
 	// 개인정보 수정
 	public int updateMember(MemberVO member);
-
+	
 	// 마이게시글
 	public ArrayList<BoardVO> listBoard(String searchText, RowBounds rb);
 	

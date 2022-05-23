@@ -17,7 +17,7 @@
 		<mapper resource="memberMapper.xml" />
 		<mapper resource="signMapper.xml" />
 		<mapper resource="boardMapper.xml" />
-        <mapper resource="ScheduleMapper.xml" />
+        <mapper resource="scheduleMapper.xml" />
         <mapper resource="mypageMapper.xml" />
         <mapper resource="noticeMapper.xml" />
 	</mappers>

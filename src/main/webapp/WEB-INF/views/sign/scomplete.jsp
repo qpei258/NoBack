@@ -50,12 +50,12 @@ function receiverOpen() {
         <div id="content">
         	<div id="sign">
         	<h1>[결제 서류]</h1>
-        		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
-        		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 140px auto 0px auto;">
+        		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
+        		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1">기안일</span>
 					  	<input type="text" name="signsign_cdate" id="signsign_cdate" style="width:400px;" value="${sign.sign_cdate}" readonly="readonly">
 					</div>
-	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 140px auto 0px auto;">
+	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1">제목</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:400px;" value="${sign.sign_title}" readonly="readonly">	
 					</div>
@@ -84,10 +84,8 @@ function receiverOpen() {
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
 					<div style="border: 1px solid rgb(238, 238, 238);">
-                           <label for="sign_ok">승인</label>
-                           <input type = "checkbox" id="sign_ok" name="sign_ok" value="1">
-                           <label for="sign_ok">반려</label>
-                           <input type = "checkbox" id="sign_ok" name="sign_ok" value="-1">
+					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
+					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>
@@ -96,9 +94,17 @@ function receiverOpen() {
 					<div>
 					   <input type="submit" value="처리완료" />
 					</div>
+					<div>
+					   <input type ="hidden"  name="sign_num" id="sign_num" value="${sign.sign_num}"> 
+					</div>
 				</form>
         	</div>
         </div>
     </div>
 </body>
 </html>
+
+<!-- <label for="sign_ok">승인</label>
+                           <input type = "checkbox" id="sign_ok" name="sign_ok" value="1">
+                           <label for="sign_ok">반려</label>
+                           <input type = "checkbox" id="sign_ok" name="sign_ok" value="-1"> -->
