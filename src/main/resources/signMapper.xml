@@ -45,6 +45,7 @@
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_sender	
+		, s.sign_ok
 	from 
 		noback_sign s, noback_member m
 	where 
@@ -142,8 +143,8 @@
 	update
 		noback_sign
 	set
-		sign_ok = #{sign_ok}
-		, sign_ok = #{sign_memo}	
+	      sign_ok = #{sign_ok}
+		, sign_memo = #{sign_memo}	
 	where
 		sign_num = #{sign_num}
 </update>

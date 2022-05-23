@@ -9,6 +9,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>사원 검색</title>
+<style>
+.table-hover{
+	border-collapse: collapse;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+}  
+.table-hover th, .table-hover td {
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	text-align : middle;
+}
+</style>
 <script>
 function formCheck() {
 	let name = document.getElementById('searchname');
@@ -33,31 +45,27 @@ function searchname() {
 	검색할 사원 <input type="text" name="searchname" id="searchname" />
 			<input type="submit" value="검색" />
 </form>
-<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
+<table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 25%;">이름</th>
-	        				<th style="width: 25%;">부서</th>
-	        				<th style="width: 25%;">직위</th>
-	        				<th style="width: 25%;">선택</th>
+        					<th style="width: 30%;">이름</th>
+	        				<th style="width: 30%;">부서</th>
+	        				<th style="width: 30%;">직위</th>
+	        				<th style="width: 10%;">선택</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
-						 <c:if test="${searchname != null}">
-                            <tr>
-	                        <td class="center">${member.employee_name}</td>
-	                       <td>
-		                    <td class="center">${member.employee_dep}</td>
-	                        </td>
-	                        <td class="center">${member.employee_pos}</td>
+				          <c:if test="${searchname != null}">
+				    		<c:forEach var="member" items="${searchname}">
+                            <td class="center">${member.employee_name}</td>
+	                        <td class="center">${member.employee_dep}</td>   
+		                     <td class="center">${member.employee_pos}</td>
 	                        <td>
 	                        <p><input type="button" value="선택하기" onclick="searchname()"></p>
 	                         </td>
-                         </tr>
-                   </c:if>
-				  </tbody>
+	                        </c:forEach>
+                    </c:if>
 				</table>
 </div>
 </body>
 </html>
-

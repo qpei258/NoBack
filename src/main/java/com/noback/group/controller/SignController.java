@@ -137,7 +137,7 @@ public class SignController {
 	//결제 서류 처리
 	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
-	logger.info("저장할 글정보 {}", sign);
+	logger.info("수정할 글정보 {}", sign);
 	dao.complete(sign);
 	return "redirect:smain";
 	}
@@ -187,11 +187,11 @@ public class SignController {
 	@RequestMapping(value = "check", method = RequestMethod.POST)
 	public String idcheck(String searchname, Model model) {
 		logger.info("검색할 이름 : {}", searchname);
-		MemberVO member = dao.getMember(searchname);
+		ArrayList<MemberVO> member = dao.getMember(searchname);
 		model.addAttribute("member", member);
 		model.addAttribute("searchname", searchname);
 			
-			return "sign/check";
+		return "sign/check";
 	}
 	
 		

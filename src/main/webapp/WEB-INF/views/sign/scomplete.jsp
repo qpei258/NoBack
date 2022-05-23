@@ -50,7 +50,7 @@ function receiverOpen() {
         <div id="content">
         	<div id="sign">
         	<h1>[결제 서류]</h1>
-        		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
+        		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1">기안일</span>
 					  	<input type="text" name="signsign_cdate" id="signsign_cdate" style="width:400px;" value="${sign.sign_cdate}" readonly="readonly">
@@ -84,8 +84,8 @@ function receiverOpen() {
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok" name="sign_ok" value="1">승인
-					       <input type="radio" id="sign_ok" name="sign_ok" value="-1" checked="checked">반려                           
+					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
+					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>
@@ -93,6 +93,9 @@ function receiverOpen() {
 					</div>
 					<div>
 					   <input type="submit" value="처리완료" />
+					</div>
+					<div>
+					   <input type ="hidden"  name="sign_num" id="sign_num" value="${sign.sign_num}"> 
 					</div>
 				</form>
         	</div>

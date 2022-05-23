@@ -66,7 +66,7 @@ function receiverOpen() {
         	<div id="sign">
         	<h1>[결제 서류]</h1>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
-	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 140px auto 0px auto;">
+	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1">제목</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:400px;">
 					</div>
@@ -93,9 +93,8 @@ function receiverOpen() {
 						 <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자">
 			             <input type="button" value="부서검색" onclick="receiverOpen()">						  
 					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" >첨부파일</span>
-						 <input type="file" name="upload" size="30">						 
+					<div class="mb-3 writeform">
+						<input class="form-control" type="file" id="sign_originfile" name="upload">	 					 
 					</div>
 					<div style="border: 1px solid rgb(238, 238, 238);">
 						<input type="submit" value = "작성" />
