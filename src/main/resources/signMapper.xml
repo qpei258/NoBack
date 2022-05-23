@@ -64,7 +64,7 @@
 	from 
 		noback_sign s, noback_member m
 	where 
-	    s.sign_receiver = m.employee_name
+	    s.sign_receiver = m.employee_num
 	order by 
 		s.sign_cdate desc
 </select>
@@ -121,7 +121,8 @@
 <!-- 회원 정보 검색 -->
 <select id="getMember" parameterType="string" resultType="member">
 	select
-	employee_name
+	employee_num
+	,employee_name
 	,employee_dep
 	,employee_pos
 	from noback_member

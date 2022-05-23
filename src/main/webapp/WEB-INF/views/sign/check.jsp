@@ -32,8 +32,8 @@ function formCheck() {
 	return true;
 }
 
-function searchname() {
-	opener.document.getElementById('sign_receiver').value = '${searchname}';
+function searchname(employee_num) {
+	opener.document.getElementById('sign_receiver').value = employee_num;
 	this.close();
 }
 </script>
@@ -49,9 +49,10 @@ function searchname() {
 <table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-        					<th style="width: 30%;">이름</th>
-	        				<th style="width: 30%;">부서</th>
-	        				<th style="width: 30%;">직위</th>
+				      	    <th style="width: 30%;">사원번호</th>
+        					<th style="width: 20%;">이름</th>
+	        				<th style="width: 20%;">부서</th>
+	        				<th style="width: 20%;">직위</th>
 	        				<th style="width: 10%;">선택</th>
         				</tr>
 				  	</thead>
@@ -59,11 +60,12 @@ function searchname() {
 			       
 				    		<c:forEach var="m" items="${member}">
 				    		<tr>
+				    		<td class="center">${m.employee_num}</td>
                             <td class="center">${m.employee_name}</td>
 	                        <td class="center">${m.employee_dep}</td>   
 		                     <td class="center">${m.employee_pos}</td>
 	                        <td>
-	                        <p><input type="button" value="선택하기" onclick="searchname()"></p>
+	                        <p><input type="button" value="선택하기" onclick="searchname(${m.employee_num})"></p>
 	                         </td>
 	                         </tr>
 	                        </c:forEach>
