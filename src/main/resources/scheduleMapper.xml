@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 스케줄 SQL -->
+<mapper namespace="com.noback.group.dao.ScheduleMapper">
+
+	<!-- 일정 추가 -->
+	<insert id="insertSchedule" parameterType="schedule">
+		insert into
+			noback_schedule
+			(
+			schedule_num,	  
+			schedule_title,	  
+			schedule_start,	 
+			schedule_end,	  
+			schedule_memo,	   
+			schedule_writer,	   
+			schedule_level	
+			)			
+		values
+			(
+			sked_seq.nextVal,
+			#{schedule_title},
+			#{schedule_start},
+			#{schedule_end},
+			#{schedule_memo},
+			#{schedule_writer},
+			#{schedule_level}
+			)
+	</insert>
+	
+	<!-- 일정 수정 -->
+	<update id="updateSchedule" parameterType="schedule">
+		update 
+			noback_schedule
+		set 
+			schedule_title = #{schedule_title}
+			, schedule_start = #{schedule_start}
+			, schedule_end = #{schedule_end}
+			, schedule_memo = #{schedule_memo} 
+		where 
+			schedule_num = #{schedule_num}
+	</update>
+	
+	<!-- 일정 삭제 -->
+	<delete id="deleteSchedule" parameterType="schedule">
+		delete from
+			noback_schedule 
+		where 
+			schedule_num = #{schedule_num}
+	</delete>
+	
+	<!-- 스케줄 전체 출력 -->
+	<select id="listSchedule" resultType="schedule" parameterType="string">
+		select 
+			* 
+		from 
+			noback_schedule 
+		where 
+			schedule_num = #{schedule_num} 		
+	</select>
+	
+	<!-- 스케줄 개별 출력 -->
+	<select id="selectSchedule" resultType="schedule" parameterType="string">
+		select 
+			* 
+		from 
+			noback_schedule 
+		where 
+			schedule_num = #{schedule_num} 		
+	</select>
+	
+</mapper>
