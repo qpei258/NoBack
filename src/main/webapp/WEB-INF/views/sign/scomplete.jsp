@@ -83,13 +83,13 @@ function receiverOpen() {
 						 <span class="input-group-text" >첨부파일</span>
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
-					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
-					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
-					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+					</div>
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
+					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
 					</div>
 					<div>
 					   <input type="submit" value="처리완료" />

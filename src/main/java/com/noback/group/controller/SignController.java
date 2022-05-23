@@ -152,7 +152,7 @@ public class SignController {
     //결제서류작성 페이지
 	@RequestMapping(value = "swrite", method = RequestMethod.GET)
 	public String swrite(String num, Model model, HttpSession session) {
-		logger.info("게시글 접속");
+		logger.info("결제작성페이지 접속");
 		String searchId = (String) session.getAttribute("LoginId");
 		MemberVO member = dao.member(searchId);
 		logger.info("{}",member);
