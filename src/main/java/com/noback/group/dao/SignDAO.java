@@ -77,16 +77,18 @@ public class SignDAO {
 		return result;		
 	}
 
-	public ArrayList<MemberVO> getMember(String name) {
-		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
-		ArrayList<MemberVO> member = mapper.getMember(name);
-		return member;
-	}
 
 	public MemberVO member(String num) {
 		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
 		MemberVO result = mapper.member(num);
 		return result;
+	}
+	
+
+	public ArrayList<MemberVO> getMember(String name) {
+		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
+		ArrayList<MemberVO> member = mapper.getMember(name);
+		return member;
 	}
 
 	public int complete(SignVO sign) {

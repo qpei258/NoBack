@@ -93,8 +93,10 @@ function receiverOpen() {
 						 <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자">
 			             <input type="button" value="부서검색" onclick="receiverOpen()">						  
 					</div>
-					<div class="mb-3 writeform">
-						<input class="form-control" type="file" id="sign_originfile" name="upload">	 					 
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >첨부파일</span>
+						 <input type="file" name="upload" size="30">	
+						 					 
 					</div>
 					<div style="border: 1px solid rgb(238, 238, 238);">
 						<input type="submit" value = "작성" />

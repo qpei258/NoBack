@@ -18,8 +18,9 @@
 .table-hover th, .table-hover td {
 	border-bottom: 1px solid black;
 	border-right: 1px solid black;
-	text-align : middle;
+	text-align : center;
 }
+
 </style>
 <script>
 function formCheck() {
@@ -54,16 +55,19 @@ function searchname() {
 	        				<th style="width: 10%;">선택</th>
         				</tr>
 				  	</thead>
-				  	<tbody>
-				          <c:if test="${searchname != null}">
-				    		<c:forEach var="member" items="${searchname}">
-                            <td class="center">${member.employee_name}</td>
-	                        <td class="center">${member.employee_dep}</td>   
-		                     <td class="center">${member.employee_pos}</td>
+			          <c:if test="${searchname != null}">
+			       
+				    		<c:forEach var="m" items="${member}">
+				    		<tr>
+                            <td class="center">${m.employee_name}</td>
+	                        <td class="center">${m.employee_dep}</td>   
+		                     <td class="center">${m.employee_pos}</td>
 	                        <td>
 	                        <p><input type="button" value="선택하기" onclick="searchname()"></p>
 	                         </td>
+	                         </tr>
 	                        </c:forEach>
+	                
                     </c:if>
 				</table>
 </div>
