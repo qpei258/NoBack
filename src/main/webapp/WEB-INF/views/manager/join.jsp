@@ -51,10 +51,12 @@ window.onload = function(){
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
                 document.getElementById("employee_address").value = data.address; // 주소 넣기
-                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+                document.querySelector("input[name=employee_address1]").focus(); //상세입력 포커싱
             }
         }).open();
     });
+    
+   
 }
 </script>
 
@@ -64,6 +66,8 @@ window.onload = function(){
 function formCheck() {
 	let employee_name = document.getElementById('employee_name'); 
 	let employee_num = document.getElementById('employee_num'); 
+	let employee_address = document.getElementById('employee_address'); 
+	let employee_address1 = document.getElementById('employee_address1'); 
 	
 	
 	if (employee_name.value == '') {
@@ -76,6 +80,14 @@ function formCheck() {
 		alert('사원번호를 입력하세요.');
 		return false;
 	}
+
+	if (employee_address.value == '' && employee_address1.value == ''){
+		alert('주소를 입력하세요.');
+		return false;
+	}
+	
+	employee_address.value = employee_address.value +" "+ employee_address1.value
+	
 	
 	return true;
 }
@@ -110,7 +122,7 @@ function formCheck() {
 				        </tr>
 				        <tr>
 				            <th>상세 주소</th>
-				            <td><input type="text" name="address_detail" /></td>
+				            <td><input type="text" id="employee_address1" name="employee_address1" /></td>
 				        </tr>
 				        <tr>
 				            <th>연락처</th>
