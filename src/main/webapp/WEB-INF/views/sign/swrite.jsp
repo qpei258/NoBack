@@ -39,7 +39,7 @@ function receiverOpen() {
 $(document).ready(function() {
 	//추가 버튼 이벤트 처리
 	$('#addbtn').on('click', function() {
-		$('#group').append(' <span class="input-group-text" >수신자</span> <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="button" value="부서검색" onclick="receiverOpen()"><br>');
+		$('#group').append(' <p><span class="input-group-text" >수신자</span> <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="button" value="수신자검색" onclick="receiverOpen()"></p>');
 	});
 });
 
