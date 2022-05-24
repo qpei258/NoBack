@@ -38,7 +38,9 @@ public class ScheduleController {
 	@Autowired
 	MypageDAO mydao;
 	
-
+	/**
+	 * 스케줄 캘린더 페이지 출력
+	 */
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
 	public String showSchedule(Model model, HttpSession session)
 			throws Exception {
@@ -56,7 +58,7 @@ public class ScheduleController {
 		
 		model.addAttribute("scheduleList", scheduleList);
 		
-		return "schedule/schedule2"; 
+		return "schedule/schedule"; 
 	}
 	
 	/**
@@ -65,11 +67,11 @@ public class ScheduleController {
 	@RequestMapping(value = "scheduleInfo", method = RequestMethod.GET) 
 	public String showScheduleinfo(int schedule_num, Model model)
 			throws Exception {
-		logger.info("사내 일정 페이지 로딩성공");
-		ScheduleVO schedule = dao.selectSchedule(schedule_num);
+		logger.info("사내 일정 페이지 로딩성공"); 
+		ScheduleVO schedule = dao.getSchedule(schedule_num);
 		model.addAttribute("schedule", schedule);
 		
-		return "schedule/schedule"; 
+		return "schedule/scheduleInfo"; 
 	}
 
 	
@@ -78,7 +80,7 @@ public class ScheduleController {
 	*/
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String addSchedule(HttpSession session, ScheduleVO sked) {
-		
+		// 아이디로 권한레벨 불러오기
 		String searchId = (String) session.getAttribute("LoginId");
 		String level = (String) session.getAttribute("LoginLevel");
 		
@@ -88,10 +90,49 @@ public class ScheduleController {
 		// dao로
 		int result = dao.addSchedule(sked);
 		
-		logger.info("skd", sked);
-		//session.setAttribute("LoginLv", sked.getSchedule_level());
+		logger.info("sked", sked);
 		
 		return "schedule/schedule";	
 	}
+	
+	/**
+	 * 일정 수정
+	 
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
+		// 아이디로 수정할 정보 불러오기
+		String searchId = (String) session.getAttribute("LoginId");
+		sked.setSchedule_writer(searchId);
+		
+		ScheduleVO sked = dao.getSchedule(schedule_num);
+		model.addAttribute("sked", sked);
+		
+		// dao로
+		int result = dao.updateSchedule(sked);
+		logger.info("sked", sked);
+		session.setAttribute("LoginLv", sked.getSchedule_level());
+		
+		return "schedule/schedule";	
+	}
+*/
+	
+	
+	/**
+	 * 일정 삭제
+	 */
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String deleteSchedule(HttpSession session, ScheduleVO sked) {
+		
+		String searchId = (String) session.getAttribute("LoginId");
+		sked.setSchedule_writer(searchId);
+		// dao로
+		int result = dao.deleteSchedule(sked);
+		logger.info("sked", sked);
+		session.setAttribute("LoginLv", sked.getSchedule_level());
+		
+		return "schedule/schedule";	
+	}
+
+	
 	 
 }

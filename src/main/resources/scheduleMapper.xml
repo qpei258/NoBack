@@ -11,8 +11,8 @@
 		select 
 			schedule_num,	  
 			schedule_title,  
-			to_char(schedule_start, 'yyyy-mm-dd') as schedule_start,	 
-			to_char(schedule_end, 'yyyy-mm-dd') as schedule_end,	  
+			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
 			schedule_memo,	   
 			schedule_writer,	   
 			schedule_level
@@ -21,7 +21,7 @@
 	</select>
 	
 	<!-- 스케줄 개별 출력 -->
-	<select id="selectSchedule" resultType="schedule" parameterType="int">
+	<select id="selectScheduleInfo" resultType="schedule" parameterType="int">
 		select 
 			schedule_num,	  
 			schedule_title,  

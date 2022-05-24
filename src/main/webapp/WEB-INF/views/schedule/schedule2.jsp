@@ -6,7 +6,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String sessionId = (String)(session.getAttribute("LoginId"));
-	String sessionLv = (String)(session.getAttribute("LoginLv"));
+	String sessionLv = (String)(session.getAttribute("LoginLevel"));
 
 	System.out.println(sessionId);	
 
@@ -85,7 +85,7 @@
 		</nav>
 		
 		<h1>현재 로그인 아이디 : ${LoginId}</h1>
-		<h1>현재 로그인 권한 : ${LoginLv}</h1>
+		<h1>현재 로그인 권한 : ${LoginLevel}</h1>
 		
 		<form action="schedule" method="get">
 			<table>
@@ -106,14 +106,14 @@
 					<td>${schedule.schedule_title}</td>
 					<td>${schedule.schedule_start}</td>
 					<td>${schedule.schedule_end}</td>
+					<td>${schedule.schedule_memo}</td>
 					<td>${schedule.schedule_writer}</td>
 					<td>${schedule.schedule_level}</td>
 				</tr>
 				</c:forEach>   <!-- 반복 끝 -->     
 				
-				
-				</table>
-				</form>
+			</table>
+		</form>
         		
         		
       		<!-- 모달 버튼 (일정 등록)  -->
@@ -130,16 +130,10 @@
         						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
       					</div>
       				
-      				<form action="add" method="post" onsubmit ="return validation()">
+      					<form action="add" method="post" onsubmit ="return validation()">
       				
       					<!-- 등록 내용 입력 -->
       					<div class="modal-body">
-      					<label class="schedule_writer">아이디</label>
-  						<input type="text" class="form-control border-primary" name="schedule_writer" id="add_writer" />
-  					
-  						<label class="schedule_level">권한</label>
-  						<input type="text" class="form-control border-primary" name="schedule_level" id="add_level"/>
-  					
   					
       					<label class="schedule_title">일정 제목</label>
   						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅">
@@ -181,38 +175,34 @@
         					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
       				</div>
       				
+      				
+      				<form action="update" method="post" onsubmit ="return validation2()">
       				<!-- 수정 내용 입력 -->
       				<div class="modal-body">
       				<label class="schedule_title">일정 제목</label>
-  					<input type="text" class="form-control border-primary" id="update_title" placeholder="ex) 미팅">
+  					<input type="text" class="form-control border-primary" name="update_title" id="update_title" placeholder="ex) 미팅">
 					
 					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_start" placeholder="ex) 2022-11-22">
+  					<input type="text" class="form-control border-primary" name="update_start" id="update_start" placeholder="ex) 2022-11-22">
   					
   					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_end" placeholder="ex) 2022-11-22">
+  					<input type="text" class="form-control border-primary" name="update_end" id="update_end" placeholder="ex) 2022-11-22">
   					
   					<label class="schedule_memo">메모</label>
-  					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="update_memo" placeholder="ex) 무한상사"></textarea>
+  					<textarea rows="4" cols="50" class="form-control border-primary" name="update_memo" id="update_memo" placeholder="ex) 무한상사"></textarea>
       				</div>
       				
       				<!-- 수정 완료 버튼 -->
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="button" class="btn btn-primary">수정</button>
+        				<button type="submit" class="btn btn-primary">수정</button>
         				<button type="button" class="btn btn-danger">삭제</button>
       				</div>
+      				</form>
+      				
     			</div>
   			</div>
 		</div> <!-- 수정 모달 끝  -->
-        
-        	<!-- 검색폼 -->
-			<form id="pagingForm" method="get" action="list">
-				<input type="hidden" name="page" id="page" />
-				제목 : <input type="text"  name="searchText" value="${searchText}" />
-				<input type="button" onclick="pagingFormSubmit(1)" value="검색">
-			</form>
-			<!-- /검색폼 --> 
 			
 			
         	</div> <!-- box 끝 -->
@@ -255,6 +245,32 @@
 		return true;
 	}
 
+	function validation2() {
+
+		let ttl = document.getElementById('update_title');
+		let sta = document.getElementById('update_start');
+		let end = document.getElementById('update_end');
+		let memo = document.getElementById('update_memo');
+		
+		
+		if (ttl.value == ''){
+			alert('제목을 입력하세요.');
+			return false;
+		} else if (sta.value == ''){
+			alert('시작날짜를 입력하세요.');
+			return false;
+		} else if (end.value == ''){
+			alert('종료날짜를 입력하세요.');
+			return false;
+		} else if (memo.value == ''){
+			alert('내용을 입력하세요.');
+			return false;
+		}		
+		
+		alert('등록 완료되었습니다.');
+		location.href = 'schedule/schedule';
+		return true;
+	}
 </script>
 
 </html>

@@ -19,6 +19,6 @@ public interface ScheduleMapper {
 	public ArrayList<ScheduleVO> listSchedule();
 	
 	// 스케줄 넘버로 개별정보 가져오기
-	public ScheduleVO selectSchedule(int schedule_num);
+	public ScheduleVO selectScheduleInfo(int schedule_num);
 	
 }
