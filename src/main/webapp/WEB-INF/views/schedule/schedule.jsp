@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
+	// 삭제 예정
 	request.setCharacterEncoding("utf-8");
 	String sessionId = (String)(session.getAttribute("LoginId"));
 	String sessionLv = (String)(session.getAttribute("LoginLv"));
@@ -22,6 +23,7 @@
 <title>사내일정</title>
 <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>' />
 <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/calendar.css"/>' />
+<!-- datepicker 함수 호출을 위한 css 파일 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -81,6 +83,10 @@
 		color : blue;
 	}
 	
+	.year-month {
+		text-align: center;
+	}
+	
 </style>
 </head>
 <body>
@@ -98,22 +104,26 @@
 		<hr>
 		
 			<!-- 달력 박스 -->
-        	<div class="bigbox">   	
+        	<div class="box">   	
         		<!-- 달력 -->	
-        		<div class="calendar" style="width: 1300px; length:2000px;">
+        		<div class="calendar" style="width: 1200px; length:2000px;">
                     <div class="header">
-                    
+                    	
                     	<button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
                         <div class="year-month" style="color: rgb(108,117,125);"></div>
                         <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
                         <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
+                       
+                       
                         <!--  
                         <div class="nav">
-                            
+                            <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
                             <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
                             <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
                         </div>
                         -->
+                        
+                        
                     </div>
                     <div class="main">
                         <div class="days">
@@ -125,14 +135,16 @@
                             <div class="day">금</div>
                             <div class="day">토</div>
                         </div>
-                        <div class="dates" onclick="addSchedule()"></div>
+                        <div class="dates"></div>
                     </div>
                 </div>
-        	</div> <!-- box 끝 -->
-        		
+        	</div> <!-- 달력 box 끝 -->
+        	
+        	
+        	<!-- 이번달 스케줄 현황 출력 폼 -->	
         	<strong>이번달 일정</strong><hr>
 		
-		<form action="schedule" method="get">
+			<form action="schedule" method="get">
 			<table id="detail_schedule_tb" class="table" cellpadding="20px" cellspacing="20px">
 		
 				<colgroup>
@@ -147,7 +159,7 @@
 					</tr>
 				</thead>
 				<tbody id="detail_schedule" style="padding:20px;">
-					<c:forEach var="schedule" items="${scheduleList}">
+					<c:forEach var="schedule" items="${MonthScheduleList}">
 					<tr onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
 						<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
 						<td class="cont">
@@ -163,7 +175,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
-        	</form>	
+        	</form>	<!-- 이번달 현황 폼 끝 -->
+        		
+        		
+        		
         		
       		<!-- 모달 버튼 (일정 등록)  -->
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
@@ -184,22 +199,24 @@
       					<!-- 등록 내용 입력 -->
       					<div class="modal-body">
       					<label class="schedule_title">일정 제목</label>
-  						<input type="text" class="form-control border-primary" id="add_title" placeholder="ex) 미팅" >
+  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅" >
 					
 						<label class="schedule_start">시작 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_start" placeholder="ex) 2022-11-22" onclick="javascript:f_datepicker(this);">
+  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" 
+  							onclick="javascript:f_datepicker(this);" >
   						
   						<label class="schedule_end">종료 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_end" placeholder="ex) 2022-11-22" onclick="javascript:f_datepicker(this);">
+  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22" 
+  							onclick="javascript:f_datepicker(this);">
   					
   						<label class="schedule_memo">메모</label>
-  						<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="add_memo" placeholder="ex) 무한상사"></textarea>
+  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
       					</div>
       				
       				<!-- 등록 완료 버튼 -->
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="button" class="btn btn-primary">추가</button>
+        				<button type="submit" class="btn btn-primary">추가</button>
       				</div>
       				</form>
       				
@@ -227,16 +244,16 @@
       				
       				<div class="modal-body">
       				<label class="schedule_title">일정 제목</label>
-  					<input type="text" class="form-control border-primary" id="update_title" placeholder="ex) 미팅">
+  					<input type="text" class="form-control border-primary" name="update_title" id="update_title" placeholder="ex) 미팅">
 					
 					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_start" placeholder="ex) 2022-11-22" >
+  					<input type="text" class="form-control border-primary" name="update_start" id="update_start" placeholder="ex) 2022-11-22" >
   					
   					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_end" placeholder="ex) 2022-11-22">
+  					<input type="text" class="form-control border-primary" name="update_end" id="update_end" placeholder="ex) 2022-11-22">
   					
   					<label class="schedule_memo">메모</label>
-  					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="update_memo" placeholder="ex) 무한상사"></textarea>
+  					<textarea rows="4" cols="50" class="form-control border-primary" name="update_memo" id="update_memo" placeholder="ex) 무한상사"></textarea>
       				</div>
       				
       				<!-- 수정 완료 버튼 -->
@@ -265,6 +282,7 @@
 </script>
 <script type="text/javascript">  
 
+// 일정 등록시 유효성 검사
 function validation() {
 
 	let ttl = document.getElementById('add_title');
@@ -282,6 +300,9 @@ function validation() {
 	} else if (end.value == ''){
 		alert('종료날짜를 입력하세요.');
 		return false;
+		
+	// 종료날짜를 시작날짜 전으로 선택할 수 없는 유효성처리 추가하자  //
+	
 	} else if (memo.value == ''){
 		alert('내용을 입력하세요.');
 		return false;
@@ -292,6 +313,7 @@ function validation() {
 	return true;
 }
 
+// 일정 수정시 유효성 검사
 function validation2() {
 
 	let ttl = document.getElementById('update_title');
@@ -309,6 +331,9 @@ function validation2() {
 	} else if (end.value == ''){
 		alert('종료날짜를 입력하세요.');
 		return false;
+		
+	// 종료날짜를 시작날짜 전으로 선택할 수 없는 유효성처리 추가하자  //
+		
 	} else if (memo.value == ''){
 		alert('내용을 입력하세요.');
 		return false;
@@ -319,12 +344,16 @@ function validation2() {
 	return true;
 	
 }
-
-	function addSchedule() {
+	
+	// 모달 오픈 (이 기능은 다른 함수로 구현해서 삭제 예정)
+	function openModal() {
+		document.get;
 		e.preventDefault();
 		console.log('You clicked submit.');
+		
 	}
 
+	// 날짜 선택  css 함수
 	$( function() {
 	    $( "#add_start, #add_end").datepicker({ 
 	        dateFormat: "yy-mm-dd",
@@ -343,6 +372,11 @@ function validation2() {
 	        */
 	    });
 	});
+	
+	// 현재 날짜 기본값 세팅
+	document.getElementById('add_start').value = new Date().toISOString().substring(0, 10);
+	document.getElementById('add_end').value = new Date().toISOString().substring(0, 10);
+	
 	
 </script>
 

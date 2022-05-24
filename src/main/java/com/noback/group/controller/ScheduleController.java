@@ -53,10 +53,13 @@ public class ScheduleController {
 		
 		model.addAttribute("member", member);
 		
-		ArrayList<ScheduleVO> scheduleList  
-		= dao.listSchedule();
+		// 스케줄 전체 데이터 저장
+		ArrayList<ScheduleVO> scheduleList = dao.listSchedule();
+		// 스케줄 이번달 한정 데이터 저장
+		ArrayList<ScheduleVO> MonthScheduleList = dao.listScheduleMonth();
 		
 		model.addAttribute("scheduleList", scheduleList);
+		model.addAttribute("MonthScheduleList", MonthScheduleList);
 		
 		return "schedule/schedule"; 
 	}

@@ -43,7 +43,7 @@
     const condition = i >= firstDateIndex && i < lastDateIndex + 1
                       ? 'this'
                       : 'other';
-    dates[i] = `<div class="date"><a href="#" onclick="listOutput(this)">
+    dates[i] = `<div class="date"><a data-bs-toggle="modal" data-bs-target="#addModal" >
     <span class=${condition}>${date}</span></a></div>`;
   });
 
@@ -80,9 +80,27 @@ const goToday = () => {
 
 
 /* 날짜 클릭시 아래 함수 실행됨 */
-function listOutput(obj) {
-	
-	
-}
-
+// 달력에서 선택한 날짜를 기본값으로 세팅 
+	function startDate(obj) {
+		
+		let startdate = new Date();
+		
+		let yyyy = date.setYear();
+		let mm = date.setMonth();
+		let dd = date.setDate();
+		
+		/**
+		if(mm < 10){
+			mm = '0' + mm.toString();
+		}
+	 	if(dd < 10) {
+	 		dd = '0' + dd.toString();
+	 	}
+		*/
+		
+		startdate = yyyy + '-' + mm + '-' + dd;
+		
+		document.getElementById('add_start').value = startdate;
+		
+	}
 

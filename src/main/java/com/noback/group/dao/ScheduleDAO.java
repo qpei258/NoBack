@@ -26,6 +26,15 @@ public class ScheduleDAO {
 		return scheduleList;
 	}
 	
+	// 스케줄 목록 가져오기
+	public ArrayList<ScheduleVO> listScheduleMonth(){
+		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
+		ArrayList<ScheduleVO> MonthScheduleList 
+		= mapper.selectScheduleMonth();
+				
+		return MonthScheduleList;
+	}
+	
 	// 스케줄 넘버로 개별정보 가져오기
 	public ScheduleVO getSchedule(int schedule_num) {
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);

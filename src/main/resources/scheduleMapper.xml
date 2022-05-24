@@ -18,6 +18,8 @@
 			schedule_level
 		from 
 			noback_schedule 	
+		order by 
+			schedule_start
 	</select>
 	
 	<!-- 스케줄 개별 출력 -->
@@ -25,8 +27,8 @@
 		select 
 			schedule_num,	  
 			schedule_title,  
-			to_char(schedule_start, 'yyyy-mm-dd') as schedule_start,	 
-			to_char(schedule_end, 'yyyy-mm-dd') as schedule_end,	  
+			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
 			schedule_memo,	   
 			schedule_writer,	   
 			schedule_level 
@@ -34,6 +36,24 @@
 			noback_schedule 
 		where 
 			schedule_num = #{schedule_num} 		
+	</select>
+	
+	<!-- 스케줄 이번달 현황만 출력 -->
+	<select id="selectScheduleMonth" resultType="schedule">
+		select 
+			schedule_num,	  
+			schedule_title,  
+			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
+			schedule_memo,	   
+			schedule_writer,	   
+			schedule_level 
+		from 
+			noback_schedule 
+		where 
+			to_char(schedule_start, 'mm') = to_char(sysdate, 'mm')
+		order by 
+			schedule_start
 	</select>
 	
 	<!-- 일정 추가 -->
