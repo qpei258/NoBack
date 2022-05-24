@@ -34,7 +34,7 @@ function formCheck() {
 
 function searchname(num, name) {
 	opener.document.getElementById('sign_receiver').value = num;
-	opener.document.getElementById('sign_n').value = name;
+	opener.document.getElementById('sign_nreceiver').value = name;
 	this.close();
 }
 </script>

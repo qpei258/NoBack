@@ -15,7 +15,9 @@
 		    , sign_title
 			, sign_content
 			, sign_sender
+			, sign_nsender
 			, sign_receiver
+			, sign_nreceiver
 			, sign_dep
 			, sign_pos
 	        <if test="sign_originfile != null and sign_savedfile != null">
@@ -29,7 +31,9 @@
 		    , #{sign_title}
 			, #{sign_content}
 			, #{sign_sender}
+			, #{sign_nsender}
 			, #{sign_receiver}
+			, #{sign_nreceiver}
 			, #{sign_dep}
 			, #{sign_pos}
 			 <if test="sign_originfile != null and sign_savedfile != null">
@@ -44,7 +48,7 @@
 	     s.sign_num
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
-		, s.sign_sender	
+		, s.sign_nsender	
 		, s.sign_ok
 	from 
 		noback_sign s, noback_member m
@@ -60,7 +64,7 @@
 	     s.sign_num
 		,to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
-		, s.sign_sender
+		, s.sign_nsender
 	from 
 		noback_sign s, noback_member m
 	where 
@@ -76,10 +80,10 @@
 		, sign_num
 		, sign_title
 		, sign_content
-		, sign_sender
+		, sign_nsender
 		, sign_dep
 		, sign_pos
-		, sign_receiver
+		, sign_nreceiver
 		, sign_originfile
 		, sign_savedfile
 	from 
@@ -95,10 +99,10 @@
 		, sign_num
 		, sign_title
 		, sign_content
-		, sign_sender
+		, sign_nsender
 		, sign_dep
 		, sign_pos
-		, sign_receiver
+		, sign_nreceiver
 		, sign_originfile
 		, sign_savedfile
 		, sign_ok
@@ -131,7 +135,8 @@
 
 <select id="member" parameterType="string" resultType="member">
 		select
-			employee_name
+		      employee_num
+			, employee_name
 			, employee_dep
 			, employee_pos
 		from 
