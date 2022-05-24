@@ -12,11 +12,13 @@
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
-		<h1 class="center">전자결제 메인화면</h1>
+		<nav class="nav">
+       		<a class="nav-link active" href='<c:url value="/schedule/schedule"/>' style="font-weight: bold;" >전자결제 홈</a>
+		</nav>
         <div id="content">
-        <p><a href="main">1.결제내역리스트</a></p>
-        <p><a href="sdelay">2.결제대기중인 서류 리스트</a></p>
-        <p><a href="swrite">3.결제서류 작성</a></p>
+        <div class="p-3 mb-2 bg-primary text-white"><li><a href= '<c:url value="main"/>' style="text-decoration:none; color: white">1.결제내역리스트</a></li></div>
+        <div class="p-3 mb-2 bg-primary text-white"><li><a href='<c:url value="sdelay"/>'style="text-decoration:none; color: white">2.결제대기중인 서류 리스트</a></li></div>
+        <div class="p-3 mb-2 bg-primary text-white"><li><a href='<c:url value="swrite"/>'style="text-decoration:none; color: white" >3.결제서류 작성</a></li></div>
         </div>
     </div>
 </body>
