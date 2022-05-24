@@ -81,7 +81,7 @@ function loginCheck() {
 					<form id="login" action="login" method="post"
 						onSubmit="return loginCheck();">
 						<div class="input-group mb-3" style="border: 0px; width:70%; margin: 53px auto 100px auto;" >
-							<span class="input-group-text" id="basic-addon1" style="width: 70px;">ID</span> 
+							<span class="input-group-text" id="basic-addon1" style="width: 70px;" >ID</span> 
 							<input id="id" class="form-control" name="employee_num" placeholder="사원번호를  입력해주세요"
 								aria-label="Username" aria-describedby="basic-addon1">
 								

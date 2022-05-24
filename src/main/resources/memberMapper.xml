@@ -16,7 +16,6 @@
 	<insert id="insertMember" parameterType="member">
 		insert into noback_member(
 			employee_num
-			, employee_password
 			, employee_name
 			, employee_ssn
 			, employee_address
@@ -29,7 +28,6 @@
 		)
 		values (
 			#{employee_num}
-			, 'employee_password'
 			, #{employee_name}
 			, #{employee_ssn}
 			, #{employee_address}
