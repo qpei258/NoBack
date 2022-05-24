@@ -29,7 +29,7 @@
 		)
 		values (
 			#{employee_num}
-			, employee_password
+			, 'employee_password'
 			, #{employee_name}
 			, #{employee_ssn}
 			, #{employee_address}

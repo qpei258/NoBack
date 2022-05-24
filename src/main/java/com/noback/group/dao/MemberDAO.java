@@ -11,9 +11,10 @@ import com.noback.group.vo.MemberVO;
 
 /**
  * 회원 관련 DAO
+ * @param <employee_num>
  */
 @Repository
-public class MemberDAO {
+public class MemberDAO<employee_num> {
 	@Autowired
 	SqlSession sqlSession;
 
@@ -44,6 +45,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
 
 	
 
