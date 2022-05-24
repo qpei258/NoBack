@@ -29,6 +29,10 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
+<script>
+	
+</script>
+
 <style>
 
 	.border {
@@ -58,6 +62,15 @@
 		border: white;
 	}
 	
+	th {
+		text-align: center;
+	}
+	
+	table {
+		border: 1px solid black;
+		text-align: center;	
+	}
+	
 </style>
 </head>
 <body>
@@ -71,7 +84,36 @@
        		<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
 		</nav>
 		
-	
+		<h1>현재 로그인 아이디 : ${LoginId}</h1>
+		<h1>현재 로그인 권한 : ${LoginLv}</h1>
+		
+		<form action="schedule" method="get">
+			<table>
+				<tr>
+					<th>번호</th>
+					<th style="width:300px">제목</th>
+					<th>시작일</th>
+					<th>종료일</th>
+					<th>메모</th>
+					<th>작성자</th>
+					<th>권한</th>
+				</tr>
+				
+				<!-- 반복 시작 -->
+				<c:forEach var="schedule" items="${scheduleList}">
+				<tr onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
+					<td class="center">${schedule.schedule_num}</td>
+					<td>${schedule.schedule_title}</td>
+					<td>${schedule.schedule_start}</td>
+					<td>${schedule.schedule_end}</td>
+					<td>${schedule.schedule_writer}</td>
+					<td>${schedule.schedule_level}</td>
+				</tr>
+				</c:forEach>   <!-- 반복 끝 -->     
+				
+				
+				</table>
+				</form>
         		
         		
       		<!-- 모달 버튼 (일정 등록)  -->
@@ -88,26 +130,38 @@
         						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
       					</div>
       				
+      				<form action="add" method="post" onsubmit ="return validation()">
+      				
       					<!-- 등록 내용 입력 -->
       					<div class="modal-body">
+      					<label class="schedule_writer">아이디</label>
+  						<input type="text" class="form-control border-primary" name="schedule_writer" id="add_writer" />
+  					
+  						<label class="schedule_level">권한</label>
+  						<input type="text" class="form-control border-primary" name="schedule_level" id="add_level"/>
+  					
+  					
       					<label class="schedule_title">일정 제목</label>
-  						<input type="text" class="form-control border-primary" id="add_title" placeholder="ex) 미팅">
+  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅">
 					
 						<label class="schedule_start">시작 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_start" placeholder="ex) 2022-11-22 33-44">
+  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22">
   					
   						<label class="schedule_end">종료 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_end" placeholder="ex) 2022-11-22 33-44">
+  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22">
   					
   						<label class="schedule_memo">메모</label>
-  						<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="add_memo" placeholder="ex) 무한상사"></textarea>
+  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
       					</div>
+      				
       				
       				<!-- 등록 완료 버튼 -->
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="button" class="btn btn-primary">추가</button>
+        				<button type="submit" class="btn btn-primary" >추가</button>
       				</div>
+      				
+      				</form>
     			</div>
   			</div>
 		</div> <!-- 등록 모달 끝  -->
@@ -133,10 +187,10 @@
   					<input type="text" class="form-control border-primary" id="update_title" placeholder="ex) 미팅">
 					
 					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_start" placeholder="ex) 2022-11-22 33-44">
+  					<input type="text" class="form-control border-primary" id="update_start" placeholder="ex) 2022-11-22">
   					
   					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" id="update_end" placeholder="ex) 2022-11-22 33-44">
+  					<input type="text" class="form-control border-primary" id="update_end" placeholder="ex) 2022-11-22">
   					
   					<label class="schedule_memo">메모</label>
   					<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="update_memo" placeholder="ex) 무한상사"></textarea>
@@ -152,6 +206,15 @@
   			</div>
 		</div> <!-- 수정 모달 끝  -->
         
+        	<!-- 검색폼 -->
+			<form id="pagingForm" method="get" action="list">
+				<input type="hidden" name="page" id="page" />
+				제목 : <input type="text"  name="searchText" value="${searchText}" />
+				<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+			</form>
+			<!-- /검색폼 --> 
+			
+			
         	</div> <!-- box 끝 -->
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->
@@ -161,6 +224,37 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous">
+</script>
+
+<script type="text/javascript">    
+
+	function validation() {
+
+		let ttl = document.getElementById('add_title');
+		let sta = document.getElementById('add_start');
+		let end = document.getElementById('add_end');
+		let memo = document.getElementById('add_memo');
+		
+		
+		if (ttl.value == ''){
+			alert('제목을 입력하세요.');
+			return false;
+		} else if (sta.value == ''){
+			alert('시작날짜를 입력하세요.');
+			return false;
+		} else if (end.value == ''){
+			alert('종료날짜를 입력하세요.');
+			return false;
+		} else if (memo.value == ''){
+			alert('내용을 입력하세요.');
+			return false;
+		}		
+		
+		alert('등록 완료되었습니다.');
+		location.href = 'schedule/schedule';
+		return true;
+	}
+
 </script>
 
 </html>

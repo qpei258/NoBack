@@ -16,8 +16,9 @@ public interface ScheduleMapper {
 	public int deleteSchedule(ScheduleVO sked);
 	
 	// 스케줄 목록 가져오기
-	public ArrayList<ScheduleVO> listSchedule(String schedule_num);
+	public ArrayList<ScheduleVO> listSchedule();
 	
 	// 스케줄 넘버로 개별정보 가져오기
-	public ScheduleVO selectSchedule(String schedule_num);
+	public ScheduleVO selectSchedule(int schedule_num);
+	
 }
