@@ -56,7 +56,7 @@
 	                       <td>
 		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                        </td>
-	                        <td class="center">${sign.sign_sender}</td>
+	                        <td class="center">${sign.sign_nsender}</td>
 	                     <c:if test="${sign.sign_ok == 0}">
 	                     <td class="center">대기</td>
 	                     </c:if> 

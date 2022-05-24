@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>결제서류작성</title>
-<script type="text/javascript" src="jquery-3.6.0.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
 function formCheck() {
 	let sign_title = document.getElementById('sign_title'); 
 	let sign_content = document.getElementById('sign_content'); 
 	let sign_sender = document.getElementById('sign_sender'); 
+	let sign_nsender = document.getElementById('sign_nsender');
 	let sign_receiver = document.getElementById('sign_receiver'); 
-	alert(sign_sender.value);
 	if (sign_title.value.length < 3 || sign_title .value.length > 10) {
 		alert('제목은 3~10자로 입력하세요.');
 		return false;
@@ -36,20 +36,10 @@ function receiverOpen() {
 	window.open('check', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
 }
 
-const add_textbox = () => {
-    const box = document.getElementById("box");
-    const newP = document.createElement('p');
-    newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
-    box.appendChild(newP);
-}
-const remove = (obj) => {
-    document.getElementById('box').removeChild(obj.parentNode);
-}
-
 $(document).ready(function() {
 	//추가 버튼 이벤트 처리
 	$('#addbtn').on('click', function() {
-		$('#group').append('<input type="text"  class="form-control groupname" name="name" value="" placeholder="수신자"><br>');
+		$('#group').append(' <span class="input-group-text" >수신자</span> <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="button" value="부서검색" onclick="receiverOpen()"><br>');
 	});
 });
 
@@ -93,10 +83,12 @@ $(document).ready(function() {
 						 <span class="input-group-text" >내용</span>
 						 <textarea name="sign_content" id="sign_content" style="width:500px;height:200px;resize:none;"></textarea>						 
 					</div>
-					<c:if test="${sessionScope.loginId == member.employee_num}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">					
+						 <input type="hidden" name="sign_sender" id="sign_sender" size="30" value="${member.employee_num}" readonly="readonly">						 
+					</div>	
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" >작성자</span>
-						 <input type="text" name="sign_sender" id="sign_sender" size="30" value="${member.employee_name}" readonly="readonly">						 
+						 <span class="input-group-text" >작성자</span>					
+						 <input type="text" name="sign_nsender" id="sign_nsender" size="30" value="${member.employee_name}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >부서</span>
@@ -106,16 +98,17 @@ $(document).ready(function() {
 						 <span class="input-group-text" >직위</span>
 						 <input type="text" name="sign_pos" id="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
 					</div>
-					</c:if>
 						<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
 						 <input type="file" name="upload" size="30"> 					 
 					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
+					<div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자</span>
-	                   <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="부서검색" onclick="receiverOpen()">
+	                   <input type="text" name="sign_nreceiver" id="sign_nreceiver" maxlength="10" placeholder="수신자"  readonly="readonly">
+	                   <input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly">
+			             <input type="button" value="수신자 검색" onclick="receiverOpen()">
 		                <button id="addbtn" type="button">입력란 추가</button>
+		                <br>
                     </div>	  
 					<div style="border: 1px solid rgb(238, 238, 238);">
 						<input type="submit" value = "작성" />

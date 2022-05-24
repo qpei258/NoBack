@@ -32,8 +32,9 @@ function formCheck() {
 	return true;
 }
 
-function searchname(string) {
-	opener.document.getElementById('sign_receiver').value = string;
+function searchname(num, name) {
+	opener.document.getElementById('sign_receiver').value = num;
+	opener.document.getElementById('sign_nreceiver').value = name;
 	this.close();
 }
 </script>
@@ -65,7 +66,7 @@ function searchname(string) {
 	                        <td class="center">${m.employee_dep}</td>   
 		                     <td class="center">${m.employee_pos}</td>
 	                        <td>
-	                        <p><input type="button" value="선택하기" onclick="searchname(${m.employee_num})"></p>
+	                        <p><input type="button" value="선택하기" onclick="searchname('${m.employee_num}','${m.employee_name}')"></p>
 	                         </td>
 	                         </tr>
 	                        </c:forEach>

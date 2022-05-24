@@ -56,7 +56,7 @@
 		                  <a href="scomplete?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                      </td>
 	                     
-	                     <td class="center">${sign.sign_sender}</td>
+	                     <td class="center">${sign.sign_nsender}</td>
   
                       </tr>
                     </c:forEach>  

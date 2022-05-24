@@ -50,7 +50,7 @@
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >작성자</span>
-						 <input type="text" name="sign_sender" id="sign_sender" size="30" value="${sign.sign_sender}" readonly="readonly">						 
+						 <input type="text" name="sign_sender" id="sign_sender" size="30" value="${sign.sign_nsender}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >부서</span>
@@ -62,7 +62,7 @@
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자1(보내는곳)</span>
-						  <input type="text" name="sign_receiver" id="sign_receiver" size="30" value="${sign.sign_receiver}" readonly="readonly">
+						  <input type="text" name="sign_receiver" id="sign_receiver" size="30" value="${sign.sign_nreceiver}" readonly="readonly">
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
