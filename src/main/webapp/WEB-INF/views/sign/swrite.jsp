@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>결제서류작성</title>
-<script type="text/javascript" src="jquery-3.6.0.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
 function formCheck() {
 	let sign_title = document.getElementById('sign_title'); 
@@ -49,7 +49,7 @@ const remove = (obj) => {
 $(document).ready(function() {
 	//추가 버튼 이벤트 처리
 	$('#addbtn').on('click', function() {
-		$('#group').append('<input type="text"  class="form-control groupname" name="name" value="" placeholder="수신자"><br>');
+		$('#group').append(' <span class="input-group-text" >수신자</span> <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="button" value="부서검색" onclick="receiverOpen()"><br>');
 	});
 });
 
@@ -111,10 +111,11 @@ $(document).ready(function() {
 						 <span class="input-group-text" >첨부파일</span>
 						 <input type="file" name="upload" size="30"> 					 
 					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
+					<div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자</span>
-	                   <input type="text" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="부서검색" onclick="receiverOpen()">
+	                   <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly">
+	                   <input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly">
+			             <input type="button" value="수신자 검색" onclick="receiverOpen()">
 		                <button id="addbtn" type="button">입력란 추가</button>
                     </div>	  
 					<div style="border: 1px solid rgb(238, 238, 238);">
