@@ -108,6 +108,11 @@ function formCheck() {
 			<div class='square'>
 				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
 					<table>
+						<tr>
+				            <th>프로필 등록</th>
+				            <td><input type="file" id="employee_picture" name="employee_picture" ></td>
+				        </tr>
+				        <tr>
 				        <tr>
 				            <th>이름</th>
 				            <td><input type="text" id="employee_name" name="employee_name"></td>
