@@ -12,40 +12,27 @@ public class SignVO {
 	String sign_content;
 	String sign_sender; 
 	String sign_nsender;
-	String sign_receiver;
-	String sign_nreceiver;
+	String sign_receiver1;
+	String sign_nreceiver1;
+	String sign_receiver2;
+	String sign_nreceiver2;
+	String sign_receiver3;
+	String sign_nreceiver3;
+	String sign_receiver4;
+	String sign_nreceiver4;
 	String sign_dep;
 	String sign_pos;
 	String sign_originfile;	
 	String sign_savedfile;
-	int sign_ok;
+	int sign_ok1;
+	int sign_ok2;
+	int sign_ok3;
+	int sign_ok4;
 	String sign_cdate;
 	String sign_memo;
 	String sign_sdate;
 	public SignVO(){
 		super();
-	}
-	
-
-	public SignVO(int sign_num, String sign_title, String sign_content, String sign_sender, String sign_nsender,
-			String sign_receiver, String sign_nreceiver, String sign_dep, String sign_pos, String sign_originfile,
-			String sign_savedfile, int sign_ok, String sign_cdate, String sign_memo, String sign_sdate) {
-		super();
-		this.sign_num = sign_num;
-		this.sign_title = sign_title;
-		this.sign_content = sign_content;
-		this.sign_sender = sign_sender;
-		this.sign_nsender = sign_nsender;
-		this.sign_receiver = sign_receiver;
-		this.sign_nreceiver = sign_nreceiver;
-		this.sign_dep = sign_dep;
-		this.sign_pos = sign_pos;
-		this.sign_originfile = sign_originfile;
-		this.sign_savedfile = sign_savedfile;
-		this.sign_ok = sign_ok;
-		this.sign_cdate = sign_cdate;
-		this.sign_memo = sign_memo;
-		this.sign_sdate = sign_sdate;
 	}
 	
 	public int getSign_num() {
@@ -78,17 +65,53 @@ public class SignVO {
 	public void setSign_nsender(String sign_nsender) {
 		this.sign_nsender = sign_nsender;
 	}
-	public String getSign_receiver() {
-		return sign_receiver;
+	public String getSign_receiver1() {
+		return sign_receiver1;
 	}
-	public void setSign_receiver(String sign_receiver) {
-		this.sign_receiver = sign_receiver;
+	public void setSign_receiver1(String sign_receiver1) {
+		this.sign_receiver1 = sign_receiver1;
 	}
-	public String getSign_nreceiver() {
-		return sign_nreceiver;
+	public String getSign_nreceiver1() {
+		return sign_nreceiver1;
 	}
-	public void setSign_nreceiver(String sign_nreceiver) {
-		this.sign_nreceiver = sign_nreceiver;
+	public void setSign_nreceiver1(String sign_nreceiver1) {
+		this.sign_nreceiver1 = sign_nreceiver1;
+	}
+	public String getSign_receiver2() {
+		return sign_receiver2;
+	}
+	public void setSign_receiver2(String sign_receiver2) {
+		this.sign_receiver2 = sign_receiver2;
+	}
+	public String getSign_nreceiver2() {
+		return sign_nreceiver2;
+	}
+	public void setSign_nreceiver2(String sign_nreceiver2) {
+		this.sign_nreceiver2 = sign_nreceiver2;
+	}
+	public String getSign_receiver3() {
+		return sign_receiver3;
+	}
+	public void setSign_receiver3(String sign_receiver3) {
+		this.sign_receiver3 = sign_receiver3;
+	}
+	public String getSign_nreceiver3() {
+		return sign_nreceiver3;
+	}
+	public void setSign_nreceiver3(String sign_nreceiver3) {
+		this.sign_nreceiver3 = sign_nreceiver3;
+	}
+	public String getSign_receiver4() {
+		return sign_receiver4;
+	}
+	public void setSign_receiver4(String sign_receiver4) {
+		this.sign_receiver4 = sign_receiver4;
+	}
+	public String getSign_nreceiver4() {
+		return sign_nreceiver4;
+	}
+	public void setSign_nreceiver4(String sign_nreceiver4) {
+		this.sign_nreceiver4 = sign_nreceiver4;
 	}
 	public String getSign_dep() {
 		return sign_dep;
@@ -114,11 +137,29 @@ public class SignVO {
 	public void setSign_savedfile(String sign_savedfile) {
 		this.sign_savedfile = sign_savedfile;
 	}
-	public int getSign_ok() {
-		return sign_ok;
+	public int getSign_ok1() {
+		return sign_ok1;
 	}
-	public void setSign_ok(int sign_ok) {
-		this.sign_ok = sign_ok;
+	public void setSign_ok1(int sign_ok1) {
+		this.sign_ok1 = sign_ok1;
+	}
+	public int getSign_ok2() {
+		return sign_ok2;
+	}
+	public void setSign_ok2(int sign_ok2) {
+		this.sign_ok2 = sign_ok2;
+	}
+	public int getSign_ok3() {
+		return sign_ok3;
+	}
+	public void setSign_ok3(int sign_ok3) {
+		this.sign_ok3 = sign_ok3;
+	}
+	public int getSign_ok4() {
+		return sign_ok4;
+	}
+	public void setSign_ok4(int sign_ok4) {
+		this.sign_ok4 = sign_ok4;
 	}
 	public String getSign_cdate() {
 		return sign_cdate;
@@ -139,16 +180,51 @@ public class SignVO {
 		this.sign_sdate = sign_sdate;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "SignVO [sign_num=" + sign_num + ", sign_title=" + sign_title + ", sign_content=" + sign_content
-				+ ", sign_sender=" + sign_sender + ", sign_nsender=" + sign_nsender + ", sign_receiver=" + sign_receiver
-				+ ", sign_nreceiver=" + sign_nreceiver + ", sign_dep=" + sign_dep + ", sign_pos=" + sign_pos
-				+ ", sign_originfile=" + sign_originfile + ", sign_savedfile=" + sign_savedfile + ", sign_ok=" + sign_ok
-				+ ", sign_cdate=" + sign_cdate + ", sign_memo=" + sign_memo + ", sign_sdate=" + sign_sdate + "]";
+				+ ", sign_sender=" + sign_sender + ", sign_nsender=" + sign_nsender + ", sign_receiver1="
+				+ sign_receiver1 + ", sign_nreceiver1=" + sign_nreceiver1 + ", sign_receiver2=" + sign_receiver2
+				+ ", sign_nreceiver2=" + sign_nreceiver2 + ", sign_receiver3=" + sign_receiver3 + ", sign_nreceiver3="
+				+ sign_nreceiver3 + ", sign_receiver4=" + sign_receiver4 + ", sign_nreceiver4=" + sign_nreceiver4
+				+ ", sign_dep=" + sign_dep + ", sign_pos=" + sign_pos + ", sign_originfile=" + sign_originfile
+				+ ", sign_savedfile=" + sign_savedfile + ", sign_ok1=" + sign_ok1 + ", sign_ok2=" + sign_ok2
+				+ ", sign_ok3=" + sign_ok3 + ", sign_ok4=" + sign_ok4 + ", sign_cdate=" + sign_cdate + ", sign_memo="
+				+ sign_memo + ", sign_sdate=" + sign_sdate + "]";
 	}
 	
-
+	public SignVO(int sign_num, String sign_title, String sign_content, String sign_sender, String sign_nsender,
+			String sign_receiver1, String sign_nreceiver1, String sign_receiver2, String sign_nreceiver2,
+			String sign_receiver3, String sign_nreceiver3, String sign_receiver4, String sign_nreceiver4,
+			String sign_dep, String sign_pos, String sign_originfile, String sign_savedfile, int sign_ok1, int sign_ok2,
+			int sign_ok3, int sign_ok4, String sign_cdate, String sign_memo, String sign_sdate) {
+		super();
+		this.sign_num = sign_num;
+		this.sign_title = sign_title;
+		this.sign_content = sign_content;
+		this.sign_sender = sign_sender;
+		this.sign_nsender = sign_nsender;
+		this.sign_receiver1 = sign_receiver1;
+		this.sign_nreceiver1 = sign_nreceiver1;
+		this.sign_receiver2 = sign_receiver2;
+		this.sign_nreceiver2 = sign_nreceiver2;
+		this.sign_receiver3 = sign_receiver3;
+		this.sign_nreceiver3 = sign_nreceiver3;
+		this.sign_receiver4 = sign_receiver4;
+		this.sign_nreceiver4 = sign_nreceiver4;
+		this.sign_dep = sign_dep;
+		this.sign_pos = sign_pos;
+		this.sign_originfile = sign_originfile;
+		this.sign_savedfile = sign_savedfile;
+		this.sign_ok1 = sign_ok1;
+		this.sign_ok2 = sign_ok2;
+		this.sign_ok3 = sign_ok3;
+		this.sign_ok4 = sign_ok4;
+		this.sign_cdate = sign_cdate;
+		this.sign_memo = sign_memo;
+		this.sign_sdate = sign_sdate;
+	}
 	
 	
 }

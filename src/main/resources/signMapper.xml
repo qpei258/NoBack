@@ -129,7 +129,7 @@
 		, sign_nreceiver1
 		, sign_originfile
 		, sign_savedfile
-		, sign_ok
+		, sign_ok1
 		, sign_memo
 	from 
 		noback_sign 
@@ -173,7 +173,7 @@
 	update
 		noback_sign
 	set
-	      sign_ok = #{sign_ok}
+	      sign_ok1 = #{sign_ok1}
 		, sign_memo = #{sign_memo}	
 	where
 		sign_num = #{sign_num}
