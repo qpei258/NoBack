@@ -80,12 +80,7 @@ public class MemberController {
 			return "redirect:/";
 		}
 		
-		// 사원리스트로 이동
-		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
-		public String memberlist() {
-			return "manager/memberlist";
-		}
-		
+
 		// 모든 사원리스트 출력
 		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
 		public String list(Model model) {

@@ -41,12 +41,12 @@
 	</insert>
 	
 	<!-- 모든 사원 정보 -->
-	<select id="memberlist" resultType="MemberVO">
+	<select id="memberlist" resultType="member">
 		select * from noback_member order by employee_name
 	</select>
 	
 	<!-- 사원 이름으로 검색 -->
-	<select id="getMemberVO1" parameterType="string" resultType="MemberVO">
+	<select id="getMemberVO1" parameterType="string" resultType="member">
 		select * from noback_member where employee_name = #{employee_name}
 	</select>
 	
