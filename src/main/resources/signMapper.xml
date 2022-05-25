@@ -111,6 +111,10 @@
 		, sign_receiver2
 		, sign_nreceiver1
 		, sign_nreceiver2
+		, sign_receiver3
+		, sign_receiver4
+		, sign_nreceiver3
+		, sign_nreceiver4
 		, sign_originfile
 		, sign_savedfile
 	from 
@@ -133,6 +137,10 @@
 		, sign_receiver2
 		, sign_nreceiver1
 		, sign_nreceiver2
+		, sign_receiver3
+		, sign_receiver4
+		, sign_nreceiver3
+		, sign_nreceiver4
 		, sign_originfile
 		, sign_savedfile
 		, sign_ok1
@@ -179,9 +187,20 @@
 	update
 		noback_sign
 	set
-	      sign_ok1 = #{sign_ok1}
-		, sign_memo = #{sign_memo}	
-	where
+	       sign_memo = #{sign_memo} 
+	      <if test=" sign_ok1 != 1 and  sign_ok1 != -1">
+	      ,sign_ok1 = #{sign_ok1}
+	      </if>
+	       <if test=" sign_ok2 != 1 and  sign_ok2 != -1">
+	      ,sign_ok2 = #{sign_ok2}
+	      </if>
+	       <if test=" sign_ok3 != 1 and  sign_ok3 != -1">
+	      ,sign_ok3 = #{sign_ok3}
+	      </if>
+	       <if test=" sign_ok4 != 1 and  sign_ok4 != -1">
+	      ,sign_ok4 = #{sign_ok4}
+	      </if>
+	      where
 		sign_num = #{sign_num}
 </update>
 
