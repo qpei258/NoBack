@@ -216,21 +216,75 @@ public class SignController {
 	}
 	
 	//사원검색 페이지로 이동
-	@RequestMapping(value = "check", method = RequestMethod.GET)
-	public String check() {
-		return "sign/check";
+	@RequestMapping(value = "check1", method = RequestMethod.GET)
+	public String check1() {
+		return "sign/check1";
 	}
 		
 	//사원검색
-	@RequestMapping(value = "check", method = RequestMethod.POST)
-	public String idcheck(String searchname, Model model) {
+	@RequestMapping(value = "check1", method = RequestMethod.POST)
+	public String idcheck1(String searchname, Model model) {
 		logger.info("검색할 이름 : {}", searchname);
 		ArrayList<MemberVO> member = dao.getMember(searchname);
 		logger.info("검색한 이름 : {}", member);
 		model.addAttribute("member", member);
 		model.addAttribute("searchname", searchname);
 			
-		return "sign/check";
+		return "sign/check1";
+	}
+	
+	//사원검색 페이지로 이동
+	@RequestMapping(value = "check2", method = RequestMethod.GET)
+	public String check2() {
+		return "sign/check2";
+	}
+		
+	//사원검색
+	@RequestMapping(value = "check2", method = RequestMethod.POST)
+	public String idcheck2(String searchname, Model model) {
+		logger.info("검색할 이름 : {}", searchname);
+		ArrayList<MemberVO> member = dao.getMember(searchname);
+		logger.info("검색한 이름 : {}", member);
+		model.addAttribute("member", member);
+		model.addAttribute("searchname", searchname);
+			
+		return "sign/check2";
+	}
+	
+	//사원검색 페이지로 이동
+	@RequestMapping(value = "check3", method = RequestMethod.GET)
+	public String check3() {
+		return "sign/check3";
+	}
+		
+	//사원검색
+	@RequestMapping(value = "check3", method = RequestMethod.POST)
+	public String idcheck3(String searchname, Model model) {
+		logger.info("검색할 이름 : {}", searchname);
+		ArrayList<MemberVO> member = dao.getMember(searchname);
+		logger.info("검색한 이름 : {}", member);
+		model.addAttribute("member", member);
+		model.addAttribute("searchname", searchname);
+			
+		return "sign/check3";
+	}
+	
+	//사원검색 페이지로 이동
+	@RequestMapping(value = "check4", method = RequestMethod.GET)
+	public String check4() {
+		return "sign/check4";
+	}
+		
+	//사원검색
+	@RequestMapping(value = "check4", method = RequestMethod.POST)
+	public String idcheck4(String searchname, Model model) {
+		logger.info("검색할 이름 : {}", searchname);
+		ArrayList<MemberVO> member = dao.getMember(searchname);
+		logger.info("검색한 이름 : {}", member);
+		model.addAttribute("member", member);
+		model.addAttribute("searchname", searchname);
+			
+		return "sign/check4";
 	}
 	
 		

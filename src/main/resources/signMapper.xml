@@ -16,8 +16,20 @@
 			, sign_content
 			, sign_sender
 			, sign_nsender
-			, sign_receiver
-			, sign_nreceiver
+			, sign_receiver1
+			, sign_nreceiver1
+			<if test="sign_receiver2 != null and sign_nreceiver2 != null">
+			, sign_receiver2
+			, sign_nreceiver2
+			</if>
+			<if test="sign_receiver3 != null and sign_nreceiver3 != null">
+			, sign_receiver3
+			, sign_nreceiver3
+			</if>
+			<if test="sign_receiver4 != null and sign_nreceiver4 != null">
+			, sign_receiver4
+			, sign_nreceiver4
+			</if>
 			, sign_dep
 			, sign_pos
 	        <if test="sign_originfile != null and sign_savedfile != null">
@@ -32,8 +44,20 @@
 			, #{sign_content}
 			, #{sign_sender}
 			, #{sign_nsender}
-			, #{sign_receiver}
-			, #{sign_nreceiver}
+			, #{sign_receiver1}
+			, #{sign_nreceiver1}
+			<if test="sign_receiver2 != null and sign_nreceiver2 != null">
+			, #{sign_receiver2}
+			, #{sign_nreceiver2}
+			</if>
+			<if test="sign_receiver3 != null and sign_nreceiver3 != null">
+			, #{sign_receiver3}
+			, #{sign_nreceiver3}
+			</if>
+			<if test="sign_receiver4 != null and sign_nreceiver4 != null">
+			, #{sign_receiver4}
+			, #{sign_nreceiver4}
+			</if>
 			, #{sign_dep}
 			, #{sign_pos}
 			 <if test="sign_originfile != null and sign_savedfile != null">
@@ -49,7 +73,7 @@
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_nsender	
-		, s.sign_ok
+		, s.sign_ok1
 	from 
 		noback_sign s, noback_member m
 	where 
@@ -68,7 +92,7 @@
 	from 
 		noback_sign s, noback_member m
 	where 
-	    s.sign_receiver = m.employee_num
+	    s.sign_receiver1 = m.employee_num
 	order by 
 		s.sign_cdate desc
 </select>
@@ -83,7 +107,7 @@
 		, sign_nsender
 		, sign_dep
 		, sign_pos
-		, sign_nreceiver
+		, sign_nreceiver11
 		, sign_originfile
 		, sign_savedfile
 	from 
@@ -102,7 +126,7 @@
 		, sign_nsender
 		, sign_dep
 		, sign_pos
-		, sign_nreceiver
+		, sign_nreceiver1
 		, sign_originfile
 		, sign_savedfile
 		, sign_ok

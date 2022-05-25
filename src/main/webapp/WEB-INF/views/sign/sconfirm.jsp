@@ -62,7 +62,7 @@
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자1(보내는곳)</span>
-						  <input type="text" name="sign_receiver" id="sign_receiver" size="30" value="${sign.sign_nreceiver}" readonly="readonly">
+						  <input type="text" name="sign_receiver1" id="sign_receiver1" size="30" value="${sign.sign_nreceiver1}" readonly="readonly">
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>

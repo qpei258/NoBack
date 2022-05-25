@@ -33,8 +33,8 @@ function formCheck() {
 }
 
 function searchname(num, name) {
-	opener.document.getElementById('sign_receiver').value = num;
-	opener.document.getElementById('sign_nreceiver').value = name;
+	opener.document.getElementById('sign_receiver2').value = num;
+	opener.document.getElementById('sign_nreceiver2').value = name;
 	this.close();
 }
 </script>
