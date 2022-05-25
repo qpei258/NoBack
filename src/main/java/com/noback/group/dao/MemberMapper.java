@@ -1,5 +1,7 @@
 package com.noback.group.dao;
 
+import java.util.ArrayList;
+
 import com.noback.group.vo.MemberVO;
 
 /**
@@ -11,6 +13,10 @@ public interface MemberMapper {
 	MemberVO getMemberVO(String employee_num);
 	//사원 정보 저장
 	int insertMember(MemberVO member);
+	// 모든 사원리스트
+	ArrayList<MemberVO> memberlist();
+	// 이름으로 회원검색
+	MemberVO getMemberVO1(String employee_name);
 	
 
 }

@@ -1,5 +1,8 @@
 package com.noback.group.dao;
 
+import java.util.ArrayList;
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.noback.group.vo.MemberVO;
+
+
 
 
 /**
@@ -45,6 +50,23 @@ public class MemberDAO<employee_num> {
 		}
 		return result;
 	}
+	
+	// 모든 사원리스트 출력
+	public ArrayList<MemberVO> memberlist() {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		ArrayList<MemberVO> memberlist = mapper.memberlist();
+		return memberlist;
+		
+	}
+	
+	// 사원 이름으로 검색 
+	public MemberVO getMemberVO(String employee_name) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		MemberVO member = mapper.getMemberVO(employee_name);
+		
+		return member;
+	}
+	
 	
 
 	

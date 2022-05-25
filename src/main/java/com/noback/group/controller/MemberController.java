@@ -1,5 +1,7 @@
 package com.noback.group.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -79,5 +82,17 @@ public class MemberController {
 		public String memberlist() {
 			return "manager/memberlist";
 		}
+		
+		// 모든 사원리스트 출력
+		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
+		public String list(Model model) {
+			//전체 회원 정보 목록 읽기
+			ArrayList<MemberVO> memberlist = dao.memberlist();
+			//모델에 목록 저장하고 뷰로 이동
+			model.addAttribute("memberlist", memberlist);
+			
+			return "memberlist";
+		}
+		
 	
 }

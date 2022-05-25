@@ -12,7 +12,7 @@
 			employee_num = #{employee_num} 		
 	</select>
 	
-	<!-- 회원 정보 저장 -->
+	<!-- 사원 정보 저장 -->
 	<insert id="insertMember" parameterType="member">
 		insert into noback_member(
 			employee_num
@@ -39,5 +39,15 @@
 			, #{employee_picture}
 		)
 	</insert>
+	
+	<!-- 모든 사원 정보 -->
+	<select id="memberlist" resultType="MemberVO">
+		select * from noback_member order by employee_name
+	</select>
+	
+	<!-- 사원 이름으로 검색 -->
+	<select id="getMemberVO1" parameterType="string" resultType="MemberVO">
+		select * from noback_member where employee_name = #{employee_name}
+	</select>
 
 </mapper>
