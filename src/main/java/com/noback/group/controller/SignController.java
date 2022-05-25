@@ -145,7 +145,7 @@ public class SignController {
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
 	logger.info("수정할 글정보 {}", sign);
 	dao.complete(sign);
-	return "redirect:smain";
+	return "redirect:sdelay";
 	}
 	
 	
@@ -178,7 +178,7 @@ public class SignController {
 		}
 
 			dao.write(sign);
-			return "redirect:smain";
+			return "redirect:main";
 		}
 	
 	@RequestMapping(value = "download", method = RequestMethod.GET)

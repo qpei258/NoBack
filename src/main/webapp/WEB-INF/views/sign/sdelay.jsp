@@ -19,6 +19,19 @@
     		color: rgb(80, 80, 80);
     	}
     
+
+
+/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
+    
+    
     </style>
     <!-- 페이지 이동 스크립트  -->
 	<script>
@@ -34,8 +47,13 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
+        <nav class="topmenu">
+				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+		</nav>
         	<div id="signList">
-        		<h2 style="margin: 40px 0px 10px 0px;">결제 작성 리스트</h2>
+        		<h2 style="margin: 40px 0px 10px 0px;">결제 대기 리스트</h2>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				</div>
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
