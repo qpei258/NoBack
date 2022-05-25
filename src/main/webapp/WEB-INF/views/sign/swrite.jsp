@@ -29,7 +29,6 @@ function formCheck() {
 		alert('수신자를 입력하세요.');
 		return false;
 	}
-	return true;
 }
 
 function receiverOpen() {
@@ -66,12 +65,27 @@ $(document).ready(function() {
     	a:hover {
 			color: rgb(20, 20, 20);
 		}
+		/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
+    
 	</style>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
+          <nav class="topmenu">
+				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+		</nav>
         	<div id="sign">
         	<h2 style="margin: 100px 0px 30px 0px;">결제 서류</h2>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
