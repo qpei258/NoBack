@@ -128,9 +128,12 @@ public class SignController {
 	
 	//결제 서류 읽기
 	@RequestMapping (value="scomplete", method=RequestMethod.GET)
-	public String scomplete(int sign_num, Model model) {
+	public String scomplete(int sign_num, Model model, HttpSession session) {
+		String searchId = (String) session.getAttribute("LoginId");
+		logger.info("로그인된 아이디 {}", searchId);
 		//글 번호를 전달
 		SignVO sign = dao.getSign(sign_num);
+		logger.info("들어가는 글정보 {}", sign);
 			//결과가 없으면 글 목록으로 이동
 		if (sign == null) {
 			return "redirect:smain";

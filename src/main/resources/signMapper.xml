@@ -107,6 +107,8 @@
 		, sign_nsender
 		, sign_dep
 		, sign_pos
+		, sign_receiver1
+		, sign_receiver2
 		, sign_nreceiver1
 		, sign_nreceiver2
 		, sign_originfile
@@ -127,6 +129,8 @@
 		, sign_nsender
 		, sign_dep
 		, sign_pos
+		, sign_receiver1
+		, sign_receiver2
 		, sign_nreceiver1
 		, sign_nreceiver2
 		, sign_originfile

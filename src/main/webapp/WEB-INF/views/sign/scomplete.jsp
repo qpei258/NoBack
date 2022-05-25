@@ -77,24 +77,72 @@ function receiverOpen() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자1(보내는곳)</span>
-						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" size="30" value="${sign.sign_nreceiver1}" readonly="readonly">
+						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" size="10" value="${sign.sign_nreceiver1}" readonly="readonly">
+						  <c:if test="${sign.sign_ok1 == 0}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="대기" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok1 == 1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="승인" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok1 == -1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="반려" readonly="readonly">
+						  </c:if>
 					</div>
-					<c:if test="${sessionScope.loginId == sign.sign_nreceiver2}">
+					<c:if test="${sign.sign_receiver2 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자2(보내는곳)</span>
-						  <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" size="30" value="${sign.sign_nreceiver2}" readonly="readonly">
+						  <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" size="10" value="${sign.sign_nreceiver2}" readonly="readonly">
+						  <c:if test="${sign.sign_ok2 == 0}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="대기" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok2 == 1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="승인" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok2 == -1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="반려" readonly="readonly">
+						  </c:if>
 					</div>
 					</c:if>
-					<c:if test="${sessionScope.loginId == sign.sign_nreceiver3}">
+					<c:if test="${sign.sign_receiver3 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자3(보내는곳)</span>
-						  <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" size="30" value="${sign.sign_nreceiver3}" readonly="readonly">
+						  <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" size="10" value="${sign.sign_nreceiver3}" readonly="readonly">
+						  <c:if test="${sign.sign_ok3 == 0}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="대기" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok3 == 1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="승인" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok3 == -1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="반려" readonly="readonly">
+						  </c:if>
 					</div>
 					</c:if>
-					<c:if test="${sessionScope.loginId == sign.sign_nreceiver4}">
+					<c:if test="${sign.sign_receiver4 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자4(보내는곳)</span>
-						  <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" size="30" value="${sign.sign_nreceiver4}" readonly="readonly">
+						  <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" size="10" value="${sign.sign_nreceiver4}" readonly="readonly">
+						  <c:if test="${sign.sign_ok4 == 0}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="대기" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok4 == 1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="승인" readonly="readonly">
+						  </c:if>
+						   <c:if test="${sign.sign_ok4 == -1}">
+						  <span class="input-group-text" >승인여부</span>
+						  <input type="text" size="10" value="반려" readonly="readonly">
+						  </c:if>
 					</div>
 					</c:if>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
@@ -105,11 +153,30 @@ function receiverOpen() {
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>
-					
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver1}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
-					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1'>승인
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려                           
 					</div>
+					</c:if>
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver2}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려                           
+					</div>
+					</c:if>
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver3}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>승인
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려                           
+					</div>
+					</c:if>
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver4}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>승인
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려                           
+					</div>
+					</c:if>
 					<div>
 					   <input type="submit" value="처리완료" />
 					</div>
