@@ -7,12 +7,53 @@
     <title>결제서류작성</title>
 <script type="text/javascript" src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
+function receiverOpen1() {
+	document.getElementById('target_btn2').disabled = false;
+	window.open('check1', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+}
+
+function receiverOpen2() {
+	let sign_receiver1 = document.getElementById('sign_receiver1'); 
+	if (sign_receiver1.value != '') {
+	document.getElementById('target_btn3').disabled = false;
+	window.open('check2', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+	}
+}
+
+
+function receiverOpen3() {
+	let sign_receiver2 = document.getElementById('sign_receiver2'); 
+	if (sign_receiver2.value != '') {
+	document.getElementById('target_btn4').disabled = false;
+	window.open('check3', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+	}
+}
+
+function receiverOpen4() {
+	let sign_receiver3 = document.getElementById('sign_receiver3'); 
+	if (sign_receiver3.value != '') {
+	window.open('check4', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+	}
+}
+
+
 function formCheck() {
 	let sign_title = document.getElementById('sign_title'); 
 	let sign_content = document.getElementById('sign_content'); 
 	let sign_sender = document.getElementById('sign_sender'); 
 	let sign_nsender = document.getElementById('sign_nsender');
-	let sign_receiver = document.getElementById('sign_receiver'); 
+	let sign_receiver = document.getElementById('sign_receiver1'); 
+	
+	alert(sign_receiver1.value);
+	if (sign_receiver1.value == '') {
+		alert('수신자를 입력하세요.');
+		return false;
+	}
+	alert(sign_receiver2.value);
+	if (sign_receiver2.value == '') {
+		alert('수신자2를 입력하세요.');
+		return false;
+	}
 	if (sign_title.value.length < 3 || sign_title .value.length > 10) {
 		alert('제목은 3~10자로 입력하세요.');
 		return false;
@@ -21,38 +62,8 @@ function formCheck() {
 		alert('내용은 1~100자로 입력하세요.');
 		return false;
 	}
-	if (sign_sender.value == '') {
-		alert('보내는사람을 입력하세요.');
-		return false;
-	}
-	if (sign_receiver.value == '') {
-		alert('수신자를 입력하세요.');
-		return false;
-	}
 }
 
-function receiverOpen1() {
-	window.open('check1', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
-}
-function receiverOpen2() {
-	window.open('check2', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
-}
-
-function receiverOpen3() {
-	window.open('check3', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
-}
-
-function receiverOpen4() {
-	window.open('check4', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
-}
-
-
-$(document).ready(function() {
-	//추가 버튼 이벤트 처리
-	$('#addbtn').on('click', function() {
-		$('#group').append(' <p><span class="input-group-text" >수신자</span> <input type="text" id="sign_n" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="hidden" name="sign_receiver" id="sign_receiver" maxlength="10" placeholder="수신자"  readonly="readonly"><input type="button" value="수신자검색" onclick="receiverOpen()"></p>');
-	});
-});
 
 
 </script>
@@ -130,30 +141,30 @@ $(document).ready(function() {
 					</div>
 					<div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자1</span>
-	                   <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" maxlength="10" placeholder="수신자"  readonly="readonly">
-	                   <input type="hidden" name="sign_receiver1" id="sign_receiver1" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="수신자 검색" onclick="receiverOpen1()">
+	                   <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" maxlength="10"  readonly="readonly" >
+	                   <input type="hidden" name="sign_receiver1" id="sign_receiver1" maxlength="10"  readonly="readonly" >
+			             <input id='target_btn1' type="button" value="수신자 검색" onclick="receiverOpen1()">
 		                <br>
                     </div>
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자2</span>
-	                   <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" maxlength="10" placeholder="수신자"  readonly="readonly">
-	                   <input type="hidden" name="sign_receiver2" id="sign_receiver2" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="수신자 검색" onclick="receiverOpen2()">
+	                   <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" maxlength="10"  readonly="readonly" >
+	                   <input type="hidden" name="sign_receiver2" id="sign_receiver2" maxlength="10"  readonly="readonly" >
+			             <input id='target_btn2' type="button" value="수신자 검색" onclick="receiverOpen2()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자3</span>
-	                   <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" maxlength="10" placeholder="수신자"  readonly="readonly">
-	                   <input type="hidden" name="sign_receiver3" id="sign_receiver3" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="수신자 검색" onclick="receiverOpen3()">
+	                   <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" maxlength="10" value='' readonly="readonly">
+	                   <input type="hidden" name="sign_receiver3" id="sign_receiver3" maxlength="10"  readonly="readonly" >
+			             <input id='target_btn3' type="button" value="수신자 검색" onclick="receiverOpen3()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자4</span>
-	                   <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" maxlength="10" placeholder="수신자"  readonly="readonly">
-	                   <input type="hidden" name="sign_receiver4" id="sign_receiver4" maxlength="10" placeholder="수신자"  readonly="readonly">
-			             <input type="button" value="수신자 검색" onclick="receiverOpen4()">
+	                   <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" maxlength="10"  readonly="readonly" >
+	                   <input type="hidden" name="sign_receiver4" id="sign_receiver4" maxlength="10"  readonly="readonly" >
+			             <input id='target_btn4'type="button"  value="수신자 검색" onclick="receiverOpen4()" disabled>
 		                <br>
                     </div>	  	  
 					<div style="border: 1px solid rgb(238, 238, 238);">
