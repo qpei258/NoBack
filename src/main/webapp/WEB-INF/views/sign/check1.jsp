@@ -43,7 +43,7 @@ function searchname(num, name) {
 <div class="centerdiv">
 <h2>[사원 검색]</h2>
 
-<form action="check" method="post" onSubmit="return formCheck();">
+<form action="check1" method="post" onSubmit="return formCheck();">
 	<h3 class="centerdiv" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
 			<input type="submit" value="검색" /></h3>
 </form>
