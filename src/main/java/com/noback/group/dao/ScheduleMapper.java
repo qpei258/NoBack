@@ -13,7 +13,7 @@ public interface ScheduleMapper {
 	public int updateSchedule(ScheduleVO sked);
 	
 	// 스케줄 삭제
-	public int deleteSchedule(ScheduleVO sked);
+	public int deleteSchedule(int schedule_num);
 	
 	// 스케줄 목록 가져오기
 	public ArrayList<ScheduleVO> listSchedule();

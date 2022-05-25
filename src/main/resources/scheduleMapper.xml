@@ -80,5 +80,26 @@
 			#{schedule_level}
 			)
 	</insert>
+
+	<!-- 스케줄 수정 -->
+	<update id="updateSchedule" parameterType="schedule">
+		update 
+			noback_schedule
+		set 
+			schedule_title = #{schedule_title}
+			, schedule_start = #{schedule_start}
+			, schedule_end = #{schedule_end} 
+			, schedule_memo= #{schedule_memo} 
+		where 
+			schedule_num = #{schedule_num}
+	</update>
 	
+	<!-- 스케줄 삭제 -->
+	<delete id="deleteSchedule" parameterType="int">
+		delete from
+			noback_schedule
+		where 
+			schedule_num = #{schedule_num} 
+	</delete>
+
 </mapper>

@@ -16,7 +16,8 @@ public class ScheduleDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
-		
+	
+	
 	// 스케줄 목록 가져오기
 	public ArrayList<ScheduleVO> listSchedule(){
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
@@ -63,11 +64,13 @@ public class ScheduleDAO {
 	}
 			
 	// 스케줄 삭제
-	public int deleteSchedule(ScheduleVO sked) {
+	public int deleteSchedule(int schedule_num) {
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
 		int result = 0;
-		result = mapper.deleteSchedule(sked);
+		result = mapper.deleteSchedule(schedule_num);
 			
 		return result;
 	}
+	
+	
 }
