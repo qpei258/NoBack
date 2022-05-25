@@ -79,7 +79,6 @@ public class MemberController {
 			//저장 성공한 경우 메인화면으로 이동
 			return "redirect:/";
 		}
-		
 
 		// 모든 사원리스트 출력
 		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
