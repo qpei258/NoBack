@@ -79,6 +79,24 @@ function receiverOpen() {
 						 <span class="input-group-text" >수신자1(보내는곳)</span>
 						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" size="30" value="${sign.sign_nreceiver1}" readonly="readonly">
 					</div>
+					<c:if test="${sessionScope.loginId == sign.sign_nreceiver2}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >수신자2(보내는곳)</span>
+						  <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" size="30" value="${sign.sign_nreceiver2}" readonly="readonly">
+					</div>
+					</c:if>
+					<c:if test="${sessionScope.loginId == sign.sign_nreceiver3}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >수신자3(보내는곳)</span>
+						  <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" size="30" value="${sign.sign_nreceiver3}" readonly="readonly">
+					</div>
+					</c:if>
+					<c:if test="${sessionScope.loginId == sign.sign_nreceiver4}">
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >수신자4(보내는곳)</span>
+						  <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" size="30" value="${sign.sign_nreceiver4}" readonly="readonly">
+					</div>
+					</c:if>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
@@ -87,6 +105,7 @@ function receiverOpen() {
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>
+					
 					<div style="border: 1px solid rgb(238, 238, 238);">
 					       <input type="radio" id="sign_ok" name="sign_ok" value='1'>승인
 					       <input type="radio" id="sign_ok" name="sign_ok" value='-1' checked="checked">반려                           
@@ -104,7 +123,7 @@ function receiverOpen() {
 </body>
 </html>
 
-<!-- <label for="sign_ok">승인</label>
+<!-- <label for="sign_ok">승인</label> <c:if test="${counter == navi.currentPage}"></b></c:if>
                            <input type = "checkbox" id="sign_ok" name="sign_ok" value="1">
                            <label for="sign_ok">반려</label>
                            <input type = "checkbox" id="sign_ok" name="sign_ok" value="-1"> -->
