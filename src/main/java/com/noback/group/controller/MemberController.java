@@ -2,6 +2,7 @@ package com.noback.group.controller;
 
 import java.util.ArrayList;
 
+
 import javax.servlet.http.HttpSession;
 
 
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.noback.group.dao.MemberDAO;
 import com.noback.group.vo.MemberVO;
+
+
 
 
 
@@ -91,7 +94,31 @@ public class MemberController {
 			//모델에 목록 저장하고 뷰로 이동
 			model.addAttribute("memberlist", memberlist);
 			
-			return "memberlist";
+			return "manager/memberlist";
+		}
+		
+		// 사원 수정 페이지로 이동
+		@RequestMapping(value = "memberlistupdate", method = RequestMethod.GET)
+		public String memberlistupdate(HttpSession session, Model model) {
+			
+			String employee_num = (String) session.getAttribute("employee_num");
+			MemberVO member = dao.getMemberVO(employee_num);
+			model.addAttribute("member", member);
+			
+			return "manager/memberlistupdate";
+		}
+		
+		// 사원정보 수정
+		@RequestMapping(value = "memberlistupdate", method = RequestMethod.POST)
+		public String memberlistupdate(HttpSession session, MemberVO member) {
+			
+			//member객체를 dao로 보내서 테이블의 정보 수정
+			int res = dao.memberlistupdate(member);
+			
+			//세션정보도 수정
+			session.setAttribute("employee_num", member.getEmployee_num());
+			
+			return "manager/memberlist";
 		}
 		
 	

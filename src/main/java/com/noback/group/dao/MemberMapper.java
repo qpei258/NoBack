@@ -17,6 +17,8 @@ public interface MemberMapper {
 	ArrayList<MemberVO> memberlist();
 	// 이름으로 회원검색
 	MemberVO getMemberVO1(String employee_name);
+	// 사원정보 수정
+	int memberlistupdate(MemberVO member);
 	
 
 }

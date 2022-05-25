@@ -49,5 +49,23 @@
 	<select id="getMemberVO1" parameterType="string" resultType="MemberVO">
 		select * from noback_member where employee_name = #{employee_name}
 	</select>
-
+	
+	<!-- 사원 수정 -->
+	<update id="memberlistupdate" parameterType="member">
+		update
+			noback_member
+		set
+			employee_name = #{employee_name}
+			, employee_ssn = #{employee_ssn}
+			, employee_address = #{employee_address}
+			, employee_dep = #{employee_dep}
+			, employee_pos = #{employee_pos}
+			, employee_email = #{employee_email}
+			, employee_level = #{employee_level}
+			, employee_phone = #{employee_phone}
+			, employee_picture = #{employee_picture}	
+		where	
+			employee_num = #{employee_num}
+			
+	</update>
 </mapper>

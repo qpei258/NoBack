@@ -14,6 +14,8 @@ import com.noback.group.vo.MemberVO;
 
 
 
+
+
 /**
  * 회원 관련 DAO
  * @param <employee_num>
@@ -67,11 +69,13 @@ public class MemberDAO<employee_num> {
 		return member;
 	}
 	
-	
-
-	
-
-	
+	// 사원 수정
+	public int memberlistupdate(MemberVO member) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		int result = 0;
+		result = mapper.memberlistupdate(member);
+		return result;
+	}
 	
 
 }
