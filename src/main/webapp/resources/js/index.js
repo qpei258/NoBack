@@ -43,8 +43,11 @@
     const condition = i >= firstDateIndex && i < lastDateIndex + 1
                       ? 'this'
                       : 'other';
-    dates[i] = `<div class="date"><a data-bs-toggle="modal" data-bs-target="#addModal" >
-    <span class=${condition}>${date}</span></a></div>`;
+    dates[i] = `<div class="date" onclick = "f_selectDate(${viewYear}, ${viewMonth+1}, ${date}">
+    <a data-bs-toggle="modal" data-bs-target="#addModal">
+    <span class=${condition} >${date}</span><br>
+    <span>나는${schedule.schedule_title}</span>
+    </a></div>`;
   });
 
   document.querySelector('.dates').innerHTML = dates.join('');
@@ -81,26 +84,46 @@ const goToday = () => {
 
 /* 날짜 클릭시 아래 함수 실행됨 */
 // 달력에서 선택한 날짜를 기본값으로 세팅 
-	function startDate(obj) {
+	function selectDate(year, month, day) {
 		
-		let startdate = new Date();
-		
-		let yyyy = date.setYear();
-		let mm = date.setMonth();
-		let dd = date.setDate();
-		
-		/**
-		if(mm < 10){
-			mm = '0' + mm.toString();
-		}
-	 	if(dd < 10) {
-	 		dd = '0' + dd.toString();
-	 	}
-		*/
-		
-		startdate = yyyy + '-' + mm + '-' + dd;
-		
-		document.getElementById('add_start').value = startdate;
+		$("#add_start").val(year+"-"+month+"-"+date);
 		
 	}
+
+
+function fn_selectDate(date){
+	
+	var year = CDate.getFullYear();
+	var month = CDate.getMonth() + 1;
+	var date_txt = "";
+	if(CDate.getMonth + 1 < 10){
+		month = "0" + (CDate.getMonth() + 1);
+	}
+	if(date < 10){
+		date_txt = "0" + date;
+	}
+	
+	if(selectCk == 0){
+		$(".date").css("background-color", "");
+		$(".date").css("color", "");
+		$("#date_"+date).css("background-color", "red");
+		$("#date_"+date).css("color", "white");
+		
+		$("#period_1").val(year+"-"+month+"-"+date);
+		$("#period_2").val("");
+		selectCk = date;
+	}else{
+		$("#date_"+date).css("background-color", "red");
+		$("#date_"+date).css("color", "white");		
+		for(var i = selectCk + 1 ; i < date ; i++){
+			$("#date_"+i).css("background-color", "#FFDDDD");
+		}
+		
+		$("#period_2").val(year+"-"+month+"-"+date);
+		selectCk = 0;
+	}
+	
+}
+	
+
 

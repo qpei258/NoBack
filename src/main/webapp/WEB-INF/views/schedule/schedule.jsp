@@ -78,15 +78,28 @@
 		font-size: 15px;
 	}
 	
-	strong.strong {
-		font-size :20px;
-		color : blue;
-	}
+	
 	
 	.year-month {
 		text-align: center;
 	}
 	
+	td.button {
+		text-align: center;
+	}
+	
+	strong.strong {
+		float: top;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size :20px;
+		color : blue;
+	}
+	
+	dt {
+ 		float: left;
+  		margin-right: 15px;
+	}
 </style>
 </head>
 <body>
@@ -106,7 +119,7 @@
 			<!-- 달력 박스 -->
         	<div class="box">   	
         		<!-- 달력 -->	
-        		<div class="calendar" style="width: 1200px; length:2000px;">
+        		<div class="calendar" style="width: 1200px; ">
                     <div class="header">
                     	
                     	<button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
@@ -114,7 +127,49 @@
                         <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
                         <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
                        
-                       
+			<!-- 모달 버튼 (일정 등록)  -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+  			일정 추가
+			</button>
+
+			<!-- 모달 처리 (일정 등록) -->
+			<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+    				<div class="modal-content">
+      					<div class="modal-header">
+        					<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
+        						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+      					</div>
+      				
+      					<form action="add" method="post" onsubmit ="return validation()">
+      				
+      					<!-- 등록 내용 입력 -->
+      					<div class="modal-body">
+      					<label class="schedule_title">일정 제목</label>
+  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅" >
+					
+						<label class="schedule_start">시작 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
+  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" >
+  							
+  						
+  						<label class="schedule_end">종료 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
+  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22">
+  					
+  						<label class="schedule_memo">내용</label>
+  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
+      					</div>
+      				
+      				<!-- 등록 완료 버튼 -->
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        				<button type="submit" class="btn btn-primary">추가</button>
+      				</div>
+      				</form>
+      				
+    				</div>
+  				</div>
+			</div> <!-- 등록 모달 끝  -->
+       	                	
                         <!--  
                         <div class="nav">
                             <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
@@ -136,6 +191,7 @@
                             <div class="day">토</div>
                         </div>
                         <div class="dates"></div>
+             
                     </div>
                 </div>
         	</div> <!-- 달력 box 끝 -->
@@ -155,119 +211,86 @@
 				<thead  class="table-light">
 					<tr>
 						<th scope="col">일시</th>
-						<th scope="col">행사일정</th>
+						<th scope="col">일정 상세</th>
+						<th scope="col">비고</th>
 					</tr>
 				</thead>
 				<tbody id="detail_schedule" style="padding:20px;">
-					<c:forEach var="schedule" items="${MonthScheduleList}">
-					<tr onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
+					<c:forEach var="schedule" items="${scheduleList}">
+					<tr>
 						<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
 						<td class="cont">
-							<strong class="strong">${schedule.schedule_title}</strong>
+							<strong class="strong" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
 							<dl>
-								<dt>일시</dt>
-								<dd>${schedule.schedule_start} ~ ${schedule.schedule_end}</dd>
-								<dt>장소</dt>
-								<dd>${schedule.schedule_memo}</dd>
+								<dt>일시</dt><dd>${schedule.schedule_start} ~ ${schedule.schedule_end}</dd>
+								<dt>내용</dt><dd>${schedule.schedule_memo}</dd>
+								
 							</dl>
 						</td>
+						<td class="button"><a>
+							<!-- 모달 버튼 (일정 수정) -->
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">
+  								일정 수정
+							</button>
+							<!-- 모달 처리  (일정 수정	) -->
+							<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+    								<div class="modal-content">
+      									<div class="modal-header">
+        									<h5 class="modal-title" id="updateModalLabel">일정 수정</h5>
+        										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+      									</div>
+      				
+      									<!-- 수정 내용 입력 -->
+      									<form action="update" method="post" onsubmit ="return validation2()">
+      									
+      									<div class="modal-body">
+      									<input type="text" value="${schedule.schedule_num}" name="schedule_num">
+      						
+      									
+      									<label class="schedule_title">일정 제목</label>
+  										<input type="text" class="form-control border-primary" name="schedule_title" id="update_title" placeholder="ex) 미팅"
+  											value ="${schedule.schedule_title}">
+					
+										<label class="schedule_start">시작 날짜</label>
+  										<input type="text" class="form-control border-primary" name="schedule_start" id="update_start" placeholder="ex) 2022-11-22" 
+  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_start}">
+  					
+  										<label class="schedule_end">종료 날짜</label>
+  										<input type="text" class="form-control border-primary" name="schedule_end" id="update_end" placeholder="ex) 2022-11-22"
+  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_end}">
+  					
+  										<label class="schedule_memo">내용</label>
+  										<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="update_memo" placeholder="ex) 무한상사"
+  											value ="${schedule.schedule_memo}"></textarea>
+      									</div>
+      						
+      									<!-- 수정 완료 버튼 -->
+      									<div class="modal-footer">
+        									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+     					   				<button type="submit" class="btn btn-primary">수정</button>
+     					   				<button type="button" class="btn btn-danger">삭제</button>
+    					  				</div>
+      									</form>
+    								</div>
+  								</div>
+							</div> <!-- 수정 모달 끝  -->
+       						
+       						<!-- 삭제 폼 -->
+      						<form action="delete" method="post"> 
+      							<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
+								<!-- 모달 버튼 (일정 삭제) -->
+								<button type="submit" class="btn btn-primary" data-bs-target="#deleteModal" >
+  									일정 삭제
+								</button>
+							</form>
+						</a></td>
 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>
         	</form>	<!-- 이번달 현황 폼 끝 -->
         		
-        		
-        		
-        		
-      		<!-- 모달 버튼 (일정 등록)  -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-  			일정 추가
-			</button>
-
-			<!-- 모달 처리 (일정 등록) -->
-			<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-    				<div class="modal-content">
-      					<div class="modal-header">
-        					<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
-        						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-      					</div>
-      				
-      					<form action="add" method="post" onsubmit ="return validation()">
-      				
-      					<!-- 등록 내용 입력 -->
-      					<div class="modal-body">
-      					<label class="schedule_title">일정 제목</label>
-  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅" >
-					
-						<label class="schedule_start">시작 날짜</label>
-  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" 
-  							onclick="javascript:f_datepicker(this);" >
-  						
-  						<label class="schedule_end">종료 날짜</label>
-  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22" 
-  							onclick="javascript:f_datepicker(this);">
-  					
-  						<label class="schedule_memo">메모</label>
-  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
-      					</div>
-      				
-      				<!-- 등록 완료 버튼 -->
-      				<div class="modal-footer">
-        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="submit" class="btn btn-primary">추가</button>
-      				</div>
-      				</form>
-      				
-    			</div>
-  			</div>
-		</div> <!-- 등록 모달 끝  -->
-		
-		
-		<!-- 모달 버튼 (일정 수정/삭제) -->
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">
-  			일정 수정
-		</button>
-
-		<!-- 모달 처리  (일정 수정/삭제) -->
-		<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<h5 class="modal-title" id="updateModalLabel">일정 수정</h5>
-        					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-      				</div>
-      				
-      				<!-- 수정 내용 입력 -->
-      				<form action="update" method="post" onsubmit ="return validation2()">
-      				
-      				<div class="modal-body">
-      				<label class="schedule_title">일정 제목</label>
-  					<input type="text" class="form-control border-primary" name="update_title" id="update_title" placeholder="ex) 미팅">
-					
-					<label class="schedule_start">시작 날짜</label>
-  					<input type="text" class="form-control border-primary" name="update_start" id="update_start" placeholder="ex) 2022-11-22" >
-  					
-  					<label class="schedule_end">종료 날짜</label>
-  					<input type="text" class="form-control border-primary" name="update_end" id="update_end" placeholder="ex) 2022-11-22">
-  					
-  					<label class="schedule_memo">메모</label>
-  					<textarea rows="4" cols="50" class="form-control border-primary" name="update_memo" id="update_memo" placeholder="ex) 무한상사"></textarea>
-      				</div>
-      				
-      				<!-- 수정 완료 버튼 -->
-      				<div class="modal-footer">
-        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="submit" class="btn btn-primary">수정</button>
-        				<button type="button" class="btn btn-danger">삭제</button>
-      				</div>
-      				</form>
-    			</div>
-  			</div>
-		</div> <!-- 수정 모달 끝  -->
-        
-        	
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->
 </body>
@@ -300,9 +323,10 @@ function validation() {
 	} else if (end.value == ''){
 		alert('종료날짜를 입력하세요.');
 		return false;
-		
-	// 종료날짜를 시작날짜 전으로 선택할 수 없는 유효성처리 추가하자  //
-	
+	// 종료날짜를 시작날짜 전으로 선택할 수 없음 //
+	} else if (sta.value > end.valueㄴ) {
+		alert('종료날짜를 시작날짜 이후로 입력하세요.')
+		return false;
 	} else if (memo.value == ''){
 		alert('내용을 입력하세요.');
 		return false;
@@ -339,7 +363,7 @@ function validation2() {
 		return false;
 	}		
 	
-	alert('등록 완료되었습니다.');
+	alert('수정 완료되었습니다.');
 	location.href = 'schedule/schedule';
 	return true;
 	
@@ -355,7 +379,7 @@ function validation2() {
 
 	// 날짜 선택  css 함수
 	$( function() {
-	    $( "#add_start, #add_end").datepicker({ 
+	    $( "#add_start, #add_end, #update_start, #update_end").datepicker({ 
 	        dateFormat: "yy-mm-dd",
 	        closeText: "닫기",
 			currentText: "오늘",
@@ -373,9 +397,6 @@ function validation2() {
 	    });
 	});
 	
-	// 현재 날짜 기본값 세팅
-	document.getElementById('add_start').value = new Date().toISOString().substring(0, 10);
-	document.getElementById('add_end').value = new Date().toISOString().substring(0, 10);
 	
 	
 </script>
