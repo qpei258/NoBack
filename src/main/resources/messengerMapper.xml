@@ -4,44 +4,70 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 게시판 정보 처리 SQL -->
-<mapper namespace="com.noback.group.dao.BoardMapper">
-	<select id="getTotal" parameterType="string" resultType="int">
+<mapper namespace="com.noback.group.dao.MessengerMapper">
+	<select id="getTotalmessenger" parameterType="string" resultType="int">
 		select count(*)
-		from noback_board
+		from noback_messenger
 		<if test="_parameter != null">
 			where
-			upper(board_title) like '%' || upper(#{search}) || '%'
+			upper(messenger_content) like '%' || upper(#{search}) || '%'
 		</if>
 	</select>
 	
-	<select id="listBoard" parameterType="string" resultType="board">
-		select
-			b.board_num
-			, b.board_title
-			, b.board_content
-			, to_char(b.board_date, 'YY/MM/DD') as board_date
-			, m.employee_name as board_writer_name
-		from 
-			noback_board b, noback_member m
-		where b.board_writer = m.employee_num
+	<select id="getTotalmember" parameterType="string" resultType="int">
+		select count(*)
+		from noback_member
 		<if test="_parameter != null">
-			and upper(b.board_title) like '%' || upper(#{search}) || '%'
+			where
+			upper(employee_name) like '%' || upper(#{search}) || '%'
+		</if>
+	</select>
+	
+	<select id="listMessenger" parameterType="string" resultType="messenger">
+		select
+			m.employee_name as messenger_writer_name
+			, s.messenger_content
+			, to_char(s.messenger_date, 'YY/MM/DD') as messenger_date
+			
+		from 
+			noback_messenger s, noback_member m
+		where s.employee_num = m.employee_num <!--나중에 여기에서 세견 받아서 개인 메세지로 처리한다 우선은 여기에 전체 출력으로 한다 -->
+		<if test="_parameter != null">
+			and upper(s.messenger_content) like '%' || upper(#{search}) || '%'
 		</if>
 		order by 
-			b.board_num desc
+			s.messenger_date desc
 	</select>
 	
-	<select id="board" parameterType="string" resultType="board">
+	<select id="listMember" parameterType="string" resultType="member">
 		select
-			b.board_num
-			, b.board_title
-			, b.board_content
-			, to_char(b.board_date, 'YY/MM/DD HH24:MI:SS') as board_date
-			, b.board_writer
-			, m.employee_name as board_writer_name
+			 employee_name
+			, employee_dep
+			, employee_pos
+			, employee_email
+			
 		from 
-			noback_board b, noback_member m
-		where b.board_writer = m.employee_num and board_num = #{num}
+			noback_member
+		where <!--나중에 여기에서 세견 받아서 개인 메세지로 처리한다 우선은 여기에 전체 출력으로 한다 -->
+		<if test="_parameter != null">
+			 upper(employee_name) like '%' || upper(#{search}) || '%'
+		</if>
+		order by 
+			employee_name desc
+	</select>
+	
+	
+	
+	<select id="messenger" parameterType="string" resultType="messenger">
+		select
+			m.employee_name as messenger_writer_name
+			, s.messenger_content
+			, to_char(s.messenger_date, 'YY/MM/DD') as messenger_date
+			, s.messenger_reciever<!--차후 여기도 이름으로 바꿔주기 -->
+			
+		from 
+			noback_messenger s, noback_member m
+		where s.employee_num = m.employee_num<!--나중에 여기에서 세견 받아서 개인 메세지로 처리한다 우선은 여기에 전체 출력으로 한다 -->
 	</select>
 	
 	<insert id="boardWrite" parameterType="board">

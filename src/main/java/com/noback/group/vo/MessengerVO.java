@@ -44,7 +44,7 @@ public class MessengerVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [employee_num=" + employee_num + ", messenger_content=" + messenger_content + ", messenger_date=" + messenger_date
+		return "MessengerVO [employee_num=" + employee_num + ", messenger_content=" + messenger_content + ", messenger_date=" + messenger_date
 				+ ", messenger_receiver=" +"messenger_receiver"+ "]";
 	}
 	

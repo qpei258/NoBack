@@ -11,6 +11,7 @@
 		<typeAlias type="com.noback.group.vo.BoardVO" alias="board" />
 		<typeAlias type="com.noback.group.vo.ReceiverVO" alias="receiver" />
 		<typeAlias type="com.noback.group.vo.NoticeVO" alias="notice" />
+		<typeAlias type="com.noback.group.vo.MessengerVO" alias="messenger" />
 	</typeAliases>
 	
 	<mappers>
@@ -20,6 +21,7 @@
         <mapper resource="scheduleMapper.xml" />
         <mapper resource="mypageMapper.xml" />
         <mapper resource="noticeMapper.xml" />
+         <mapper resource="messengerMapper.xml" />
 	</mappers>
 	
 </configuration>
