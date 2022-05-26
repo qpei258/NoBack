@@ -66,7 +66,7 @@
 			 </if>
 		)
 </insert>
-<!-- E004 -->
+<!-- 결제 올린 서류리스트 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
 	     s.sign_num
@@ -89,17 +89,35 @@
 		s.sign_cdate desc
 </select>
 
-<!-- E004 -->
+<!-- 결제 대기중인 서류리스트 -->
 <select id="listSign2" parameterType="string" resultType="sign">
 	select
 	     s.sign_num
-		,to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_nsender
+		, s.sign_receiver1
+		, s.sign_receiver2
+		, s.sign_receiver3
+		, s.sign_receiver4
+		, m.employee_num
 	from 
 		noback_sign s, noback_member m
-	where 
-	    (s.sign_receiver1 = m.employee_num) or (s.sign_receiver2 = m.employee_num) or (s.sign_receiver3 = m.employee_num) or (s.sign_receiver4 = m.employee_num)
+	where
+	 <choose>
+	 <when test="m.employee_num == s.sign_receiver1">
+        s.sign_receiver1 = m.employee_num
+    </when>
+    <when test="m.employee_num == s.sign_receiver2">
+      s.sign_receiver2 = m.employee_num
+    </when>
+	 <when test="m.employee_num == s.sign_receiver3">
+       s.sign_receiver3 = m.employee_num
+    </when>
+     <when test="m.employee_num == s.sign_receiver4">
+       s.sign_receiver4 = m.employee_num
+    </when>
+	 </choose>
 	order by 
 		s.sign_cdate desc
 </select>
