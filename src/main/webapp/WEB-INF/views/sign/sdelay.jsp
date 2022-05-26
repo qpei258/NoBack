@@ -72,10 +72,8 @@
 	                      <td class="center">${sign.sign_cdate}</td>
 	                      <td>
 		                  <a href="scomplete?sign_num=${sign.sign_num}">${sign.sign_title}</a>
-	                      </td>
-	                     
+	                      </td>  
 	                     <td class="center">${sign.sign_nsender}</td>
-  
                       </tr>
                     </c:forEach>  
 				  </tbody>
