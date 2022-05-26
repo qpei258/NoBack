@@ -73,6 +73,8 @@
 		                    <a href="sconfirm?sign_num=${sign.sign_num}">${sign.sign_title}</a>
 	                        </td>
 	                        <td class="center">${sign.sign_nsender}</td>
+	                     <!-- 수신자 1명일떄 -->
+	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 == null && sign.sign_receiver3 == null && sign.sign_receiver4 == null}">
 	                     <c:if test="${sign.sign_ok1 == 0}">
 	                     <td class="center">대기</td>
 	                     </c:if> 
@@ -82,6 +84,44 @@
 	                     <c:if test="${sign.sign_ok1 == -1}">
 	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
 	                     </c:if>  
+	                     </c:if>
+	                     <!-- 수신자 2명일떄 -->
+	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 == null && sign.sign_receiver4 == null}">
+	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1}">
+	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     </c:if>  
+	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0) }">
+	                     <td class="center">대기</td>
+	                     </c:if> 
+	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1}">
+	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     </c:if>
+	                     </c:if>
+	                      <!-- 수신자 3명일떄 -->
+	                      <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 != null && sign.sign_receiver4 == null}">
+	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1 || sign.sign_ok3 == -1}">
+	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     </c:if>  
+	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1 && sign.sign_ok3 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0 || sign.sign_ok3 == 0) }">
+	                     <td class="center">대기</td>
+	                     </c:if> 
+	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1  && sign.sign_ok3 == 1 }">
+	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     </c:if>
+	                     </c:if>
+	                      <!-- 수신자  4명일떄 -->
+	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 != null && sign.sign_receiver4 != null}">
+	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1 || sign.sign_ok3 == -1 || sign.sign_ok4 == -1}">
+	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     </c:if>  
+	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1 && sign.sign_ok3 != -1 && sign.sign_ok4 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0 || sign.sign_ok3 == 0 || sign.sign_ok4 == 0) }">
+	                     <td class="center">대기</td>
+	                     </c:if> 
+	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1  && sign.sign_ok3 == 1 && sign.sign_ok4 == 1}">
+	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     </c:if>
+	                     </c:if>
+	                              
                          </tr>
                    </c:forEach> 
 				  </tbody>

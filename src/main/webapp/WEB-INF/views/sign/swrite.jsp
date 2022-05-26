@@ -44,16 +44,11 @@ function formCheck() {
 	let sign_nsender = document.getElementById('sign_nsender');
 	let sign_receiver = document.getElementById('sign_receiver1'); 
 	
-	alert(sign_receiver1.value);
 	if (sign_receiver1.value == '') {
 		alert('수신자를 입력하세요.');
 		return false;
 	}
-	alert(sign_receiver2.value);
-	if (sign_receiver2.value == '') {
-		alert('수신자2를 입력하세요.');
-		return false;
-	}
+
 	if (sign_title.value.length < 3 || sign_title .value.length > 10) {
 		alert('제목은 3~10자로 입력하세요.');
 		return false;

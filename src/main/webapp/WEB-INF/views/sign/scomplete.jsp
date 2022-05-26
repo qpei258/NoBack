@@ -155,26 +155,26 @@ function receiverOpen() {
 					</div>
 					<c:if test="${sessionScope.LoginId == sign.sign_receiver1}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1'>승인
-					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려                           
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1'>승인1
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려1                      
 					</div>
 					</c:if>
 					<c:if test="${sessionScope.LoginId == sign.sign_receiver2}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인
-					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려                           
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인2
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려2                        
 					</div>
 					</c:if>
 					<c:if test="${sessionScope.LoginId == sign.sign_receiver3}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>승인
-					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려                           
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>승인3
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려3                           
 					</div>
 					</c:if>
 					<c:if test="${sessionScope.LoginId == sign.sign_receiver4}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>승인
-					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려                           
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>승인4
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려4                           
 					</div>
 					</c:if>
 					<div>
