@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -91,19 +93,24 @@ public class SignController {
 	public String sdelay(
 			@RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="searchText", defaultValue="") String searchText
-			, Model model,SignVO sign) {
+			, Model model,SignVO sign, HttpSession session) {
 		logger.info("{}",sign);
-		
+		String searchId = (String) session.getAttribute("LoginId");
 		logger.debug("page: {}, searchText: {}", page, searchText);
 		
 		int total = dao.getTotal(searchText);//전체 글 개수
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchText", searchText);
+		map.put("LoginId",searchId);
 		
 		//페이지 계산을 위한 객체 생성
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
 		
 		//검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
-		ArrayList<SignVO> listSign2 = dao.listSign2(searchText, navi.getStartRecord(), navi.getCountPerPage());	
+		ArrayList<SignVO> listSign2 = dao.listSign2(map, navi.getStartRecord(), navi.getCountPerPage());	
 		
+
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
 		model.addAttribute("listSign2", listSign2);
 	    model.addAttribute("navi", navi);

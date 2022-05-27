@@ -65,10 +65,10 @@
         				</tr>
 				  	</thead>
 				  	<tbody>
-						  <c:forEach var="board" items="${boardlist }">
-						  	<tr style="background-color: white;" onclick="location.href='board?num=${board.board_num}'">
-						  		<td>${board.board_writer_name}</td>
-						  		<td>${board.board_title }</td>
+						  <c:forEach var="messenger" items="${messengerlist }">
+						  	<tr style="background-color: white;" onclick="location.href='board?num=${messenger.messenger_num}'">
+						  		<td>${messenger.board_t }</td>
+						  		<td>${messenger.messenger_content}</td>
 						  		<td>${board.board_date }</td>
 						  	</tr>
 						  </c:forEach>

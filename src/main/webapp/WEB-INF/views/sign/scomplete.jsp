@@ -42,11 +42,26 @@ function receiverOpen() {
     	a:hover {
 			color: rgb(20, 20, 20);
 		}
+		/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
 	</style>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
+		<div id="content">
+          <nav class="topmenu">
+				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+		</nav>
         <div id="content">
         	<div id="sign">
         	<h1>[결제 서류]</h1>
@@ -149,37 +164,70 @@ function receiverOpen() {
 						 <span class="input-group-text" >첨부파일</span>
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
+			
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver1}">
+					<c:if test="${sign.sign_ok1 == 0}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1'>승인1
+					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려1
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
-					</div>
-					<c:if test="${sessionScope.LoginId == sign.sign_receiver1}">
-					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1'>승인
-					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려                           
-					</div>
-					</c:if>
-					<c:if test="${sessionScope.LoginId == sign.sign_receiver2}">
-					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인
-					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려                           
-					</div>
-					</c:if>
-					<c:if test="${sessionScope.LoginId == sign.sign_receiver3}">
-					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>승인
-					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려                           
-					</div>
-					</c:if>
-					<c:if test="${sessionScope.LoginId == sign.sign_receiver4}">
-					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>승인
-					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려                           
-					</div>
-					</c:if>
+					</div>       
 					<div>
 					   <input type="submit" value="처리완료" />
+					</div>                           
+					</div>                             
+					</c:if>
+					</c:if>
+					
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver2}">
+					<c:if test="${sign.sign_ok2 == 0}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인2
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려2
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >메모</span>
+						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+					</div>       
+					<div>
+					   <input type="submit" value="처리완료" />
+					</div>                           
+					</div>                               
+					</c:if>
+					</c:if>
+					
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver3}">
+					<c:if test="${sign.sign_ok3 == 0}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>승인3
+					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려3
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >메모</span>
+						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+					</div>       
+					<div>
+					   <input type="submit" value="처리완료" />
+					</div>                           
+					</div>           
+					</c:if>
+					</c:if>
+					
+					<c:if test="${sessionScope.LoginId == sign.sign_receiver4}">
+					<c:if test="${sign.sign_ok4 == 0}">
+					<div style="border: 1px solid rgb(238, 238, 238);">
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>승인4
+					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려4
+					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
+						 <span class="input-group-text" >메모</span>
+						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+					</div>       
+					<div>
+					   <input type="submit" value="처리완료" />
+					</div>                           
 					</div>
+					</c:if>
+					</c:if>
 					<div>
 					   <input type ="hidden"  name="sign_num" id="sign_num" value="${sign.sign_num}"> 
 					</div>

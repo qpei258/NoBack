@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>'  />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<style type="text/css">
+	<style type="text/css">ㅜ                                  
 		#sign {
 			margin:10px auto;
     		width: 1258px;
@@ -27,11 +27,26 @@
     	a:hover {
 			color: rgb(20, 20, 20);
 		}
+		/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
 	</style>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
+		<div id="content">
+          <nav class="topmenu">
+				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+		</nav>
         <div id="content">
         	<div id="sign">
         	<h1>[결제 서류]</h1>
@@ -162,6 +177,7 @@
 				</form>
         	</div>
         </div>
+    </div>
     </div>
 </body>
 </html>

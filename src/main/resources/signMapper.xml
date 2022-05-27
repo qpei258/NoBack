@@ -6,7 +6,7 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.noback.group.dao.SignMapper">
 
-<!-- 글 저장 -->
+<!-- 결제 서류 작성 -->
 <insert id="insertSign" parameterType="sign">
 	insert into 
 		noback_sign
@@ -66,14 +66,21 @@
 			 </if>
 		)
 </insert>
-<!-- E004 -->
+<!-- 결제 올린 서류리스트 -->
 <select id="listSign" parameterType="string" resultType="sign">
 	select
 	     s.sign_num
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
-		, s.sign_nsender	
+		, s.sign_nsender
+		, sign_receiver1
+		, sign_receiver2
+		, sign_receiver3
+		, sign_receiver4
 		, s.sign_ok1
+		, s.sign_ok2
+		, s.sign_ok3
+		, s.sign_ok4
 	from 
 		noback_sign s, noback_member m
 	where 
@@ -82,22 +89,26 @@
 		s.sign_cdate desc
 </select>
 
-<!-- E004 -->
-<select id="listSign2" parameterType="string" resultType="sign">
+<!-- 결제 대기중인 서류리스트 -->
+<select id="listSign2" parameterType="map" resultType="sign">
 	select
-	     s.sign_num
-		,to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+	      s.sign_num
+		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_nsender
+		, s.sign_receiver1
 	from 
-		noback_sign s, noback_member m
-	where 
-	    s.sign_receiver1 = m.employee_num
+		noback_sign s
+    where
+    s.sign_receiver1 = #{LoginId}
+    OR s.sign_receiver2 = #{LoginId}
+    OR s.sign_receiver3 = #{LoginId}
+    OR s.sign_receiver4 = #{LoginId}
 	order by 
 		s.sign_cdate desc
 </select>
 		
-<!-- 결제서류 읽기 -->
+<!-- (처리해야할)결제서류 읽기 -->
 <select id="getSign" parameterType="int" resultType="sign">
 	select 
 		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
@@ -113,6 +124,10 @@
 		, sign_nreceiver2
 		, sign_receiver3
 		, sign_receiver4
+		, sign_ok1
+		, sign_ok2
+		, sign_ok3
+		, sign_ok4
 		, sign_nreceiver3
 		, sign_nreceiver4
 		, sign_originfile
@@ -144,6 +159,9 @@
 		, sign_originfile
 		, sign_savedfile
 		, sign_ok1
+		, sign_ok2
+		, sign_ok3
+		, sign_ok4
 		, sign_memo
 	from 
 		noback_sign 
@@ -152,7 +170,7 @@
 </select>
 
 
-<!-- 글개수 -->
+<!-- 글개수 조회용-->
 <select id="getTotal" parameterType="string" resultType="int">
 	select
 		count(*)
@@ -160,7 +178,7 @@
 		noback_sign
 </select>
 
-<!-- 회원 정보 검색 -->
+<!-- 회원 정보 검색(결제문서 불러올떄 쓰는거) -->
 <select id="getMember" parameterType="string" resultType="member">
 	select
 	employee_num
@@ -171,6 +189,7 @@
 	where employee_name = #{employee_name}
 </select>
 
+<!-- 회원 정보 검색(수신자 찾을떄 쓰는거) -->
 <select id="member" parameterType="string" resultType="member">
 		select
 		      employee_num
@@ -188,18 +207,10 @@
 		noback_sign
 	set
 	       sign_memo = #{sign_memo} 
-	      <if test=" sign_ok1 != 1 and  sign_ok1 != -1">
 	      ,sign_ok1 = #{sign_ok1}
-	      </if>
-	       <if test=" sign_ok2 != 1 and  sign_ok2 != -1">
 	      ,sign_ok2 = #{sign_ok2}
-	      </if>
-	       <if test=" sign_ok3 != 1 and  sign_ok3 != -1">
 	      ,sign_ok3 = #{sign_ok3}
-	      </if>
-	       <if test=" sign_ok4 != 1 and  sign_ok4 != -1">
 	      ,sign_ok4 = #{sign_ok4}
-	      </if>
 	      where
 		sign_num = #{sign_num}
 </update>
