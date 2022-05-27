@@ -1,6 +1,7 @@
 package com.noback.group.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -30,13 +31,14 @@ public class SignDAO {
 		ArrayList<SignVO> result = mapper.listSign(searchText, rb);
 		return result;
 		}
-	public ArrayList<SignVO> listSign2(String searchText, int startRecord, int countPerPage) {
+	
+	public ArrayList<SignVO> listSign2(Map<String, String> map, int startRecord, int countPerPage) {
 		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
 		//전체 검색 결과 중 읽을 시작위치와 개수
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
 			
 		//검색어와 읽을 범위를 전달
-		ArrayList<SignVO> result = mapper.listSign2(searchText, rb);
+		ArrayList<SignVO> result = mapper.listSign2(map, rb);
 		return result;
 	}
 		

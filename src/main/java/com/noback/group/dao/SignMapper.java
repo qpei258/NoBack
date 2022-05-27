@@ -1,6 +1,7 @@
 package com.noback.group.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -30,7 +31,7 @@ public interface SignMapper {
 
 	public int complete(SignVO sign);
 
-	public ArrayList<SignVO> listSign2(String searchText, RowBounds rb);
+	public ArrayList<SignVO> listSign2(Map<String, String> map, RowBounds rb);
 
 
 

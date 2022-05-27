@@ -90,18 +90,20 @@
 </select>
 
 <!-- 결제 대기중인 서류리스트 -->
-<select id="listSign2" parameterType="string" resultType="sign">
+<select id="listSign2" parameterType="map" resultType="sign">
 	select
 	      s.sign_num
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_nsender
 		, s.sign_receiver1
-		, m.employee_num
 	from 
-		noback_sign s, noback_member m
+		noback_sign s
     where
-    (s.sign_receiver1 = m.employee_num)OR(s.sign_receiver2 = m.employee_num)OR(s.sign_receiver3 = m.employee_num)OR(s.sign_receiver4 = m.employee_num)
+    s.sign_receiver1 = #{LoginId}
+    OR s.sign_receiver2 = #{LoginId}
+    OR s.sign_receiver3 = #{LoginId}
+    OR s.sign_receiver4 = #{LoginId}
 	order by 
 		s.sign_cdate desc
 </select>
