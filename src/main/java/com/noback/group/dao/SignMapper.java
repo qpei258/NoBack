@@ -19,7 +19,7 @@ public interface SignMapper {
 	
 	public int insertSign(SignVO sign); //결제 서류 작성
 	
-	public ArrayList<SignVO> listSign(String searchText, RowBounds rb);//결제 올린 서류리스트 
+	public ArrayList<SignVO> listSign(Map<String, String> map, RowBounds rb);//결제 올린 서류리스트 
 
 	public int getTotal(String searchText);//글개수 조회용
 

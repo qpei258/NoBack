@@ -22,13 +22,13 @@ public class SignDAO {
 	SqlSession sqlSession;
 	
 	//결제 올린 서류리스트 
-	public ArrayList<SignVO> listSign(String searchText, int startRecord, int countPerPage) {
+	public ArrayList<SignVO> listSign(Map<String, String> map, int startRecord, int countPerPage) {
 		SignMapper mapper = sqlSession.getMapper(SignMapper.class); 
 		//전체 검색 결과 중 읽을 시작위치와 개수
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
 			
 		//검색어와 읽을 범위를 전달
-		ArrayList<SignVO> result = mapper.listSign(searchText, rb);
+		ArrayList<SignVO> result = mapper.listSign(map, rb);
 		return result;
 		}
 	
