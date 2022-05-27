@@ -10,15 +10,18 @@ import com.noback.group.vo.MemberVO;
 public interface MemberMapper {
 	
 	// 로그인
-	MemberVO getMemberVO(String employee_num);
+	public MemberVO getMemberVO(String employee_num);
 	//사원 정보 저장
-	int insertMember(MemberVO member);
+	public int insertMember(MemberVO member);
 	// 모든 사원리스트
-	ArrayList<MemberVO> memberlist();
+	public ArrayList<MemberVO> memberlist();
+	// 사원 삭제
+	public int memberdelete(String employee_num);
 	// 이름으로 회원검색
-	MemberVO getMemberVO1(String employee_name);
+	public MemberVO getMemberVO1(String employee_name);
 	// 사원정보 수정
-	int memberlistupdate(MemberVO member);
+	public int memberlistupdate(MemberVO member);
+	
 	
 
 }

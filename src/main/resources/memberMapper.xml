@@ -45,6 +45,11 @@
 		select * from noback_member order by employee_name
 	</select>
 	
+	<!-- 사원 삭제 -->
+	<delete id="memberdelete" parameterType="string">
+		delete from noback_member WHERE employee_num = #{employee_num}
+	</delete>
+	
 	<!-- 사원 이름으로 검색 -->
 	<select id="getMemberVO1" parameterType="string" resultType="member">
 		select * from noback_member where employee_name = #{employee_name}
@@ -66,6 +71,7 @@
 			, employee_picture = #{employee_picture}	
 		where	
 			employee_num = #{employee_num}
-			
 	</update>
+	
+
 </mapper>

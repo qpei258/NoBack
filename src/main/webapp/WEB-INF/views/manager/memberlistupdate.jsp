@@ -57,7 +57,15 @@
 			</nav>
 			<!-- 회색 배경  -->
 			<div class='square'>
-				
+				employee_name = #{employee_name}
+			, employee_ssn = #{employee_ssn}
+			, employee_address = #{employee_address}
+			, employee_dep = #{employee_dep}
+			, employee_pos = #{employee_pos}
+			, employee_email = #{employee_email}
+			, employee_level = #{employee_level}
+			, employee_phone = #{employee_phone}
+			, employee_picture = #{employee_picture}
 			</div>
 		</div>
 	</div>

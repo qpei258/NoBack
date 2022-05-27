@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,14 @@ public class MemberDAO<employee_num> {
 		
 	}
 	
+	// 사원삭제
+	public int memberdelete(String employee_num) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		int result = mapper.memberdelete(employee_num);
+		return result;
+	}
+
+	
 	// 사원 이름으로 검색 
 	public MemberVO getMemberVO(String employee_name) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
@@ -77,6 +86,8 @@ public class MemberDAO<employee_num> {
 		result = mapper.memberlistupdate(member);
 		return result;
 	}
+}
+
 	
 
-}
+

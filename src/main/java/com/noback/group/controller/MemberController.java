@@ -3,6 +3,7 @@ package com.noback.group.controller;
 import java.util.ArrayList;
 
 
+
 import javax.servlet.http.HttpSession;
 
 
@@ -90,6 +91,16 @@ public class MemberController {
 			
 			return "manager/memberlist";
 		}
+		
+		// 사원 삭제
+		@RequestMapping(value = "memberdelete", method = RequestMethod.GET)
+		public String memberdelete(String employee_num) {
+			logger.info("사원 삭제" + employee_num);
+			int result = dao.memberdelete(employee_num);
+			return "redirect:memberlist";
+		}
+	
+
 		
 		// 사원 수정 페이지로 이동
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.GET)
