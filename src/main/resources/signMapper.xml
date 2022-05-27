@@ -6,7 +6,7 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.noback.group.dao.SignMapper">
 
-<!-- 글 저장 -->
+<!-- 결제 서류 작성 -->
 <insert id="insertSign" parameterType="sign">
 	insert into 
 		noback_sign
@@ -108,7 +108,7 @@
 		s.sign_cdate desc
 </select>
 		
-<!-- 결제서류 읽기 -->
+<!-- (처리해야할)결제서류 읽기 -->
 <select id="getSign" parameterType="int" resultType="sign">
 	select 
 		to_char(sign_cdate, 'YYYY-MM-DD') sign_cdate
@@ -170,7 +170,7 @@
 </select>
 
 
-<!-- 글개수 -->
+<!-- 글개수 조회용-->
 <select id="getTotal" parameterType="string" resultType="int">
 	select
 		count(*)
@@ -178,7 +178,7 @@
 		noback_sign
 </select>
 
-<!-- 회원 정보 검색 -->
+<!-- 회원 정보 검색(결제문서 불러올떄 쓰는거) -->
 <select id="getMember" parameterType="string" resultType="member">
 	select
 	employee_num
@@ -189,6 +189,7 @@
 	where employee_name = #{employee_name}
 </select>
 
+<!-- 회원 정보 검색(수신자 찾을떄 쓰는거) -->
 <select id="member" parameterType="string" resultType="member">
 		select
 		      employee_num

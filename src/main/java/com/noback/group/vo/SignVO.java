@@ -7,29 +7,29 @@ public class SignVO {
 	
 
 
-	int sign_num;
-	String sign_title;
-	String sign_content;
-	String sign_sender; 
-	String sign_nsender;
-	String sign_receiver1;
-	String sign_nreceiver1;
-	String sign_receiver2;
-	String sign_nreceiver2;
-	String sign_receiver3;
-	String sign_nreceiver3;
-	String sign_receiver4;
-	String sign_nreceiver4;
-	String sign_dep;
-	String sign_pos;
-	String sign_originfile;	
-	String sign_savedfile;
-	int sign_ok1;
-	int sign_ok2;
-	int sign_ok3;
-	int sign_ok4;
-	String sign_cdate;
-	String sign_memo;
+	int sign_num; //글번호
+	String sign_title; //글제목
+	String sign_content; //글내용
+	String sign_sender;  //송신자(사원번호)
+	String sign_nsender; //송신자이름
+	String sign_receiver1; //수신자1(사원번호)
+	String sign_nreceiver1; //수신자1(이름)
+	String sign_receiver2;//수신자2(사원번호)
+	String sign_nreceiver2; //수신자2(이름)
+	String sign_receiver3;//수신자3(사원번호)
+	String sign_nreceiver3; //수신자3(이름)
+	String sign_receiver4;//수신자4(사원번호)
+	String sign_nreceiver4; //수신자4(이름)
+	String sign_dep;//부서
+	String sign_pos;//직위
+	String sign_originfile;	//첨부파일
+	String sign_savedfile; //첨부파일
+	int sign_ok1;//수신자1의 결제여부
+	int sign_ok2;//수신자2의 결제여부
+	int sign_ok3;//수신자3의 결제여부
+	int sign_ok4;//수신자4의 결제여부
+	String sign_cdate; // 결제 올린날짜
+	String sign_memo; //결제 메모
 	String sign_sdate;
 	public SignVO(){
 		super();

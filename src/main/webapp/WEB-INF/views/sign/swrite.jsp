@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>결제서류작성</title>
+    <title>결제서류작성</title><!-- 결제서류 작성jsp -->
 <script type="text/javascript" src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
+<!--check박스 버튼1 -->
 function receiverOpen1() {
 	document.getElementById('target_btn2').disabled = false;
 	window.open('check1', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
 }
-
+<!--check박스 버튼2 -->
 function receiverOpen2() {
 	let sign_receiver1 = document.getElementById('sign_receiver1'); 
 	if (sign_receiver1.value != '') {
@@ -20,7 +21,7 @@ function receiverOpen2() {
 	}
 }
 
-
+<!--check박스 버튼3 -->
 function receiverOpen3() {
 	let sign_receiver2 = document.getElementById('sign_receiver2'); 
 	if (sign_receiver2.value != '') {
@@ -29,6 +30,7 @@ function receiverOpen3() {
 	}
 }
 
+<!--check박스 버튼4 -->
 function receiverOpen4() {
 	let sign_receiver3 = document.getElementById('sign_receiver3'); 
 	if (sign_receiver3.value != '') {
@@ -36,14 +38,20 @@ function receiverOpen4() {
 	}
 }
 
-
+<!-- 작성할때 폼체크 -->
 function formCheck() {
 	let sign_title = document.getElementById('sign_title'); 
 	let sign_content = document.getElementById('sign_content'); 
 	let sign_sender = document.getElementById('sign_sender'); 
 	let sign_nsender = document.getElementById('sign_nsender');
 	let sign_receiver = document.getElementById('sign_receiver1'); 
+	let sign_file = document.getElementById('upload'); 
+
 	
+	if (sign_file.value == '') {
+		alert('파일을 넣어주세요.');
+		return false;
+	}
 	if (sign_receiver1.value == '') {
 		alert('수신자를 입력하세요.');
 		return false;
@@ -53,8 +61,12 @@ function formCheck() {
 		alert('제목은 3~10자로 입력하세요.');
 		return false;
 	}
-	if (sign_content.value.length < 1 || pw1.value.length > 100) {
+	if (sign_content.value.length < 1 || sign_content.value.length > 100) {
 		alert('내용은 1~100자로 입력하세요.');
+		return false;
+	}
+
+	if (sign_file.value == '') {
 		return false;
 	}
 }
@@ -132,7 +144,7 @@ function formCheck() {
 					</div>
 						<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >첨부파일</span>
-						 <input type="file" name="upload" size="30"> 					 
+						 <input type="file" id="upload" name="upload" size="30"> 					 
 					</div>
 					<div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
 	                  <span class="input-group-text" >수신자1</span>

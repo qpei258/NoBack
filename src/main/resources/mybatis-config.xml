@@ -9,7 +9,6 @@
 		<typeAlias type="com.noback.group.vo.SignVO" alias="sign" />
 		<typeAlias type="com.noback.group.vo.ScheduleVO" alias="schedule" />
 		<typeAlias type="com.noback.group.vo.BoardVO" alias="board" />
-		<typeAlias type="com.noback.group.vo.ReceiverVO" alias="receiver" />
 		<typeAlias type="com.noback.group.vo.NoticeVO" alias="notice" />
 		<typeAlias type="com.noback.group.vo.MessengerVO" alias="messenger" />
 	</typeAliases>
