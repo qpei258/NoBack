@@ -67,7 +67,7 @@
 		)
 </insert>
 <!-- 결제 올린 서류리스트 -->
-<select id="listSign" parameterType="string" resultType="sign">
+<select id="listSign" parameterType="map" resultType="sign">
 	select
 	     s.sign_num
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
@@ -82,9 +82,9 @@
 		, s.sign_ok3
 		, s.sign_ok4
 	from 
-		noback_sign s, noback_member m
+		noback_sign s
 	where 
-	    s.sign_sender = m.employee_num	
+	    s.sign_sender = #{LoginId}	
 	order by 
 		s.sign_cdate desc
 </select>
@@ -206,11 +206,13 @@
 	update
 		noback_sign
 	set
-	       sign_memo = #{sign_memo} 
+	       sign_memo = #{sign_memo}
 	      ,sign_ok1 = #{sign_ok1}
 	      ,sign_ok2 = #{sign_ok2}
 	      ,sign_ok3 = #{sign_ok3}
 	      ,sign_ok4 = #{sign_ok4}
+
+	      
 	      where
 		sign_num = #{sign_num}
 </update>
