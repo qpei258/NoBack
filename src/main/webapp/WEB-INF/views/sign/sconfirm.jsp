@@ -14,7 +14,6 @@
 			margin:10px auto;
     		width: 1258px;
     		height: 870px;
-    		background-color: rgb(238, 238, 238);
     		text-align: center;
     		color: rgb(80, 80, 80);
     	}
@@ -48,7 +47,7 @@
 				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
 		</nav>
         <div id="content">
-        	<div id="sign">
+        	<div id="sign" style="background-color: rgb(238, 238, 238);">
         	<h1>[결제 서류]</h1>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
@@ -150,24 +149,6 @@
 						 <span class="input-group-text" >첨부파일</span>
 						 <a href="download?sign_num=${sign.sign_num}">${sign.sign_originfile}</a>						 
 					</div>
-					<c:if test="${sign.sign_ok1 == 0}">
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-					       <span class="input-group-text" >결제상태</span>
-                           <input type="text" name="sign_ok1" id="sign_ok1" size="30" value="대기" readonly="readonly">	
-					</div>
-					<c:if test="${sign.sign_ok1 == 1}">
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-					       <span class="input-group-text" >결제상태</span>
-                           <input type="text" name="sign_ok1" id="sign_ok1" size="30" value="승인" readonly="readonly">	
-					</div>
-					</c:if>
-					<c:if test="${sign.sign_ok1 == -1}">
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-					       <span class="input-group-text" >결제상태</span>
-                           <input type="text" name="sign_ok1" id="sign_ok1" size="30" value="반려" readonly="readonly">	
-					</div>
-					</c:if>
-					</c:if>
 					<c:if test="${sign.sign_memo != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>

@@ -73,10 +73,10 @@
 		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
 		, s.sign_title
 		, s.sign_nsender
-		, sign_receiver1
-		, sign_receiver2
-		, sign_receiver3
-		, sign_receiver4
+		, s.sign_receiver1
+		, s.sign_receiver2
+		, s.sign_receiver3
+		, s.sign_receiver4
 		, s.sign_ok1
 		, s.sign_ok2
 		, s.sign_ok3
@@ -92,20 +92,19 @@
 <!-- 결제 대기중인 서류리스트 -->
 <select id="listSign2" parameterType="map" resultType="sign">
 	select
-	      s.sign_num
-		, to_char(s.sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
-		, s.sign_title
-		, s.sign_nsender
-		, s.sign_receiver1
+	      sign_num
+		, to_char(sign_cdate, 'YYYY-MM-DD HH24:MI') as sign_cdate
+		, sign_title
+		, sign_nsender
 	from 
-		noback_sign s
-    where
-    s.sign_receiver1 = #{LoginId}
-    OR s.sign_receiver2 = #{LoginId}
-    OR s.sign_receiver3 = #{LoginId}
-    OR s.sign_receiver4 = #{LoginId}
+		noback_sign
+    where 
+    	(sign_receiver1 = #{LoginId})   
+      OR   (sign_receiver2 = #{LoginId} and sign_ok1 = 1)       
+  	  OR   (sign_receiver3 = #{LoginId} and sign_ok2 = 1)    
+  	  OR	(sign_receiver4 = #{LoginId} and sign_ok3 = 1)       
 	order by 
-		s.sign_cdate desc
+		sign_cdate desc
 </select>
 		
 <!-- (처리해야할)결제서류 읽기 -->
@@ -211,8 +210,6 @@
 	      ,sign_ok2 = #{sign_ok2}
 	      ,sign_ok3 = #{sign_ok3}
 	      ,sign_ok4 = #{sign_ok4}
-
-	      
 	      where
 		sign_num = #{sign_num}
 </update>
