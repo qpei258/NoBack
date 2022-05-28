@@ -92,6 +92,17 @@ public class MemberController {
 			return "manager/memberlist";
 		}
 		
+		// 사원 한사람 정보 출력
+		@RequestMapping(value = "member", method = RequestMethod.GET)
+		public String searchlist(Model model, String employee_name) {
+			//전체 회원 정보 목록 읽기
+			MemberVO member = dao.getMemberVO(employee_name);
+			//모델에 목록 저장하고 뷰로 이동
+			model.addAttribute("member", member);
+			
+			return "manager/memberlist";
+		}
+		
 		// 사원 삭제
 		@RequestMapping(value = "memberdelete", method = RequestMethod.GET)
 		public String memberdelete(String employee_num) {
@@ -100,7 +111,6 @@ public class MemberController {
 			return "redirect:memberlist";
 		}
 	
-
 		
 		// 사원 수정 페이지로 이동
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.GET)
@@ -112,6 +122,18 @@ public class MemberController {
 			
 			return "manager/memberlistupdate";
 		}
+		
+		// 수정 할 사원 정보
+		@RequestMapping(value = "updatemember", method = RequestMethod.GET)
+		public String updatemember(Model model, String employee_num) {
+				//전체 회원 정보 목록 읽기
+				MemberVO member = dao.getMemberVO(employee_num);
+				//모델에 목록 저장하고 뷰로 이동
+				model.addAttribute("member", member);
+				
+				return "manager/memberlist";
+			}
+		
 		
 		// 사원정보 수정
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.POST)

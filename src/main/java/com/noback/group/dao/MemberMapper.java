@@ -18,7 +18,7 @@ public interface MemberMapper {
 	// 사원 삭제
 	public int memberdelete(String employee_num);
 	// 이름으로 회원검색
-	public MemberVO getMemberVO1(String employee_name);
+	public MemberVO serchmember(String employee_name);
 	// 사원정보 수정
 	public int memberlistupdate(MemberVO member);
 	
