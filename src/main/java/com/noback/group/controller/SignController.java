@@ -158,6 +158,18 @@ public class SignController {
 	@RequestMapping(value = "scomplete", method = RequestMethod.POST)
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
 	logger.info("수정할 글정보 {}", sign);
+	String searchId = (String) session.getAttribute("LoginId");
+	if(sign.getSign_receiver1()== searchId) {
+		sign.setSign_ok1(1);
+	}
+	else if(sign.getSign_receiver2()== searchId) {
+		sign.setSign_ok1(1);
+		sign.setSign_ok2(1);
+	}else if(sign.getSign_receiver3()== searchId ) {
+		sign.setSign_ok1(1);
+		sign.setSign_ok2(1);
+		sign.setSign_ok3(1);
+	}
 	dao.complete(sign);
 	return "redirect:sdelay";
 	}

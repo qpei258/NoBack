@@ -92,6 +92,7 @@ function receiverOpen() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자1(보내는곳)</span>
+						 <input type="hidden" name="sign_receiver1" id="sign_receiver1" size="10" value="${sign.sign_receiver1}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" size="10" value="${sign.sign_nreceiver1}" readonly="readonly">
 						  <c:if test="${sign.sign_ok1 == 0}">
 						  <span class="input-group-text" >승인여부</span>
@@ -109,6 +110,7 @@ function receiverOpen() {
 					<c:if test="${sign.sign_receiver2 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자2(보내는곳)</span>
+						 <input type="hidden" name="sign_receiver2" id="sign_receiver2" size="10" value="${sign.sign_receiver2}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" size="10" value="${sign.sign_nreceiver2}" readonly="readonly">
 						  <c:if test="${sign.sign_ok2 == 0}">
 						  <span class="input-group-text" >승인여부</span>
@@ -127,6 +129,7 @@ function receiverOpen() {
 					<c:if test="${sign.sign_receiver3 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자3(보내는곳)</span>
+						 <input type="hidden" name="sign_receiver3" id="sign_receiver3" size="10" value="${sign.sign_receiver3}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" size="10" value="${sign.sign_nreceiver3}" readonly="readonly">
 						  <c:if test="${sign.sign_ok3 == 0}">
 						  <span class="input-group-text" >승인여부</span>
@@ -145,6 +148,7 @@ function receiverOpen() {
 					<c:if test="${sign.sign_receiver4 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >수신자4(보내는곳)</span>
+						 <input type="hidden" name="sign_receiver4" id="sign_receiver4" size="10" value="${sign.sign_receiver4}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" size="10" value="${sign.sign_nreceiver4}" readonly="readonly">
 						  <c:if test="${sign.sign_ok4 == 0}">
 						  <span class="input-group-text" >승인여부</span>
