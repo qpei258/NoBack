@@ -47,16 +47,18 @@
 	
 </script>
 <script>
-		function pagingFormSubmit(currentPage) {
-			var form = document.getElementById('pagingForm');
-			var page = document.getElementById('page');
-			page.value = currentPage;
-			form.submit();
-		}
-		
+<!-- 페이지 이동 스크립트  -->
+	function pagingFormSubmit(currentPage) {
+		var form = document.getElementById('pagingForm');
+		var page = document.getElementById('page');
+		page.value = currentPage;
+		form.submit();
+	}
+	<!-- 수정 팝업창 실행  -->
 		function memberlistupdate() {
 			window.open('memberlistupdate', 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
 		}
+		
 	</script>
 <script type="text/javascript">
 
@@ -81,14 +83,14 @@
 				<form id="pagingForm" method="get" action="memberlist" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
 						 <input type="text" class="form-control" placeholder="사원이름" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
-						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
+						 <button class="btn btn-outline-secondary" type="submit" id="button-addon2" >검색</button>
 					</div>
 					<input type="hidden" name="page" id="page" />
 				</form>
 				<!-- /검색폼 -->
-				
-				
 				</div>
+				
+				<!-- 사원 전체 리스트 -->
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
@@ -118,8 +120,8 @@
 						  </c:forEach>
 				  </tbody>
 				</table>
-        		<div id="navigator" style="border: 0px; font-size: 20px;">
-				<!-- 페이지 이동 부분 -->                      
+				<div id="navigator" style="border: 0px; font-size: 20px;">
+        		<!-- 페이지 이동 부분 -->                      
 					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
 					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
 				
@@ -132,12 +134,11 @@
 					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
 					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
 				
-				<!-- /페이지 이동 끝 -->      
-			
+				<!-- /페이지 이동 끝 -->  
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+	
 </body>
 </html>

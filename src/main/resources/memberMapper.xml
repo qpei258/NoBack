@@ -41,8 +41,12 @@
 	</insert>
 	
 	<!-- 모든 사원 정보 -->
-	<select id="memberlist" resultType="member">
-		select * from noback_member order by employee_name
+	<select id="memberlist" parameterType="string" resultType="member">
+		select * from noback_member 
+		<if test="_parameter != null">
+			where upper(employee_name) like '%' || upper(#{search}) || '%'
+		</if>
+		order by employee_name
 	</select>
 	
 	<!-- 사원 삭제 -->
@@ -50,9 +54,13 @@
 		delete from noback_member WHERE employee_num = #{employee_num}
 	</delete>
 	
+	
 	<!-- 사원 이름으로 검색 -->
-	<select id="serchmember" parameterType="string" resultType="member">
-		select * from noback_member where employee_name = #{employee_name}
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from noback_member 
+			<if test="_parameter != null">
+			where upper(employee_name) like '%' || upper(#{search}) || '%'
+		</if>
 	</select>
 	
 	<!-- 사원 num으로 받아서 수정 -->

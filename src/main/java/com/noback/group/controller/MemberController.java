@@ -15,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.noback.group.dao.MemberDAO;
+import com.noback.group.util.PageNavigator;
 import com.noback.group.vo.MemberVO;
 
 
@@ -27,7 +29,8 @@ import com.noback.group.vo.MemberVO;
 @Controller
 @RequestMapping(value = "manager")
 public class MemberController {
-
+	final int countPerPage = 10;			//페이지당 글 수
+	final int pagePerGroup = 5;				//페이지 이동 링크를 표시할 페이지 수
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
@@ -83,23 +86,16 @@ public class MemberController {
 
 		// 모든 사원리스트 출력
 		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
-		public String list(Model model) {
+		public String list(HttpSession session, @RequestParam(value="page", defaultValue="1") int page
+				, @RequestParam(value="search", defaultValue="") String search
+				, Model model){
+			int total = dao.count(search);
+			PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total); 
 			//전체 회원 정보 목록 읽기
-			ArrayList<MemberVO> memberlist = dao.memberlist();
+			ArrayList<MemberVO> memberlist = dao.memberlist(search, navi.getStartRecord(), navi.getCountPerPage());
 			//모델에 목록 저장하고 뷰로 이동
 			model.addAttribute("memberlist", memberlist);
-			
-			return "manager/memberlist";
-		}
-		
-		// 사원 한사람 정보 출력
-		@RequestMapping(value = "member", method = RequestMethod.GET)
-		public String searchlist(Model model, String employee_name) {
-			//전체 회원 정보 목록 읽기
-			MemberVO member = dao.getMemberVO(employee_name);
-			//모델에 목록 저장하고 뷰로 이동
-			model.addAttribute("member", member);
-			
+			model.addAttribute("navi", navi);
 			return "manager/memberlist";
 		}
 		
@@ -111,28 +107,31 @@ public class MemberController {
 			return "redirect:memberlist";
 		}
 	
+
+	
 		
 		// 사원 수정 페이지로 이동
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.GET)
 		public String memberlistupdate(HttpSession session, Model model) {
 			
 			String employee_num = (String) session.getAttribute("employee_num");
-			MemberVO member = dao.getMemberVO(employee_num);
+			MemberVO member = dao.getMember(employee_num);
 			model.addAttribute("member", member);
 			
 			return "manager/memberlistupdate";
 		}
 		
-		// 수정 할 사원 정보
+		
+		  // 수정 할 사원 정보
+		  
 		@RequestMapping(value = "updatemember", method = RequestMethod.GET)
-		public String updatemember(Model model, String employee_num) {
-				//전체 회원 정보 목록 읽기
-				MemberVO member = dao.getMemberVO(employee_num);
-				//모델에 목록 저장하고 뷰로 이동
-				model.addAttribute("member", member);
-				
-				return "manager/memberlist";
+		public String updatemember(Model model, String employee_num) { //전체 회원 정보 목록 읽기
+			 MemberVO member = dao.getMember(employee_num); //모델에 목록 저장하고 뷰로 이동
+			 model.addAttribute("member", member);
+			  
+			return "manager/memberlist"; 
 			}
+		 
 		
 		
 		// 사원정보 수정

@@ -2,9 +2,7 @@ package com.noback.group.dao;
 
 import java.util.ArrayList;
 
-
-
-
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,9 +54,10 @@ public class MemberDAO<employee_num> {
 	}
 	
 	// 모든 사원리스트 출력
-	public ArrayList<MemberVO> memberlist() {
+	public ArrayList<MemberVO> memberlist(String search, int startRecord, int countPerPage) {
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		ArrayList<MemberVO> memberlist = mapper.memberlist();
+		ArrayList<MemberVO> memberlist = mapper.memberlist(search, rb);
 		return memberlist;
 		
 	}
@@ -72,11 +71,11 @@ public class MemberDAO<employee_num> {
 
 	
 	// 사원 이름으로 검색 
-	public MemberVO getMemberVO(String employee_name) {
+	
+	public int count(String search) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		MemberVO member = mapper.getMemberVO(employee_name);
 		
-		return member;
+		return mapper.count(search);
 	}
 	
 	// 사원 수정
@@ -86,6 +85,8 @@ public class MemberDAO<employee_num> {
 		result = mapper.memberlistupdate(member);
 		return result;
 	}
+
+
 }
 
 	

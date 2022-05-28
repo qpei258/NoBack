@@ -105,10 +105,9 @@
 								</select>
 							</td>	
 				        </tr>
-				        
-				        
 				    </table>
-		
+							
+					<button type="submit" style="width: 100px;" class="btn btn-primary">수정</button>
 			</div>
 		</div>
 	</div>
