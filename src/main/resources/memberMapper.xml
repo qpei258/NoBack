@@ -51,8 +51,13 @@
 	</delete>
 	
 	<!-- 사원 이름으로 검색 -->
-	<select id="getMemberVO1" parameterType="string" resultType="member">
+	<select id="serchmember" parameterType="string" resultType="member">
 		select * from noback_member where employee_name = #{employee_name}
+	</select>
+	
+	<!-- 사원 num으로 받아서 수정 -->
+	<select id="updatemember" parameterType="string" resultType="member">
+		select * from noback_member where employee_num = #{employee_num}
 	</select>
 	
 	<!-- 사원 수정 -->
@@ -61,7 +66,6 @@
 			noback_member
 		set
 			employee_name = #{employee_name}
-			, employee_ssn = #{employee_ssn}
 			, employee_address = #{employee_address}
 			, employee_dep = #{employee_dep}
 			, employee_pos = #{employee_pos}

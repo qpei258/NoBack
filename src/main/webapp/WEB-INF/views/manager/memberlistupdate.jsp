@@ -57,15 +57,58 @@
 			</nav>
 			<!-- 회색 배경  -->
 			<div class='square'>
-				employee_name = #{employee_name}
-			, employee_ssn = #{employee_ssn}
-			, employee_address = #{employee_address}
-			, employee_dep = #{employee_dep}
-			, employee_pos = #{employee_pos}
-			, employee_email = #{employee_email}
-			, employee_level = #{employee_level}
-			, employee_phone = #{employee_phone}
-			, employee_picture = #{employee_picture}
+			<table>
+						<tr>
+				            <th>프로필 등록</th>
+				            <td><input type="file" id="employee_picture" name="employee_picture" ></td>
+				        </tr>
+				        <tr>
+				        <tr>
+				            <th>이름</th>
+				            <td><input type="text" id="employee_name" name="employee_name"></td>
+				        </tr>
+				      
+				        <tr>
+				            <th>주소</th>
+				            <td><input type="text" id="employee_address" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
+				        </tr>
+				        <tr>
+				            <th>상세 주소</th>
+				            <td><input type="text" id="employee_address1" name="employee_address1" /></td>
+				        </tr>
+				        <tr>
+				            <th>연락처</th>
+				            <td><input type="text" id="employee_phone" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
+				        </tr>
+				        <tr>
+				            <th>이메일</th>
+				            <td><input type="text" id="employee_email" name="employee_email"></td>
+				        </tr>
+				        <tr>
+				            <th>부서</th>
+				            <td><input type="text" id="employee_dep" name="employee_dep"></td>
+				        </tr>
+				        <tr>
+				            <th>직함</th>
+				            <td><input type="text" id="employee_pos" name="employee_pos"></td>
+				        </tr>
+				       
+				        <tr>
+				            <th>권한 등급</th>
+				            <td>
+					            <select name='employee_level' id="employee_level">
+									  <option value='' selected>-- 선택 --</option>
+									  <option value='1'>1 </option>
+									  <option value='2'>2</option>
+									  <option value='3'>3</option>
+									  <option value='4'>4</option>
+								</select>
+							</td>	
+				        </tr>
+				        
+				        
+				    </table>
+		
 			</div>
 		</div>
 	</div>
