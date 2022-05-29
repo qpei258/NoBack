@@ -55,8 +55,9 @@
 		form.submit();
 	}
 	<!-- 수정 팝업창 실행  -->
-		function memberlistupdate() {
-			window.open('memberlistupdate', 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
+		function memberlistupdate(num) {
+			alert(num);
+			window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
 		}
 		
 	</script>
@@ -113,7 +114,7 @@
 						  		<td>${member.employee_dep}</td>
 						  		<td>${member.employee_pos}</td>
 						  		<td>${member.employee_level}</td>
-						  		<td><button id="update_btn" onclick="memberlistupdate()">수정</button></td>
+						  		<td><button id="update_btn" onclick="memberlistupdate('${member.employee_num}')">수정</button></td>
 							  	<td><button id="delete_btn" onclick="location.href='memberdelete?employee_num=${member.employee_num}'">삭제</button></td>	
 	
 						  	</tr>

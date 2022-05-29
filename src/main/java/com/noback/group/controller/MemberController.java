@@ -2,11 +2,7 @@ package com.noback.group.controller;
 
 import java.util.ArrayList;
 
-
-
 import javax.servlet.http.HttpSession;
-
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.noback.group.dao.MemberDAO;
 import com.noback.group.util.PageNavigator;
 import com.noback.group.vo.MemberVO;
-
-
-
 
 
 
@@ -106,46 +99,33 @@ public class MemberController {
 			int result = dao.memberdelete(employee_num);
 			return "redirect:memberlist";
 		}
-	
-
-	
 		
 		// 사원 수정 페이지로 이동
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.GET)
-		public String memberlistupdate(HttpSession session, Model model) {
+		public String memberlistupdate(String employee_num,  Model model) {
 			
-			String employee_num = (String) session.getAttribute("employee_num");
 			MemberVO member = dao.getMember(employee_num);
 			model.addAttribute("member", member);
-			
+			logger.info("사원 수정" + member);
 			return "manager/memberlistupdate";
 		}
 		
-		
-		  // 수정 할 사원 정보
-		  
-		@RequestMapping(value = "updatemember", method = RequestMethod.GET)
-		public String updatemember(Model model, String employee_num) { //전체 회원 정보 목록 읽기
-			 MemberVO member = dao.getMember(employee_num); //모델에 목록 저장하고 뷰로 이동
-			 model.addAttribute("member", member);
-			  
-			return "manager/memberlist"; 
-			}
-		 
-		
-		
+	
 		// 사원정보 수정
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.POST)
 		public String memberlistupdate(HttpSession session, MemberVO member) {
-			
+			logger.info("사원 수정 처리" + member);
+			if(member.getEmployee_picture().equals("")){
+				member.setEmployee_picture(null);
+			}
 			//member객체를 dao로 보내서 테이블의 정보 수정
-			int res = dao.memberlistupdate(member);
+			int result = dao.memberlistupdate(member);
 			
 			//세션정보도 수정
-			session.setAttribute("employee_num", member.getEmployee_num());
+			session.setAttribute("num", member.getEmployee_num());
 			
-			return "manager/memberlist";
+			return "redirect:memberlist";
 		}
-		
+	
 	
 }

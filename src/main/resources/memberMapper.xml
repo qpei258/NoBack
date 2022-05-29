@@ -80,9 +80,12 @@
 			, employee_email = #{employee_email}
 			, employee_level = #{employee_level}
 			, employee_phone = #{employee_phone}
-			, employee_picture = #{employee_picture}	
+		<if test="employee_picture  != null ">
+			, employee_picture = #{employee_picture}
+		</if>	
 		where	
 			employee_num = #{employee_num}
+	
 	</update>
 	
 

@@ -3,6 +3,7 @@ package com.noback.group.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.ui.Model;
 
 import com.noback.group.vo.MemberVO;
 
@@ -25,6 +26,7 @@ public interface MemberMapper {
 	public int count(String search);
 	// 사원정보 수정
 	public int memberlistupdate(MemberVO member);
+	
 	
 	
 
