@@ -38,7 +38,7 @@ public class MemberController {
 	//로그인처리
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(MemberVO member, HttpSession session) {
-	logger.info("{}", member);
+	logger.info("로그인", member);
 	
 		MemberVO member2 = dao.getMember(member.getEmployee_num());
 		logger.info("{}", member2);
@@ -67,7 +67,7 @@ public class MemberController {
 		//사원등록 처리
 		@RequestMapping(value = "join", method = RequestMethod.POST)
 		public String join(MemberVO member) {
-			logger.info("{}", member);
+			logger.info("사원등록", member);
 			int result = dao.insertMember(member);
 			if (result != 1) {
 				//DB저장에 실패한 경우 가입폼으로 이동

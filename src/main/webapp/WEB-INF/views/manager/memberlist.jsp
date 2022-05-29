@@ -54,12 +54,12 @@
 		page.value = currentPage;
 		form.submit();
 	}
-	<!-- 수정 팝업창 실행  -->
+		/* 수정 팝업창 실행 */
 		function memberlistupdate(num) {
-			alert(num);
+			alert("수정 하시겠습니까?");
 			window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
 		}
-		
+	
 	</script>
 <script type="text/javascript">
 

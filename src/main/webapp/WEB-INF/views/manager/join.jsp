@@ -64,27 +64,70 @@ window.onload = function(){
 <script type="text/javascript">
 
 function formCheck() {
+	let employee_picture = document.getElementById('employee_picture'); 
 	let employee_name = document.getElementById('employee_name'); 
-	let employee_num = document.getElementById('employee_num'); 
+	let employee_ssn = document.getElementById('employee_ssn'); 
 	let employee_address = document.getElementById('employee_address'); 
 	let employee_address1 = document.getElementById('employee_address1'); 
+	let employee_phone = document.getElementById('employee_phone');
+	let employee_email = document.getElementById('employee_email');
+	let employee_dep = document.getElementById('employee_dep');
+	letemployee_pos = document.getElementById('employee_pos');
+	let employee_num = document.getElementById('employee_num');
+	let employee_level = document.getElementById('employee_level');
 	
+	if (employee_picture.value == '') {
+		alert('사진을 등록하세요.');
+		return false;
+	}
 	
 	if (employee_name.value == '') {
 		alert('이름을 입력하세요.');
 		return false;
 	}
 	
+	if (employee_ssn.value == '') {
+		alert('주민번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_address.value == '' && employee_address1.value == ''){
+		alert('주소를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_phone.value == '') {
+		alert('전화번호를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_email.value == '') {
+		alert('이메일을 입력하세요.');
+		return false;
+	}
+	
+	if (employee_dep.value == '') {
+		alert('부서를 입력하세요.');
+		return false;
+	}
+	
+	if (employee_pos.value == '') {
+		alert('직함을 입력하세요.');
+		return false;
+	}
 	
 	if (employee_num.value.length < 6 || employee_num.value.length > 6) {
 		alert('사원번호를 입력하세요.');
 		return false;
 	}
-
-	if (employee_address.value == '' && employee_address1.value == ''){
-		alert('주소를 입력하세요.');
+	
+	if ( employee_level.value == '') {
+		alert('레벨을 선택하세요.');
 		return false;
 	}
+	
+	alert('사원이 등록 되었습니다.');
+
 	
 	employee_address.value = employee_address.value +" "+ employee_address1.value
 	
