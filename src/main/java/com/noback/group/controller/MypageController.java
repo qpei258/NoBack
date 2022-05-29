@@ -55,7 +55,6 @@ public class MypageController {
 	public String showMyupdate(Model model, HttpSession session)
 			throws Exception {
 		logger.info("개인수정 페이지 로딩성공");
-		
 		// 세션에서 ID가져오기
 		String searchId = (String) session.getAttribute("LoginId");
 		MemberVO member = dao.getMember(searchId);

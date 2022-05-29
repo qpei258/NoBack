@@ -6,39 +6,20 @@
 <!-- 스케줄 SQL -->
 <mapper namespace="com.noback.group.dao.ScheduleMapper">
 
+	<resultMap type="schedule" id="calMap">
+		<result property="schedule_start" column="schedule_start"/>
+		<result property="schedule_end" column="schedule_end"/>
+	</resultMap>
+	
 	<!-- 스케줄 전체 출력 -->
-	<select id="listSchedule" resultType="schedule">
-		select 
-			schedule_num,	  
-			schedule_title,  
-			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
-			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
-			schedule_memo,	   
-			schedule_writer,	   
-			schedule_level
-		from 
-			noback_schedule 	
-		order by 
-			schedule_start
+	<select id="calenList" resultMap="calMap">
+		SELECT schedule_num, schedule_title,
+			TO_char(schedule_start, 'YYYY-MM-DD"T"HH24:MI:SS') schedule_start,
+			TO_char(schedule_end, 'YYYY-MM-DD"T"HH24:MI:SS') schedule_end,
+			schedule_allDay
+		FROM noback_schedule
 	</select>
 	
-	<!-- 스케줄 개별 출력 -->
-	<select id="selectScheduleInfo" resultType="schedule" parameterType="int">
-		select 
-			schedule_num,	  
-			schedule_title,  
-			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
-			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
-			schedule_memo,	   
-			schedule_writer,	   
-			schedule_level 
-		from 
-			noback_schedule 
-		where 
-			schedule_num = #{schedule_num} 		
-	</select>
-	
-	<!-- 스케줄 이번달 현황만 출력 -->
 	<select id="selectScheduleMonth" resultType="schedule">
 		select 
 			schedule_num,	  
@@ -47,7 +28,6 @@
 			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
 			schedule_memo,	   
 			schedule_writer,	   
-			schedule_level 
 		from 
 			noback_schedule 
 		where 
@@ -61,45 +41,30 @@
 		insert into
 			noback_schedule
 			(
-			schedule_num,	  
-			schedule_title,	  
-			schedule_start,	 
-			schedule_end,	  
-			schedule_memo,	   
-			schedule_writer,	   
-			schedule_level	
+			schedule_num,	    
+			schedule_title,	 
+			schedule_writer,
+			schedule_level,
+			<if test="schedule_memo != null">	  
+			schedule_memo,
+			</if>	   
+			schedule_start,	   
+			schedule_end,
+			schedule_allDay	
 			)			
 		values
 			(
-			sked_seq.nextVal,
+			cal_seq.nextval,
 			#{schedule_title},
-			#{schedule_start},
-			#{schedule_end},
-			#{schedule_memo},
 			#{schedule_writer},
-			#{schedule_level}
+			#{schedule_level},
+			<if test="schedule_memo != null">	 
+			#{schedule_memo},
+			</if>
+			TO_DATE(#{schedule_start}, 'yyyy-MM-dd HH24:MI:SS'),
+			TO_DATE(#{schedule_end}, 'yyyy-MM-dd HH24:MI:SS'),
+			#{schedule_allDay}
 			)
 	</insert>
-
-	<!-- 스케줄 수정 -->
-	<update id="updateSchedule" parameterType="schedule">
-		update 
-			noback_schedule
-		set 
-			schedule_title = #{schedule_title}
-			, schedule_start = #{schedule_start}
-			, schedule_end = #{schedule_end} 
-			, schedule_memo= #{schedule_memo} 
-		where 
-			schedule_num = #{schedule_num}
-	</update>
 	
-	<!-- 스케줄 삭제 -->
-	<delete id="deleteSchedule" parameterType="int">
-		delete from
-			noback_schedule
-		where 
-			schedule_num = #{schedule_num} 
-	</delete>
-
 </mapper>
