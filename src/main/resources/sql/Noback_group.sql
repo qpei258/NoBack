@@ -34,14 +34,17 @@ CREATE TABLE noback_notice (
 	notice_savedfile	varchar2(60)
 );
 
--- 일정 테이블
+-- 일정 테이블 (수정 후)
 CREATE TABLE noback_schedule (
-	schedule_num	number	        PRIMARY KEY,
-	schedule_date	date	        default sysdate,
-	schedule_memo	varchar2(200)	NOT NULL,
-	schedule_writer	varchar2(20)	NOT NULL,
-	schedule_level	number	        NOT NULL
-);
+	schedule_num    	number          	primary key,
+	schedule_title  	varchar2(100)	NOT NULL,
+	schedule_start 	date            	default sysdate,
+	schedule_end    	date            	default sysdate,
+   	schedule_writer 	varchar2(50)    	NOT NULL,
+    	schedule_level  	number          	NOT NULL,
+	schedule_memo   	varchar2(500),
+	schedule_allDay 	number(1)
+    );
 
 -- 자유게시판 테이블
 CREATE TABLE noback_board (
