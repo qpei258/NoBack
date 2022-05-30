@@ -139,7 +139,7 @@
 				<tbody id="detail_schedule" style="padding:20px;">
 					<c:forEach var="schedule" items="${scheduleList}">
 					<tr>
-						<td class="scheduleDates">${schedule.start1} ~ ${schedule.end1}</td>
+						<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
 						<td class="cont">
 							<strong class="strong" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
 							<dl>
@@ -166,24 +166,23 @@
       									<form action="update" method="post" onsubmit ="return validation2()">
       									
       									<div class="modal-body">
-      									<input type="text" value="${sked.schedule_num}" name="schedule_num">
       						
       									
       									<label class="schedule_title">일정 제목</label>
   										<input type="text" class="form-control border-primary" name="schedule_title" id="update_title" placeholder="ex) 미팅"
-  											value ="${sked.schedule_title}">
+  											value ="${schedule.schedule_title}">
 					
 										<label class="schedule_start">시작 날짜</label>
   										<input type="text" class="form-control border-primary" name="schedule_start" id="update_start" placeholder="ex) 2022-11-22" 
-  											onclick="javascript:f_datepicker(this);" value ="${sked.schedule_start}">
+  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_start}">
   					
   										<label class="schedule_end">종료 날짜</label>
   										<input type="text" class="form-control border-primary" name="schedule_end" id="update_end" placeholder="ex) 2022-11-22"
-  											onclick="javascript:f_datepicker(this);" value ="${sked.schedule_end}">
+  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_end}">
   					
   										<label class="schedule_memo">내용</label>
   										<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="update_memo" placeholder="ex) 무한상사"
-  											value ="${sked.schedule_memo}"></textarea>
+  											value ="${schedule.schedule_memo}"></textarea>
       									</div>
       						
       									<!-- 수정 완료 버튼 -->

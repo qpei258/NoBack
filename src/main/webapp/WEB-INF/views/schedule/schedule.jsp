@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addEventButton: { // 추가한 버튼 설정
                 text : "일정 추가",  // 버튼 내용
                 click : function(){ // 버튼 클릭 시 이벤트 추가
-                    $("#addModal").modal("show"); // modal 나타내기
+                    $('#addModal').modal('show'); // modal 나타내기
 
                     $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
                         var content = $("#schedule_memo").val();
@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     	
     	
-			
 		select: function(arg) {
 			// 캘린더에서 드래그로 이벤트를 생성할 수 있다.          
 			var title = prompt('일정의 제목을 입력해주세요.');
@@ -205,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			*/
             
         },
+        
         eventClick: function(arg) {
       	  // 있는 일정 클릭시,
       	  console.log("#등록된 일정 클릭#");
@@ -213,9 +213,31 @@ document.addEventListener('DOMContentLoaded', function() {
           if (confirm('일정을 삭제하시겠어요?')) {
             arg.event.remove()
           }
-        }
+          
+          var jsondata = JSON.stringify(arg);
+          console.log(jsondata);
+          
+
+         $( function saveData(jsondata) {
+       	   alert(JSON.stringify(jsondata));
+            $.ajax({
+                url: "delete",
+                method: "POST",
+                dataType: "json",
+                data: JSON.stringify(arg),
+                contentType: 'application/json',
+            })
+                .done(function (result) {
+                    alert(result);
+                })
+                .fail(function (request, status, error) {
+                     alert("에러 발생" + error);
+       			});
+            calendar.unselect()
+        });
         
         
+    	}
     });
     calendar.render();
  });

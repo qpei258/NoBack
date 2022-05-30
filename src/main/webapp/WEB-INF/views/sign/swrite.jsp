@@ -175,8 +175,8 @@ function formCheck() {
 		                <br>
                     </div>	  	  
 					<div style="border: 1px solid rgb(238, 238, 238);">
-						<input type="submit" value = "작성" />
-		                <input type = "reset" value ="초기화">
+						<input type="submit" class="btn btn-primary" value = "작성" />
+		                <input type = "reset" class="btn btn-primary" value ="초기화">
 					</div>
 				</form>
         	</div>

@@ -20,7 +20,8 @@
 		FROM noback_schedule
 	</select>
 	
-	<select id="selectScheduleMonth" resultType="schedule">
+	<!-- 스케줄 개별 출력 -->
+	<select id="selectScheduleInfo" resultType="schedule" parameterType="int">
 		select 
 			schedule_num,	  
 			schedule_title,  
@@ -28,6 +29,21 @@
 			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
 			schedule_memo,	   
 			schedule_writer,	   
+			schedule_level 
+		from 
+			noback_schedule 
+		where 
+			schedule_num = #{schedule_num} 		
+	</select>
+	
+	<select id="selectScheduleMonth" resultType="schedule">
+		select 
+			schedule_num,	  
+			schedule_title,  
+			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
+			schedule_memo,	   
+			schedule_writer	   
 		from 
 			noback_schedule 
 		where 
@@ -66,5 +82,26 @@
 			#{schedule_allDay}
 			)
 	</insert>
+	
+	<!-- 스케줄 수정 -->
+	<update id="updateSchedule" parameterType="schedule">
+		update 
+			noback_schedule
+		set 
+			schedule_title = #{schedule_title}
+			, schedule_start = #{schedule_start}
+			, schedule_end = #{schedule_end} 
+			, schedule_memo= #{schedule_memo} 
+		where 
+			schedule_num = #{schedule_num}
+	</update>
+	
+	<!-- 스케줄 삭제 -->
+	<delete id="deleteSchedule" parameterType="int">
+		delete from
+			noback_schedule
+		where 
+			schedule_num = #{schedule_num} 
+	</delete>
 	
 </mapper>
