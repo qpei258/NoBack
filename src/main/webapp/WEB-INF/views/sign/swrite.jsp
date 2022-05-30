@@ -114,12 +114,12 @@ function formCheck() {
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
           <nav class="topmenu">
-				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+				<a style="font-weight: bold;"href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
 		</nav>
         	<div id="sign">
-        	<h2 style="margin: 15px 0px 30px 0px; font-weight: bold; font-size: 40px;" >결제 서류</h2>
+        	<h2 style="margin: 15px 0px 30px 0px;  font-size: 40px;" >결제 서류</h2>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
 	        		<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; text-align: center; font-weight: bold; ">제목</span>

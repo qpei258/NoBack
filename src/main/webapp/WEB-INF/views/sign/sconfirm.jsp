@@ -44,9 +44,9 @@
 		<%@ include file="../sidebar.jsp" %>
 		<div id="content">
           <nav class="topmenu">
-				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+				<a style="font-weight: bold;"href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
 		</nav>
         <div id="content">
         	<div id="sign" style="background-color: rgb(238, 238, 238);">
@@ -78,7 +78,7 @@
 					</div>
 					
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text"style="width: 200px; font-weight: bold;" >수신자1(보내는곳)</span>
+						 <span class="input-group-text"style="width: 100px; font-weight: bold;" >수신자1</span>
 						  <input type="text" name="sign_receiver1" id="sign_receiver1" size="10" value="${sign.sign_nreceiver1}" readonly="readonly">
 						  <c:if test="${sign.sign_ok1 == 0}">
 						  <span class="input-group-text" style="width: 100px; font-weight: bold;">승인여부</span>
@@ -95,7 +95,7 @@
 					</div>
 					<c:if test="${sign.sign_receiver2 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 200px; font-weight: bold;">수신자2(보내는곳)</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">수신자2</span>
 						  <input type="text" name="sign_receiver2" id="sign_receiver2" size="10" value="${sign.sign_nreceiver2}" readonly="readonly">
 						  <c:if test="${sign.sign_ok2 == 0}">
 						  <span class="input-group-text"style="width: 100px; font-weight: bold;" >승인여부</span>
@@ -113,7 +113,7 @@
 					</c:if>
 					<c:if test="${sign.sign_receiver3 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 200px; font-weight: bold;">수신자3(보내는곳)</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">수신자3</span>
 						  <input type="text" name="sign_receiver3" id="sign_receiver3" size="10" value="${sign.sign_nreceiver3}" readonly="readonly">
 						  <c:if test="${sign.sign_ok3 == 0}">
 						  <span class="input-group-text"style="width: 100px; font-weight: bold;" >승인여부</span>
@@ -131,7 +131,7 @@
 					</c:if>
 					<c:if test="${sign.sign_receiver4 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text"style="width: 200px; font-weight: bold;" >수신자4(보내는곳)</span>
+						 <span class="input-group-text"style="width: 100px; font-weight: bold;" >수신자4</span>
 						  <input type="text" name="sign_receiver4" id="sign_receiver4" size="10" value="${sign.sign_nreceiver4}" readonly="readonly">
 						    <c:if test="${sign.sign_ok4 == 0}">
 						  <span class="input-group-text" style="width: 100px; font-weight: bold;">승인여부</span>
