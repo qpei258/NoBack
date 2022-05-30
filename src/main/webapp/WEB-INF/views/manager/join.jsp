@@ -167,6 +167,7 @@ function formCheck() {
 			</nav>
 			<!-- 회색 배경 -->
 			<div class='square'>
+			<!-- 수정 테이블 묶음 -->
 			<div class="update1">
 			<!-- 정보수정 폼 -->
 				<form id="join" action="join"  method="post" onsubmit="return formCheck();">

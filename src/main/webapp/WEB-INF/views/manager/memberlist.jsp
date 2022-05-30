@@ -34,7 +34,11 @@
 	width: 1257px;
 	height: 60px;
 }
-
+/* 페이지 */
+a{
+	text-decoration: none;
+	color: rgb(80,80,80);
+}
  
 
 
@@ -56,8 +60,11 @@
 	}
 		/* 수정 팝업창 실행 */
 		function memberlistupdate(num) {
-			alert("수정 하시겠습니까?");
-			window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
+			var che = confirm("수정 하시겠습니까?");
+			
+			if(che){
+				window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=600,height=500,location=no,status=no');
+			}
 		}
 	
 	</script>
@@ -78,7 +85,6 @@
 			<!-- 회색 배경  -->
 			<div class='square'>
 					<h2 style="margin: 40px 0px 10px 0px;">사원리스트</h2>
-
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
 				<form id="pagingForm" method="get" action="memberlist" >
@@ -121,6 +127,33 @@
 						  </c:forEach>
 				  </tbody>
 				</table>
+				
+				<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+				
+				
+				
 				<div id="navigator" style="border: 0px; font-size: 20px;">
         		<!-- 페이지 이동 부분 -->                      
 					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
