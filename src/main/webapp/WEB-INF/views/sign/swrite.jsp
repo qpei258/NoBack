@@ -7,12 +7,12 @@
     <title>결제서류작성</title><!-- 결제서류 작성jsp -->
 <script type="text/javascript" src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
-<!--check박스 버튼1 -->
+
 function receiverOpen1() {
 	document.getElementById('target_btn2').disabled = false;
 	window.open('check1', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
 }
-<!--check박스 버튼2 -->
+
 function receiverOpen2() {
 	let sign_receiver1 = document.getElementById('sign_receiver1'); 
 	if (sign_receiver1.value != '') {
@@ -21,7 +21,7 @@ function receiverOpen2() {
 	}
 }
 
-<!--check박스 버튼3 -->
+
 function receiverOpen3() {
 	let sign_receiver2 = document.getElementById('sign_receiver2'); 
 	if (sign_receiver2.value != '') {
@@ -30,7 +30,7 @@ function receiverOpen3() {
 	}
 }
 
-<!--check박스 버튼4 -->
+
 function receiverOpen4() {
 	let sign_receiver3 = document.getElementById('sign_receiver3'); 
 	if (sign_receiver3.value != '') {
@@ -38,7 +38,7 @@ function receiverOpen4() {
 	}
 }
 
-<!-- 작성할때 폼체크 -->
+
 function formCheck() {
 	let sign_title = document.getElementById('sign_title'); 
 	let sign_content = document.getElementById('sign_content'); 
@@ -87,7 +87,7 @@ function formCheck() {
 		color: rgb(80, 80, 80);
 		
 	}
-    	
+
     	a{
     		text-decoration: none;
     		color: rgb(80, 80, 80);
@@ -108,6 +108,7 @@ function formCheck() {
     
 	</style>
 </head>
+
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
@@ -120,56 +121,56 @@ function formCheck() {
         	<div id="sign">
         	<h2 style="margin: 15px 0px 30px 0px; font-weight: bold; font-size: 40px;" >결제 서류</h2>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
-	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
-					  	<span class="input-group-text" id="basic-addon1" style="width: 100px;">제목</span>
+	        		<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
+					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; text-align: center; font-weight: bold; ">제목</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:500px;">
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px;">내용</span>
+						 <span class="input-group-text" style="width: 100px; text-align: center; font-weight: bold;" >내용</span>
 						 <textarea name="sign_content" id="sign_content" style="width:500px;height:150px;resize:none;"></textarea>						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">					
 						 <input type="hidden" name="sign_sender" id="sign_sender" size="30" value="${member.employee_num}" readonly="readonly">						 
 					</div>	
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px;">작성자</span>					
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">작성자</span>					
 						 <input type="text" name="sign_nsender" id="sign_nsender" size="30" value="${member.employee_name}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px;">부서</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">부서</span>
 						 <input type="text" name="sign_dep" id="sign_dep" size="30" value="${member.employee_dep}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px;">직위</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">직위</span>
 						 <input type="text" name="sign_pos" id="sign_pos" size="30" value="${member.employee_pos}" readonly="readonly">						 
 					</div>
 						<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px;">첨부파일</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">첨부파일</span>
 						 <input type="file" id="upload" name="upload" size="30"> 					 
 					</div>
 					<div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
-	                  <span class="input-group-text" style="width: 100px;">수신자1</span>
+	                  <span class="input-group-text" style="width: 100px; font-weight: bold;" >수신자1</span>
 	                   <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" maxlength="10"  readonly="readonly" >
 	                   <input type="hidden" name="sign_receiver1" id="sign_receiver1" maxlength="10"  readonly="readonly" >
 			             <input id='target_btn1' type="button" value="수신자 검색" onclick="receiverOpen1()">
 		                <br>
                     </div>
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
-	                  <span class="input-group-text" style="width: 100px;" >수신자2</span>
+	                  <span class="input-group-text" style="width: 100px; font-weight: bold;" >수신자2</span>
 	                   <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" maxlength="10"  readonly="readonly" >
 	                   <input type="hidden" name="sign_receiver2" id="sign_receiver2" maxlength="10"  readonly="readonly" >
 			             <input id='target_btn2' type="button" value="수신자 검색" onclick="receiverOpen2()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
-	                  <span class="input-group-text" style="width: 100px;">수신자3</span>
+	                  <span class="input-group-text" style="width: 100px; font-weight: bold;" >수신자3</span>
 	                   <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" maxlength="10" value='' readonly="readonly">
 	                   <input type="hidden" name="sign_receiver3" id="sign_receiver3" maxlength="10"  readonly="readonly" >
 			             <input id='target_btn3' type="button" value="수신자 검색" onclick="receiverOpen3()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">   
-	                  <span class="input-group-text" style="width: 100px;">수신자4</span>
+	                  <span class="input-group-text" style="width: 100px; font-weight: bold;">수신자4</span>
 	                   <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" maxlength="10"  readonly="readonly" >
 	                   <input type="hidden" name="sign_receiver4" id="sign_receiver4" maxlength="10"  readonly="readonly" >
 			             <input id='target_btn4'type="button"  value="수신자 검색" onclick="receiverOpen4()" disabled>

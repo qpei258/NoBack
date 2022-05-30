@@ -69,9 +69,9 @@ public class MypageController {
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(HttpSession session, MemberVO member) {
-		
 		String searchId = (String) session.getAttribute("LoginId");
 		member.setEmployee_num(searchId);
+		
 		// 수정 dao로
 		int result = dao.updateMember(member);
 		logger.info("member", member);
@@ -101,14 +101,12 @@ public class MypageController {
 		model.addAttribute("navi", navi);
 		model.addAttribute("searchText", searchText);
 		
-		
 		return "mypage/myBoard"; 
 	}
 	
 	/**
 	 * 마이페이지-게시글-글상세 읽기
 	 */
-	
 	@RequestMapping(value = "readBoard", method = RequestMethod.GET)
 	public String readMyboard(String board_num, Model model) {
 		logger.info("게시글 접속");

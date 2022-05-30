@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>'  />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">    
 
 	function validation() {
@@ -41,6 +42,18 @@
 		location.href = 'mypage/mypage';
 		return true;
 	}
+	
+	window.onload = function(){
+	    document.getElementById("address").addEventListener("click", function(){ //주소입력칸을 클릭하면
+	        //카카오 지도 발생
+	        new daum.Postcode({
+	            oncomplete: function(data) { //선택시 입력값 세팅
+	                document.getElementById("address").value = data.address; // 주소 넣기
+	                document.querySelector("input[name=address1]").focus(); //상세입력 포커싱
+	            }
+	        }).open();
+	    });
+	}
 
 </script>
 <style type="text/css">
@@ -72,17 +85,22 @@
 /* 폼 테이블 */
 .formtable {
 	width: 800px;
-	height: 600px;
-	margin: 100px auto;
+	height: 500px;
+	margin: 20px auto;
 }
 
 label {
 	font-size :1px;
+	height: 10px;
+	color: black;
 }
 
 div {
-	border:1px solid white;
+	border : 1px solid;
+	color: rgb(238, 238, 238);
 }
+
+
 </style>
 </head>
 <body>
@@ -106,62 +124,92 @@ div {
 			
 					<!-- 정보수정 폼 -->
 					<form action="update" method="POST" onsubmit ="return validation()">
+		
+							<div class="row mb-3">
+                 			<label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">프로필 등록</label>
+                 				<div class="col-sm-10" style="width:550px">
+                 				<input class="form-control" type="file" id="picture" name="employee_picture" value="" style="width:500px">
+								</div>               			
+               			</div>
+						
 						<div class="row mb-3">
-							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">사진등록</label>
-								<div class="col-sm-10">
-								<input type="email" class="form-control" id="inputEmail3" value="" style="width:300px">
+							<label for="employee_name" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">이름</label>
+								<div class="col-sm-10" style="width:400px">
+								<input type="text" class="form-control" name="employee_name" id="name" value="${member.employee_email}">
 						    </div>
 						</div>
 						
 						<div class="row mb-3">
-							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">사원번호</label>
-								<div class="col-sm-10">
-								<input type="email" class="form-control" name ="employee_num" id="num" value="" style="width:300px">
+							<label for="employee_num" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">사원번호</label>
+								<div class="col-sm-10" style="width:400px">
+								<input type="text" readonly class="form-control" name="employee_num" id="num" value="${member.employee_email}">
 						    </div>
-						</div>
+						</div>					
 						
 						<div class="row mb-3">
-							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이름</label>
-								<div class="col-sm-10">
-								<input type="email" class="form-control" name ="employee_name" id="name" value="" style="width:300px">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">부서</label>
+						    <div class="col-sm-10" style="width:400px">
+						      <input type="text" readonly class="form-control" name ="employee_dep" id="email" value="${member.employee_email}" placeholder="">
 						    </div>
-						</div>
-						
+						  </div>
+						  
 						<div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px;">비밀번호</label>
-								<div class="col-sm-10">
-								<input type="password" class="form-control" name ="employee_password" id="password" value="${member.employee_num}" placeholder="비밀번호 입력" style="width:300px">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">직함</label>
+						    <div class="col-sm-10" style="width:400px">
+						      <input type="text" readonly class="form-control" name ="employee_pos" id="email" value="${member.employee_email}" placeholder="">
+						    </div>
+						 </div>
+						 
+						<div class="row mb-3">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">비밀번호</label>
+								<div class="col-sm-10" style="width:400px">
+								<input type="password" class="form-control" name ="employee_password" id="password" placeholder="비밀번호 입력" >
 								</div>
 						</div>
 						  
 						<div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px;">비밀번호 확인</label>
-								<div class="col-sm-10">
-								<input type="password" class="form-control" name ="passwordcheck" id="passwordcheck" placeholder="비밀번호 다시 입력" style="width:300px">
-								</div>
-						  </div>
-						  
-						<div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px;">주소</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" name ="employee_address" id="address" value="${member.employee_address}" placeholder="비밀번호 다시 입력">
-						    </div>
-						  </div>
-						  
-						   <div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px;">이메일</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" name ="employee_email" id="email" value="${member.employee_email}" placeholder="ex) xxxx@.com">
-						    </div>
-						  </div>
-						  
-						   <div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px;">연락처</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" placeholder="ex) 010-1111-2222">
-						    </div>
-						  </div>
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">비밀번호 확인</label>
+								<div class="col-sm-10" style="width:400px">
+								<input type="password" class="form-control" name ="passwordcheck" id="passwordcheck" placeholder="비밀번호 다시 입력">
+							</div>
+						 </div>
 						
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">주민번호</label>
+								<div class="col-sm-10" style="width:400px">
+								<input type="text" readonly class="form-control" name="employee_ssn" id="num" value="${member.employee_address}" maxlength="13">
+						    </div>
+						</div>
+						
+						<div class="row mb-3">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">주소</label>
+						    <div class="col-sm-10" style="width:500px">
+						      <input type="text" class="form-control" name ="employee_address" id="address" value="${member.employee_address}" placeholder="">
+						    </div>
+						  </div>
+						  
+						  <div class="row mb-3">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">상세주소</label>
+						    <div class="col-sm-10" style="width:600px">
+						      <input type="text" readonly class="form-control" name ="employee_address1" id="address1" value="${member.employee_address1}" placeholder="">
+						    </div>
+						  </div>
+						  
+						   
+						   <div class="row mb-3">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">연락처</label>
+						    <div class="col-sm-10" style="width:400px">
+						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" maxlength="11" placeholder="ex) 010-1111-2222">
+						    </div>
+						  </div>
+ 
+						   <div class="row mb-3">
+						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">이메일</label>
+						    <div class="col-sm-10" style="width:400px">
+						      <input type="text" class="form-control" name ="employee_email" id="email" value="${member.employee_email}" placeholder="ex) name@example.com">
+						    </div>
+						  </div>
+
 					<fieldset>
 						<input type="submit" class="btn btn-primary" value="수정">
 						<input type="reset" class="btn btn-primary" value="다시 쓰기">
