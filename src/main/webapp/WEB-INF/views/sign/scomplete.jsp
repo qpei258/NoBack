@@ -26,9 +26,9 @@ function receiverOpen() {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<style type="text/css">
 		#sign {
-		margin: 10px auto;
+		margin: 0px auto;
 		width: 1258px;
-		height: 800px;
+		height: 1000px;
 		background-color: rgb(238, 238, 238);
 		text-align: center;
 		color: rgb(80, 80, 80);
@@ -65,19 +65,19 @@ function receiverOpen() {
 		</nav>
         <div id="content">
         	<div id="sign">
-        	<h1>[결제 서류]</h1>
+        	<h1>결제 서류</h1>
         		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
-        		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
+        		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold;">기안일</span>
 					  	<input type="text" name="signsign_cdate" id="signsign_cdate" style="width:400px;" value="${sign.sign_cdate}" readonly="readonly">
 					</div>
-	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 10px auto 0px auto;">
+	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold;">제목</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:400px;" value="${sign.sign_title}" readonly="readonly">	
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;">내용</span>
-						 <input type="text" name="sign_content" id="sign_content" style="width:400px;" style="height:200px;" value="${sign.sign_content}" readonly="readonly" >					 
+						 <input type="text" name="sign_content" id="sign_content" style="width:400px; height:200px;" value="${sign.sign_content}" readonly="readonly" >					 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >작성자</span>
