@@ -13,7 +13,7 @@
                 <a href='<c:url value="/"/>'><img src='<c:url value="/resources/img/logo.png"/>'></a>
             </div>
             <div id="sidebar">
-                <ul style="list-style: none;">
+                <ul style="list-style: none; padding-left:25px;">
                     <span style="line-height: 60px; font-size: 40px; font-weight: 700;">카테고리</span>
                     <li><a href='<c:url value="/"/>'>홈</a></li>
                     <li><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></li>
