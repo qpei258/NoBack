@@ -179,7 +179,7 @@ function receiverOpen() {
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
 					<div>
-					   <input type="submit" value="처리완료" />
+					   <input type="submit" class="btn btn-primary" value="처리완료" />
 					</div>                           
 					</div>                             
 					</c:if>
@@ -195,7 +195,7 @@ function receiverOpen() {
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
 					<div>
-					   <input type="submit" value="처리완료" />
+					   <input type="submit" class="btn btn-primary" value="처리완료" />
 					</div>                           
 					</div>                               
 					</c:if>
@@ -211,7 +211,7 @@ function receiverOpen() {
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
 					<div>
-					   <input type="submit" value="처리완료" />
+					   <input type="submit" class="btn btn-primary" value="처리완료" />
 					</div>                           
 					</div>           
 					</c:if>
@@ -227,7 +227,7 @@ function receiverOpen() {
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
 					<div>
-					   <input type="submit" value="처리완료" />
+					   <input type="submit" class="btn btn-primary" value="처리완료" />
 					</div>                           
 					</div>
 					</c:if>
