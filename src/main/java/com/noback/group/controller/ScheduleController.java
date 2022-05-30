@@ -123,4 +123,56 @@ public class ScheduleController {
 	}
 	
 
+	/**
+	 * 일정 개별 출력
+	*/
+	@RequestMapping(value = "scheduleInfo", method = RequestMethod.GET) 
+	public String showScheduleinfo(int schedule_num, Model model)
+			throws Exception {
+		logger.info("사내 일정 페이지 로딩성공"); 
+		ScheduleVO schedule = dao.getSchedule(schedule_num);
+		model.addAttribute("schedule", schedule);
+		
+		return "schedule/scheduleInfo"; 
+	}
+	
+	/**
+	 * 일정 수정
+	 */
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
+		// 아이디로 수정할 정보 불러오기
+		
+		String searchId = (String) session.getAttribute("LoginId");
+		sked.setSchedule_writer(searchId);
+		
+		//ScheduleVO sked = dao.getSchedule(schedule_num);
+		
+		//model.addAttribute("sked", sked);
+		
+		// dao로
+		int result = dao.updateSchedule(sked);
+		logger.info("sked", sked);
+		//session.setAttribute("LoginLv", sked.getSchedule_level());
+		
+		return "redirect:/schedule/scheduleMonth";	
+	}
+
+	
+	/**
+	 * 일정 삭제
+	*/
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String deleteSchedule(HttpSession session, int schedule_num) {
+		
+		//String searchId = (String) session.getAttribute("LoginId");
+		// dao로
+		ScheduleVO sked = dao.getSchedule(schedule_num);
+		
+		int result = dao.deleteSchedule(schedule_num);
+		logger.info("sked", sked);
+		
+		return "redirect:/schedule/scheduleMonth";	
+	}
+
 }
