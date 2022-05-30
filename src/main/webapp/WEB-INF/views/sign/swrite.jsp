@@ -79,13 +79,14 @@ function formCheck() {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<style type="text/css">
 		#sign {
-			margin:10px auto;
-    		width: 1258px;
-    		height: 870px;
-    		background-color: rgb(238, 238, 238);
-    		text-align: center;
-    		color: rgb(80, 80, 80);
-    	}
+		margin: 10px auto;
+		width: 1258px;
+		height: 800px;
+		background-color: rgb(238, 238, 238);
+		text-align: center;
+		color: rgb(80, 80, 80);
+		
+	}
     	
     	a{
     		text-decoration: none;
@@ -125,7 +126,7 @@ function formCheck() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >내용</span>
-						 <textarea name="sign_content" id="sign_content" style="width:500px;height:200px;resize:none;"></textarea>						 
+						 <textarea name="sign_content" id="sign_content" style="width:500px;height:150px;resize:none;"></textarea>						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">					
 						 <input type="hidden" name="sign_sender" id="sign_sender" size="30" value="${member.employee_num}" readonly="readonly">						 
@@ -172,12 +173,9 @@ function formCheck() {
 	                   <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" maxlength="10"  readonly="readonly" >
 	                   <input type="hidden" name="sign_receiver4" id="sign_receiver4" maxlength="10"  readonly="readonly" >
 			             <input id='target_btn4'type="button"  value="수신자 검색" onclick="receiverOpen4()" disabled>
-		                <br>
                     </div>	  	  
-					<div style="border: 1px solid rgb(238, 238, 238);">
 						<input type="submit" class="btn btn-primary" value = "작성" />
 		                <input type = "reset" class="btn btn-primary" value ="초기화">
-					</div>
 				</form>
         	</div>
         </div>
