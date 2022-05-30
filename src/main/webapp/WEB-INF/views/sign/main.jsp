@@ -11,13 +11,14 @@
     <style type="text/css">
     	
     	#signList{
-    		margin:10px auto;
-    		width: 1258px;
-    		height: 870px;
-    		background-color: rgb(238, 238, 238);
-    		text-align: center;
-    		color: rgb(80, 80, 80);
-    	}
+		margin: 10px auto;
+		width: 1258px;
+		height: 800px;
+		background-color: rgb(238, 238, 238);
+		text-align: center;
+		color: rgb(80, 80, 80);
+		
+	}
     	
     	/* 상단메뉴 */
      .topmenu {

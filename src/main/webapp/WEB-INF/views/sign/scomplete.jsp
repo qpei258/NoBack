@@ -26,13 +26,14 @@ function receiverOpen() {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<style type="text/css">
 		#sign {
-			margin:10px auto;
-    		width: 1258px;
-    		height: 870px;
-    		background-color: rgb(238, 238, 238);
-    		text-align: center;
-    		color: rgb(80, 80, 80);
-    	}
+		margin: 10px auto;
+		width: 1258px;
+		height: 800px;
+		background-color: rgb(238, 238, 238);
+		text-align: center;
+		color: rgb(80, 80, 80);
+		
+	}
     	
     	a{
     		text-decoration: none;
@@ -177,10 +178,8 @@ function receiverOpen() {
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
-					</div>       
-					<div>
-					   <input type="submit" class="btn btn-primary" value="처리완료" />
-					</div>                           
+					</div>   
+					   <input type="submit" class="btn btn-primary" value="처리완료" />                        
 					</div>                             
 					</c:if>
 					</c:if>
@@ -194,9 +193,7 @@ function receiverOpen() {
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
-					<div>
-					   <input type="submit" class="btn btn-primary" value="처리완료" />
-					</div>                           
+					   <input type="submit" class="btn btn-primary" value="처리완료" />                         
 					</div>                               
 					</c:if>
 					</c:if>
@@ -210,9 +207,7 @@ function receiverOpen() {
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
-					<div>
-					   <input type="submit" class="btn btn-primary" value="처리완료" />
-					</div>                           
+					   <input type="submit" class="btn btn-primary" value="처리완료" />                       
 					</div>           
 					</c:if>
 					</c:if>
@@ -226,15 +221,11 @@ function receiverOpen() {
 						 <span class="input-group-text" >메모</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
 					</div>       
-					<div>
-					   <input type="submit" class="btn btn-primary" value="처리완료" />
-					</div>                           
+					   <input type="submit" class="btn btn-primary" value="처리완료" />                        
 					</div>
 					</c:if>
 					</c:if>
-					<div>
 					   <input type ="hidden"  name="sign_num" id="sign_num" value="${sign.sign_num}"> 
-					</div>
 				</form>
         	</div>
         </div>
