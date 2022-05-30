@@ -66,9 +66,8 @@ function loginCheck() {
 		alert('ID와 비밀번호를 입력하세요.');
 		return false;
 	}
-	  
 	return true;
-}
+}	
 </script>
 </head>
 <body>
@@ -82,13 +81,13 @@ function loginCheck() {
 						onSubmit="return loginCheck();">
 						<div class="input-group mb-3" style="border: 0px; width:70%; margin: 53px auto 100px auto;" >
 							<span class="input-group-text" id="basic-addon1" style="width: 70px;" >ID</span> 
-							<input id="id" class="form-control" name="employee_num" placeholder="사원번호를  입력해주세요"
+							<input type="text" id="id" class="form-control" name="employee_num" placeholder="사원번호를  입력해주세요"
 								aria-label="Username" aria-describedby="basic-addon1">
 								
 						</div>
 						<div class="input-group mb-3" style="border: 0px; width:70%; margin: 0px auto;">
 							<span class="input-group-text" id="basic-addon2" style="width: 70px;">PW</span> 
-							<input id="pw" class="form-control" name="employee_password" placeholder="비밀번호를  입력해주세요"
+							<input type="password" id="pw" class="form-control" name="employee_password" placeholder="비밀번호를  입력해주세요"
 								aria-label="Username" aria-describedby="basic-addon2">
 						</div>
 

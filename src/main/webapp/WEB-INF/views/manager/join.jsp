@@ -34,6 +34,22 @@
 	width: 1257px;
 	height: 60px;
 }
+
+/* 폼 테이블 */
+.update1 {
+	width: 800px;
+	height: 600px;
+	margin: 85px auto;
+}
+
+label {
+	font-size :1px;
+}
+
+div {
+	border:1px solid white;
+}
+
 </style>
 
 <script
@@ -149,68 +165,76 @@ function formCheck() {
 			</nav>
 			<!-- 회색 배경 -->
 			<div class='square'>
+			<div class="update1">
+			<!-- 정보수정 폼 -->
 				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
-					<table>
-						<tr>
-				            <th>프로필 등록</th>
-				            <td><input type="file" id="employee_picture" name="employee_picture" ></td>
-				        </tr>
-				        <tr>
-				        <tr>
-				            <th>이름</th>
-				            <td><input type="text" id="employee_name" name="employee_name"></td>
-				        </tr>
-				        <tr>
-				            <th>주민번호</th>
-				            <td><input type="text" id="employee_ssn" name="employee_ssn"  maxlength="13" placeholder="' - '빼고 13자리 입력"></td>
-				        </tr>
-				        <tr>
-				            <th>주소</th>
-				            <td><input type="text" id="employee_address" name="employee_address" readonly placeholder="클릭해서 주소찾기" /></td>
-				        </tr>
-				        <tr>
-				            <th>상세 주소</th>
-				            <td><input type="text" id="employee_address1" name="employee_address1" /></td>
-				        </tr>
-				        <tr>
-				            <th>연락처</th>
-				            <td><input type="text" id="employee_phone" name="employee_phone" maxlength="11" placeholder="' - '빼고 입력"></td>
-				        </tr>
-				        <tr>
-				            <th>이메일</th>
-				            <td><input type="text" id="employee_email" name="employee_email"></td>
-				        </tr>
-				        <tr>
-				            <th>부서</th>
-				            <td><input type="text" id="employee_dep" name="employee_dep"></td>
-				        </tr>
-				        <tr>
-				            <th>직함</th>
-				            <td><input type="text" id="employee_pos" name="employee_pos"></td>
-				        </tr>
-				        <tr>
-				            <th>사원 번호</th>
-				            <td><input type="text" id="employee_num" name="employee_num" maxlength="6"></td>
-				        </tr>
-				        <tr>
-				            <th>권한 등급</th>
-				            <td>
-					            <select name='employee_level' id="employee_level">
-									  <option value='' selected>-- 선택 --</option>
-									  <option value='1'>1 </option>
-									  <option value='2'>2</option>
-									  <option value='3'>3</option>
-									  <option value='4'>4</option>
-								</select>
-							</td>	
-				        </tr>
-				        
-				        
-				    </table>
-								
+					<div class="row mb-3">
+					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">프로필 등록</label>
+					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="" style="width:400px">
+					</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이름</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_name" id="employee_name" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">사원번호</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_num" id="num" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">부서</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_dep" id="employee_dep" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">직함</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_pos" id="employee_pos" value="" style="width:300px">
+						    </div>
+						</div>
+						
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주민번호</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_ssn" id="employee_ssn" maxlength="13" placeholder="' - '빼고 13자리 입력" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주소</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_address" id="employee_address" readonly placeholder="클릭해서 주소찾기" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">상세 주소</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_address1" id="employee_address1"  value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이메일</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_email" id="employee_email" value="" style="width:300px">
+						    </div>
+						</div>
+						<div class="row mb-3">
+						<label for="employee_level" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">권한 등급</label>
+						<select  class="form-select" aria-label="Default select example" name='employee_level' id="employee_level" value="" style="width:200px">
+						  <option selected>-- 선택 --</option>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value='4'>4</option>
+						</select>
+						</div>
 					<button type="submit" style="width: 100px;" class="btn btn-primary">등록</button>
 					<button type="reset" style="width: 100px;" class="btn btn-primary">초기화</button>
 				</form>
+				</div>
 				</div>
 			</div>
 		</div>
