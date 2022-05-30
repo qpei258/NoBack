@@ -16,22 +16,49 @@
 	
 
 <style>
-    
+/*회색 배경*/
+.square {
+	margin: 10px auto;
+	width: 1258px;
+	height: 800px;
+	background-color: rgb(238, 238, 238);
+	text-align: center;
+	color: rgb(80, 80, 80);
+	padding-top : 10px;
+	padding-left : 20px;
+	padding-right : 20px;
+
+}
+
+/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
 </style>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        
+       		<div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
         	<!-- 상단바  -->
-       		<nav class="nav">
-       			<a class="nav-link active" href='<c:url value="update"/>'>개인정보 수정</a>
-       			<a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
-  				<a class="nav-link" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
-			</nav>
-		
-        </div> <!-- 컨텐츠 끝 -->
-    </div> <!-- 컨테이너 끝 -->
+       			<nav class="nav">
+       				<a class="nav-link active" href='<c:url value="update"/>'>개인정보 수정</a>
+       				<a class="nav-link active" href='<c:url value="board"/>'>작성한 게시글 보기</a>
+  					<a class="nav-link active" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
+				</nav>
+			</div> <!-- topmenu 끝 -->
+			
+			<!-- 회색 박스 -->
+			<div class='square'>
+			
+			</div> <!-- square 끝 -->
+        </div> <!-- content 끝 -->
+    </div> <!-- container 끝 -->
 </body>
 </html>

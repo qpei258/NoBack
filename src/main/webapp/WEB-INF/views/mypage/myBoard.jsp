@@ -16,132 +16,163 @@ function pagingFormSubmit(currentPage) {
 	form.submit();
 }
 </script>
+<style>
+
+/*회색 배경*/
+.square {
+	margin: 10px auto;
+	width: 1258px;
+	height: 800px;
+	background-color: rgb(238, 238, 238);
+	text-align: center;
+	color: rgb(80, 80, 80);
+	padding-top : 10px;
+	padding-left : 20px;
+	padding-right : 20px;
+
+}
+
+/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
+</style>
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        
-        	<!-- 상단바  -->
-       		<nav class="nav">
-       			<a class="nav-link active" href='<c:url value="../mypage/update"/>'>개인정보 수정</a>
-       			<a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
-  				<a class="nav-link" href='<c:url value="../mypage/schedule"/>'>작성한 스케줄 보기</a>
-			</nav>
-			
-			<form action="board" method="get">
-			<table>
-				<tr>
-					<th>번호</th>
-					<th style="width:500px">제목</th>
-					<th>작성일</th>
-					<th>작성자</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>제목</td>
-					<td>2022-05-04</td>
-					<td>관리자</td>
-				</tr>
-				
-				<!-- 반복 시작 -->
-				<c:forEach var="board" items="${boardlist}">
-				<tr onclick="location.href='board?num=${boardlist.board_num}'">
-					<td class="center">${boardlist.board_num}</td>
-					<td>${boardlist.board_title}</td>
-					<td>${boardlist.board_writer}</td>
-					
-					<!-- 
-					<td>
-						<a href="read?boardnum=${board.board_num}">${board.board_title}</a>
-					</td>
-					<td class="center">${board.board_writer}
-					</td>
-					 -->
-
-				</tr>
-
-				</c:forEach>        
-				<!-- 반복 끝 -->
-				</table>
-				</form>
-			
-			<!-- 페이지 이동 부분 -->  
-			<div id="navigator">
-			                    
-				<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
-				<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
-
-				<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-					<c:if test="${counter == navi.currentPage}"><b></c:if>
-						<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
-					<c:if test="${counter == navi.currentPage}"></b></c:if>
-				</c:forEach>
-				
-				&nbsp;&nbsp;
-				<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
-				<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
-			</div>	<!-- /페이지 이동 끝 -->  
-			
-			
-			<div aria-label="Page navigation example">
-     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})" 
-     					aria-label="Previous">
-      				 <span aria-hidden="true">&laquo;</span>
-    			</a>
-    		
-    				
-     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - 1})" 
-     				aria-label="Previous">
-      			<span aria-hidden="true">&laquo;</span>
-    			</a>
-    				
-    			<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-					<c:if test="${counter == navi.currentPage}"><b></c:if>
-						<a class="page-link"  href="javascript:pagingFormSubmit(${counter})">${counter}</a>
-					<c:if test="${counter == navi.currentPage}"></b></c:if>
-				</c:forEach>
-    				
-    		
-      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + 1})" 
-      			aria-label="Next">
-        		<span aria-hidden="true">&raquo;</span>
-      			</a>
-    		
-      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})" 
-      			aria-label="Next">
-        		<span aria-hidden="true">&raquo;</span>
-      			</a>
-			</div>
-			
-			
-			<nav aria-label="Page navigation example">
-  				<ul class="pagination">
-    				<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Previous">
-        				<span aria-hidden="true">&laquo;</span>
-      				</a>
-    				</li>
-    				<li class="page-item"><a class="page-link" href="#">1</a></li>
-   				 	<li class="page-item"><a class="page-link" href="#">2</a></li>
-   					 <li class="page-item"><a class="page-link" href="#">3</a></li>
-   					<li class="page-item">
-    			 		 <a class="page-link" href="#" aria-label="Next">
-   		 			    <span aria-hidden="true">&raquo;</span>
-    				  </a>
-    				</li>
-  				</ul>
+	        <div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
+	        	<!-- 상단바  -->
+	       		<nav class="nav">
+	       			<a class="nav-link active" href='<c:url value="../mypage/update"/>'>개인정보 수정</a>
+	       			<a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
+	  				<a class="nav-link" href='<c:url value="../mypage/schedule"/>'>작성한 스케줄 보기</a>
 				</nav>
+			</div> <!-- topmenu 끝 -->
 			
+			<!-- 회색 박스 -->
+			<div class='square'>
 			
-			<!-- 검색폼 -->
-			<form id="pagingForm" method="get" action="list">
-				<input type="hidden" name="page" id="page" />
-				제목 : <input type="text"  name="searchText" value="${searchText}" />
-				<input type="button" onclick="pagingFormSubmit(1)" value="검색">
-			</form>
-			<!-- /검색폼 --> 
-			
+				<form action="board" method="get">
+				<table>
+					<tr>
+						<th>번호</th>
+						<th style="width:500px">제목</th>
+						<th>작성일</th>
+						<th>작성자</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>제목</td>
+						<td>2022-05-04</td>
+						<td>관리자</td>
+					</tr>
+					
+					<!-- 반복 시작 -->
+					<c:forEach var="board" items="${boardlist}">
+					<tr onclick="location.href='board?num=${boardlist.board_num}'">
+						<td class="center">${boardlist.board_num}</td>
+						<td>${boardlist.board_title}</td>
+						<td>${boardlist.board_writer}</td>
+						
+						<!-- 
+						<td>
+							<a href="read?boardnum=${board.board_num}">${board.board_title}</a>
+						</td>
+						<td class="center">${board.board_writer}
+						</td>
+						 -->
+	
+					</tr>
+	
+					</c:forEach>        
+					<!-- 반복 끝 -->
+					</table>
+					</form>
+				
+				<!-- 페이지 이동 부분 -->  
+				<div id="navigator">
+				                    
+					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
+	
+					<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+						<c:if test="${counter == navi.currentPage}"><b></c:if>
+							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+						<c:if test="${counter == navi.currentPage}"></b></c:if>
+					</c:forEach>
+					
+					&nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+				</div>	<!-- /페이지 이동 끝 -->  
+				
+				
+				<div aria-label="Page navigation example">
+	     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})" 
+	     					aria-label="Previous">
+	      				 <span aria-hidden="true">&laquo;</span>
+	    			</a>
+	    		
+	    				
+	     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - 1})" 
+	     				aria-label="Previous">
+	      			<span aria-hidden="true">&laquo;</span>
+	    			</a>
+	    				
+	    			<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+						<c:if test="${counter == navi.currentPage}"><b></c:if>
+							<a class="page-link"  href="javascript:pagingFormSubmit(${counter})">${counter}</a>
+						<c:if test="${counter == navi.currentPage}"></b></c:if>
+					</c:forEach>
+	    				
+	    		
+	      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + 1})" 
+	      			aria-label="Next">
+	        		<span aria-hidden="true">&raquo;</span>
+	      			</a>
+	    		
+	      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})" 
+	      			aria-label="Next">
+	        		<span aria-hidden="true">&raquo;</span>
+	      			</a>
+				</div>
+				
+				
+				<nav aria-label="Page navigation example">
+	  				<ul class="pagination">
+	    				<li class="page-item">
+	      				<a class="page-link" href="#" aria-label="Previous">
+	        				<span aria-hidden="true">&laquo;</span>
+	      				</a>
+	    				</li>
+	    				<li class="page-item"><a class="page-link" href="#">1</a></li>
+	   				 	<li class="page-item"><a class="page-link" href="#">2</a></li>
+	   					 <li class="page-item"><a class="page-link" href="#">3</a></li>
+	   					<li class="page-item">
+	    			 		 <a class="page-link" href="#" aria-label="Next">
+	   		 			    <span aria-hidden="true">&raquo;</span>
+	    				  </a>
+	    				</li>
+	  				</ul>
+					</nav>
+				
+				
+				<!-- 검색폼 -->
+				<form id="pagingForm" method="get" action="list">
+					<input type="hidden" name="page" id="page" />
+					제목 : <input type="text"  name="searchText" value="${searchText}" />
+					<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+				</form>
+				<!-- /검색폼 --> 
+				
+			</div> <!-- square 끝 -->
         </div> <!-- 컨텐츠 끝 -->
     </div> <!-- 컨테이너 끝 -->
 </body>

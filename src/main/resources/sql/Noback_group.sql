@@ -108,6 +108,14 @@ create sequence board_seq
 	nocycle
 	nocache;
     
+create sequence cal_seq
+	increment  by 1
+	start with 1
+	minvalue 1
+	maxvalue 999
+	nocycle
+	nocache;
+
 create sequence sign_seq
 	increment  by 1
 	start with 1

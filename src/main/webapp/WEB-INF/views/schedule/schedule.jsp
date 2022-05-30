@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
 				<a class="nav-link active" href='<c:url value="/schedule/scheduleMonth"/>'>이번달 일정</a>
 				</nav>
+			</div>
 				
 				<!-- 회색 박스 -->
 				<div class='square'>
@@ -301,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					<div id='calendar' style="font-size: 10px;"></div>
 					
         		</div> <!-- square 끝 -->
-        	
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->
 </body>
