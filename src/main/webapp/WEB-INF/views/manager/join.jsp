@@ -42,14 +42,20 @@
 	margin: 48px auto;
 }
 
-label {
-	font-size :1px;
-	color: black;
+a{
+	text-decoration: none;
+	color: rgb(80,80,80);
 }
+
 
 div {
 	border:1px solid;
 	color: rgb(238, 238, 238);
+}
+
+label {
+   font-size :1px;
+   color: black;
 }
 
 </style>
@@ -184,7 +190,7 @@ function formCheck() {
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">사원번호</label>
 								<div class="col-sm-10">
-								<input type="text" class="form-control" name ="employee_num" id="num" value="" style="width:300px">
+								<input type="text" class="form-control" name ="employee_num" id="num"  maxlength="6" value="" style="width:300px">
 						    </div>
 						</div>
 						<div class="row mb-3">

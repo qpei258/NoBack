@@ -78,7 +78,9 @@
 			, employee_dep = #{employee_dep}
 			, employee_pos = #{employee_pos}
 			, employee_email = #{employee_email}
+		<if test="employee_level != null">
 			, employee_level = #{employee_level}
+		</if>	
 			, employee_phone = #{employee_phone}
 		<if test="employee_picture  != null ">
 			, employee_picture = #{employee_picture}
