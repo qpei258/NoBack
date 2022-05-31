@@ -18,8 +18,8 @@
 /*회색 배경*/
 .square {
 	margin: 10px auto;
-	width: 1258px;
-	height: 800px;
+	width: 850px;
+	height: 700px;
 	background-color: rgb(238, 238, 238);
 	text-align: center;
 	color: rgb(80, 80, 80);
@@ -32,14 +32,20 @@
 	margin: 48px auto;
 }
 
-label {
-	font-size :1px;
-	color: black;
+
+a{
+	text-decoration: none;
+	color: rgb(80,80,80);
 }
 
 div {
 	border:1px solid;
 	color: rgb(238, 238, 238);
+}
+
+label {
+   font-size :1px;
+   color: black;
 }
 
 </style>
@@ -68,15 +74,20 @@ window.onload = function(){
 </script>
 <script type="text/javascript">
 
+
+
 </script>
+ 
+
+
 </head>
 <body>
-	<div id="container">
+	<div id="container" style="margin: 0px; width: 600px; height: 500px;">
 			<!-- 회색 배경  -->
-			<div class='square'>
+			<div class='square' style="margin: auto;">
 			<!-- 수정 테이블 묶음 -->
 			<div class="update1">
-			<form method="post">
+			<form method="post" onsubmit="return updatecheck();">
 				        <div class="row mb-3">
 					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">프로필 등록</label>
 					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="${member.employee_picture}" style="width:400px; background-color:rgb(238, 238, 238)">
@@ -133,9 +144,11 @@ window.onload = function(){
 							  <option value='4'>4</option>
 							</select>
 						</div>
-					<button type="submit" style="width: 100px;" class="btn btn-primary">수정</button>
+					<button type="submit" class="btn btn-primary" style="width: 100px";>수정</button>
+					<button type="button" class="btn btn-primary" style="width: 100px"; onclick="window.close()"; >닫기</button>
 				</form>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
