@@ -120,7 +120,7 @@ function formCheck() {
 		</nav>
         	<div id="sign">
         	<h2 style="margin: 15px 0px 30px 0px;  font-size: 40px;" >결제 서류</h2>
-        		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
+        		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data"	style="margin-left: 260px;">
 	        		<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; text-align: center; font-weight: bold; ">제목</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:500px;">
