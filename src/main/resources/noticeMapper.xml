@@ -49,8 +49,16 @@
 	</select>
 	
 	<insert id="noticeWrite" parameterType="notice">
-		insert into noback_notice
-		values(notice_seq.nextval, #{notice_title}, #{notice_content}, #{notice_writer}, sysdate, #{notice_originfile}, #{notice_savedfile})
+		insert into noback_notice(notice_num, notice_title, notice_content, notice_writer, notice_date
+		<if test="notice_originfile != null">
+			, notice_originfile, notice_savedfile
+		</if>
+		)
+		values(notice_seq.nextval, #{notice_title}, #{notice_content}, #{notice_writer}, sysdate
+		<if test="notice_originfile != null">
+			, #{notice_originfile}, #{notice_savedfile}
+		</if>
+		)
 	</insert>
 	
 	<delete id="noticeDelete" parameterType="string">

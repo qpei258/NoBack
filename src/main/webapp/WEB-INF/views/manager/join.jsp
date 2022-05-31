@@ -39,15 +39,17 @@
 .update1 {
 	width: 800px;
 	height: 600px;
-	margin: 85px auto;
+	margin: 48px auto;
 }
 
 label {
 	font-size :1px;
+	color: black;
 }
 
 div {
-	border:1px solid white;
+	border:1px solid;
+	color: rgb(238, 238, 238);
 }
 
 </style>
@@ -165,12 +167,13 @@ function formCheck() {
 			</nav>
 			<!-- 회색 배경 -->
 			<div class='square'>
+			<!-- 수정 테이블 묶음 -->
 			<div class="update1">
 			<!-- 정보수정 폼 -->
 				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
 					<div class="row mb-3">
 					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">프로필 등록</label>
-					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="" style="width:400px">
+					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="" style="width:400px; background-color:rgb(238, 238, 238)">
 					</div>
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이름</label>
@@ -196,7 +199,6 @@ function formCheck() {
 								<input type="text" class="form-control" name ="employee_pos" id="employee_pos" value="" style="width:300px">
 						    </div>
 						</div>
-						
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주민번호</label>
 								<div class="col-sm-10">
@@ -206,13 +208,19 @@ function formCheck() {
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주소</label>
 								<div class="col-sm-10">
-								<input type="text" class="form-control" name ="employee_address" id="employee_address" readonly placeholder="클릭해서 주소찾기" value="" style="width:300px">
+								<input type="text" class="form-control" name ="employee_address" id="employee_address" readonly placeholder="클릭해서 주소찾기" value="" style="width:430px">
 						    </div>
 						</div>
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">상세 주소</label>
 								<div class="col-sm-10">
-								<input type="text" class="form-control" name ="employee_address1" id="employee_address1"  value="" style="width:300px">
+								<input type="text" class="form-control" name ="employee_address1" id="employee_address1" style="width:550px" value="" >
+						    </div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">연락처</label>
+								<div class="col-sm-10">
+								<input type="text" class="form-control" name ="employee_phone" id="employee_phone" maxlength="11" placeholder="' - '빼고 입력" value="" style="width:300px">
 						    </div>
 						</div>
 						<div class="row mb-3">
@@ -223,7 +231,7 @@ function formCheck() {
 						</div>
 						<div class="row mb-3">
 						<label for="employee_level" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">권한 등급</label>
-						<select  class="form-select" aria-label="Default select example" name='employee_level' id="employee_level" value="" style="width:200px">
+						<select  class="form-select" aria-label="Default select example" name='employee_level' id="employee_level" value="" style="width:150px">
 						  <option selected>-- 선택 --</option>
 						  <option value="1">1</option>
 						  <option value="2">2</option>

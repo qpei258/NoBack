@@ -45,7 +45,7 @@ function searchname(num, name) {
 
 <form action="check1" method="post" onSubmit="return formCheck();">
 	<h3 class="centerdiv" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
-			<input type="submit" value="검색" /></h3>
+			<input type="submit" class="btn btn-primary" value="검색" /></h3>
 </form>
 <table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
