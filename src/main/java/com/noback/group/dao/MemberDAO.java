@@ -41,7 +41,6 @@ public class MemberDAO<employee_num> {
 	 * 회원 가입 처리
 	 * @param member 사용자가 입력한 가입 정보
 	 */
-	
 	// 사원등록 처리
 	public int insertMember(MemberVO member) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);

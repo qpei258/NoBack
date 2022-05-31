@@ -25,7 +25,7 @@
 
 /*회색 배경*/
 .square {
-	margin: 15px -15px;
+	margin: 15px auto;
 	width: 1258px;
 	height: 800px;
 	background-color: rgb(238, 238, 238);
