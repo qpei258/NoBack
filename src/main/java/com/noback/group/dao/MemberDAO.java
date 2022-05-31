@@ -2,14 +2,17 @@ package com.noback.group.dao;
 
 import java.util.ArrayList;
 
+
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.noback.group.vo.MemberVO;
+
 
 
 
@@ -38,7 +41,6 @@ public class MemberDAO<employee_num> {
 	 * 회원 가입 처리
 	 * @param member 사용자가 입력한 가입 정보
 	 */
-	
 	// 사원등록 처리
 	public int insertMember(MemberVO member) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
@@ -78,6 +80,7 @@ public class MemberDAO<employee_num> {
 		return mapper.count(search);
 	}
 	
+	
 	// 사원 수정
 	public int memberlistupdate(MemberVO member) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
@@ -85,6 +88,11 @@ public class MemberDAO<employee_num> {
 		result = mapper.memberlistupdate(member);
 		return result;
 	}
+	
+
+
+
+
 
 
 }

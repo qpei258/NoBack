@@ -1,4 +1,7 @@
+
+
 /* 달력 날짜 JS */
+
 
 	let date = new Date();
 
@@ -46,7 +49,9 @@
     dates[i] = `<div class="date" onclick = "f_selectDate(${viewYear}, ${viewMonth+1}, ${date}">
     <a data-bs-toggle="modal" data-bs-target="#addModal">
     <span class=${condition} >${date}</span><br>
-    <span>나는${schedule.schedule_title}</span>
+    
+    <span>${scheduleList}</span>
+    
     </a></div>`;
   });
 

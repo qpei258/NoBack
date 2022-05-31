@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.noback.group.dao.MemberDAO;
 import com.noback.group.dao.MypageDAO;
 import com.noback.group.vo.*;
 import com.noback.group.util.*;
@@ -33,6 +34,9 @@ public class MypageController {
 	@Autowired
 	MypageDAO dao;
 	
+	@Autowired
+	MemberDAO mdao;
+	
 	//게시판 관련 상수값들
 	final int countPerPage = 10;		
 	final int pagePerGroup = 5;				
@@ -45,7 +49,7 @@ public class MypageController {
 	public String showMypage()
 			throws Exception {
 		logger.info("마이페이지 페이지 로딩성공");
-		return "mypage/mypage"; 
+		return "mypage/myUpdate"; 
 	}
 	
 	/**
@@ -55,10 +59,9 @@ public class MypageController {
 	public String showMyupdate(Model model, HttpSession session)
 			throws Exception {
 		logger.info("개인수정 페이지 로딩성공");
-		
 		// 세션에서 ID가져오기
 		String searchId = (String) session.getAttribute("LoginId");
-		MemberVO member = dao.getMember(searchId);
+		MemberVO member = mdao.getMember(searchId);
 		// 멤버 객체를 model에 저장
 		model.addAttribute("member", member);
 		return "mypage/myUpdate"; 
@@ -70,9 +73,9 @@ public class MypageController {
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(HttpSession session, MemberVO member) {
-		
 		String searchId = (String) session.getAttribute("LoginId");
 		member.setEmployee_num(searchId);
+		
 		// 수정 dao로
 		int result = dao.updateMember(member);
 		logger.info("member", member);
@@ -102,14 +105,12 @@ public class MypageController {
 		model.addAttribute("navi", navi);
 		model.addAttribute("searchText", searchText);
 		
-		
 		return "mypage/myBoard"; 
 	}
 	
 	/**
 	 * 마이페이지-게시글-글상세 읽기
 	 */
-	
 	@RequestMapping(value = "readBoard", method = RequestMethod.GET)
 	public String readMyboard(String board_num, Model model) {
 		logger.info("게시글 접속");

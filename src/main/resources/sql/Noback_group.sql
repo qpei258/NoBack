@@ -34,14 +34,17 @@ CREATE TABLE noback_notice (
 	notice_savedfile	varchar2(60)
 );
 
--- 일정 테이블
+-- 일정 테이블 (수정 후)
 CREATE TABLE noback_schedule (
-	schedule_num	number	        PRIMARY KEY,
-	schedule_date	date	        default sysdate,
-	schedule_memo	varchar2(200)	NOT NULL,
-	schedule_writer	varchar2(20)	NOT NULL,
-	schedule_level	number	        NOT NULL
-);
+	schedule_num    	number          	primary key,
+	schedule_title  	varchar2(100)	NOT NULL,
+	schedule_start 	date            	default sysdate,
+	schedule_end    	date            	default sysdate,
+   	schedule_writer 	varchar2(50)    	NOT NULL,
+    	schedule_level  	number          	NOT NULL,
+	schedule_memo   	varchar2(500),
+	schedule_allDay 	number(1)
+    );
 
 -- 자유게시판 테이블
 CREATE TABLE noback_board (
@@ -52,16 +55,32 @@ CREATE TABLE noback_board (
 	board_date	    date	        default sysdate
 );
 
+Drop table noback_receiver;
+Drop table noback_sign;
+
 -- 결재 테이블
 CREATE TABLE noback_sign (
-	sign_num	    number	        PRIMARY KEY,
-	sign_title	    varchar2(90)	NOT NULL,
-	sign_content	varchar2(1200)	NOT NULL,
-	sign_sender	    varchar2(20)	NOT NULL,
-	sign_receiver	varchar2(20)	NOT NULL,
+sign_num	    number	        PRIMARY KEY,
+sign_title	    varchar2(90)	NOT NULL,
+sign_content	varchar2(1200)	NOT NULL,
+   sign_nsender	 varchar2(20)	NOT NULL,
+sign_sender	    varchar2(20)	NOT NULL,
+   sign_dep	    varchar2(20)	NOT NULL,
+   sign_pos	    varchar2(20)	NOT NULL,
+sign_receiver1	varchar2(20),
+    sign_nreceiver1	varchar2(20),
+    sign_receiver2	varchar2(20),
+    sign_nreceiver2	varchar2(20),
+    sign_receiver3	varchar2(20),
+    sign_nreceiver3	varchar2(20),
+    sign_receiver4	varchar2(20),
+    sign_nreceiver4	varchar2(20),
 	sign_originfile	varchar2(60)	NOT NULL,
 	sign_savedfile	varchar2(60)	NOT NULL,
-	sign_ok	        number	        NOT NULL,
+	sign_ok1	        number	        default 0,
+    sign_ok2	        number	        default 0,
+    sign_ok3	        number	        default 0,
+    sign_ok4	        number	        default 0,
 	sign_cdate	    date	        default sysdate,
 	sign_memo	    varchar2(200),
 	sign_sdate	    date
@@ -105,6 +124,14 @@ create sequence board_seq
 	nocycle
 	nocache;
     
+create sequence cal_seq
+	increment  by 1
+	start with 1
+	minvalue 1
+	maxvalue 999
+	nocycle
+	nocache;
+
 create sequence sign_seq
 	increment  by 1
 	start with 1

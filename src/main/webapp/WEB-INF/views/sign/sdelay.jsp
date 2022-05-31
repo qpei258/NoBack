@@ -11,13 +11,14 @@
     <style type="text/css">
     	
     	#signList{
-    		margin:10px auto;
-    		width: 1258px;
-    		height: 870px;
-    		background-color: rgb(238, 238, 238);
-    		text-align: center;
-    		color: rgb(80, 80, 80);
-    	}
+		margin: 10px auto;
+		width: 1258px;
+		height: 800px;
+		background-color: rgb(238, 238, 238);
+		text-align: center;
+		color: rgb(80, 80, 80);
+		
+	}
     
 
 
@@ -48,9 +49,9 @@
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         <nav class="topmenu">
-				<a href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
-				<a href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
+				<a style="font-weight: bold;"href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
+				<a style="font-weight: bold;" href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
 		</nav>
         	<div id="signList">
         		<h2 style="margin: 40px 0px 10px 0px;">결제 대기 리스트</h2>

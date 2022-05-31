@@ -19,16 +19,40 @@
 		<%@ include file="sidebar.jsp" %>
         <div id="content">
             <div id="menubar">
-                <div class="topmenu"></div>
-                <div class="topmenu"></div>
-                <div class="topmenu"></div>
-                <div class="topmenu"></div>
+                <div class="topmenu" ><a href='<c:url value="/"/>' style="color: white;">홈</a></div>
+                <div class="topmenu"><a href='<c:url value="/notice/noticeList"/>' style="color: rgb(80, 80, 80);">공지사항</a></div>
+                <div class="topmenu"><a href='<c:url value="/sign/sdelay"/>' style="color: rgb(80, 80, 80);">전자결재</a></div>
+                <c:if test="${LoginId == null }">
+                	<div class="topmenu"><a href='<c:url value="/manager/login"/>' style="color: rgb(80, 80, 80);">로그인</a></div>
+                </c:if>
+                <c:if test="${LoginId != null && LoginLevel <= 2}">
+                	<div class="topmenu" ><a href='<c:url value="/mypage/mypage"/>' style="color: rgb(80, 80, 80);">마이페이지</a></div>
+                </c:if>
+                <c:if test="${LoginId != null && LoginLevel >= 3}">
+                	<div class="topmenu"><a href='<c:url value="/manager/memberlist"/>' style="color: rgb(80, 80, 80);">관리자페이지</a></div>
+                </c:if>
             </div>
             <div id="maincontent1">
-
+				<div>
+				</div>
+				<div>
+				
+				</div>
             </div>
             <div id="maincontent2">
-
+				<div id="notice">
+					<div id="list">
+						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></h2>
+						<c:forEach var="notice" items="${noticelist }">
+							<div class="noti" style="font-size: 25px; padding-left: 40px; color: rgb(120, 120, 120);">
+								<a href='<c:url value="/notice/notice?num=${notice.notice_num }"/>'>・${notice.notice_title}</a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<div id="messenger">
+				
+				</div>
             </div>
         </div>
     </div>

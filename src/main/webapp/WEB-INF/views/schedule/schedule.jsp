@@ -3,134 +3,265 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
-	// 삭제 예정
-	request.setCharacterEncoding("utf-8");
-	String sessionId = (String)(session.getAttribute("LoginId"));
-	String sessionLv = (String)(session.getAttribute("LoginLv"));
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.noback.group.vo.ScheduleVO"%>
 
-	System.out.println(sessionId);	
-
-	if(sessionId == null || sessionId.equals("null")){	
-		//out.println("<script>alert('로그인 해주세요');location.href='login.jsp';</script>");
-	response.sendRedirect("home.jsp");
-	}
-%>
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
 <meta charset="UTF-8">
 <title>사내일정</title>
 <link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/default.css"/>' />
-<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/calendar.css"/>' />
-<!-- datepicker 함수 호출을 위한 css 파일 -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/main.min.css"/>' />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" 
- integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" 
- crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<script type="text/javascript" src='/group/resources/js/calendar.js'></script>
+<script type="text/javascript" src='/group/resources/js/jquery-3.3.1.min.js'></script>
 <style>
 
-	.border {
-		border: 1px solid white;
-	}
-	
-	.box {
-		margin: 10px auto;
-		width: 1258px;
-		height: 800px;
-		color: rgb(80, 80, 80);
-		border: white;
-		
-	}
-	
-	div {
-		border: white;
+/*회색 배경*/
+.square {
+	margin: 15px auto;
+	width: 1258px;
+	height: 800px;
+	background-color: rgb(238, 238, 238);
+	text-align: center;
+	color: rgb(80, 80, 80);
+	padding-top : 10px;
+	padding-left : 20px;
+	padding-right : 20px;
 
-	}
-	
-	
-	.calendar {
-		font-size: 1px;
-		border: white;
-	}
-	
-	.header {
-		font-size: 1px;
-		border: white;
-	}
-	
-	th {
-		text-align: center;
-	}
-	
-	td.scheduleDates {
-		text-align: center;
-		font-size: 20px;
-	}
-	
-	td {
-		font-size: 15px;
-	}
-	
-	
-	
-	.year-month {
-		text-align: center;
-	}
-	
-	td.button {
-		text-align: center;
-	}
-	
-	strong.strong {
-		float: top;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		font-size :20px;
-		color : blue;
-	}
-	
-	dt {
- 		float: left;
-  		margin-right: 15px;
-	}
+}
+
+/* 상단메뉴 */
+.topmenu {
+	border: 15px solid rgb(148, 202, 238);
+	background-color: rgb(148, 202, 238);
+	float: top;
+	margin: 9px 9px;
+	width: 1257px;
+	height: 60px;
+}
+
+div {
+	border:white;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;   
+	font-size: 1.1em;
+}
+
+
+html, body {  
+  overflow: hidden;    
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;    
+  font-size: 10px;  
+}  
+ 
+.fc-header-toolbar {    
+  padding-top: 1em;    
+  padding-left: 20px;    
+  padding-right: 20px;
+}
+
+.fc-title{
+    font-size: .9em;
+}
+
+::ng-deep body .fc {
+  font-size: 12px;
+ }
+
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	// calendar element 취득
+    var calendarEl = document.getElementById('calendar');
+ 	// full-calendar 생성하기
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+		height: '730px', // calendar 높이 설정
+		contentHeight: 600,
+    	expandRows: true, // 화면에 맞게 높이 재설정
+    	navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크        
+    	editable: true, // 수정 가능    
+		selectable: true, // 달력 일자 드래그 설정가능
+		dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)        
+    	locale: 'ko', // 한국어 설정    
+    	aspectRatio: 1.75, 
+    	headerToolbar: {          
+	    	left: 'prev,next today',          
+	    	center: 'title',          
+	    	right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek, addEventButton'        
+    	},
+    	 
+		initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+		
+		events :[
+			 <%ArrayList<ScheduleVO> calendarList = (ArrayList<ScheduleVO>) request.getAttribute("list");%>
+	            <%if (calendarList != null) {%>
+	            <%for (ScheduleVO vo : calendarList) {%>
+	            	{
+	            	title : '<%=vo.getSchedule_title()%>',
+	                start : '<%=vo.getSchedule_start()%>',
+	                end : '<%=vo.getSchedule_end()%>',
+	                allDay : '<%=vo.isSchedule_allDay()%>'
+	             	},
+				<%}
+				}%>
+		], 
+		
+    	customButtons: {
+            addEventButton: { // 추가한 버튼 설정
+                text : "일정 추가",  // 버튼 내용
+                click : function(){ // 버튼 클릭 시 이벤트 추가
+                    $('#addModal').modal('show'); // modal 나타내기
+
+                    $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+                        var content = $("#schedule_memo").val();
+                        var start_date = $("#schedule_start").val();
+                        var end_date = $("#schedule_end").val();
+                        
+                        //내용 입력 여부 확인
+                        if(content == null || content == ""){
+                            alert("내용을 입력하세요.");
+                        }else if(start_date == "" || end_date ==""){
+                            alert("날짜를 입력하세요.");
+                        }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
+                            alert("종료일이 시작일보다 먼저입니다.");
+                        }else{ // 정상적인 입력 시
+                            var obj = {
+                                "schedule_title" : schedule_title,
+                                "schedule_start" : schedule_start,
+                                "schedule_end" : schedule_end
+                            } //전송할 객체 생성
+
+                            console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                        }
+                    });
+                }
+            }
+        },
+    	
+    	
+		select: function(arg) {
+			// 캘린더에서 드래그로 이벤트를 생성할 수 있다.          
+			var title = prompt('일정의 제목을 입력해주세요.');
+			var content = prompt('메모를 입력해주세요.');
+            if (title) {
+                calendar.addEvent({
+                    title: title,
+                    start: arg.start,
+                    end: arg.end,
+                    allDay: arg.allDay,
+                    content: content
+                })
+            }
+
+            console.log(arg);
+            
+            var allEvent = calendar.getEvents(); // .getEvents() 함수로 모든 이벤트를 Array 형식으로 가져온다. (FullCalendar 기능 참조)
+            
+            var events = new Array(); // Json 데이터를 받기 위한 배열 선언
+            
+            var obj = new Object();     // Json 을 담기 위해 Object 선언
+                    // alert(allEvent[i]._def.title); // 이벤트 명칭 알람
+                    obj.title = allEvent[allEvent.length-1]._def.title; // 이벤트 명칭  ConsoleLog 로 확인 가능.
+                    obj.start = allEvent[allEvent.length-1]._instance.range.start; // 시작
+                    obj.end = allEvent[allEvent.length-1]._instance.range.end; // 끝
+                    obj.content = allEvent[allEvent.length-1]._def.content;
+
+                    events.push(obj);
+                    
+            
+            var jsondata = JSON.stringify(obj);
+            console.log(jsondata);
+            
+
+           $( function saveData(jsondata) {
+         	   alert(JSON.stringify(jsondata));
+              $.ajax({
+                  url: "add",
+                  method: "POST",
+                  dataType: "json",
+                  data: JSON.stringify(obj),
+                  contentType: 'application/json',
+              })
+                  .done(function (result) {
+                      alert(result);
+                  })
+                  .fail(function (request, status, error) {
+                       alert("에러 발생" + error);
+         			});
+              calendar.unselect()
+          });
+          
+              
+              /*
+              location.href = "add?title=" + obj.title + "&start=" + obj.start + "&end=" + obj.end;
+			*/
+            
+        },
+        
+        eventClick: function(arg) {
+      	  // 있는 일정 클릭시,
+      	  console.log("#등록된 일정 클릭#");
+      	  console.log(arg.event);
+      	  
+          if (confirm('일정을 삭제하시겠어요?')) {
+            arg.event.remove()
+          }
+          
+          var jsondata = JSON.stringify(arg);
+          console.log(jsondata);
+          
+
+         $( function saveData(jsondata) {
+       	   alert(JSON.stringify(jsondata));
+            $.ajax({
+                url: "delete",
+                method: "POST",
+                dataType: "json",
+                data: JSON.stringify(arg),
+                contentType: 'application/json',
+            })
+                .done(function (result) {
+                    alert(result);
+                })
+                .fail(function (request, status, error) {
+                     alert("에러 발생" + error);
+       			});
+            calendar.unselect()
+        });
+        
+        
+    	}
+    });
+    calendar.render();
+ });
+
+
+
+</script>
+
+
 </head>
 <body>
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
-		
         <div id="content">
-        
-        <!-- 헤더 -->
-		<nav class="nav">
-       		<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
-		</nav>
-
-		<strong>노빠꾸 캘린더</strong>
-		<hr>
-		
-			<!-- 달력 박스 -->
-        	<div class="box">   	
-        		<!-- 달력 -->	
-        		<div class="calendar" style="width: 1200px; ">
-                    <div class="header">
-                    	
-                    	<button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
-                        <div class="year-month" style="color: rgb(108,117,125);"></div>
-                        <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
-                        <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
-                       
-			<!-- 모달 버튼 (일정 등록)  -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-  			일정 추가
-			</button>
+			<div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
+				<nav class="nav">
+				<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
+				<a class="nav-link active" href='<c:url value="/schedule/scheduleMonth"/>'>이번달 일정</a>
+				</nav>
+			</div>
+				
+				<!-- 회색 박스 -->
+				<div class='square'>
+			
 
 			<!-- 모달 처리 (일정 등록) -->
 			<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -151,7 +282,6 @@
 						<label class="schedule_start">시작 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
   						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" >
   							
-  						
   						<label class="schedule_end">종료 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
   						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22">
   					
@@ -162,243 +292,19 @@
       				<!-- 등록 완료 버튼 -->
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="submit" class="btn btn-primary">추가</button>
+        				<button type="submit" class="btn btn-primary" id="addCalendar">추가</button>
       				</div>
       				</form>
       				
     				</div>
   				</div>
 			</div> <!-- 등록 모달 끝  -->
-       	                	
-                        <!--  
-                        <div class="nav">
-                            <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
-                            <button class="nav-btn go-today" onclick="goToday()" style="line-height: 3px;">오늘</button>
-                            <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
-                        </div>
-                        -->
-                        
-                        
-                    </div>
-                    <div class="main">
-                        <div class="days">
-                            <div class="day">일</div>
-                            <div class="day">월</div>
-                            <div class="day">화</div>
-                            <div class="day">수</div>
-                            <div class="day">목</div>
-                            <div class="day">금</div>
-                            <div class="day">토</div>
-                        </div>
-                        <div class="dates"></div>
-             
-                    </div>
-                </div>
-        	</div> <!-- 달력 box 끝 -->
-        	
-        	
-        	<!-- 이번달 스케줄 현황 출력 폼 -->	
-        	<strong>이번달 일정</strong><hr>
-		
-			<form action="schedule" method="get">
-			<table id="detail_schedule_tb" class="table" cellpadding="20px" cellspacing="20px">
-		
-				<colgroup>
-					<col width="30%"/>
-					<col width=""/>
-				</colgroup>
-				
-				<thead  class="table-light">
-					<tr>
-						<th scope="col">일시</th>
-						<th scope="col">일정 상세</th>
-						<th scope="col">비고</th>
-					</tr>
-				</thead>
-				<tbody id="detail_schedule" style="padding:20px;">
-					<c:forEach var="schedule" items="${scheduleList}">
-					<tr>
-						<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
-						<td class="cont">
-							<strong class="strong" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
-							<dl>
-								<dt>일시</dt><dd>${schedule.schedule_start} ~ ${schedule.schedule_end}</dd>
-								<dt>내용</dt><dd>${schedule.schedule_memo}</dd>
-								
-							</dl>
-						</td>
-						<td class="button"><a>
-							<!-- 모달 버튼 (일정 수정) -->
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">
-  								일정 수정
-							</button>
-							<!-- 모달 처리  (일정 수정	) -->
-							<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-    								<div class="modal-content">
-      									<div class="modal-header">
-        									<h5 class="modal-title" id="updateModalLabel">일정 수정</h5>
-        										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-      									</div>
-      				
-      									<!-- 수정 내용 입력 -->
-      									<form action="update" method="post" onsubmit ="return validation2()">
-      									
-      									<div class="modal-body">
-      									<input type="text" value="${schedule.schedule_num}" name="schedule_num">
-      						
-      									
-      									<label class="schedule_title">일정 제목</label>
-  										<input type="text" class="form-control border-primary" name="schedule_title" id="update_title" placeholder="ex) 미팅"
-  											value ="${schedule.schedule_title}">
+					<div id='calendar' style="font-size: 10px;"></div>
 					
-										<label class="schedule_start">시작 날짜</label>
-  										<input type="text" class="form-control border-primary" name="schedule_start" id="update_start" placeholder="ex) 2022-11-22" 
-  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_start}">
-  					
-  										<label class="schedule_end">종료 날짜</label>
-  										<input type="text" class="form-control border-primary" name="schedule_end" id="update_end" placeholder="ex) 2022-11-22"
-  											onclick="javascript:f_datepicker(this);" value ="${schedule.schedule_end}">
-  					
-  										<label class="schedule_memo">내용</label>
-  										<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="update_memo" placeholder="ex) 무한상사"
-  											value ="${schedule.schedule_memo}"></textarea>
-      									</div>
-      						
-      									<!-- 수정 완료 버튼 -->
-      									<div class="modal-footer">
-        									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-     					   				<button type="submit" class="btn btn-primary">수정</button>
-     					   				<button type="button" class="btn btn-danger">삭제</button>
-    					  				</div>
-      									</form>
-    								</div>
-  								</div>
-							</div> <!-- 수정 모달 끝  -->
-       						
-       						<!-- 삭제 폼 -->
-      						<form action="delete" method="post"> 
-      							<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
-								<!-- 모달 버튼 (일정 삭제) -->
-								<button type="submit" class="btn btn-primary" data-bs-target="#deleteModal" >
-  									일정 삭제
-								</button>
-							</form>
-						</a></td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-        	</form>	<!-- 이번달 현황 폼 끝 -->
-        		
+        		</div> <!-- square 끝 -->
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->
 </body>
-<script type="text/javascript" src='/group/resources/js/index.js'></script>
-<script type="text/javascript" src="/group/resources/js/jquery-3.3.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous">
-</script>
-<script type="text/javascript">  
-
-// 일정 등록시 유효성 검사
-function validation() {
-
-	let ttl = document.getElementById('add_title');
-	let sta = document.getElementById('add_start');
-	let end = document.getElementById('add_end');
-	let memo = document.getElementById('add_memo');
-	
-	
-	if (ttl.value == ''){
-		alert('제목을 입력하세요.');
-		return false;
-	} else if (sta.value == ''){
-		alert('시작날짜를 입력하세요.');
-		return false;
-	} else if (end.value == ''){
-		alert('종료날짜를 입력하세요.');
-		return false;
-	// 종료날짜를 시작날짜 전으로 선택할 수 없음 //
-	} else if (sta.value > end.valueㄴ) {
-		alert('종료날짜를 시작날짜 이후로 입력하세요.')
-		return false;
-	} else if (memo.value == ''){
-		alert('내용을 입력하세요.');
-		return false;
-	}		
-	
-	alert('등록 완료되었습니다.');
-	location.href = 'schedule/schedule';
-	return true;
-}
-
-// 일정 수정시 유효성 검사
-function validation2() {
-
-	let ttl = document.getElementById('update_title');
-	let sta = document.getElementById('update_start');
-	let end = document.getElementById('update_end');
-	let memo = document.getElementById('update_memo');
-	
-	
-	if (ttl.value == ''){
-		alert('제목을 입력하세요.');
-		return false;
-	} else if (sta.value == ''){
-		alert('시작날짜를 입력하세요.');
-		return false;
-	} else if (end.value == ''){
-		alert('종료날짜를 입력하세요.');
-		return false;
-		
-	// 종료날짜를 시작날짜 전으로 선택할 수 없는 유효성처리 추가하자  //
-		
-	} else if (memo.value == ''){
-		alert('내용을 입력하세요.');
-		return false;
-	}		
-	
-	alert('수정 완료되었습니다.');
-	location.href = 'schedule/schedule';
-	return true;
-	
-}
-	
-	// 모달 오픈 (이 기능은 다른 함수로 구현해서 삭제 예정)
-	function openModal() {
-		document.get;
-		e.preventDefault();
-		console.log('You clicked submit.');
-		
-	}
-
-	// 날짜 선택  css 함수
-	$( function() {
-	    $( "#add_start, #add_end, #update_start, #update_end").datepicker({ 
-	        dateFormat: "yy-mm-dd",
-	        closeText: "닫기",
-			currentText: "오늘",
-	       	prevText: '이전 달',
-			nextText: '다음 달',
-			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-			monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-			dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-			dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-			dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-			yearSuffix: ''
-	        /* 년도와 달 폰트가 너무 큼
-			fontSize : "20px"
-	        */
-	    });
-	});
-	
-	
-	
-</script>
 
 </html>
