@@ -36,11 +36,12 @@ public class HomeController {
 	NoticeDAO ndao;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+
 	public String home(HttpSession session, @RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="search", defaultValue="") String search
 			, Model model) {
 		int total = ndao.getTotal(search);	
-		
+
 		PageNavigator navi = new PageNavigator(5, 1, page, total); 
 		
 		

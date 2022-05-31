@@ -128,35 +128,35 @@ div {
 							<div class="row mb-3">
                  			<label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">프로필 등록</label>
                  				<div class="col-sm-10" style="width:550px">
-                 				<input class="form-control" type="file" id="picture" name="employee_picture" value="" style="width:500px">
+                 				<input class="form-control" type="file" id="picture" name="employee_picture" value="${member.employee_picture}" style="width:500px">
 								</div>               			
                			</div>
 						
 						<div class="row mb-3">
 							<label for="employee_name" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">이름</label>
 								<div class="col-sm-10" style="width:400px">
-								<input type="text" class="form-control" name="employee_name" id="name" value="${member.employee_email}">
+								<input type="text" class="form-control" name="employee_name" id="name" value="${member.employee_name}">
 						    </div>
 						</div>
 						
 						<div class="row mb-3">
 							<label for="employee_num" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">사원번호</label>
 								<div class="col-sm-10" style="width:400px">
-								<input type="text" readonly class="form-control" name="employee_num" id="num" value="${member.employee_email}">
+								<input type="text" readonly class="form-control" name="employee_num" id="num" value="${member.employee_num}">
 						    </div>
 						</div>					
 						
 						<div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">부서</label>
 						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" readonly class="form-control" name ="employee_dep" id="email" value="${member.employee_email}" placeholder="">
+						      <input type="text" readonly class="form-control" name ="employee_dep" id="email" value="${member.employee_dep}" placeholder="">
 						    </div>
 						  </div>
 						  
 						<div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">직함</label>
 						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" readonly class="form-control" name ="employee_pos" id="email" value="${member.employee_email}" placeholder="">
+						      <input type="text" readonly class="form-control" name ="employee_pos" id="email" value="${member.employee_pos}" placeholder="">
 						    </div>
 						 </div>
 						 
@@ -177,7 +177,7 @@ div {
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">주민번호</label>
 								<div class="col-sm-10" style="width:400px">
-								<input type="text" readonly class="form-control" name="employee_ssn" id="num" value="${member.employee_address}" maxlength="13">
+								<input type="text" readonly class="form-control" name="employee_ssn" id="num" value="${member.employee_ssn}" maxlength="13">
 						    </div>
 						</div>
 						
@@ -191,7 +191,7 @@ div {
 						  <div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">상세주소</label>
 						    <div class="col-sm-10" style="width:600px">
-						      <input type="text" readonly class="form-control" name ="employee_address1" id="address1" value="${member.employee_address1}" placeholder="">
+						      <input type="text" readonly class="form-control" name ="employee_address1" id="address1" value="${member.employee_address}" placeholder="">
 						    </div>
 						  </div>
 						  
