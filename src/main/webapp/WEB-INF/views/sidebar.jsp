@@ -20,6 +20,10 @@
                     <li><a href='<c:url value="/schedule/schedule"/>'>사내일정</a></li>
                     <li><a href='<c:url value="/sign/sdelay"/>'>전자결재</a></li>
                     <li><a href='<c:url value="/board/boardList"/>'>자유게시판</a></li>
+<<<<<<< HEAD
+                    <li><a href='<c:url value="/messenger/messengerList"/>'>메신저</a></li>
+                    <li><a href='<c:url value="/manager/login"/>'>로그인</a></li>
+=======
                     <li><a href='<c:url value="/messenger/messenger"/>'>메신저</a></li>
                     <c:if test="${LoginId == null }">
                     	<li><a href='<c:url value="/manager/login"/>'>로그인</a></li>
@@ -27,6 +31,7 @@
                     <c:if test="${LoginId != null }">
                     	<li><a href='<c:url value="/manager/logout"/>'>로그아웃</a></li>
                     </c:if>
+>>>>>>> origin/master
                 </ul>
             </div>
             <div id="schedule">

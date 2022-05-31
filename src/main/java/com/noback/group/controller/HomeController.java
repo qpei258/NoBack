@@ -36,10 +36,17 @@ public class HomeController {
 	NoticeDAO ndao;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+<<<<<<< HEAD
+	public String home(HttpSession session) {
+		logger.info("홈 실행");
+		session.setAttribute("LoginId", "501508");
+		session.setAttribute("LoginLevel", "2");
+=======
 	public String home(HttpSession session, @RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="search", defaultValue="") String search
 			, Model model) {
 		int total = ndao.getTotal(search);	
+>>>>>>> origin/master
 		
 		PageNavigator navi = new PageNavigator(5, 1, page, total); 
 		

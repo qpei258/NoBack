@@ -1,6 +1,8 @@
 package com.noback.group.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -18,44 +20,68 @@ public class MessengerDAO {
 	SqlSession sqlSession;
 	
 	//글 개수
-	public int getTotalmessenger(String search) {
+	public int getTotalmessenger(String search, String searchId) {
 		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
-		
-		int result = mapper.getTotalmessenger(search);
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchId", searchId);
+		int result = mapper.getTotalmember(map);
 		return result;
+			
 	}
-	public int getTotalmember(String search) {
+	public int getTotalmember(String search, String searchId) {
 		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
-		
-		int result = mapper.getTotalmember(search);
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchId", searchId);
+		int result = mapper.getTotalmember(map);
 		return result;
 	}
 	
 	//글 목록
-	public ArrayList<MessengerVO> listMessenger(String search, int startRecord, int countPerPage) {
+	public ArrayList<MessengerVO> listMessenger(String searchId, String search, int startRecord, int countPerPage) {
 		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		ArrayList<MessengerVO> result = mapper.listMessenger(search, rb);
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchId", searchId);
+		ArrayList<MessengerVO> result = mapper.listMessenger(map, rb);
 		return result;
 	}
 	
-	public ArrayList<MemberVO> listMember(String search, int startRecord, int countPerPage) {
+	public ArrayList<MemberVO> listMember(String searchId, String search, int startRecord, int countPerPage) {
 		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		ArrayList<MemberVO> result = mapper.listMember(search, rb);
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchId", searchId);
+		ArrayList<MemberVO> result = mapper.listMember(map, rb);
 		return result;
 	}
-	public MessengerVO messenger(String num) {
+	public ArrayList<MessengerVO> messenger(String num, String searchId) {
 		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
-		MessengerVO result = mapper.messenger(num);
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("num", num);
+		map.put("searchId", searchId);
+		ArrayList<MessengerVO> result = mapper.messenger(map);
 		return result;
 	}
+	public int messenger_insert(String num, String searchId, String content) {
+		MessengerMapper mapper = sqlSession.getMapper(MessengerMapper.class); 
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("num", num);
+		map.put("searchId", searchId);
+		map.put("content", content);
+		int result = mapper.messengerinsert(map);
+		return result;
 	
+	}
+	}
 	
 
 	
 	
 	
 	
-}
+
 

@@ -23,6 +23,8 @@
     		text-align: center;
     		color: rgb(80, 80, 80);
     	}
+    	
+    	
 
     
     </style>
@@ -33,6 +35,18 @@
 			var page = document.getElementById('page');
 			page.value = currentPage;
 			form.submit();
+		
+			function chatPopup() { //팝업 기능 추가 작업중
+				let sign_receiver2 = document.getElementById('sign_receiver2'); 
+				if (sign_receiver2.value != '') {
+				document.getElementById('target_btn4').disabled = false;
+				window.open('check3', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+				}
+		
+		
+		
+		
+		
 		}
 	</script>
 </head>
@@ -47,9 +61,9 @@
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="boardList" >
+				<form id="pagingForm" method="get" action="messengerList" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
-						 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
+						 <input type="text" class="form-control" placeholder="내용 검색" aria-label="Search1" aria-describedby="button-addon2" id="search1" name="search1" >
 						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
 					</div>
 					<input type="hidden" name="page" id="page" />
@@ -65,46 +79,45 @@
         				</tr>
 				  	</thead>
 				  	<tbody>
-						  <c:forEach var="messenger" items="${messengerlist }">
-						  	<tr style="background-color: white;" onclick="location.href='board?num=${messenger.messenger_num}'">
-						  		<td>${messenger.board_t }</td>
+						  <c:forEach var="messenger" items="${messengerlist}">
+						  <!--<input type="hidden" name="recieveId" value="${messenger.employee_num}">-->
+						  	<tr style="background-color: white;" onclick="location.href='chat?num=${messenger.employee_num}'">
+								
+						  		<td>${messenger.messenger_writer_name }</td>
 						  		<td>${messenger.messenger_content}</td>
-						  		<td>${board.board_date }</td>
+						  		<td>${messenger.messenger_date }</td>
+						  		
 						  	</tr>
 						  </c:forEach>
 				  </tbody>
 				</table>
         		<div id="navigator" style="border: 0px; font-size: 20px;">
 				<!-- 페이지 이동 부분 -->                      
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi1.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi1.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
 				
-					<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-						<c:if test="${counter == navi.currentPage}"><b></c:if>
+					<c:forEach var="counter" begin="${navi1.startPageGroup}" end="${navi1.endPageGroup}"> 
+						<c:if test="${counter == navi1.currentPage}"><b></c:if>
 							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
-						<c:if test="${counter == navi.currentPage}"></b></c:if>
+						<c:if test="${counter == navi1.currentPage}"></b></c:if>
 					</c:forEach>
 					&nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+					<a href="javascript:pagingFormSubmit(${navi1.currentPage + 1})">▶</a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi1.currentPage + navi1.pagePerGroup})">▷▷</a>
 				
 				<!-- /페이지 이동 끝 -->                      
 			
 				</div>
         	</div>
         	<div id="boardList">
-        		<h2 style="margin: 40px 0px 10px 0px;">사용자목록</h2>
-        		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
-	        		<c:if test="${LoginId != null }">
-	        			<button type="button" class="btn btn-outline-primary" onclick="location.href='boardWrite'">글쓰기</button>
-	        		</c:if>
-        		</div>
+        		<h2 style="margin: 40px 0px 10px 0px;">사용자 목록</h2>
+        		
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="boardList" >
+				<form id="pagingForm" method="get" action=messengerList >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
-						 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
-						<%--  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>--%>
+						 <input type="text" class="form-control" placeholder="이름 검색" aria-label="Search2" aria-describedby="button-addon2" id="search2" name="search2" >
+						  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
 					</div>
 					<input type="hidden" name="page" id="page" />
 				</form>
@@ -120,29 +133,30 @@
         				</tr>
 				  	</thead>
 				  	<tbody>
-						  <c:forEach var="board" items="${boardlist }">
-						  	<tr style="background-color: white;" onclick="location.href='board?num=${board.board_num}'">
-						  		<td>${board.board_num }</td>
-						  		<td>${board.board_title }</td>
-						  		<td>${board.board_date }</td>
-						  		<td>${board.board_writer_name}</td>
+						  <c:forEach var="member" items="${memberlist}">
+						  <!--<input type="hidden" name="recieveId" value="${messenger.employee_num}">-->
+						  	<tr style="background-color: white;" onclick="location.href='chat?num=${member.employee_num}'">
+						  		<td>${member.employee_name }</td>
+						  		<td>${member.employee_dep }</td>
+						  		<td>${member.employee_pos }</td>
+						  		<td>${member.employee_email}</td>
 						  	</tr>
 						  </c:forEach>
 				  </tbody>
 				</table>
         		<div id="navigator" style="border: 0px; font-size: 20px;">
 				<!-- 페이지 이동 부분 -->                      
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi2.currentPage - navi2.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi2.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
 				
-					<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-						<c:if test="${counter == navi.currentPage}"><b></c:if>
+					<c:forEach var="counter" begin="${navi2.startPageGroup}" end="${navi2.endPageGroup}"> 
+						<c:if test="${counter == navi2.currentPage}"><b></c:if>
 							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
-						<c:if test="${counter == navi.currentPage}"></b></c:if>
+						<c:if test="${counter == navi2.currentPage}"></b></c:if>
 					</c:forEach>
 					&nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+					<a href="javascript:pagingFormSubmit(${navi2.currentPage + 1})">▶</a> &nbsp;&nbsp;
+					<a href="javascript:pagingFormSubmit(${navi2.currentPage + navi.pagePerGroup})">▷▷</a>
 				
 				<!-- /페이지 이동 끝 -->                      
 			
