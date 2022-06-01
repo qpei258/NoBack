@@ -36,7 +36,7 @@
 	color: rgb(100, 100, 100);
 }
 
-#photo {
+.photo {
 	float:left;
 	margin: 60px 0px 0px 60px;
 	width: 150px;
@@ -75,6 +75,15 @@
 	margin: 10px 21px 10px auto;
 	background-color: rgb(238, 238, 238);
 	border: 1px solid rgb(238, 238, 238);
+	color: rgb(100, 100, 100);
+}
+
+.pre {
+	border: 1px solid rgb(238, 238, 238);
+	width: 150px;
+	height: 150px;
+	float: left;	
+	margin: 10px 10px 0px 10px;
 }
 
 #maincontent2{
@@ -114,4 +123,14 @@
 	margin: 10px 23px 10px auto;
 	background-color: rgb(238, 238, 238);
 	border: 1px solid rgb(238, 238, 238);
+}
+
+.talk{
+	height: 120px;
+	border: 1px solid rgb(238, 238, 238);
+}
+
+.talk:hover {
+	background: rgb(200, 200, 200);
+	cursor: pointer;
 }
