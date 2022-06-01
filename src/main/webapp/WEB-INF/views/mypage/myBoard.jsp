@@ -80,15 +80,7 @@ function pagingFormSubmit(currentPage) {
 						<td class="center">${boardlist.board_num}</td>
 						<td>${boardlist.board_title}</td>
 						<td>${boardlist.board_writer}</td>
-						
-						<!-- 
-						<td>
-							<a href="read?boardnum=${board.board_num}">${board.board_title}</a>
-						</td>
-						<td class="center">${board.board_writer}
-						</td>
-						 -->
-	
+
 					</tr>
 	
 					</c:forEach>        
@@ -111,57 +103,7 @@ function pagingFormSubmit(currentPage) {
 					&nbsp;&nbsp;
 					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
 					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
-				</div>	<!-- /페이지 이동 끝 -->  
-				
-				
-				<div aria-label="Page navigation example">
-	     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})" 
-	     					aria-label="Previous">
-	      				 <span aria-hidden="true">&laquo;</span>
-	    			</a>
-	    		
-	    				
-	     			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage - 1})" 
-	     				aria-label="Previous">
-	      			<span aria-hidden="true">&laquo;</span>
-	    			</a>
-	    				
-	    			<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-						<c:if test="${counter == navi.currentPage}"><b></c:if>
-							<a class="page-link"  href="javascript:pagingFormSubmit(${counter})">${counter}</a>
-						<c:if test="${counter == navi.currentPage}"></b></c:if>
-					</c:forEach>
-	    				
-	    		
-	      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + 1})" 
-	      			aria-label="Next">
-	        		<span aria-hidden="true">&raquo;</span>
-	      			</a>
-	    		
-	      			<a class="page-link" href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})" 
-	      			aria-label="Next">
-	        		<span aria-hidden="true">&raquo;</span>
-	      			</a>
-				</div>
-				
-				
-				<nav aria-label="Page navigation example">
-	  				<ul class="pagination">
-	    				<li class="page-item">
-	      				<a class="page-link" href="#" aria-label="Previous">
-	        				<span aria-hidden="true">&laquo;</span>
-	      				</a>
-	    				</li>
-	    				<li class="page-item"><a class="page-link" href="#">1</a></li>
-	   				 	<li class="page-item"><a class="page-link" href="#">2</a></li>
-	   					 <li class="page-item"><a class="page-link" href="#">3</a></li>
-	   					<li class="page-item">
-	    			 		 <a class="page-link" href="#" aria-label="Next">
-	   		 			    <span aria-hidden="true">&raquo;</span>
-	    				  </a>
-	    				</li>
-	  				</ul>
-					</nav>
+				</div>	<!-- /페이지 이동 끝 --> 
 				
 				
 				<!-- 검색폼 -->

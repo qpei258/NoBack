@@ -81,4 +81,14 @@ public class ScheduleDAO {
 				
 		return result;
 	}
+
+	//스케주 월별로 출력
+	public ArrayList<ScheduleVO> listScheduleByMonth(String month) {
+		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
+		ArrayList<ScheduleVO> MonthScheduleList 
+		= mapper.selectScheduleByMonth(month);
+					
+		return MonthScheduleList;
+
+	}
 }

@@ -48,8 +48,14 @@ public class ScheduleController {
 	 */
 	
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
-	public String list(Model d) {
+	public String list(HttpSession session, Model d) {
 		logger.info("사내 일정 페이지 로딩성공");
+		
+		String searchId = (String) session.getAttribute("LoginId");
+		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		logger.info("searchId :{}", searchId);
+		logger.info("searchLv :{}", searchLv);
+		
 		d.addAttribute("list", dao.calenList());
 		return "schedule/schedule"; 
 	}
@@ -69,8 +75,8 @@ public class ScheduleController {
 	@ResponseBody
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String addSchedule(HttpSession session, @RequestBody Map<String, String> sked) {
+		
 		// 아이디로 권한레벨 불러오기
-	
 		String start = sked.get("start").split("[.]")[0].replace('T', ' '); 
 		logger.info("start :{}", start);
 	
@@ -78,10 +84,12 @@ public class ScheduleController {
 		logger.info("end :{}", end);
 		
 		String content = sked.get("content");
-		logger.info("end :{}", content);
+		logger.info("content :{}", content);
 		
 		String searchId = (String) session.getAttribute("LoginId");
-		String searchLv = (String) session.getAttribute("LoginLevel");
+		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		logger.info("searchId :{}", searchId);
+		logger.info("searchLv :{}", searchLv);
 		
 		ScheduleVO schedule  = new ScheduleVO();
 		
@@ -110,17 +118,29 @@ public class ScheduleController {
 	public String showScheduleMonth(Model model, HttpSession session)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공");
-		
-		
 		// 스케줄 전체 데이터 저장
 		ArrayList<ScheduleVO> scheduleList = dao.listScheduleMonth();
 		// 스케줄 이번달 한정 데이터 저장
-
 		model.addAttribute("scheduleList", scheduleList);
-	
-		
+
 		return "schedule/scheduleMonth"; 
 	}
+	
+	/**
+	 * 스케줄 월별로 일정 출력
+	 */
+	@RequestMapping(value = "scheduleByMonth", method = RequestMethod.GET) 
+	public String showScheduleByMonth(Model model, HttpSession session, String month)
+			throws Exception {
+		logger.info("사내 일정 페이지 로딩성공");
+		// 스케줄 전체 데이터 저장
+		ArrayList<ScheduleVO> scheduleList = dao.listScheduleByMonth(month);
+		// 스케줄 이번달 한정 데이터 저장
+		model.addAttribute("scheduleList", scheduleList);
+
+		return "schedule/scheduleMonth"; 
+	}
+	
 	
 
 	/**
@@ -172,7 +192,7 @@ public class ScheduleController {
 		int result = dao.deleteSchedule(schedule_num);
 		logger.info("sked", sked);
 		
-		return "redirect:/schedule/scheduleMonth";	
+		return "redirect:/schedule/scheduleMonth";
 	}
 
 }

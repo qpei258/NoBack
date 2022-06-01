@@ -117,9 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
             addEventButton: { // 추가한 버튼 설정
                 text : "일정 추가",  // 버튼 내용
                 click : function(){ // 버튼 클릭 시 이벤트 추가
-                    $('#addModal').modal('show'); // modal 나타내기
+                	alert('일정 추가하기');
+                
+                    $('#addModalLabel').modal('show'); // modal 나타내기
 
-                    $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+                    $("#addModalLabel").on("click",function(){  // modal의 추가 버튼 클릭 시
                         var content = $("#schedule_memo").val();
                         var start_date = $("#schedule_start").val();
                         var end_date = $("#schedule_end").val();
@@ -218,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log(jsondata);
           
 
-         $( function saveData(jsondata) {
+         $( function delData(jsondata) {
        	   alert(JSON.stringify(jsondata));
             $.ajax({
                 url: "delete",
@@ -252,55 +254,80 @@ document.addEventListener('DOMContentLoaded', function() {
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-			<div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
-				<nav class="nav">
-				<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
-				<a class="nav-link active" href='<c:url value="/schedule/scheduleMonth"/>'>이번달 일정</a>
-				</nav>
+			<div class='topmenu'>
+				<a href='<c:url value="/schedule/schedule"/>'>사내일정</a>
+				<a href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
 			</div>
 				
 				<!-- 회색 박스 -->
 				<div class='square'>
+					<div id='calendar' style="font-size: 10px; background-color:white;"></div>
+					
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">일정 추가
+						</button>
 			
-
-			<!-- 모달 처리 (일정 등록) -->
-			<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-    				<div class="modal-content">
-      					<div class="modal-header">
-        					<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
-        						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-      					</div>
-      				
-      					<form action="add" method="post" onsubmit ="return validation()">
-      				
-      					<!-- 등록 내용 입력 -->
-      					<div class="modal-body">
-      					<label class="schedule_title">일정 제목</label>
-  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅" >
-					
-						<label class="schedule_start">시작 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
-  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" >
-  							
-  						<label class="schedule_end">종료 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
-  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22">
-  					
-  						<label class="schedule_memo">내용</label>
-  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
-      					</div>
-      				
-      				<!-- 등록 완료 버튼 -->
-      				<div class="modal-footer">
-        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        				<button type="submit" class="btn btn-primary" id="addCalendar">추가</button>
-      				</div>
-      				</form>
-      				
-    				</div>
-  				</div>
-			</div> <!-- 등록 모달 끝  -->
-					<div id='calendar' style="font-size: 10px;"></div>
-					
+						<!-- 모달 처리 (일정 등록) -->
+						<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+			    				<div class="modal-content">
+			      					<div class="modal-header">
+			        					<h5 class="modal-title" id="addModalLabel">일정 추가</h5>
+			        						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+			      					</div>
+			      				
+			      					<form action="add" method="post" onsubmit ="return validation()">
+			      				
+			      					<!-- 등록 내용 입력 -->
+			      					<div class="modal-body">
+			      					<label class="schedule_title">일정 제목</label>
+			  						<input type="text" class="form-control border-primary" name="schedule_title" id="add_title" placeholder="ex) 미팅" >
+								
+									<label class="schedule_start">시작 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
+			  						<input type="text" class="form-control border-primary" name="schedule_start" id="add_start" placeholder="ex) 2022-11-22" >
+			  							
+			  						<label class="schedule_end">종료 날짜<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);"></label>
+			  						<input type="text" class="form-control border-primary" name="schedule_end" id="add_end" placeholder="ex) 2022-11-22">
+			  					
+			  						<label class="schedule_memo">내용</label>
+			  						<textarea rows="4" cols="50" class="form-control border-primary" name="schedule_memo" id="add_memo" placeholder="ex) 무한상사"></textarea>
+			      					</div>
+			      				
+			      				<!-- 등록 완료 버튼 -->
+			      				<div class="modal-footer">
+			        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+			        				<button type="submit" class="btn btn-primary" id="addCalendar">추가</button>
+			      				</div>
+			      				</form>
+			      				
+			    				</div>
+			  				</div>
+						</div> <!-- 등록 모달 끝  -->
+						
+						
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						  Launch static backdrop modal
+						</button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+						        ...
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Understood</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+			
         		</div> <!-- square 끝 -->
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->

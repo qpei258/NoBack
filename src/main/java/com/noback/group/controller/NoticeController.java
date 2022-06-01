@@ -41,6 +41,8 @@ public class NoticeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	
+	//공지사항 리스트로 이동
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
 	public String noticeList(HttpSession session, @RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="search", defaultValue="") String search
@@ -63,6 +65,8 @@ public class NoticeController {
 		return "notice/noticeList";
 	}
 	
+	
+	//공지글 확인
 	@RequestMapping(value = "notice", method = RequestMethod.GET)
 	public String notice(String num, Model model) {
 		logger.info("게시글 접속");
@@ -72,6 +76,8 @@ public class NoticeController {
 		return "notice/notice";
 	}
 	
+	
+	//공지글 쓰기 폼으로 이동
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public String noticeWrite(HttpSession session) {
 		logger.info("게시글 작성 접속");
@@ -79,6 +85,8 @@ public class NoticeController {
 		return "notice/noticeWrite";
 	}
 	
+	
+	//공지 글 쓰기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public String noticeWrite(HttpSession session, NoticeVO notice, MultipartFile upload) {
 		logger.info("게시글 작성");
@@ -95,6 +103,8 @@ public class NoticeController {
 		return "redirect:noticeList";
 	}
 	
+	
+	//공지글 수정 폼으로 이동
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
 	public String noticeUpdate(String notice_num, Model model) {
 		logger.info("게시글 수정 접속 : {}");
@@ -103,13 +113,21 @@ public class NoticeController {
 		return "notice/noticeUpdate";
 	}
 	
+	
+	//공지글 삭제
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.POST)
 	public String noticeDelete(String notice_num) {
 		logger.info("게시글 삭제");
+		NoticeVO notice = dao.notice(notice_num);
+		if (notice.getNotice_savedfile() != null) {
+			FileService.deleteFile(uploadPath + "/" + notice.getNotice_savedfile());
+		}
 		int result = dao.noticeDelete(notice_num);
 		return "redirect:noticeList";
 	}
 	
+	
+	//공지글 수정
 	@RequestMapping(value = "noticeUpdateDo", method = RequestMethod.POST)
 	public String noticeUpdate(NoticeVO notice, MultipartFile upload, HttpSession session) {
 		logger.info("게시글 수정  : {}", notice);

@@ -36,6 +36,22 @@
 			schedule_num = #{schedule_num} 		
 	</select>
 	
+	<select id="selectScheduleByMonth" resultType="schedule">
+		select 
+			schedule_num,	  
+			schedule_title,  
+			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
+			schedule_memo,	   
+			schedule_writer	   
+		from 
+			noback_schedule 
+		where 
+			to_char(schedule_start, 'mm') = #{month}
+		order by 
+			schedule_start
+	</select>
+	
 	<select id="selectScheduleMonth" resultType="schedule">
 		select 
 			schedule_num,	  

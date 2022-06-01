@@ -73,11 +73,11 @@
       					<label class="schedule_title">일정 제목</label>
   						<input type="text" class="form-control border-primary" id="add_title" placeholder="ex) 미팅">
 					
-						<label class="schedule_start">시작 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_start" placeholder="ex) 2022-11-22 33-44">
+						<label class="schedule_start" >시작 날짜</label>
+  						<input type="text" class="form-control border-primary" id="add_start" placeholder="ex) 2022-11-22 33-44" onclick="javascript:f_datepicker(this);">
   					
   						<label class="schedule_end">종료 날짜</label>
-  						<input type="text" class="form-control border-primary" id="add_end" placeholder="ex) 2022-11-22 33-44">
+  						<input type="text" class="form-control border-primary" id="add_end" placeholder="ex) 2022-11-22 33-44" onclick="javascript:f_datepicker(this);">
   					
   						<label class="schedule_memo">메모</label>
   						<textarea rows="4" cols="50" class="form-control border-primary" name="edit-desc" id="add_memo" placeholder="ex) 무한상사"></textarea>

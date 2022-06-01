@@ -10,7 +10,7 @@ public class ScheduleVO {
 	private String schedule_start;
 	private String schedule_end;
 	private String schedule_writer;
-	private String schedule_level;
+	private int schedule_level;
 	private String schedule_memo;
     private boolean schedule_allDay;
 	
@@ -19,7 +19,7 @@ public class ScheduleVO {
 	}
 
 	public ScheduleVO(int schedule_num, String schedule_title, String schedule_start, String schedule_end,
-			String schedule_writer, String schedule_level, String schedule_memo, boolean schedule_allDay) {
+			String schedule_writer, int schedule_level, String schedule_memo, boolean schedule_allDay) {
 		super();
 		this.schedule_num = schedule_num;
 		this.schedule_title = schedule_title;
@@ -71,11 +71,11 @@ public class ScheduleVO {
 		this.schedule_writer = schedule_writer;
 	}
 
-	public String getSchedule_level() {
+	public int getSchedule_level() {
 		return schedule_level;
 	}
 
-	public void setSchedule_level(String schedule_level) {
+	public void setSchedule_level(int schedule_level) {
 		this.schedule_level = schedule_level;
 	}
 

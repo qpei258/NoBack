@@ -54,6 +54,7 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	//게시판리스트
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String board(String num, Model model) {
 		logger.info("게시글 접속");
@@ -62,6 +63,8 @@ public class BoardController {
 		return "board/board";
 	}
 	
+	
+	//게시글 쓰기 폼으로 이동
 	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
 	public String boardWrite(HttpSession session) {
 		logger.info("게시글 작성 접속");
@@ -69,6 +72,7 @@ public class BoardController {
 		return "board/boardWrite";
 	}
 	
+	//게시글 쓰기
 	@RequestMapping(value = "boardWrite", method = RequestMethod.POST)
 	public String boardWrite(HttpSession session, BoardVO board) {
 		logger.info("게시글 접속");
@@ -80,6 +84,7 @@ public class BoardController {
 		return "redirect:boardList";
 	}
 	
+	//게시글 업데이트 폼으로 이동
 	@RequestMapping(value = "boardUpdate", method = RequestMethod.POST)
 	public String boardUpdate(String board_num, Model model) {
 		logger.info("게시글 수정 접속 : {}");
@@ -88,6 +93,8 @@ public class BoardController {
 		return "board/boardUpdate";
 	}
 	
+	
+	//게시글 삭제
 	@RequestMapping(value = "boardDelete", method = RequestMethod.POST)
 	public String boardDelete(String board_num) {
 		logger.info("게시글 삭제");
@@ -95,6 +102,8 @@ public class BoardController {
 		return "redirect:boardList";
 	}
 	
+	
+	//게시글 업데이트
 	@RequestMapping(value = "boardUpdateDo", method = RequestMethod.POST)
 	public String boardUpdate(BoardVO board) {
 		logger.info("게시글 수정  : {}", board);
