@@ -12,14 +12,14 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-	
+	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 
 	/*회색 배경*/	
 	.square {
 		margin: 10px auto;
 		width: 1258px;
-		height: 800px;
+		height: 797px;
 		background-color: rgb(238, 238, 238);
 		text-align: center;
 		color: rgb(80, 80, 80);
@@ -37,15 +37,6 @@
 		border-radius: 20%;
 	}
 	
-	/* 상단메뉴 */
-	.topmenu{
-    border:	15px solid rgb(148, 202, 238);
-    background-color: rgb(148, 202, 238);
-    float: top;
-    margin: 9px 9px;
-    width: 1257px;
-    height: 60px;
-}
 
 a{
 	text-decoration: none;
@@ -67,31 +58,43 @@ a:hover {
 <script type="text/javascript">
 //로그인 체크
 function loginCheck() {
-	var id = document.getElementById('id');
-	var password = document.getElementById('pw');
-	
-	if (id.value == '' || password.value == '') {
-		alert('ID와 비밀번호를 입력하세요.');
-		return false;
-	}
-	return true;
-}	
+
+    $.ajax({
+        type : 'POST',
+        url: 'login',
+        data:  $('#login').serialize(),
+        success: function(data) {
+            if(data == false)
+                alert('잘못된 아이디이거나, 비밀번호가 틀렸습니다.') ;
+            else
+                location.href='/group'; 
+        }
+    }) ;
+}
 </script>
 </head>
 <body>
 	<div id="container">
 		<%@ include file="../sidebar.jsp"%>
 		<div id="content">
-		 <div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">로그인</div>
+		 <!-- 상단 메뉴 -->
+			<ul class="nav nav-tabs" style="margin: 10px;">
+			  <li class="nav-item">
+			    <a class="nav-link active" aria-current="page" href='<c:url value="../manager/login"/>'>로그인</a>
+			  </li>
+			</ul>
+			 <!--회색 배경  -->
 			<div class='square'>
+			 <!-- 흰색 박스  -->
 				<div class='rounded'>
-					<form id="login" action="login" method="post"
-						onSubmit="return loginCheck();">
+				<!-- 로그인 창 -->
+					<form id="login" action="login" method="post">
+						<!-- id 창 -->
 						<div class="input-group mb-3" style="border: 0px; width:70%; margin: 53px auto 100px auto;" >
 							<span class="input-group-text" id="basic-addon1" style="width: 70px;" >ID</span> 
 							<input type="text" id="id" class="form-control" name="employee_num" placeholder="사원번호를  입력해주세요"
 								aria-label="Username" aria-describedby="basic-addon1">
-								
+						<!-- pw 창 -->		
 						</div>
 						<div class="input-group mb-3" style="border: 0px; width:70%; margin: 0px auto;">
 							<span class="input-group-text" id="basic-addon2" style="width: 70px;">PW</span> 
@@ -99,12 +102,7 @@ function loginCheck() {
 								aria-label="Username" aria-describedby="basic-addon2">
 						</div>
 
-						<c:if test="${msg != null}">
-							<div style="text-align: center; font-size: 15px; color: red;" >${msg}</div>
-						</c:if>
-						<button type="submit" style="width: 100px;" class="btn btn-primary">로그인</button>
-								
-								
+						<button type="button" onclick="loginCheck()" style="width: 100px;" id="loginbt" class="btn btn-primary">로그인</button>		
 					</form>
 				</div>
 			</div>

@@ -17,45 +17,36 @@
 
 /*회색 배경*/
 .square {
+	border : 1px solid rgb(238, 238, 238);
 	margin: 10px auto;
 	width: 1258px;
-	height: 800px;
+	height: 797px;
 	background-color: rgb(238, 238, 238);
 	text-align: center;
 	color: rgb(80, 80, 80);
 }
 
-/* 상단메뉴 */
-.topmenu {
-	border: 15px solid rgb(148, 202, 238);
-	background-color: rgb(148, 202, 238);
-	float: top;
-	margin: 9px 9px;
-	width: 1257px;
-	height: 60px;
-}
 
 /* 폼 테이블 */
 .update1 {
+	border : 1px solid rgb(238, 238, 238);	
 	width: 800px;
 	height: 600px;
 	margin: 48px auto;
+	
 }
 
 a{
+	
 	text-decoration: none;
 	color: rgb(80,80,80);
 }
 
-
-div {
-	border:1px solid;
-	color: rgb(238, 238, 238);
-}
-
 label {
+
    font-size :1px;
    color: black;
+
 }
 
 </style>
@@ -167,75 +158,79 @@ function formCheck() {
 		<%@ include file="../sidebar.jsp"%>
 		<div id="content">
 			<!-- 상단 메뉴 -->
-			<nav class="topmenu">
-				<a href='<c:url value="../manager/join"/>'>사원 등록&nbsp;&nbsp;</a> 
-				<a href='<c:url value="../manager/memberlist"/>'>&nbsp;사원 리스트</a>
-			</nav>
+			<ul class="nav nav-tabs" style="margin: 10px;">
+			  <li class="nav-item">
+			    <a class="nav-link active" aria-current="page" href='<c:url value="../manager/join"/>'>사원 등록</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href='<c:url value="../manager/memberlist"/>'>사원 리스트</a>
+			  </li>
+			</ul>
 			<!-- 회색 배경 -->
-			<div class='square'>
+			<div class='square' >
 			<!-- 수정 테이블 묶음 -->
 			<div class="update1">
 			<!-- 정보수정 폼 -->
 				<form id="join" action="join"  method="post" onsubmit="return formCheck();">
-					<div class="row mb-3">
-					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">프로필 등록</label>
-					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="" style="width:400px; background-color:rgb(238, 238, 238)">
+					<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
+					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px; border : 1px solid rgb(238, 238, 238)">프로필 등록</label>
+					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="" style="width:400px; background-color:rgb(238, 238, 238); ">
 					</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이름</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_name" id="employee_name" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">사원번호</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_num" id="num"  maxlength="6" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">부서</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_dep" id="employee_dep" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">직함</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_pos" id="employee_pos" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주민번호</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_ssn" id="employee_ssn" maxlength="13" placeholder="' - '빼고 13자리 입력" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">주소</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_address" id="employee_address" readonly placeholder="클릭해서 주소찾기" value="" style="width:430px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">상세 주소</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_address1" id="employee_address1" style="width:550px" value="" >
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">연락처</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_phone" id="employee_phone" maxlength="11" placeholder="' - '빼고 입력" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이메일</label>
-								<div class="col-sm-10">
+								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
 								<input type="text" class="form-control" name ="employee_email" id="employee_email" value="" style="width:300px">
 						    </div>
 						</div>
-						<div class="row mb-3">
+						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 						<label for="employee_level" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">권한 등급</label>
 						<select  class="form-select" aria-label="Default select example" name='employee_level' id="employee_level" value="" style="width:150px">
 						  <option selected>-- 선택 --</option>

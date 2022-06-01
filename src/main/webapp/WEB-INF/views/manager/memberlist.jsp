@@ -19,22 +19,13 @@
 .square {
 	margin: 10px auto;
 	width: 1258px;
-	height: 800px;
+	height: 797px;
 	background-color: rgb(238, 238, 238);
 	text-align: center;
 	color: rgb(80, 80, 80);
 }
 
-/* 상단메뉴 */
-.topmenu {
-	border: 15px solid rgb(148, 202, 238);
-	background-color: rgb(148, 202, 238);
-	float: top;
-	margin: 9px 9px;
-	width: 1257px;
-	height: 60px;
-	line-height: 30px;
-}
+
 /* 페이지 */
 a{
 	text-decoration: none;
@@ -78,7 +69,6 @@ a{
 	</script>
 <script type="text/javascript">
 
-
 </script>
 </head>
 <body>
@@ -86,10 +76,14 @@ a{
 		<%@ include file="../sidebar.jsp"%>
 		<div id="content">
 			<!-- 상단 메뉴 -->
-       		<nav class="topmenu">
-       			<a  href='<c:url value="../manager/join"/>'>사원 등록</a>
-       			<a href='<c:url value="../manager/memberlist"/>'>사원 리스트</a>	
-			</nav>
+			<ul class="nav nav-tabs" style="margin: 10px;">
+			  <li class="nav-item">
+			    <a class="nav-link active" aria-current="page" href='<c:url value="../manager/memberlist"/>'>사원 리스트</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href='<c:url value="../manager/join"/>'>사원 등록</a>
+			  </li>
+			</ul>
 			<!-- 회색 배경  -->
 			<div class='square'>
 					<h2 style="margin: 40px 0px 10px 0px;">사원리스트</h2>
@@ -104,7 +98,6 @@ a{
 				</form>
 				<!-- /검색폼 -->
 				</div>
-				
 				<!-- 사원 전체 리스트 -->
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
