@@ -36,14 +36,14 @@
 				<div id="my">
 					<c:if test="${LoginId != null }">
 						<div id="profile">
-							<div id="photo">
+							<div class="photo">
 								<img src="<c:url value='/resources/img/프로필.png'/>">
 							</div>
 							<div id="info">
-								<span style="font-weight: 700; font-size: 35px;">정대균</span><br>
-								<span style="font-size: 25px;">프로젝트 리더</span>
+								<span style="font-weight: 700; font-size: 35px;">${member.employee_name }</span><br>
+								<span style="font-size: 25px;">${member.employee_dep } ${member.employee_pos }</span>
 							</div>
-							<div style="clear: both; font-size: 25px; margin: 245px 20px; text-align: center; border: 1px solid rgb(148, 202, 238);;">
+							<div style="clear: both; font-size: 25px; margin: 245px 20px; text-align: center; border: 1px solid rgb(148, 202, 238);">
 								최근접속일 2022-06-01
 							</div>
 						</div>
@@ -56,7 +56,12 @@
 				</div>
 				<div id="alarm">
 					<div id="precent">
-					
+						<div style="font-size: 25px; margin: 40px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
+							2022-06-01 수요일 <b>${member.employee_name }</b> 님의 현황입니다.
+						</div>
+						<div style="font-size: 25px; margin: 20px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
+							
+						</div>
 					</div>
 				</div>
             </div>
@@ -73,7 +78,14 @@
 				</div>
 				<div id="messenger">
 					<div id="mess">
-					
+						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/messenger/messenger"/>'>메신저</a></h2>
+						<div class="talk">
+							<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 15px 20px 40px; ">
+							<div class="talk" style="font-size: 25px; border: 1px solid rgb(238, 238, 238); color: rgb(100, 100, 100);"><h2 style="color: rgb(100, 100, 100); font-weight: 700; margin-top: 15px;">정대균</h2>테스트 메시지입니다.</div>
+						</div>
+						<div class="talk">
+							<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 0px 20px 40px;">
+						</div>
 					</div>
 				</div>
             </div>
