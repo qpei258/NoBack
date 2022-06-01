@@ -129,16 +129,18 @@
 		<%@ include file="../sidebar.jsp" %>
 		
         <div id="content">
-			<div class='topmenu'>
-				<a href='<c:url value="/schedule/schedule"/>'>사내일정</a>
-				<a href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
+			<div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
+				<nav class="nav" style="border:1px solid white;">
+				<a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
+				<a class="nav-link active" href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
+				</nav>
 			</div>
 				
 				<!-- 달력 박스 -->
 				<div class='square'>
 					<div class='box'>
 					
-					<ul class="nav nav-pills" style="line-height: 30px; font-size: 10px; border: 1px solid rgb(238, 238, 238);">
+					<ul class="nav nav-pills" style="line-height: 30px; font-size: 20px; font-weight: 700;">
 					  <li class="nav-item">
 					    <a class="nav-link active" aria-current="page" href="../schedule/scheduleMonth">이번달 일정</a>
 					  </li>
@@ -172,7 +174,7 @@
 			        	<!-- 이번달 스케줄 현황 출력 폼 -->	
 						<form action="scheduleMonth" method="get">
 						
-						<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 50px auto; border-spacing: 0;">
+						<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 						  	<thead>
 						      	<tr style="background-color: rgb(200, 200, 200);">
 			        				<th scope="col" style="width: 30%;">일시</th>
