@@ -47,6 +47,15 @@
 	height: 60px;
 }
 
+a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+}
+a:hover {
+	color: rgb(20, 20, 20);
+}
+
+
 div {
 	border:white;
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;   
@@ -73,6 +82,9 @@ html, body {
 ::ng-deep body .fc {
   font-size: 12px;
  }
+.fc-daygrid-day-events {
+	font-size: 10px;
+}
 
 </style>
 
@@ -183,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
 
            $( function saveData(jsondata) {
-         	   alert(JSON.stringify(jsondata));
+         	  // alert(JSON.stringify(jsondata));
               $.ajax({
                   url: "add",
                   method: "POST",
@@ -192,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function() {
                   contentType: 'application/json',
               })
                   .done(function (result) {
-                      alert(result);
+           
                   })
                   .fail(function (request, status, error) {
-                       alert("에러 발생" + error);
+                     
          			});
               calendar.unselect()
           });
@@ -221,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
 
          $( function delData(jsondata) {
-       	   alert(JSON.stringify(jsondata));
+       	   //alert(JSON.stringify(jsondata));
             $.ajax({
                 url: "delete",
                 method: "POST",
@@ -230,10 +242,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentType: 'application/json',
             })
                 .done(function (result) {
-                    alert(result);
+                    //alert(result);
                 })
                 .fail(function (request, status, error) {
-                     alert("에러 발생" + error);
+                    //alert("에러 발생" + error);
        			});
             calendar.unselect()
         });

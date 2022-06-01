@@ -33,6 +33,37 @@
 	width: 1257px;
 	height: 60px;
 }
+a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+}
+a:hover {
+	color: rgb(20, 20, 20);
+}
+
+td.scheduleDates {
+	text-align: center;
+	font-size: 20px;
+}
+	
+td {
+	font-size: 15px;
+}
+	
+strong.strong {
+	float: top;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size :20px;
+	color : blue;
+}
+	
+dt {
+ 	float: left;
+  	margin-right: 15px;
+}
+	
+	
 </style>
 <script>
 //날짜 선택  css 함수
@@ -142,13 +173,14 @@ $( function() {
 
 			        	<!-- 이번달 스케줄 현황 출력 폼 -->	
 						<form action="scheduleMonth" method="get">
+						</form>	<!-- 이번달 현황 폼 끝 -->
 						
 						<table class="table table-hover" style="width: 95%; font-size: 20px;margin: 0px auto 30px auto; border-spacing: 0;">
 						  	<thead>
 						      	<tr style="background-color: rgb(200, 200, 200);">
-			        				<th scope="col" style="width: 30%;">일시</th>
-									<th scope="col" style="width: 40%;">일정 상세</th>
-									<th scope="col" style="width: 20%;">비고</th>
+			        				<th scope="col" style="width: 40%;">일시</th>
+									<th scope="col" style="width: 45%;">일정 상세</th>
+									<th scope="col" style="width: 15%;">비고</th>
 		        				</tr>
 						  	</thead>
 						  	<tbody style="width: 90%;font-size: 20px;margin: 0px auto 30px auto; background-color: white;">
@@ -156,59 +188,61 @@ $( function() {
 									<tr>
 										<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
 										<td class="cont">
-											<strong class="strong" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
-											<dl>
+											<strong style="padding-left :40px;" class="strong" onclick="location.href='../schedule/scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
+											<dl style="text-align: left;">
 												<dt>일시</dt><dd>${schedule.schedule_start} ~ ${schedule.schedule_end}</dd>
 												<dt>내용</dt><dd>${schedule.schedule_memo}</dd>
 												
 											</dl>
 										</td>
 											
-										<td class="button"><a>
-										
-				      						<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
+										<td class="button">
+											<dl>
+												<dt>
+												<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
 												<!-- 모달 버튼 (일정 수정) -->
-											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
-					  								수정
-											</button>
-							
-				       						
-				       						<!-- 삭제 폼 -->
-				      						<form action="delete" method="post">
-				      						 
-				      							<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
-												<!-- 모달 버튼 (일정 삭제) -->
-												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal" >
-				  									삭제
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
+						  								수정
 												</button>
-												
-												<!-- Modal -->
-												<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												  <div class="modal-dialog">
-												    <div class="modal-content">
-												      <div class="modal-header">
-												        <h5 class="modal-title" id="exampleModalLabel">일정 삭제</h5>
-												        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												      </div>
-												      <div class="modal-body" style="font-size:20px;">
-												        	일정을 삭제하시겠습니까?
-												      </div>
-												      <div class="modal-footer">
-												        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-												        <button type="submit" class="btn btn-danger" data-bs-target="#deleteModal">삭제</button>
-												      </div>
-												    </div>
-												  </div>
-												</div><!-- Modal -->
-											</form>
-										</a></td>
+												</dt>
+												<dd>
+													<!-- 삭제 폼 -->
+						      						<form action="delete" method="post">
+						      						 
+						      							<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
+														<!-- 모달 버튼 (일정 삭제) -->
+														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal${schedule.schedule_num}" >
+						  									삭제
+														</button>
+														
+														<!-- Modal -->
+														<div class="modal fade" id="deleteModal${schedule.schedule_num}"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+														  <div class="modal-dialog">
+														    <div class="modal-content">
+														      <div class="modal-header">
+														        <h5 class="modal-title" id="exampleModalLabel">일정 삭제</h5>
+														        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+														      </div>
+														      <div class="modal-body" style="font-size:20px;">
+														        	일정을 삭제하시겠습니까?
+														      </div>
+														      <div class="modal-footer">
+														        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+														        <button type="submit" class="btn btn-danger" data-bs-target="#deleteModal">삭제</button>
+														      </div>
+														    </div>
+														  </div>
+														</div><!-- Modal -->
+													</form><!-- 삭제 폼 끝-->
+												</dd>
+											</dl><!-- 버튼 끝 -->
+				      					
+										</td>
 										
 									</tr>
 								</c:forEach>
 						  </tbody>
 						</table>
-			        	</form>	<!-- 이번달 현황 폼 끝 -->
-			        	
 			        	
 				</div> <!-- box 끝 -->
 			</div> <!-- square 끝 -->

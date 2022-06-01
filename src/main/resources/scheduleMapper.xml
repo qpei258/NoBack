@@ -12,12 +12,14 @@
 	</resultMap>
 	
 	<!-- 스케줄 전체 출력 -->
-	<select id="calenList" resultMap="calMap">
+	<select id="calenList" resultMap="calMap" parameterType="map">
 		SELECT schedule_num, schedule_title,
 			TO_char(schedule_start, 'YYYY-MM-DD"T"HH24:MI:SS') schedule_start,
 			TO_char(schedule_end, 'YYYY-MM-DD"T"HH24:MI:SS') schedule_end,
 			schedule_allDay
 		FROM noback_schedule
+		Where 
+			schedule_level > 2 OR schedule_writer = #{searchId}  
 	</select>
 	
 	<!-- 스케줄 개별 출력 -->
@@ -38,7 +40,7 @@
 			schedule_num = #{schedule_num} 		
 	</select>
 	
-	<select id="selectScheduleByMonth" resultType="schedule">
+	<select id="selectScheduleByMonth" parameterType="map" resultType="schedule">
 		select 
 			schedule_num,	  
 			schedule_title,  
@@ -50,7 +52,7 @@
 			noback_schedule 
 		where 
 			to_char(schedule_start, 'mm') = #{month}
-			and schedule_writer = #{LoginId}
+			and schedule_writer = #{schedule_writer}
 		order by 
 			schedule_start
 	</select>
@@ -72,7 +74,7 @@
 		order by 
 			schedule_start
 	</select>
-	
+		
 	<!-- 일정 추가 AJAX -->
 	<insert id="insertSchedule" parameterType="schedule">
 		insert into

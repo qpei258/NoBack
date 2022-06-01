@@ -39,12 +39,20 @@
 		height: 60px;
 	}
 	
+	a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+	}
+	a:hover {
+		color: rgb(20, 20, 20);
+	}
+	
+	
 	.border {
 		border: 1px solid white;
 	}
 	
 	.box{
-    	background-color: white;
     	color: rgb(80, 80, 80);
     	padding: 100px;
     }	
@@ -128,72 +136,38 @@ $( function() {
 				<a href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
 			</div>
         	<div class='square'>
-        		<div class='box' style="background-color: white; ">
-		
-					<form class="row g-3" action="update" method="POST" onsubmit ="return validation()2">
-					
-						<div class="row mb-3">
-                 			<label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">일정 번호</label>
-                 				<div class="col-sm-10" style="width:550px">
-                 				<input class="form-control" type="text" name="schedule_num" id="num" value="${schedule.schedule_num}" style="width:500px">
-								</div>               			
-               			</div>
-						
-						<div class="row mb-3">
-							<label for="employee_name" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">일정 제목</label>
-								<div class="col-sm-10" style="width:400px">
-								<input type="text" class="form-control" name="schedule_title" id="title" value="${schedule.schedule_title}">
-						    </div>
-						</div>
-						
-						<div class="row mb-3">
-							<label for="employee_num" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">시작일
-								<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);">
-							</label>
-								<div class="col-sm-10" style="width:400px">
-								<input type="text" class="form-control" name="schedule_start" id="start" value="${schedule.schedule_start}">
-						    </div>
-						</div>
-						
-						<div class="row mb-3">
-							<label for="employee_num" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">시작 시간
-							</label>
-								<div class="col-sm-10" style="width:400px">
-								<input type="text" class="form-control" name="schedule_start" id="start" value="${schedule.schedule_start}">
-						    </div>
-						</div>						
-						
-						<div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">종료일
-						    	<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);">
-						    </label>
-						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" class="form-control" name ="schedule_end" id="end" value="${schedule.schedule_end}" placeholder="">
-						    </div>
-						 </div>
-						  
-						 <div class="row mb-3">
-							<label for="employee_num" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">종료 시간
-							</label>
-								<div class="col-sm-10" style="width:400px">
-								<input type="text" class="form-control" name="schedule_start" id="start" value="${schedule.schedule_end}">
-						    </div>
-						</div>	
-						  
-						<div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">메모</label>
-						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" class="form-control" name ="schedule_memo" id="memo" value="${schedule.schedule_memo}" placeholder="">
-						    </div>
-						 </div>
-						 
-						 <div class="row mb-3">
-						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">작성자</label>
-						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" readonly class="form-control" name ="schedule_writer" id="writer" value="${schedule.schedule_writer}" placeholder="">
-						    </div>
-						 </div>
-
+        		<div class='box'>
+					<form class="row g-3" action="updateSchedule" method="POST" onsubmit ="return validation()2">
+						<ol class="list-group list-group-numbered">
+							  <li class="list-group-item d-flex justify-content-between align-items-start">
+							  <div class="ms-2 me-auto">
+								   <div class="fw-bold">일정 제목</div>
+								   <input type="hidden" class="form-control" name="schedule_num" id="num" value="${schedule.schedule_num}">
+									<input type="text" class="form-control" name="schedule_title" id="title" value="${schedule.schedule_title}">
+							    </div>
+							  </li>
+							  <li class="list-group-item d-flex justify-content-between align-items-start">
+							  <div class="ms-2 me-auto">
+								   <div class="fw-bold">시작일</div>
+									<input type="text" class="form-control" name="schedule_start" id="start" value="${schedule.schedule_start}">
+									<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);">
+							    </div>
+							  </li>
+							   <li class="list-group-item d-flex justify-content-between align-items-start">
+							  <div class="ms-2 me-auto">
+								   <div class="fw-bold">종료일</div>
+									<input type="text" class="form-control" name="schedule_end" id="" value="${schedule.schedule_end}">
+									<img alt="cal" src="../resources/img/cal.png" style="width:20px;" onclick="javascript:f_datepicker(this);">
+							    </div>
+							  </li>
+							    <li class="list-group-item d-flex justify-content-between align-items-start">
+							  <div class="ms-2 me-auto">
+								   <div class="fw-bold">메모</div>
+									<input type="text" class="form-control" name="schedule_memo" id="memo" value="${schedule.schedule_memo}">
+							    </div>
+							  </li>
+							</ol>
+				
 					<fieldset>
 						<input type="submit" class="btn btn-primary" value="수정" >
 						<input type="reset" class="btn btn-primary" value="다시 쓰기">

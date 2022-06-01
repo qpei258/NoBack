@@ -158,9 +158,6 @@ public class MypageController {
 		return "mypage/mySchedule"; 
 	}
 	
-	
-	
-	
 	/**
 	 * 마이페이지-내 스케줄 추가
 	 */
@@ -184,6 +181,58 @@ public class MypageController {
 		
 		
 		return "redirect:/schedule/schedule";	
+	}
+	
+	/**
+	 * 일정 개별 출력
+	*/
+	@RequestMapping(value = "scheduleInfo", method = RequestMethod.GET) 
+	public String showScheduleinfo(int schedule_num, Model model)
+			throws Exception {
+		logger.info("사내 일정 페이지 로딩성공"); 
+		ScheduleVO schedule = caldao.getSchedule(schedule_num);
+		model.addAttribute("schedule", schedule);
+		
+		return "schedule/scheduleInfo"; 
+	}
+
+	
+	/**
+	 * 일정 수정
+	 */
+	@RequestMapping(value = "updateSchedule", method = RequestMethod.POST)
+	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
+		// 아이디로 수정할 정보 불러오기
+		
+		String searchId = (String) session.getAttribute("LoginId");
+		sked.setSchedule_writer(searchId);
+		
+		//ScheduleVO sked = dao.getSchedule(schedule_num);
+		
+		model.addAttribute("sked", sked);
+		
+		// dao로
+		int result = caldao.updateSchedule(sked);
+		logger.info("sked", sked);
+		session.setAttribute("LoginLv", sked.getSchedule_level());
+		
+		return "redirect:/mypage/schedule";	
+	}
+
+	/**
+	 * 일정 삭제
+	*/
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String deleteSchedule(HttpSession session, int schedule_num) {
+		
+		//String searchId = (String) session.getAttribute("LoginId");
+		// dao로
+		//ScheduleVO sked = dao.getSchedule(schedule_num);
+		
+		int result = caldao.deleteSchedule(schedule_num);
+		logger.info("schedule_num :{}", schedule_num);
+		
+		return "redirect:/";
 	}
 
 }

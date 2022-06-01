@@ -1,6 +1,7 @@
 package com.noback.group.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,7 @@ import com.noback.group.vo.ScheduleVO;
 public interface ScheduleMapper {
 
 	// 스케줄 목록 가져오기
-	public ArrayList<ScheduleVO> calenList();
+	public ArrayList<ScheduleVO> calenList( Map<String, String> map);
 	
 	// 스케줄 등록 (ajax 방식)
 	public int insertSchedule(ScheduleVO sked);
@@ -31,7 +32,7 @@ public interface ScheduleMapper {
 	public int deleteSchedule(int schedule_num);
 	
 	//월별 일정 모아보기
-	public ArrayList<ScheduleVO> selectScheduleByMonth(String month, String schedule_writer);
+	public ArrayList<ScheduleVO> selectScheduleByMonth(Map<String, String> map);
 
 	// 스케줄폼 추가 (POST방식)
 	public int insertScheduleForm(ScheduleVO schedule);

@@ -2,6 +2,7 @@ package com.noback.group.controller;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -56,15 +57,31 @@ public class ScheduleController {
 		logger.info("searchId :{}", searchId);
 		logger.info("searchLv :{}", searchLv);
 		
-		d.addAttribute("list", dao.calenList());
+		Map<String, String> map = new HashMap<String, String>();
+		 
+		map.put("searchId", searchId);
+		map.put("searchLv", Integer.toString(searchLv));
+		 
+		d.addAttribute("list", dao.calenList(map));
 		return "schedule/schedule"; 
 	}
 	
-	
+	/**
+	 * 스케줄 전체 출력
+	 */
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String data(Model d) {
+	public String data(HttpSession session, Model d) {
 		logger.info("업데이트 완료:{}",d);
-		d.addAttribute("list", dao.calenList());
+		
+		String searchId = (String) session.getAttribute("LoginId");
+		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		
+		 Map<String, String> map = new HashMap<String, String>();
+		 
+		 map.put("searchId", searchId);
+		 map.put("searchLv", Integer.toString(searchLv));
+		
+		d.addAttribute("list", dao.calenList(map));
 		
 		return "schedule/schedule";
 	}
@@ -186,7 +203,7 @@ public class ScheduleController {
 	/**
 	 * 일정 수정
 	 */
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "updateSchedule", method = RequestMethod.POST)
 	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
 		// 아이디로 수정할 정보 불러오기
 		
@@ -200,7 +217,6 @@ public class ScheduleController {
 		// dao로
 		int result = dao.updateSchedule(sked);
 		logger.info("sked", sked);
-		session.setAttribute("LoginLv", sked.getSchedule_level());
 		
 		return "redirect:/schedule/scheduleMonth";	
 	}
@@ -214,10 +230,10 @@ public class ScheduleController {
 		
 		//String searchId = (String) session.getAttribute("LoginId");
 		// dao로
-		ScheduleVO sked = dao.getSchedule(schedule_num);
+		//ScheduleVO sked = dao.getSchedule(schedule_num);
 		
 		int result = dao.deleteSchedule(schedule_num);
-		logger.info("sked", sked);
+		logger.info("schedule_num :{}", schedule_num);
 		
 		return "redirect:/schedule/scheduleMonth";
 	}

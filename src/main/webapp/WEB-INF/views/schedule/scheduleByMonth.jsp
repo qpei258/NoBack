@@ -43,6 +43,14 @@
 		height: 60px;
 	}
 	
+	a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+	}
+	a:hover {
+		color: rgb(20, 20, 20);
+	}
+	
 	.border {
 		border: 1px solid black;
 	}

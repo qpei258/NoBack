@@ -1,6 +1,8 @@
 package com.noback.group.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,10 @@ public class ScheduleDAO {
 	SqlSession sqlSession;
 	
 	// 스케줄 목록 가져오기
-	public ArrayList<ScheduleVO> calenList() {
+	public ArrayList<ScheduleVO> calenList( Map<String, String> map) {
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
 		
-		return mapper.calenList();
+		return mapper.calenList(map);
 	}
 
 	// 스케줄 등록
@@ -85,8 +87,14 @@ public class ScheduleDAO {
 	//스케주 월별로 출력
 	public ArrayList<ScheduleVO> listScheduleByMonth(String month, String schedule_writer) {
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
+		
+		Map<String, String> map =new HashMap<String, String>();
+		
+		map.put("month", month);
+		map.put("schedule_writer", schedule_writer);
+		
 		ArrayList<ScheduleVO> MonthScheduleList 
-		= mapper.selectScheduleByMonth(month, schedule_writer);
+		= mapper.selectScheduleByMonth(map);
 					
 		return MonthScheduleList;
 

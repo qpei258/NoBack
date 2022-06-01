@@ -82,6 +82,14 @@
 	height: 60px;
 }
 
+a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+}
+a:hover {
+	color: rgb(20, 20, 20);
+}
+
 /* 폼 테이블 */
 .formtable {
 	width: 800px;
