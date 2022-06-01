@@ -76,6 +76,7 @@
 				<h6>${schedule.schedule_title}</h6>
 				<h6>${schedule.schedule_start}</h6>
 				<h6>${schedule.schedule_end}</h6>
+				<h6>${schedule.schedule_memo}</h6>
 				<h6>${schedule.schedule_writer}</h6>
 				<h6>${schedule.schedule_level}</h6>
 		

@@ -29,6 +29,9 @@ public interface ScheduleMapper {
 		
 	// 스케줄 삭제
 	public int deleteSchedule(int schedule_num);
+	
+	//월별 일정 모아보기
+	public ArrayList<ScheduleVO> selectScheduleByMonth(String month);
 
 }
 
