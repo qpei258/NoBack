@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.noback.group.dao.MemberDAO;
 import com.noback.group.util.PageNavigator;
@@ -47,7 +48,10 @@ public class MemberController {
 			session.setAttribute("LoginLevel", member2.getEmployee_level());
 			return "redirect:/";
 		}
+		String msg = "다시 로그인 해주세요.";
+		session.setAttribute("msg", msg);
 		return "redirect:login";
+		
 	}
 	
 		//로그아웃
@@ -112,19 +116,17 @@ public class MemberController {
 		
 	
 		// 사원정보 수정
+		@ResponseBody
 		@RequestMapping(value = "memberlistupdate", method = RequestMethod.POST)
-		public String memberlistupdate(HttpSession session, MemberVO member) {
+		public void memberlistupdate(HttpSession session, MemberVO member) {
 			logger.info("사원 수정 처리" + member);
-			if(member.getEmployee_picture().equals("")){
-				member.setEmployee_picture(null);
-			}
+			
 			//member객체를 dao로 보내서 테이블의 정보 수정
 			int result = dao.memberlistupdate(member);
 			
 			//세션정보도 수정
 			session.setAttribute("num", member.getEmployee_num());
 			
-			return "redirect:memberlist";
 		}
 	
 	

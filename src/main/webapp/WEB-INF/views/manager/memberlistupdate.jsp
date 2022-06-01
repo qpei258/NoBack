@@ -12,7 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-
+	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 
 /*회색 배경*/
@@ -73,12 +73,24 @@ window.onload = function(){
 }
 </script>
 <script type="text/javascript">
-
-
-
+function updatecheck() {
+	
+	
+	$.ajax({
+		url : 'memberlistupdate',
+		type : 'post',
+		data : $('#write').serialize(),
+		success : function(){
+			alert('수정되었습니다.');
+			opener.location.reload();
+			window.close();
+		},
+		error : function(e) {
+			alert(JSON.stringify(e));
+		}
+	});
+}
 </script>
- 
-
 
 </head>
 <body>
@@ -87,7 +99,7 @@ window.onload = function(){
 			<div class='square' style="margin: auto;">
 			<!-- 수정 테이블 묶음 -->
 			<div class="update1">
-			<form method="post" onsubmit="return updatecheck();">
+			<form method="post" id="write">
 				        <div class="row mb-3">
 					  <label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:150px;">프로필 등록</label>
 					  <input class="form-control" type="file" id="employee_picture" name="employee_picture" value="${member.employee_picture}" style="width:400px; background-color:rgb(238, 238, 238)">
@@ -144,7 +156,8 @@ window.onload = function(){
 							  <option value='4'>4</option>
 							</select>
 						</div>
-					<button type="submit" class="btn btn-primary" style="width: 100px";>수정</button>
+						<input type="hidden" name="employee_num" id="employee_num" value="${member.employee_num}">
+					<button type="button" onclick="updatecheck()" class="btn btn-primary" style="width: 100px";>수정</button>
 					<button type="button" class="btn btn-primary" style="width: 100px"; onclick="window.close()"; >닫기</button>
 				</form>
 			</div>
