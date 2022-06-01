@@ -33,10 +33,31 @@
                 </c:if>
             </div>
             <div id="maincontent1">
-				<div>
+				<div id="my">
+					<c:if test="${LoginId != null }">
+						<div id="profile">
+							<div id="photo">
+								<img src="<c:url value='/resources/img/프로필.png'/>">
+							</div>
+							<div id="info">
+								<span style="font-weight: 700; font-size: 35px;">정대균</span><br>
+								<span style="font-size: 25px;">프로젝트 리더</span>
+							</div>
+							<div style="clear: both; font-size: 25px; margin: 245px 20px; text-align: center; border: 1px solid rgb(148, 202, 238);;">
+								최근접속일 2022-06-01
+							</div>
+						</div>
+					</c:if>
+					<c:if test="${LoginId == null }">
+						<div id="unlog">
+							로그인이 필요합니다.
+						</div>
+					</c:if>
 				</div>
-				<div>
-				
+				<div id="alarm">
+					<div id="precent">
+					
+					</div>
 				</div>
             </div>
             <div id="maincontent2">
@@ -44,14 +65,16 @@
 					<div id="list">
 						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></h2>
 						<c:forEach var="notice" items="${noticelist }">
-							<div class="noti" style="font-size: 25px; padding-left: 40px; color: rgb(120, 120, 120);">
+							<div class="noti" style="font-size: 25px; margin:0px 80px 0px 40px; color: rgb(120, 120, 120); border-bottom: 1px solid rgb(100, 100, 100);">
 								<a href='<c:url value="/notice/notice?num=${notice.notice_num }"/>'>・${notice.notice_title}</a>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
 				<div id="messenger">
-				
+					<div id="mess">
+					
+					</div>
 				</div>
             </div>
         </div>

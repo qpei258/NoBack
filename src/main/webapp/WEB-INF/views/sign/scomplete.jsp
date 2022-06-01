@@ -28,7 +28,7 @@ function receiverOpen() {
 		#sign {
 		margin: 0px auto;
 		width: 1258px;
-		height: 1000px;
+		height: 800px;
 		background-color: rgb(238, 238, 238);
 		text-align: center;
 		color: rgb(80, 80, 80);
@@ -63,10 +63,10 @@ function receiverOpen() {
 				<a style="font-weight: bold;" href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
 				<a style="font-weight: bold;" href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
 		</nav>
-        <div id="content">
+        <div id="content" style="height: 800px;">
         	<div id="sign">
         	<h1>결제 서류</h1>
-        		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data">
+        		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data" style="margin-left: 260px;">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 0px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold;">기안일</span>
 					  	<input type="text" name="signsign_cdate" id="signsign_cdate" style="width:400px;" value="${sign.sign_cdate}" readonly="readonly">
@@ -77,19 +77,11 @@ function receiverOpen() {
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;">내용</span>
-						 <input type="text" name="sign_content" id="sign_content" style="width:400px; height:200px;" value="${sign.sign_content}" readonly="readonly" >					 
+						 <input type="text" name="sign_content" id="sign_content" style="width:400px; height:100px;" value="${sign.sign_content}" readonly="readonly" >					 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >작성자</span>
 						 <input type="text" name="sign_sender" id="sign_sender" size="30" value="${sign.sign_nsender}" readonly="readonly">						 
-					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >부서</span>
-						 <input type="text" name="sign_dep" id="sign_dep" size="30" value="${sign.sign_dep}" readonly="readonly">						 
-					</div>
-					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >직위</span>
-						 <input type="text" name="sign_pos" id="sign_pos" size="30" value="${sign.sign_pos}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >수신자1</span>
@@ -177,7 +169,7 @@ function receiverOpen() {
 					       <input type="radio" id="sign_ok1" name="sign_ok1" value='-1' checked="checked">반려1
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >메모</span>
-						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px;resize:none;" ></textarea>						 
 					</div>   
 					   <input type="submit" class="btn btn-primary" value="처리완료" />                        
 					</div>                             
@@ -187,11 +179,11 @@ function receiverOpen() {
 					<c:if test="${sessionScope.LoginId == sign.sign_receiver2}">
 					<c:if test="${sign.sign_ok2 == 0}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
-					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1'>승인2
+					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1' >승인2
 					       <input type="radio" id="sign_ok2" name="sign_ok2" value='-1' checked="checked">반려2
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text"style="width: 100px; font-weight: bold;" >메모</span>
-						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px;resize:none;" ></textarea>						 
 					</div>       
 					   <input type="submit" class="btn btn-primary" value="처리완료" />                         
 					</div>                               
@@ -205,7 +197,7 @@ function receiverOpen() {
 					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">반려3
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text"style="width: 100px; font-weight: bold;" >메모</span>
-						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px;resize:none;" ></textarea>						 
 					</div>       
 					   <input type="submit" class="btn btn-primary" value="처리완료" />                       
 					</div>           
@@ -219,7 +211,7 @@ function receiverOpen() {
 					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">반려4
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto;">
 						 <span class="input-group-text" style="width: 100px; font-weight: bold;" >메모</span>
-						 <textarea name="sign_memo" id="sign_memo" style="width:200px;height:100px;resize:none;" ></textarea>						 
+						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px;resize:none;" ></textarea>						 
 					</div>       
 					   <input type="submit" class="btn btn-primary" value="처리완료" />                        
 					</div>
