@@ -33,7 +33,7 @@
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         	<div id="board">
-	        	<h2 style="margin: 100px 0px 30px 0px;">게시글</h2>
+	        	<h2 style="margin: 40px 0px 30px 0px;">게시글</h2>
         		<table  class="table" style="width: 90%;font-size: 20px;margin: 0px auto 0px auto; border-spacing: 0; height: 600px;">
         			<thead style="text-align: left;">
         				<tr style="background-color: rgb(200, 200, 200);">
