@@ -12,14 +12,14 @@ public interface ScheduleMapper {
 	// 스케줄 목록 가져오기
 	public ArrayList<ScheduleVO> calenList();
 	
-	// 스케줄 등록
+	// 스케줄 등록 (ajax 방식)
 	public int insertSchedule(ScheduleVO sked);
 
 	// 스케줄 목록 가져오기
 	//public ArrayList<ScheduleVO> listSchedule();
 		
 	// 이번달 스케줄만 불러오기
-	public ArrayList<ScheduleVO> selectScheduleMonth();
+	public ArrayList<ScheduleVO> selectScheduleMonth(String schedule_writer);
 
 	// 스케줄 넘버로 개별정보 가져오기
 	public ScheduleVO selectScheduleInfo(int schedule_num);
@@ -31,7 +31,10 @@ public interface ScheduleMapper {
 	public int deleteSchedule(int schedule_num);
 	
 	//월별 일정 모아보기
-	public ArrayList<ScheduleVO> selectScheduleByMonth(String month);
+	public ArrayList<ScheduleVO> selectScheduleByMonth(String month, String schedule_writer);
+
+	// 스케줄폼 추가 (POST방식)
+	public int insertScheduleForm(ScheduleVO schedule);
 
 }
 
