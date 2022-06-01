@@ -33,25 +33,24 @@ public class MemberController {
 	// 로그인으로 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
+
 		return "manager/login";
 	}
 	
 	//로그인처리
+	@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(MemberVO member, HttpSession session) {
+	public boolean login(MemberVO member, HttpSession session) {
 	logger.info("로그인", member);
-	
+		
 		MemberVO member2 = dao.getMember(member.getEmployee_num());
 		logger.info("{}", member2);
 		if (member2 != null && member2.getEmployee_password().equals(member.getEmployee_password())) {
 			session.setAttribute("LoginId", member2.getEmployee_num());
 			session.setAttribute("LoginLevel", member2.getEmployee_level());
-			return "redirect:/";
+			return true;
 		}
-		String msg = "다시 로그인 해주세요.";
-		session.setAttribute("msg", msg);
-		return "redirect:login";
-		
+		return false;
 	}
 	
 		//로그아웃
@@ -80,7 +79,7 @@ public class MemberController {
 			//저장 성공한 경우 메인화면으로 이동
 			return "redirect:memberlist";
 		}
-
+		
 		// 모든 사원리스트 출력
 		@RequestMapping(value = "memberlist", method = RequestMethod.GET)
 		public String list(HttpSession session, @RequestParam(value="page", defaultValue="1") int page

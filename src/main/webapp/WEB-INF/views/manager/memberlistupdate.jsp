@@ -17,6 +17,7 @@
 
 /*회색 배경*/
 .square {
+	border : 1px solid rgb(238, 238, 238);
 	margin: 10px auto;
 	width: 850px;
 	height: 700px;
@@ -39,7 +40,7 @@ a{
 }
 
 div {
-	border:1px solid;
+	border:1px solid ;
 	color: rgb(238, 238, 238);
 }
 
@@ -73,9 +74,8 @@ window.onload = function(){
 }
 </script>
 <script type="text/javascript">
+/* 수정 처리 ajax */
 function updatecheck() {
-	
-	
 	$.ajax({
 		url : 'memberlistupdate',
 		type : 'post',
@@ -86,7 +86,7 @@ function updatecheck() {
 			window.close();
 		},
 		error : function(e) {
-			alert(JSON.stringify(e));
+			alert('권한등급을 선택해주세요.');
 		}
 	});
 }
