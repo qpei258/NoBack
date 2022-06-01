@@ -35,16 +35,16 @@ public class HomeController {
 	@Autowired
 	NoticeDAO ndao;
 	
+	//홈화면 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-
 	public String home(HttpSession session, @RequestParam(value="page", defaultValue="1") int page
 			, @RequestParam(value="search", defaultValue="") String search
 			, Model model) {
 		int total = ndao.getTotal(search);	
 
+		
+		
 		PageNavigator navi = new PageNavigator(5, 1, page, total); 
-		
-		
 		ArrayList<NoticeVO> noticelist = ndao.list(search, navi.getStartRecord(), navi.getCountPerPage());	
 		
 		model.addAttribute("noticelist", noticelist);
