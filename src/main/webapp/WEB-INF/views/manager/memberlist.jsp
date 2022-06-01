@@ -33,6 +33,7 @@
 	margin: 9px 9px;
 	width: 1257px;
 	height: 60px;
+	line-height: 30px;
 }
 /* 페이지 */
 a{
@@ -66,7 +67,14 @@ a{
 				window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=563,height=458,location=no,status=no');
 			}
 		}
-	
+		
+		function memberdelete(num) {
+			var che = confirm("삭제 하시겠습니까?");
+			
+			if(che){
+				location.href='memberdelete?employee_num=' + num;
+			}
+		}
 	</script>
 <script type="text/javascript">
 
@@ -121,7 +129,7 @@ a{
 						  		<td>${member.employee_pos}</td>
 						  		<td>${member.employee_level}</td>
 						  		<td><button id="update_btn" onclick="memberlistupdate('${member.employee_num}')">수정</button></td>
-							  	<td><button id="delete_btn" onclick="location.href='memberdelete?employee_num=${member.employee_num}'">삭제</button></td>	
+							  	<td><button id="delete_btn" onclick="memberdelete('${member.employee_num}')">삭제</button></td>	
 						  	</tr>
 						  </c:forEach>
 				  </tbody>

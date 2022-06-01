@@ -47,6 +47,14 @@
     height: 60px;
 }
 
+a{
+	text-decoration: none;
+	color: rgb(80, 80, 80);
+}
+a:hover {
+	color: rgb(20, 20, 20);
+}
+
 
 </style>
 
@@ -91,7 +99,9 @@ function loginCheck() {
 								aria-label="Username" aria-describedby="basic-addon2">
 						</div>
 
-
+						<c:if test="${msg != null}">
+							<div style="text-align: center; font-size: 15px; color: red;" >${msg}</div>
+						</c:if>
 						<button type="submit" style="width: 100px;" class="btn btn-primary">로그인</button>
 								
 								
