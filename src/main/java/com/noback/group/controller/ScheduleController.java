@@ -76,7 +76,7 @@ public class ScheduleController {
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String addSchedule(HttpSession session, @RequestBody Map<String, String> sked) {
 		
-		// 아이디로 권한레벨 불러오기
+		// ajax로 시작일, 종료일, 메모 불러오기
 		String start = sked.get("start").split("[.]")[0].replace('T', ' '); 
 		logger.info("start :{}", start);
 	
@@ -85,7 +85,8 @@ public class ScheduleController {
 		
 		String content = sked.get("content");
 		logger.info("content :{}", content);
-		
+			
+		// 세션으로 아이디, 권한레벨 불러오기
 		String searchId = (String) session.getAttribute("LoginId");
 		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
 		logger.info("searchId :{}", searchId);
@@ -110,6 +111,28 @@ public class ScheduleController {
 		return "redirect:/schedule/schedule";	
 	}
 	
+	@RequestMapping(value = "addform", method = RequestMethod.POST)
+	public String addScheduleForm(HttpSession session, ScheduleVO sked) {
+			
+		// 세션으로 아이디, 권한레벨 불러오기
+		String searchId = (String) session.getAttribute("LoginId");
+		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		logger.info("searchId :{}", searchId);
+		logger.info("searchLv :{}", searchLv);
+		
+		
+		sked.setSchedule_writer(searchId);
+		sked.setSchedule_level(searchLv);
+		
+		
+		logger.info("schedule :{}", sked);
+		 //dao로
+		int result = dao.addScheduleForm(sked);
+		
+		
+		return "redirect:/schedule/schedule";	
+	}
+	
 
 	/**
 	 * 스케줄 이번달 일정 출력
@@ -118,12 +141,14 @@ public class ScheduleController {
 	public String showScheduleMonth(Model model, HttpSession session)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공");
+		String searchId = (String) session.getAttribute("LoginId");
+		
 		// 스케줄 전체 데이터 저장
-		ArrayList<ScheduleVO> scheduleList = dao.listScheduleMonth();
+		ArrayList<ScheduleVO> scheduleList = dao.listScheduleMonth(searchId);
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
 
-		return "schedule/scheduleMonth"; 
+		return "schedule/scheduleMonth";
 	}
 	
 	/**
@@ -133,8 +158,10 @@ public class ScheduleController {
 	public String showScheduleByMonth(Model model, HttpSession session, String month)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공");
+		String searchId = (String) session.getAttribute("LoginId");
+		
 		// 스케줄 전체 데이터 저장
-		ArrayList<ScheduleVO> scheduleList = dao.listScheduleByMonth(month);
+		ArrayList<ScheduleVO> scheduleList = dao.listScheduleByMonth(month, searchId);
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
 
@@ -168,12 +195,12 @@ public class ScheduleController {
 		
 		//ScheduleVO sked = dao.getSchedule(schedule_num);
 		
-		//model.addAttribute("sked", sked);
+		model.addAttribute("sked", sked);
 		
 		// dao로
 		int result = dao.updateSchedule(sked);
 		logger.info("sked", sked);
-		//session.setAttribute("LoginLv", sked.getSchedule_level());
+		session.setAttribute("LoginLv", sked.getSchedule_level());
 		
 		return "redirect:/schedule/scheduleMonth";	
 	}

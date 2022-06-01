@@ -26,7 +26,7 @@
                 	<div class="topmenu"><a href='<c:url value="/manager/login"/>' style="color: rgb(80, 80, 80);">로그인</a></div>
                 </c:if>
                 <c:if test="${LoginId != null && LoginLevel <= 2}">
-                	<div class="topmenu" ><a href='<c:url value="/mypage/mypage"/>' style="color: rgb(80, 80, 80);">마이페이지</a></div>
+                	<div class="topmenu" ><a href='<c:url value="/mypage/update"/>' style="color: rgb(80, 80, 80);">마이페이지</a></div>
                 </c:if>
                 <c:if test="${LoginId != null && LoginLevel >= 3}">
                 	<div class="topmenu"><a href='<c:url value="/manager/memberlist"/>' style="color: rgb(80, 80, 80);">관리자페이지</a></div>

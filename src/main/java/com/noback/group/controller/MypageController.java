@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.noback.group.dao.MemberDAO;
 import com.noback.group.dao.MypageDAO;
+import com.noback.group.dao.ScheduleDAO;
 import com.noback.group.vo.*;
 import com.noback.group.util.*;
 
@@ -37,6 +38,9 @@ public class MypageController {
 	@Autowired
 	MemberDAO mdao;
 	
+	@Autowired
+	ScheduleDAO caldao;
+	
 	//게시판 관련 상수값들
 	final int countPerPage = 10;		
 	final int pagePerGroup = 5;				
@@ -44,13 +48,14 @@ public class MypageController {
 		
 	/**
 	 * 마이페이지로 이동
-	 */
+	 
 	@RequestMapping(value = "mypage", method = RequestMethod.GET) 
 	public String showMypage()
 			throws Exception {
 		logger.info("마이페이지 페이지 로딩성공");
-		return "mypage/myUpdate"; 
+		return "mypage/mypage"; 
 	}
+	*/
 	
 	/**
 	 * 개인정보 수정 페이지 로딩
@@ -80,7 +85,7 @@ public class MypageController {
 		int result = dao.updateMember(member);
 		logger.info("member", member);
 		session.setAttribute("LoginLv", member.getEmployee_level());
-		return "mypage/mypage";	
+		return "mypage/myUpdate";	
 	}
 	
 	/**
@@ -124,10 +129,61 @@ public class MypageController {
 	 * 마이페이지-내 스케줄로 이동
 	 */
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
-	public String showMyschedule() {
+	public String showMyschedule(Model model, HttpSession session) {
 		logger.info("마이 스케줄 페이지 로딩성공");
 		
+		String searchId = (String) session.getAttribute("LoginId");
+		// 스케줄 전체 데이터 저장
+		ArrayList<ScheduleVO> scheduleList = caldao.listScheduleMonth(searchId);
+		// 스케줄 이번달 한정 데이터 저장
+		model.addAttribute("scheduleList", scheduleList);
+		
 		return "mypage/mySchedule"; 
+	}
+	
+	/**
+	 * 스케줄 월별로 일정 출력
+	 */
+	@RequestMapping(value = "scheduleByMonth", method = RequestMethod.GET) 
+	public String showScheduleByMonth(Model model, HttpSession session, String month)
+			throws Exception {
+		logger.info("사내 일정 페이지 로딩성공");
+		String searchId = (String) session.getAttribute("LoginId");
+		
+		// 스케줄 전체 데이터 저장
+		ArrayList<ScheduleVO> scheduleList = caldao.listScheduleByMonth(month, searchId);
+		// 스케줄 이번달 한정 데이터 저장
+		model.addAttribute("scheduleList", scheduleList);
+
+		return "mypage/mySchedule"; 
+	}
+	
+	
+	
+	
+	/**
+	 * 마이페이지-내 스케줄 추가
+	 */
+	@RequestMapping(value = "addform", method = RequestMethod.POST)
+	public String addScheduleForm(HttpSession session, ScheduleVO sked) {
+			
+		// 세션으로 아이디, 권한레벨 불러오기
+		String searchId = (String) session.getAttribute("LoginId");
+		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		logger.info("searchId :{}", searchId);
+		logger.info("searchLv :{}", searchLv);
+		
+		
+		sked.setSchedule_writer(searchId);
+		sked.setSchedule_level(searchLv);
+		
+		
+		logger.info("schedule :{}", sked);
+		 //dao로
+		int result = caldao.addScheduleForm(sked);
+		
+		
+		return "redirect:/schedule/schedule";	
 	}
 
 }
