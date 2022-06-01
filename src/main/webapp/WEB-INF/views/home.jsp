@@ -56,10 +56,31 @@
 				</div>
 				<div id="alarm">
 					<div id="precent">
-						<div style="font-size: 25px; margin: 40px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
+						<div style="font-size: 25px; margin: 40px 20px 20px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
 							2022-06-01 수요일 <b>${member.employee_name }</b> 님의 현황입니다.
 						</div>
-						<div style="font-size: 25px; margin: 20px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
+						<div style="font-size: 25px; margin: 10px auto; border: 1px solid rgb(238, 238, 238);">
+							<div class="pre" style="margin-left: 120px;">
+								<img src="<c:url value='/resources/img/새메신저.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); margin-left: 10px;">
+								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
+									새 메시지
+									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+								</button>
+							</div>
+							<div class="pre" style="margin-left: 30px;">
+								<img src="<c:url value='/resources/img/새일정.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); ">
+								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
+									새 일정
+									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+								</button>
+							</div>
+							<div class="pre">
+								<img src="<c:url value='/resources/img/새결제.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); clear: both;">
+								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
+									새 결제
+									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+								</button>
+							</div>
 							
 						</div>
 					</div>
@@ -93,3 +114,4 @@
     </div>
 </body>
 </html>
+
