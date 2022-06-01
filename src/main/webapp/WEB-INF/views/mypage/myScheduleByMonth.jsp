@@ -147,18 +147,18 @@
 					  <li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">다른 달</a>
 					    <ul class="dropdown-menu">
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=01">1월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=02">2월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=03">3월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=04">4월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=05">5월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=06">6월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=07">7월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=08">8월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=09">9월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=10">10월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=11">11월</a></li>
-					      <li><a class="dropdown-item" href="../schedule/scheduleByMonth?month=12">12월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=01">1월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=02">2월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=03">3월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=04">4월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=05">5월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=06">6월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=07">7월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=08">8월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=09">9월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=10">10월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=11">11월</a></li>
+					      <li><a class="dropdown-item" href="../myschedule/myScheduleByMonth?month=12">12월</a></li>
 					    </ul>
 					  </li>
 					  <li class="nav-item">

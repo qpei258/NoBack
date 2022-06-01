@@ -25,8 +25,10 @@
 		select 
 			schedule_num,	  
 			schedule_title,  
-			to_char(schedule_start, 'yyyy-mm-dd dy') as schedule_start,	 
-			to_char(schedule_end, 'yyyy-mm-dd dy') as schedule_end,	  
+			to_char(schedule_start, 'yyyy-mm-dd') as schedule_start,	 
+			to_char(schedule_end, 'yyyy-mm-dd') as schedule_end,
+			to_char(schedule_start, 'HH24:MI:SS') as schedule_start,	 
+			to_char(schedule_end, 'HH24:MI:SS') as schedule_end,		  
 			schedule_memo,	   
 			schedule_writer,	   
 			schedule_level 
@@ -48,11 +50,12 @@
 			noback_schedule 
 		where 
 			to_char(schedule_start, 'mm') = #{month}
+			and schedule_writer = #{LoginId}
 		order by 
 			schedule_start
 	</select>
 	
-	<select id="selectScheduleMonth" resultType="schedule">
+	<select id="selectScheduleMonth" parameterType="string" resultType="schedule">
 		select 
 			schedule_num,	  
 			schedule_title,  
@@ -64,11 +67,13 @@
 			noback_schedule 
 		where 
 			to_char(schedule_start, 'mm') = to_char(sysdate, 'mm')
+			and
+			schedule_writer = #{LoginId}
 		order by 
 			schedule_start
 	</select>
 	
-	<!-- 일정 추가 -->
+	<!-- 일정 추가 AJAX -->
 	<insert id="insertSchedule" parameterType="schedule">
 		insert into
 			noback_schedule
@@ -99,6 +104,41 @@
 			)
 	</insert>
 	
+	<!-- 일정 추가 POST -->
+	<insert id="insertScheduleForm" parameterType="schedule">
+		insert into
+			noback_schedule
+			(
+			schedule_num,	    
+			schedule_title,	 
+			schedule_writer,
+			schedule_level,
+			<if test="schedule_memo != null">	  
+				schedule_memo,
+			</if>	   
+			schedule_start,	   
+			schedule_end,
+			<if test="schedule_allDay != null">	
+				schedule_allDay	
+			</if>
+			)			
+		values
+			(
+			cal_seq.nextval,
+			#{schedule_title},
+			#{schedule_writer},
+			#{schedule_level},
+			<if test="schedule_memo != null">	 
+				#{schedule_memo},
+			</if>
+			TO_DATE(#{schedule_start}, 'yyyy-MM-dd HH24:MI:SS'),
+			TO_DATE(#{schedule_end}, 'yyyy-MM-dd HH24:MI:SS'),
+			<if test="schedule_allDay != null">	
+				#{schedule_allDay}
+			</if>
+			)
+	</insert>
+	
 	<!-- 스케줄 수정 -->
 	<update id="updateSchedule" parameterType="schedule">
 		update 
@@ -107,7 +147,9 @@
 			schedule_title = #{schedule_title}
 			, schedule_start = #{schedule_start}
 			, schedule_end = #{schedule_end} 
+			<if test="schedule_memo != null">
 			, schedule_memo= #{schedule_memo} 
+			</if>
 		where 
 			schedule_num = #{schedule_num}
 	</update>

@@ -125,7 +125,7 @@ div {
 					<!-- 정보수정 폼 -->
 					<form action="update" method="POST" onsubmit ="return validation()">
 		
-							<div class="row mb-3">
+						<div class="row mb-3">
                  			<label for="employee_picture" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">프로필 등록</label>
                  				<div class="col-sm-10" style="width:550px">
                  				<input class="form-control" type="file" id="picture" name="employee_picture" value="${member.employee_picture}" style="width:500px">
@@ -191,7 +191,7 @@ div {
 						  <div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">상세주소</label>
 						    <div class="col-sm-10" style="width:600px">
-						      <input type="text" readonly class="form-control" name ="employee_address1" id="address1" value="${member.employee_address}" placeholder="">
+						      <input type="text" class="form-control" name ="employee_address1" id="address1" value="${member.employee_address}" placeholder="">
 						    </div>
 						  </div>
 						  
@@ -199,7 +199,7 @@ div {
 						   <div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">연락처</label>
 						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" maxlength="11" placeholder="ex) 010-1111-2222">
+						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" maxlength="11" placeholder="ex) 01011112222">
 						    </div>
 						  </div>
  

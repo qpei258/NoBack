@@ -78,6 +78,14 @@
 	color: rgb(100, 100, 100);
 }
 
+.pre {
+	border: 1px solid rgb(238, 238, 238);
+	width: 150px;
+	height: 150px;
+	float: left;	
+	margin: 10px 10px 0px 10px;
+}
+
 #maincontent2{
 	
     width: 100%;

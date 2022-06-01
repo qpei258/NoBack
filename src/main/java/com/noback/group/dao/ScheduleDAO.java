@@ -47,10 +47,10 @@ public class ScheduleDAO {
 	*/
 		
 	// 스케줄 이번달 목록 가져오기
-	public ArrayList<ScheduleVO> listScheduleMonth(){
+	public ArrayList<ScheduleVO> listScheduleMonth(String schedule_writer){
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
 		ArrayList<ScheduleVO> MonthScheduleList 
-		= mapper.selectScheduleMonth();
+		= mapper.selectScheduleMonth(schedule_writer);
 					
 		return MonthScheduleList;
 	}
@@ -83,12 +83,20 @@ public class ScheduleDAO {
 	}
 
 	//스케주 월별로 출력
-	public ArrayList<ScheduleVO> listScheduleByMonth(String month) {
+	public ArrayList<ScheduleVO> listScheduleByMonth(String month, String schedule_writer) {
 		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
 		ArrayList<ScheduleVO> MonthScheduleList 
-		= mapper.selectScheduleByMonth(month);
+		= mapper.selectScheduleByMonth(month, schedule_writer);
 					
 		return MonthScheduleList;
 
+	}
+
+	public int addScheduleForm(ScheduleVO schedule) {
+		ScheduleMapper mapper = sqlSession.getMapper(ScheduleMapper.class);
+		int result = 0;
+		result = mapper.insertScheduleForm(schedule);
+				
+		return result;
 	}
 }

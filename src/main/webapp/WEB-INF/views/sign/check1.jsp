@@ -41,10 +41,10 @@ function searchname(num, name) {
 </head>
 <body>
 <div class="centerdiv">
-<h2>[사원 검색]</h2>
+<h2 style="font-weight:bold; text-align:center">[사원 검색]</h2>
 
 <form action="check1" method="post" onSubmit="return formCheck();">
-	<h3 class="centerdiv" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
+	<h3 class="centerdiv" style="font-weight:bold; text-align:right; margin-right: 85px;" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
 			<input type="submit" class="btn btn-primary" value="검색" /></h3>
 </form>
 <table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
