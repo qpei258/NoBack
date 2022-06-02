@@ -103,42 +103,41 @@ $( function() {
 				    <a class="nav-link" href='<c:url value="../mypage/board"/>'>작성한 게시글 보기</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link active" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
+				    <a class="nav-link active" href='<c:url value="scheduleByMonth?month=06"/>'>작성한 스케줄 보기</a>
 				  </li>
 			</ul> <!-- topmenu 끝 -->
 			
 			<!-- 회색 박스 -->
 			<div class='square'>
 			
-				<ul class="nav nav-pills" style="line-height: 30px; font-size: 10px; border: 1px solid rgb(238, 238, 238);">
-					  <li class="nav-item">
-					    <a class="nav-link active" aria-current="page" href="../mypage/schedule">이번달 일정</a>
-					  </li>
-					  <li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">다른 달</a>
-					    <ul class="dropdown-menu">
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=01">1월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=02">2월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=03">3월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=04">4월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=05">5월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=06">6월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=07">7월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=08">8월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=09">9월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=10">10월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=11">11월</a></li>
-					      <li><a class="dropdown-item" href="../mypage/scheduleByMonth?month=12">12월</a></li>
-					    </ul>
-					  </li>
-					  <li class="nav-item">
+			<h2 style="margin: 40px 0px 10px 0px;">${Integer.parseInt(month)} 월</h2>
+			
+				<!-- 월 이동 옵션 -->
+				<div style="float: left; margin-bottom: 0px; margin-left: 50px; border: 0px; height: 50px;">
+					<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
+							<select  class="form-select" onchange="if(this.value) location.href=(this.value);" aria-label="Default select example" name="month" id="month" style="width:150px">
+							  <option value="../mypage/scheduleByMonth?month=01" <c:if  test='${month.equals("01")}'> selected </c:if> >1월</option>
+							  <option value="../mypage/scheduleByMonth?month=02" <c:if  test='${month.equals("02")}'> selected </c:if> >2월</option>
+							  <option value="../mypage/scheduleByMonth?month=03" <c:if  test='${month.equals("03")}'> selected </c:if> >3월</option>
+							  <option value="../mypage/scheduleByMonth?month=04" <c:if  test='${month.equals("04")}'> selected </c:if> >4월</option>
+							  <option value="../mypage/scheduleByMonth?month=05" <c:if  test='${month.equals("05")}'> selected </c:if> >5월</option>
+							  <option value="../mypage/scheduleByMonth?month=06" <c:if  test='${month.equals("06")}'> selected </c:if> >6월</option>
+							  <option value="../mypage/scheduleByMonth?month=07" <c:if  test='${month.equals("07")}'> selected </c:if> >7월</option>
+							  <option value="../mypage/scheduleByMonth?month=08" <c:if  test='${month.equals("08")}'> selected </c:if> >8월</option>
+							  <option value="../mypage/scheduleByMonth?month=09" <c:if  test='${month.equals("09")}'> selected </c:if> >9월</option>
+							  <option value="../mypage/scheduleByMonth?month=10" <c:if  test='${month.equals("10")}'> selected </c:if> >10월</option>
+							  <option value="../mypage/scheduleByMonth?month=11" <c:if  test='${month.equals("11")}'> selected </c:if> >11월</option>
+							  <option value="../mypage/scheduleByMonth?month=12" <c:if  test='${month.equals("12")}'> selected </c:if> >12월</option>
+							</select>
+					</div>
+				</div>
+					
+					<div class="nav-item" style="float: right; margin-bottom: 10px; margin-right: 50px; border: 0px; height: 50px;">
 					    <!-- 모달 처리 (일정 등록) -->
 						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">일정 추가
 						</button>
-					  </li>
-					</ul>
-					
-					
+					</div>
+					  
 						<!-- 모달 처리 (일정 등록) -->
 						<div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 							<div class="modal-dialog">

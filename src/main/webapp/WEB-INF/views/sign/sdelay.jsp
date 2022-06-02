@@ -13,7 +13,7 @@
     	#signList{
 		margin: 10px auto;
 		width: 1258px;
-		height: 800px;
+		height: 797px;
 		background-color: rgb(238, 238, 238);
 		text-align: center;
 		color: rgb(80, 80, 80);
@@ -22,16 +22,6 @@
     
 
 
-/* 상단메뉴 */
-.topmenu {
-	border: 15px solid rgb(148, 202, 238);
-	background-color: rgb(148, 202, 238);
-	float: top;
-	margin: 9px 9px;
-	width: 1257px;
-	height: 60px;
-}
-    
     
     </style>
     <!-- 페이지 이동 스크립트  -->
@@ -48,12 +38,18 @@
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-        <nav class="topmenu">
-				<a style="font-weight: bold;"href='<c:url value="../sign/main"/>'>결제작성 리스트&nbsp;&nbsp;</a> 
-				<a style="font-weight: bold;" href='<c:url value="../sign/sdelay"/>'>결제대기 리스트 &nbsp;&nbsp;</a> 
-				<a style="font-weight: bold;" href='<c:url value="../sign/swrite"/>'>&nbsp;결제 작성</a>
-		</nav>
-        	<div id="signList">
+         <ul class="nav nav-tabs" style="margin: 10px;">
+           <li class="nav-item">
+             <a class="nav-link" href='<c:url value="../sign/main"/>'>결제작성 리스트</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/sdelay"/>'>결제대기 리스트</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
+           </li>
+         </ul>
+         <div id="signList" style="background-color: rgb(238, 238, 238);">
         		<h2 style="margin: 40px 0px 10px 0px;">결제 대기 리스트</h2>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				</div>

@@ -127,7 +127,7 @@ public class MypageController {
 
 	/**
 	 * 마이페이지-내 스케줄로 이동
-	 */
+	
 	@RequestMapping(value = "schedule", method = RequestMethod.GET) 
 	public String showMyschedule(Model model, HttpSession session) {
 		logger.info("마이 스케줄 페이지 로딩성공");
@@ -138,8 +138,11 @@ public class MypageController {
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
 		
+		model.addAttribute("month", "00");
+		
 		return "mypage/mySchedule"; 
 	}
+	 */
 	
 	/**
 	 * 스케줄 월별로 일정 출력
@@ -154,6 +157,8 @@ public class MypageController {
 		ArrayList<ScheduleVO> scheduleList = caldao.listScheduleByMonth(month, searchId);
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
+		
+		model.addAttribute("month", month);
 
 		return "mypage/mySchedule"; 
 	}
