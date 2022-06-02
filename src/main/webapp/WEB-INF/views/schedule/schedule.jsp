@@ -173,7 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     content: content
                 })
             }
-
+	
+            
             console.log(arg);
             
             var allEvent = calendar.getEvents(); // .getEvents() 함수로 모든 이벤트를 Array 형식으로 가져온다. (FullCalendar 기능 참조)
@@ -185,10 +186,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     obj.title = allEvent[allEvent.length-1]._def.title; // 이벤트 명칭  ConsoleLog 로 확인 가능.
                     obj.start = allEvent[allEvent.length-1]._instance.range.start; // 시작
                     obj.end = allEvent[allEvent.length-1]._instance.range.end; // 끝
-                    obj.content = allEvent[allEvent.length-1]._def.content;
+                    obj.content = content;
 
                     events.push(obj);
-                    
+                 
+                    alert(obj.content);
             
             var jsondata = JSON.stringify(obj);
             console.log(jsondata);
