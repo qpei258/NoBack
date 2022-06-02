@@ -90,5 +90,9 @@
 	
 	</update>
 	
-
+	<!-- 알람 트리거 -->
+	<select id="getAlarm" parameterType="string" resultType="alarm">
+		select * from noback_alarm
+		where employee_num = #{LoginId}
+	</select> 
 </mapper>

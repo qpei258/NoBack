@@ -27,7 +27,7 @@ import com.noback.group.vo.*;
 import com.noback.group.util.*;
 
 @Controller
-@RequestMapping("mypage")
+@RequestMapping(value = "mypage")
 public class MypageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
@@ -106,7 +106,7 @@ public class MypageController {
 		//게시글 리스트 저장
 		ArrayList<BoardVO> boardlist  = dao.list(searchText, navi.getStartRecord(), navi.getCountPerPage());		
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
-		model.addAttribute("myboardlist", boardlist);
+		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("navi", navi);
 		model.addAttribute("searchText", searchText);
 		

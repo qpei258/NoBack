@@ -70,61 +70,55 @@ a{
 			
 			<!-- 회색 박스 -->
 			<div class='square'>
-			
-				<form action="board" method="get">
-				<table>
-					<tr>
-						<th>번호</th>
-						<th style="width:500px">제목</th>
-						<th>작성일</th>
-						<th>작성자</th>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목</td>
-						<td>2022-05-04</td>
-						<td>관리자</td>
-					</tr>
-					
-					<!-- 반복 시작 -->
-					<c:forEach var="board" items="${boardlist}">
-					<tr onclick="location.href='board?num=${boardlist.board_num}'">
-						<td class="center">${boardlist.board_num}</td>
-						<td>${boardlist.board_title}</td>
-						<td>${boardlist.board_writer}</td>
-
-					</tr>
-	
-					</c:forEach>        
-					<!-- 반복 끝 -->
-					</table>
+				<div style=" margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
+					<form id="pagingForm" method="get" action="board" >
+						<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);margin: 50px auto 10px auto; width: 300px; float: right;">
+							 <input type="text" class="form-control" placeholder="제목 검색" aria-label="Search" aria-describedby="button-addon2" id="search" name="searchText" >
+							 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
+						</div>
+						<input type="hidden" name="page" id="page" />
 					</form>
-				
-				<!-- 페이지 이동 부분 -->  
-				<div id="navigator">
-				                    
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;
-	
-					<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
-						<c:if test="${counter == navi.currentPage}"><b></c:if>
-							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
-						<c:if test="${counter == navi.currentPage}"></b></c:if>
-					</c:forEach>
+				</div>
+				<form action="board" method="get">
+					<table class="table table-hover" style="width: 90%;font-size: 20px;  border-spacing: 0; margin: 0px auto 10px auto;">
+					  	<thead>
+					      	<tr style="background-color: rgb(200, 200, 200);">
+	        					<th style="width: 10%;">글번호</th>
+		        				<th style="width: 60%;">제목</th>
+		        				<th style="width: 15%;">작성일</th>
+		        				<th style="width: 15%;">작성자</th>
+	        				</tr>
+					  	</thead>
+					  	<tbody>
+							  <c:forEach var="board" items="${boardlist }">
+							  	<tr style="background-color: white;" onclick="location.href='board?num=${board.board_num}'">
+							  		<td>${board.board_num }</td>
+							  		<td>${board.board_title }</td>
+							  		<td>${board.board_date }</td>
+							  		<td>${board.board_writer_name}</td>
+							  	</tr>
+							  </c:forEach>
+					  </tbody>
+					</table>
+	        		<div id="navigator" style="border: 0px; font-size: 20px; margin: 10px;">
+					<!-- 페이지 이동 부분 -->                      
+						<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁ </a> &nbsp;&nbsp;
+						<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a> &nbsp;&nbsp;&nbsp;
 					
-					&nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
-					<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
-				</div>	<!-- /페이지 이동 끝 --> 
+						<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}"> 
+							<c:if test="${counter == navi.currentPage}"><b></c:if>
+								<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>&nbsp;
+							<c:if test="${counter == navi.currentPage}"></b></c:if>
+						</c:forEach>
+						&nbsp;&nbsp;
+						<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+						<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+					
+					<!-- /페이지 이동 끝 -->                      
 				
-				
-				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="list">
-					<input type="hidden" name="page" id="page" />
-					제목 : <input type="text"  name="searchText" value="${searchText}" />
-					<input type="button" onclick="pagingFormSubmit(1)" value="검색">
+					</div>
 				</form>
-				<!-- /검색폼 --> 
+				
 				
 			</div> <!-- square 끝 -->
         </div> <!-- 컨텐츠 끝 -->

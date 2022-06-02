@@ -57,7 +57,7 @@ a:hover {
 			var che = confirm("수정 하시겠습니까?");
 			
 			if(che){
-				window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=563,height=458,location=no,status=no');
+				window.open('memberlistupdate?employee_num='+ num, 'win', 'top=200,left=500,width=635,height=517,location=no,status=no');
 			}
 		}
 		

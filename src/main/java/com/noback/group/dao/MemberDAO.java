@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.MemberVO;
 
 
@@ -91,7 +92,10 @@ public class MemberDAO<employee_num> {
 	
 
 
-
+	public AlarmVO getAlarm(String LoginId) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.getAlarm(LoginId);
+	}
 
 
 

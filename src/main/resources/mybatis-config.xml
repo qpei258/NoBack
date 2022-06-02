@@ -11,6 +11,7 @@
 		<typeAlias type="com.noback.group.vo.BoardVO" alias="board" />
 		<typeAlias type="com.noback.group.vo.NoticeVO" alias="notice" />
 		<typeAlias type="com.noback.group.vo.MessengerVO" alias="messenger" />
+		<typeAlias type="com.noback.group.vo.AlarmVO" alias="alarm" />
 	</typeAliases>
 	
 	<mappers>

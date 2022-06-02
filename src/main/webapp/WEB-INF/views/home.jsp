@@ -64,21 +64,27 @@
 								<img src="<c:url value='/resources/img/새메신저.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); margin-left: 10px;">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
 									새 메시지
-									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									<c:if test="${alarm.messenger == 1}">
+										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									</c:if>
 								</button>
 							</div>
 							<div class="pre" style="margin-left: 30px;">
 								<img src="<c:url value='/resources/img/새일정.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); ">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
 									새 일정
-									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									<c:if test="${alarm.schedule == 1}">
+										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									</c:if>
 								</button>
 							</div>
 							<div class="pre">
 								<img src="<c:url value='/resources/img/새결제.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); clear: both;">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
 									새 결제
-									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									<c:if test="${alarm.sign == 1}">
+										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
+									</c:if>
 								</button>
 							</div>
 							

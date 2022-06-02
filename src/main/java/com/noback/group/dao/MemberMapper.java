@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.ui.Model;
 
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.MemberVO;
 
 /**
@@ -28,6 +29,6 @@ public interface MemberMapper {
 	public int memberlistupdate(MemberVO member);
 	
 	
-	
+	public AlarmVO getAlarm(String LoginId);
 
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.noback.group.dao.MemberDAO;
 import com.noback.group.dao.NoticeDAO;
 import com.noback.group.util.PageNavigator;
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.NoticeVO;
 
@@ -53,8 +54,11 @@ public class HomeController {
 		PageNavigator navi = new PageNavigator(5, 1, page, total); 
 		ArrayList<NoticeVO> noticelist = ndao.list(search, navi.getStartRecord(), navi.getCountPerPage());	
 		
+		AlarmVO alarm = mdao.getAlarm(id);
+		
 		model.addAttribute("member", member);
 		model.addAttribute("noticelist", noticelist);
+		model.addAttribute("alarm", alarm);
 		logger.info("홈 실행");
 		return "home";
 	}

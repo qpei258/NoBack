@@ -92,7 +92,7 @@
         <div id="content">
 			
 			<!-- 상단 메뉴 -->
-			<ul class="nav nav-tabs" style="margin: 10px;">
+			<ul class="nav nav-tabs" style="margin: 10px; border-top: 0px solid white; border-left: 0px solid white; border-right: 0px solid white;">
 				 <li class="nav-item">
 				    <a class="nav-link" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
 				  </li>
