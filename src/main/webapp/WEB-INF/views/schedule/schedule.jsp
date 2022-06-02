@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     events.push(obj);
                  
-                    alert(obj.content);
+                   // alert(obj.content);
             
             var jsondata = JSON.stringify(obj);
             console.log(jsondata);
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				  </li>
 				  <c:if test="${LoginId != null && LoginLevel >= 3}">
 				  <li class="nav-item">
-				    <a class="nav-link" href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
+				    <a class="nav-link" href='<c:url value="/schedule/scheduleByMonth?month=06"/>'>일정 수정</a>
 				  </li>
 				  </c:if>
 			</ul> <!-- topmenu 끝 -->

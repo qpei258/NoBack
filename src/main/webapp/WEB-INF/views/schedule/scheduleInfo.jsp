@@ -168,7 +168,7 @@ $( function() {
 							    </div>
 							  </li>
 							</ol>
-				
+					<input type="hidden" value="${month}" name="month">
 					<fieldset>
 						<input type="submit" class="btn btn-primary" value="수정" >
 						<input type="reset" class="btn btn-primary" value="다시 쓰기">

@@ -153,9 +153,9 @@ public class ScheduleController {
 
 	/**
 	 * 스케줄 이번달 일정 출력
-	 */
+	 
 	@RequestMapping(value = "scheduleMonth", method = RequestMethod.GET) 
-	public String showScheduleMonth(Model model, HttpSession session)
+	public String showScheduleMonth(Model model, HttpSession session,  String month)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공");
 		String searchId = (String) session.getAttribute("LoginId");
@@ -164,9 +164,11 @@ public class ScheduleController {
 		ArrayList<ScheduleVO> scheduleList = dao.listScheduleMonth(searchId);
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
-
+		model.addAttribute("month", month);
+		
 		return "schedule/scheduleMonth";
 	}
+	*/
 	
 	/**
 	 * 스케줄 월별로 일정 출력
@@ -181,22 +183,22 @@ public class ScheduleController {
 		ArrayList<ScheduleVO> scheduleList = dao.listScheduleByMonth(month, searchId);
 		// 스케줄 이번달 한정 데이터 저장
 		model.addAttribute("scheduleList", scheduleList);
-
-		return "schedule/scheduleMonth"; 
+		model.addAttribute("month", month);
+		
+		return "schedule/scheduleByMonth"; 
 	}
 	
 	
-
 	/**
 	 * 일정 개별 출력
 	*/
 	@RequestMapping(value = "scheduleInfo", method = RequestMethod.GET) 
-	public String showScheduleinfo(int schedule_num, Model model)
+	public String showScheduleinfo(int schedule_num, Model model, String month)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공"); 
 		ScheduleVO schedule = dao.getSchedule(schedule_num);
 		model.addAttribute("schedule", schedule);
-		
+		model.addAttribute("month", month);
 		return "schedule/scheduleInfo"; 
 	}
 	
@@ -204,7 +206,7 @@ public class ScheduleController {
 	 * 일정 수정
 	 */
 	@RequestMapping(value = "updateSchedule", method = RequestMethod.POST)
-	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
+	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked, String month) {
 		// 아이디로 수정할 정보 불러오기
 		
 		String searchId = (String) session.getAttribute("LoginId");
@@ -218,7 +220,7 @@ public class ScheduleController {
 		int result = dao.updateSchedule(sked);
 		logger.info("sked", sked);
 		
-		return "redirect:/schedule/scheduleMonth";	
+		return "redirect:/schedule/scheduleByMonth?month=" + month;	
 	}
 
 	
@@ -226,7 +228,7 @@ public class ScheduleController {
 	 * 일정 삭제
 	*/
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String deleteSchedule(HttpSession session, int schedule_num) {
+	public String deleteSchedule(HttpSession session, int schedule_num, String month) {
 		
 		//String searchId = (String) session.getAttribute("LoginId");
 		// dao로
@@ -235,7 +237,7 @@ public class ScheduleController {
 		int result = dao.deleteSchedule(schedule_num);
 		logger.info("schedule_num :{}", schedule_num);
 		
-		return "redirect:/schedule/scheduleMonth";
+		return "redirect:/schedule/scheduleByMonth?month="+month;
 	}
 
 }
