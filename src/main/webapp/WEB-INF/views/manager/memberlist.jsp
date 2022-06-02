@@ -32,7 +32,8 @@ a{
 	color: rgb(80,80,80);
 }
  
-
+a:hover {
+	color: rgb(20, 20, 20);
 
 </style>
 
