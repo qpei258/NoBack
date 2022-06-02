@@ -48,6 +48,7 @@ public class MemberDAO<employee_num> {
 		
 		int result = 0;
 		try {
+			mapper.addTrigger(member.getEmployee_num());
 			result = mapper.insertMember(member);
 		}
 		catch (Exception e) {
@@ -91,14 +92,19 @@ public class MemberDAO<employee_num> {
 	}
 	
 
-
+	//알람 트리거 가져오기
 	public AlarmVO getAlarm(String LoginId) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.getAlarm(LoginId);
 	}
 
 
-
+	//일정 알람 업데이트
+	public int updateScheduleAlarm(AlarmVO alarm) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.updateScheduleAlarm(alarm);
+		
+	}
 }
 
 	

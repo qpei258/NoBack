@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.ScheduleVO;
@@ -57,6 +58,11 @@ public class ScheduleController {
 		logger.info("searchId :{}", searchId);
 		logger.info("searchLv :{}", searchLv);
 		
+		AlarmVO alarm = new AlarmVO();
+		alarm.setSchedule(0);
+		alarm.setEmployee_num(searchId);
+		mydao.updateScheduleAlarm(alarm);
+		
 		Map<String, String> map = new HashMap<String, String>();
 		 
 		map.put("searchId", searchId);
@@ -75,6 +81,11 @@ public class ScheduleController {
 		
 		String searchId = (String) session.getAttribute("LoginId");
 		Integer searchLv = (Integer) session.getAttribute("LoginLevel");
+		
+		AlarmVO alarm = new AlarmVO();
+		alarm.setSchedule(0);
+		alarm.setEmployee_num(searchId);
+		mydao.updateScheduleAlarm(alarm);
 		
 		 Map<String, String> map = new HashMap<String, String>();
 		 
@@ -118,6 +129,12 @@ public class ScheduleController {
 		schedule.setSchedule_end(end);
 		schedule.setSchedule_memo(content);
 		schedule.setSchedule_allDay(true);
+		
+		if(schedule.getSchedule_level() >= 3) {
+			AlarmVO alarm = new AlarmVO();
+			alarm.setSchedule(1);
+			mydao.updateScheduleAlarm(alarm);
+		}
 		
 		
 		logger.info("schedule :{}", schedule);

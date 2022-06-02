@@ -91,8 +91,38 @@
 	</update>
 	
 	<!-- 알람 트리거 -->
+	<insert id="addTrigger" parameterType="string">
+		insert into noback_alarm 
+		values(alarm_seq.nextval, #{employee_num}, 0, 0, 0);
+	</insert>
+	
+	
+	<!-- 알람생성 -->
 	<select id="getAlarm" parameterType="string" resultType="alarm">
 		select * from noback_alarm
 		where employee_num = #{LoginId}
-	</select> 
+	</select>
+	
+	<!-- 일정 알람 -->
+	<update id="updateScheduleAlarm" parameterType="alarm">
+		update noback_alarm
+		set schedule = #{schedule}
+		<if test="employee_num != null">
+			where employee_num = #{employee_num}
+		</if>
+	</update>
+	
+	<!-- 메시지 알람 -->
+	<update id="updateMessengerAlarm" parameterType="alarm">
+		update noback_alarm
+		set messenger = #{messenger}
+		where employee_num = #{employee_num}
+	</update>
+	
+	<!-- 결제 알람 -->
+	<update id="updateSignAlarm" parameterType="alarm">
+		update noback_alarm
+		set sign = #{sign}
+		where employee_num = #{employee_num}
+	</update>
 </mapper>

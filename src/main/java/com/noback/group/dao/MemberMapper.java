@@ -30,5 +30,12 @@ public interface MemberMapper {
 	
 	
 	public AlarmVO getAlarm(String LoginId);
-
+	
+	public int addTrigger(String employee_num);
+	
+	public int updateScheduleAlarm(AlarmVO alarm);
+	
+	public int updateMessengerAlarm(AlarmVO alarm);
+	
+	public int updateSignAlarm(AlarmVO alarm);
 }
