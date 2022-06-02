@@ -54,14 +54,19 @@ a{
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-	        <div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
-	        	<!-- 상단바  -->
-	       		<nav class="nav">
-	       			<a class="nav-link active" href='<c:url value="../mypage/update"/>'>개인정보 수정</a>
-	       			<a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
-	  				<a class="nav-link" href='<c:url value="../mypage/schedule"/>'>작성한 스케줄 보기</a>
-				</nav>
-			</div> <!-- topmenu 끝 -->
+        
+	      <!-- 상단 메뉴 -->
+			<ul class="nav nav-tabs" style="margin: 10px;">
+				 <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="update"/>'>개인정보 수정</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link active" href='<c:url value="board"/>'>작성한 게시글 보기</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
+				  </li>
+			</ul> <!-- topmenu 끝 -->
 			
 			<!-- 회색 박스 -->
 			<div class='square'>
