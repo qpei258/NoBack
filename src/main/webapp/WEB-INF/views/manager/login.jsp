@@ -26,7 +26,7 @@
 		
 	}
 	
-	/*흰색박스 */	
+	/*흰색 로그인 박스 */	
 	.rounded {
 		border:1px solid white;
 		text-align: center;
