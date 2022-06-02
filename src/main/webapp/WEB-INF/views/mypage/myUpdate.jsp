@@ -62,7 +62,7 @@
 .square {
 	margin: 10px auto;
 	width: 1258px;
-	height: 800px;
+	height: 797px;
 	background-color: rgb(238, 238, 238);
 	text-align: center;
 	color: rgb(80, 80, 80);
@@ -116,14 +116,18 @@ div {
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
         
-	        <div class='topmenu' style="line-height: 30px; font-size: 20px; font-weight: 700;">
-	        	<!-- 상단바  -->
-	       		<nav class="nav">
-	       			<a class="nav-link active" href='<c:url value="update"/>'>개인정보 수정</a>
-	       			<a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
-	  				<a class="nav-link" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
-				</nav>
-			</div> <!-- topmenu 끝 -->
+        	<!-- 상단 메뉴 -->
+			<ul class="nav nav-tabs" style="margin: 10px;">
+				 <li class="nav-item">
+				    <a class="nav-link active" href='<c:url value="update"/>'>개인정보 수정</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="board"/>'>작성한 게시글 보기</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
+				  </li>
+			</ul> <!-- topmenu 끝 -->
 			
 			<!-- 회색 박스 -->
 			<div class='square'>
@@ -185,7 +189,7 @@ div {
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">주민번호</label>
 								<div class="col-sm-10" style="width:400px">
-								<input type="text" readonly class="form-control" name="employee_ssn" id="num" value="${member.employee_ssn}" maxlength="13">
+								<input type="text" readonly class="form-control" name="employee_ssn" id="num" value="${member.employee_ssn}" maxlength="13" placeholder="' - '빼고 입력">
 						    </div>
 						</div>
 						
@@ -199,7 +203,7 @@ div {
 						  <div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">상세주소</label>
 						    <div class="col-sm-10" style="width:600px">
-						      <input type="text" class="form-control" name ="employee_address1" id="address1" value="${member.employee_address}" placeholder="">
+						      <input type="text" class="form-control" name ="employee_address1" id="address1" value="" placeholder="">
 						    </div>
 						  </div>
 						  
@@ -207,7 +211,7 @@ div {
 						   <div class="row mb-3">
 						    <label for="inputPassword3" class="col-sm-2 col-form-label" style="font-size:20px; width:200px;">연락처</label>
 						    <div class="col-sm-10" style="width:400px">
-						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" maxlength="11" placeholder="ex) 01011112222">
+						      <input type="text" class="form-control" name ="employee_phone" id="phone" value="${member.employee_phone}" maxlength="11" placeholder="' - '빼고 입력">
 						    </div>
 						  </div>
  
