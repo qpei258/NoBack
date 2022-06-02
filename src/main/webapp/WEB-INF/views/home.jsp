@@ -14,10 +14,16 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/home.css" />
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
+		
 		function chatPopup(num) { //팝업 기능 추가 작업중
 			window.open('messenger/chat?num='+num, 'win', 'top=400,left=600,width=560,height=600,location=no,status=no');
 
 		}
+		
+		function re() {
+			location.reload();
+		}
+		setTimeout(re, 2000);
 	</script>
 </head>
 <body>

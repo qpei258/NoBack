@@ -111,6 +111,12 @@ public class MemberDAO<employee_num> {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.updateSignAlarm(alarm);
 	}
+	//메시지 알람 업데이트
+	
+	public int updateMessengerAlarm(AlarmVO alarm) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.updateMessengerAlarm(alarm);
+	}
 	
 }
 

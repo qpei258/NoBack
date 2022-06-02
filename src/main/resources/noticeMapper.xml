@@ -68,7 +68,11 @@
 	
 	<update id="noticeUpdate" parameterType="notice">
 		update noback_notice
-		set notice_title = #{notice_title}, notice_content = #{notice_content}, notice_originfile = #{notice_originfile}, notice_savedfile = #{notice_savedfile}
+		set notice_title = #{notice_title}, notice_content = #{notice_content}
+		<if test="notice_originfile != null">
+			, notice_originfile = #{notice_originfile}
+			, notice_savedfile = #{notice_savedfile}
+		</if>
 		where notice_num = #{notice_num}
 	</update>
 </mapper>
