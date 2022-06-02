@@ -42,6 +42,10 @@ a{
 	color: rgb(80,80,80);
 }
 
+a:hover {
+	color: rgb(20, 20, 20);
+}
+
 label {
 
    font-size :1px;
@@ -235,6 +239,7 @@ function formCheck() {
 						<select  class="form-select" aria-label="Default select example" name='employee_level' id="employee_level" value="" style="width:150px">
 						  <option selected>-- 선택 --</option>
 						  <option value="1">1</option>
+						  
 						  <option value="2">2</option>
 						  <option value="3">3</option>
 						  <option value='4'>4</option>
