@@ -1,6 +1,8 @@
 package com.noback.group.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -47,6 +49,10 @@ public class HomeController {
 			, Model model) {
 		int total = ndao.getTotal(search);	
 		
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy년 MM월dd일");
+		Date time = new Date();
+		String currentTime = format.format(time);
+		
 		String id = (String) session.getAttribute("LoginId");
 		
 		MemberVO member = mdao.getMember(id);
@@ -59,6 +65,7 @@ public class HomeController {
 		model.addAttribute("member", member);
 		model.addAttribute("noticelist", noticelist);
 		model.addAttribute("alarm", alarm);
+		model.addAttribute("currentTime", currentTime);
 		logger.info("홈 실행");
 		return "home";
 	}

@@ -57,7 +57,7 @@
 				<div id="alarm">
 					<div id="precent">
 						<div style="font-size: 25px; margin: 40px 20px 20px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
-							2022-06-01 수요일 <b>${member.employee_name }</b> 님의 현황입니다.
+							${currentTime } <b>${member.employee_name }</b> 님의 현황입니다.
 						</div>
 						<div style="font-size: 25px; margin: 10px auto; border: 1px solid rgb(238, 238, 238);">
 							<div class="pre" style="margin-left: 120px;">
