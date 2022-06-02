@@ -43,7 +43,7 @@
         		</div>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				<!-- 검색폼 -->
-				<form id="pagingForm" method="get" action="board" >
+				<form id="pagingForm" method="get" action="boardList" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
 						 <input type="text" class="form-control" placeholder="제목 검색" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
 						 <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="pagingFormSubmit(1)">검색</button>
