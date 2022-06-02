@@ -51,6 +51,10 @@
 	margin: 85px 80px 0px 0px;
 }
 
+#info:hover {
+	cursor: pointer;
+}
+
 #unlog {
 	width: 95%;
 	height: 327px;
