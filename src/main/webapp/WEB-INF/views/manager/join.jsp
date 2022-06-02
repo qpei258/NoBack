@@ -227,7 +227,7 @@ function formCheck() {
 						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size:20px;">이메일</label>
 								<div class="col-sm-10" style="border : 1px solid rgb(238, 238, 238)">
-								<input type="text" class="form-control" name ="employee_email" id="employee_email" value="" style="width:300px">
+								<input type="text" class="form-control" name ="employee_email" id="employee_email" placeholder="ex) name@example.com" value="" style="width:300px">
 						    </div>
 						</div>
 						<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
