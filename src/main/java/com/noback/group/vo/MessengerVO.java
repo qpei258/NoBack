@@ -6,17 +6,19 @@ public class MessengerVO {
 	String messenger_content;
 	String messenger_date;
 	String messenger_reciever_name;
+	String picture;
 	
 	public MessengerVO() {
 		super();
 	}
-	public MessengerVO(String employee_num, String messenger_writer_name, String messenger_content, String messenger_date, String messenger_receiver) {
+	public MessengerVO(String employee_num, String messenger_writer_name, String messenger_content, String messenger_date, String messenger_receiver, String picture) {
 		super();
 		this.employee_num = employee_num;
 		this.messenger_writer_name = messenger_writer_name;
 		this.messenger_content = messenger_content;
 		this.messenger_date = messenger_date;
 		this.messenger_reciever_name = messenger_receiver;
+		this.picture=picture;
 		
 	}
 	public String getEmployee_num() {
@@ -49,13 +51,19 @@ public class MessengerVO {
 	public void setMessenger_reciever_name(String messenger_reciever_name) {
 		this.messenger_reciever_name = messenger_reciever_name;
 	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 	
 	
 	@Override
 	public String toString() {
 		return "MessengerVO [employee_num" + employee_num + "messenger_writer_name=" + messenger_writer_name + ", messenger_content=" + messenger_content + ", messenger_date=" + messenger_date
-				+ ", messenger_reciever_name=" +messenger_reciever_name +"]";
+				+ ", messenger_reciever_name=" +messenger_reciever_name + ", picture=" +picture+"]";
 	}
 	
 	

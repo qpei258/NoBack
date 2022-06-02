@@ -59,6 +59,8 @@ public class MessengerController {
 		ArrayList<MessengerVO> messengerlist = dao.listMessenger(searchId, search1, navi1.getStartRecord(), navi1.getCountPerPage());	
 		ArrayList<MemberVO> memberlist = dao.listMember(searchId, search2, navi2.getStartRecord(), navi2.getCountPerPage());	
 		System.out.println(messengerlist);
+		
+
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
 		model1.addAttribute("messengerlist", messengerlist);
 		model1.addAttribute("navi1", navi1);

@@ -48,8 +48,8 @@ public class MemberDAO<employee_num> {
 		
 		int result = 0;
 		try {
-			mapper.addTrigger(member.getEmployee_num());
 			result = mapper.insertMember(member);
+			mapper.addTrigger(member.getEmployee_num());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
