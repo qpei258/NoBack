@@ -34,6 +34,7 @@ a{
  
 a:hover {
 	color: rgb(20, 20, 20);
+}
 
 </style>
 
@@ -69,7 +70,11 @@ a:hover {
 		}
 	</script>
 <script type="text/javascript">
-
+function f_enterLogin() {
+	if(window.event.keyCode==13){
+		f_loginCheck();
+	}
+}
 </script>
 </head>
 <body>
@@ -92,8 +97,8 @@ a:hover {
 				<!-- 검색폼 -->
 				<form id="pagingForm" method="get" action="memberlist" >
 					<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238);">
-						 <input type="text" class="form-control" placeholder="사원이름" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" >
-						 <button class="btn btn-outline-secondary" type="submit" id="button-addon2" >검색</button>
+						 <input type="text" class="form-control" placeholder="사원이름" aria-label="Search" aria-describedby="button-addon2" id="search" name="search" onkeyup="f_enterLogin()">
+						 <button class="btn btn-outline-secondary" type="submit" id="button-addon2" href="javascript:f_loginCheck();">검색</button>
 					</div>
 					<input type="hidden" name="page" id="page" />
 				</form>
