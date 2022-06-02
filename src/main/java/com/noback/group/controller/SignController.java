@@ -26,9 +26,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.noback.group.dao.MemberDAO;
 import com.noback.group.dao.SignDAO;
 import com.noback.group.vo.SignVO;
-
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.BoardVO;
 import com.noback.group.vo.MemberVO;
 
@@ -50,6 +51,9 @@ public class SignController {
 
 	@Autowired
 	SignDAO dao;
+	
+	@Autowired
+	MemberDAO mdao;
 	
 	//임시루트
 	@RequestMapping(value = "smain", method = RequestMethod.GET)
@@ -114,6 +118,10 @@ public class SignController {
 		//검색어와 시작 위치, 페이지당 글 수를 전달하여 목록 읽기
 		ArrayList<SignVO> listSign2 = dao.listSign2(map, navi.getStartRecord(), navi.getCountPerPage());	
 		
+		AlarmVO alarm = new AlarmVO();
+		alarm.setEmployee_num(searchId);
+		alarm.setSign(0);
+		mdao.updateSignAlarm(alarm);
 
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
 		model.addAttribute("listSign2", listSign2);
@@ -159,14 +167,31 @@ public class SignController {
 	public String scomplete(HttpSession session, SignVO sign, MultipartFile upload, Model model) {
 	String searchId = (String) session.getAttribute("LoginId");
 	if(sign.getSign_receiver1().equals(searchId)) {
-		
+		if(sign.getSign_ok1()==1 && sign.getSign_receiver2() != null) {
+			AlarmVO alarm = new AlarmVO();
+			alarm.setEmployee_num(sign.getSign_receiver2());
+			alarm.setSign(1);
+			mdao.updateSignAlarm(alarm);
+		}
 	}
 	else if(sign.getSign_receiver2().equals(searchId)) {
 		sign.setSign_ok1(1);
+		if(sign.getSign_ok2()==1 && sign.getSign_receiver3() != null) {
+			AlarmVO alarm = new AlarmVO();
+			alarm.setEmployee_num(sign.getSign_receiver3());
+			alarm.setSign(1);
+			mdao.updateSignAlarm(alarm);
+		}
 	}
 	else if(sign.getSign_receiver3().equals(searchId)) {
 		sign.setSign_ok1(1);
 		sign.setSign_ok2(1);
+		if(sign.getSign_ok3()==1 && sign.getSign_receiver4() != null) {
+			AlarmVO alarm = new AlarmVO();
+			alarm.setEmployee_num(sign.getSign_receiver4());
+			alarm.setSign(1);
+			mdao.updateSignAlarm(alarm);
+		}
 	}else if(sign.getSign_receiver4().equals(searchId)) {
 		sign.setSign_ok1(1);
 		sign.setSign_ok2(1);
@@ -207,6 +232,14 @@ public class SignController {
 		}
 
 			dao.write(sign);
+			
+			AlarmVO alarm = new AlarmVO();
+			alarm.setEmployee_num(sign.getSign_receiver1());
+			alarm.setSign(1);
+			mdao.updateSignAlarm(alarm);
+			
+			System.out.println(alarm);
+			
 			return "redirect:main";
 		}
 	

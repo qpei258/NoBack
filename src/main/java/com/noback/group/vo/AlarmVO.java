@@ -17,6 +17,11 @@ public class AlarmVO {
 		this.sign = sign;
 		this.schedule = schedule;
 	}
+	@Override
+	public String toString() {
+		return "AlarmVO [alarm_num=" + alarm_num + ", employee_num=" + employee_num + ", messenger=" + messenger
+				+ ", sign=" + sign + ", schedule=" + schedule + "]";
+	}
 	public int getAlarm_num() {
 		return alarm_num;
 	}

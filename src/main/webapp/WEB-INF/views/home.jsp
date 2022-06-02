@@ -80,7 +80,7 @@
 							</div>
 							<div class="pre">
 								<img src="<c:url value='/resources/img/새결제.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); clear: both;">
-								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
+								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;" onclick="location.href='sign/sdelay'">
 									새 결제
 									<c:if test="${alarm.sign == 1}">
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
