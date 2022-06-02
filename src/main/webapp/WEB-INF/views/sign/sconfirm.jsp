@@ -49,7 +49,7 @@
          </ul>
         <div id="content">
         	<div id="sign" style="background-color: rgb(238, 238, 238);">
-        	<h1>[결제 서류]</h1>
+        	<h1 style="margin: 30px 0px 30px 0px;  font-size: 30px;">결제 서류</h1>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data" style="margin-left: 260px;">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">기안일</span>

@@ -149,31 +149,31 @@ function formCheck() {
 	                  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;" >수신자1</span>
 	                   <input type="text" name="sign_nreceiver1" id="sign_nreceiver1" maxlength="10"  readonly="readonly" style="height : 40px; font-size: 15px;">
 	                   <input type="hidden" name="sign_receiver1" id="sign_receiver1" maxlength="10"  readonly="readonly" >
-			             <input id='target_btn1' type="button" class="btn btn-primary" value="수신자 검색" onclick="receiverOpen1()">
+			             <input id='target_btn1' type="button" class="btn btn-secondary" value="수신자 검색" onclick="receiverOpen1()">
 		                <br>
                     </div>
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">   
 	                  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;" >수신자2</span>
 	                   <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" maxlength="10"  readonly="readonly" style="height : 40px; font-size: 15px; " >
 	                   <input type="hidden" name="sign_receiver2" id="sign_receiver2" maxlength="10"  readonly="readonly" >
-			             <input id='target_btn2' type="button" class="btn btn-primary" value="수신자 검색" onclick="receiverOpen2()" disabled>
+			             <input id='target_btn2' type="button" class="btn btn-secondary" value="수신자 검색" onclick="receiverOpen2()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">   
 	                  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;" >수신자3</span>
 	                   <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" maxlength="10" value='' readonly="readonly" style="height : 40px; font-size: 15px; ">
 	                   <input type="hidden" name="sign_receiver3" id="sign_receiver3" maxlength="10"  readonly="readonly" >
-			             <input id='target_btn3' type="button" class="btn btn-primary" value="수신자 검색" onclick="receiverOpen3()" disabled>
+			             <input id='target_btn3' type="button" class="btn btn-secondary" value="수신자 검색" onclick="receiverOpen3()" disabled>
 		                <br>
                     </div>	  
                     <div class="input-group" id="group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">   
 	                  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">수신자4</span>
 	                   <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" maxlength="10"  readonly="readonly"style="height : 40px; font-size: 15px;">
 	                   <input type="hidden" name="sign_receiver4" id="sign_receiver4" maxlength="10"  readonly="readonly" >
-			             <input id='target_btn4'type="button" class="btn btn-primary" value="수신자 검색" onclick="receiverOpen4()" disabled>
+			             <input id='target_btn4'type="button" class="btn btn-secondary" value="수신자 검색" onclick="receiverOpen4()" disabled>
                     </div>	  	  
 						<input type="submit" class="btn btn-primary" value = "작성" />
-		                <input type = "reset" class="btn btn-primary" value ="초기화">
+		                <input type = "reset" class="btn btn-primary" style=" margin-right: 200px;" value ="초기화">
 				</form>
         	</div>
         </div>
