@@ -125,10 +125,18 @@
 		<%@ include file="../sidebar.jsp" %>
 		
         <div id="content">
-			<div class='topmenu'>
-				<a href='<c:url value="/schedule/schedule"/>'>사내일정</a>
-				<a href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
-			</div>
+        	
+        	<!-- 상단 메뉴 -->
+			<ul class="nav nav-tabs" style="margin: 10px;">
+				 <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
+				  </li>
+				  <c:if test="${LoginId != null && LoginLevel >= 3}">
+				  <li class="nav-item">
+				    <a class="nav-link active" href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
+				  </li>
+				  </c:if>
+			</ul> <!-- topmenu 끝 -->
 				
 				<!-- 달력 박스 -->
 				<div class='square'>
