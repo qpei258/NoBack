@@ -78,10 +78,10 @@ a{
 			<!-- 상단 메뉴 -->
 			<ul class="nav nav-tabs" style="margin: 10px;">
 			  <li class="nav-item">
-			    <a class="nav-link active" aria-current="page" href='<c:url value="../manager/memberlist"/>'>사원 리스트</a>
+			    <a class="nav-link" aria-current="page" href='<c:url value="../manager/join"/>'>사원 등록</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href='<c:url value="../manager/join"/>'>사원 등록</a>
+			    <a class="nav-link  active" href='<c:url value="../manager/memberlist"/>'>사원 리스트</a>
 			  </li>
 			</ul>
 			<!-- 회색 배경  -->
