@@ -114,8 +114,8 @@ function f_enterLogin() {
 	        				<th style="width: 12%;">부서</th>
 	        				<th style="width: 10%;">직함</th>
 	        				<th style="width: 10%;">권한</th>
-	        				<th style="width: 5%;">수정</th>
-	        				<th style="width: 5%;">삭제</th>
+	        				<th style="width: 10%;">수정</th>
+	        				<th style="width: 10%;">삭제</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
