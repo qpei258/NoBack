@@ -96,16 +96,7 @@ function formCheck() {
     	a:hover {
 			color: rgb(20, 20, 20);
 		}
-		/* 상단메뉴 */
-.topmenu {
-	border: 15px solid rgb(148, 202, 238);
-	background-color: rgb(148, 202, 238);
-	float: top;
-	margin: 9px 9px;
-	width: 1257px;
-	height: 60px;
-}
-    
+  
 	</style>
 </head>
 
