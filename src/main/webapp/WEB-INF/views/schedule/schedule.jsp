@@ -37,16 +37,6 @@
 
 }
 
-/* 상단메뉴 */
-.topmenu {
-	border: 15px solid rgb(148, 202, 238);
-	background-color: rgb(148, 202, 238);
-	float: top;
-	margin: 9px 9px;
-	width: 1257px;
-	height: 60px;
-}
-
 a{
 	text-decoration: none;
 	color: rgb(80, 80, 80);
@@ -268,16 +258,23 @@ document.addEventListener('DOMContentLoaded', function() {
     <div id="container">
 		<%@ include file="../sidebar.jsp" %>
         <div id="content">
-			<div class='topmenu' style="font-size: 30px;  color:black; ">
-				<a href='<c:url value="/schedule/schedule"/>'>사내일정</a>
-				<c:if test="${LoginId != null && LoginLevel >= 3}">
-				<a href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
-				</c:if>
-			</div>
+			
+			<!-- 상단 메뉴 -->
+			<ul class="nav nav-tabs" style="margin: 10px;">
+				 <li class="nav-item">
+				    <a class="nav-link active" href='<c:url value="/schedule/schedule"/>'>사내일정</a>
+				  </li>
+				  <c:if test="${LoginId != null && LoginLevel >= 3}">
+				  <li class="nav-item">
+				    <a class="nav-link" href='<c:url value="/schedule/scheduleMonth"/>'>일정 수정</a>
+				  </li>
+				  </c:if>
+			</ul> <!-- topmenu 끝 -->
 				
 				<!-- 회색 박스 -->
 				<div class='square'>
-					<div id='calendar' style="font-size: 10px; background-color:white;"></div>
+				
+					<div id='calendar' style="font-size: 10px; background-color:white; margin: 22px auto ; "></div>
 				
 						
         		</div> <!-- square 끝 -->

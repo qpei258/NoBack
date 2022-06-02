@@ -64,7 +64,7 @@ a{
 				    <a class="nav-link active" href='<c:url value="board"/>'>작성한 게시글 보기</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href='<c:url value="schedule"/>'>작성한 스케줄 보기</a>
+				    <a class="nav-link" href='<c:url value="scheduleByMonth?month=06"/>'>작성한 스케줄 보기</a>
 				  </li>
 			</ul> <!-- topmenu 끝 -->
 			
