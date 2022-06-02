@@ -232,7 +232,7 @@ public class MypageController {
 		int result = caldao.deleteSchedule(schedule_num);
 		logger.info("schedule_num :{}", schedule_num);
 		
-		return "redirect:/";
+		return "redirect:/mypage/schedule";
 	}
 
 }
