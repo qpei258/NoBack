@@ -39,7 +39,7 @@
 							<div class="photo">
 								<img src="<c:url value='/resources/img/프로필.png'/>">
 							</div>
-							<div id="info">
+							<div id="info" onclick="location.href='<c:url value="/mypage/update"/>'" >
 								<span style="font-weight: 700; font-size: 35px;">${member.employee_name }</span><br>
 								<span style="font-size: 25px;">${member.employee_dep } ${member.employee_pos }</span>
 							</div>

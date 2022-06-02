@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div id="schedule">
-                <a href="schedule"><img src='<c:url value="/resources/img/schedule.png"/>'></a>
+                <a href='<c:url value="/schedule/schedule"/>'><img src='<c:url value="/resources/img/schedule.png"/>'></a>
             </div>
         </div>
 </body>
