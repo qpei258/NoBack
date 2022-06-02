@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     events.push(obj);
                  
-                    alert(obj.content);
+                   // alert(obj.content);
             
             var jsondata = JSON.stringify(obj);
             console.log(jsondata);

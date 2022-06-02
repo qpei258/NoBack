@@ -113,7 +113,7 @@ $( function() {
 			<h2 style="margin: 40px 0px 10px 0px;">${Integer.parseInt(month)} 월</h2>
 			
 				<!-- 월 이동 옵션 -->
-				<div style="float: left; margin-bottom: 0px; margin-left: 50px; border: 0px; height: 50px;">
+				<div style="float: left; margin-bottom: 0px; margin-left: 100px; border: 0px; height: 50px;">
 					<div class="row mb-3" style="border : 1px solid rgb(238, 238, 238)">
 							<select  class="form-select" onchange="if(this.value) location.href=(this.value);" aria-label="Default select example" name="month" id="month" style="width:150px">
 							  <option value="../mypage/scheduleByMonth?month=01" <c:if  test='${month.equals("01")}'> selected </c:if> >1월</option>
@@ -132,7 +132,7 @@ $( function() {
 					</div>
 				</div>
 					
-					<div class="nav-item" style="float: right; margin-bottom: 10px; margin-right: 50px; border: 0px; height: 50px;">
+					<div class="nav-item" style="float: right; margin-bottom: 10px; margin-right: 100px; border: 0px; height: 50px;">
 					    <!-- 모달 처리 (일정 등록) -->
 						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">일정 추가
 						</button>
@@ -192,7 +192,7 @@ $( function() {
 									<tr>
 										<td class="scheduleDates">${schedule.schedule_start} ~ ${schedule.schedule_end}</td>
 										<td class="cont">
-											<strong style="padding-left :40px;" class="strong" onclick="location.href='../schedule/scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
+											<strong style="padding:10px;" class="strong" onclick="location.href='../schedule/scheduleInfo?schedule_num=${schedule.schedule_num}'">${schedule.schedule_title}</strong>
 											<dl style="text-align: left;">
 												<dt>일시</dt><dd>${schedule.schedule_start} ~ ${schedule.schedule_end}</dd>
 												<dt>내용</dt><dd>${schedule.schedule_memo}</dd>
