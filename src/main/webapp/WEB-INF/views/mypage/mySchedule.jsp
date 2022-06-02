@@ -179,7 +179,7 @@ $( function() {
 						<form action="scheduleMonth" method="get">
 						</form>	<!-- 이번달 현황 폼 끝 -->
 						
-						<table class="table table-hover" style="width: 95%; font-size: 20px;margin: 0px auto 30px auto; border-spacing: 0;">
+						<table class="table table-hover" style="width: 90%; font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 						  	<thead>
 						      	<tr style="background-color: rgb(200, 200, 200);">
 			        				<th scope="col" style="width: 40%;">일시</th>
@@ -205,14 +205,14 @@ $( function() {
 												<dt>
 												<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
 												<!-- 모달 버튼 (일정 수정) -->
-												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}'">
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="location.href='scheduleInfo?schedule_num=${schedule.schedule_num}&month=${month}'">
 						  								수정
 												</button>
 												</dt>
 												<dd>
 													<!-- 삭제 폼 -->
 						      						<form action="delete" method="post">
-						      						 
+						      						 	<input type="hidden" value="${month}" name="month">
 						      							<input type="hidden" value="${schedule.schedule_num}" name="schedule_num">
 														<!-- 모달 버튼 (일정 삭제) -->
 														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal${schedule.schedule_num}" >
@@ -248,7 +248,6 @@ $( function() {
 						  </tbody>
 						</table>
 			        	
-				</div> <!-- box 끝 -->
 			</div> <!-- square 끝 -->
         </div> <!-- content 끝 -->
     </div> <!-- container 끝 -->

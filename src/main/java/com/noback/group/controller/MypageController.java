@@ -192,12 +192,12 @@ public class MypageController {
 	 * 일정 개별 출력
 	*/
 	@RequestMapping(value = "scheduleInfo", method = RequestMethod.GET) 
-	public String showScheduleinfo(int schedule_num, Model model)
+	public String showScheduleinfo(int schedule_num, Model model, String month)
 			throws Exception {
 		logger.info("사내 일정 페이지 로딩성공"); 
 		ScheduleVO schedule = caldao.getSchedule(schedule_num);
 		model.addAttribute("schedule", schedule);
-		
+		model.addAttribute("month", month);
 		return "schedule/scheduleInfo"; 
 	}
 
@@ -206,7 +206,7 @@ public class MypageController {
 	 * 일정 수정
 	 */
 	@RequestMapping(value = "updateSchedule", method = RequestMethod.POST)
-	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked) {
+	public String updateSchedule(Model model,HttpSession session, ScheduleVO sked, String month) {
 		// 아이디로 수정할 정보 불러오기
 		
 		String searchId = (String) session.getAttribute("LoginId");
@@ -221,14 +221,14 @@ public class MypageController {
 		logger.info("sked", sked);
 		session.setAttribute("LoginLv", sked.getSchedule_level());
 		
-		return "redirect:/mypage/schedule";	
+		return "redirect:/mypage/scheduleByMonth?month="+month;	
 	}
 
 	/**
 	 * 일정 삭제
 	*/
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String deleteSchedule(HttpSession session, int schedule_num) {
+	public String deleteSchedule(HttpSession session, int schedule_num, String month) {
 		
 		//String searchId = (String) session.getAttribute("LoginId");
 		// dao로
@@ -237,7 +237,7 @@ public class MypageController {
 		int result = caldao.deleteSchedule(schedule_num);
 		logger.info("schedule_num :{}", schedule_num);
 		
-		return "redirect:/mypage/schedule";
+		return "redirect:/mypage/scheduleByMonth?month="+month;
 	}
 
 }
