@@ -69,9 +69,10 @@ function receiverOpen() {
              <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
            </li>
          </ul>
+         
         <div id="content" style="height: 800px;">
         	<div id="sign">
-        	<h1>결제 서류</h1>
+        	<h1 style="margin: 15px auto 30px;">결제 서류</h1>
         		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data" style="margin-left: 260px;">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">기안일</span>
