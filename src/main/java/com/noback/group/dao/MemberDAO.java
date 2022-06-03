@@ -48,8 +48,8 @@ public class MemberDAO<employee_num> {
 		
 		int result = 0;
 		try {
-			mapper.addTrigger(member.getEmployee_num());
 			result = mapper.insertMember(member);
+			mapper.addTrigger(member.getEmployee_num());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -110,6 +110,12 @@ public class MemberDAO<employee_num> {
 	public int updateSignAlarm(AlarmVO alarm) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.updateSignAlarm(alarm);
+	}
+	//메시지 알람 업데이트
+	
+	public int updateMessengerAlarm(AlarmVO alarm) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.updateMessengerAlarm(alarm);
 	}
 	
 }

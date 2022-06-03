@@ -93,7 +93,7 @@
 	<!-- 알람 트리거 -->
 	<insert id="addTrigger" parameterType="string">
 		insert into noback_alarm 
-		values(alarm_seq.nextval, #{employee_num}, 0, 0, 0);
+		values(alarm_seq.nextval, #{employee_num}, 0, 0, 0)
 	</insert>
 	
 	

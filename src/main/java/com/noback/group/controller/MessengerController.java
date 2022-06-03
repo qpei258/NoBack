@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.noback.group.dao.MemberDAO;
 import com.noback.group.dao.MessengerDAO;
 import com.noback.group.util.PageNavigator;
+import com.noback.group.vo.AlarmVO;
 import com.noback.group.vo.MemberVO;
 import com.noback.group.vo.MessengerVO;
 
@@ -29,6 +31,9 @@ public class MessengerController {
 	
 	@Autowired
 	MessengerDAO dao;
+	
+	@Autowired
+	MemberDAO mdao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -59,6 +64,8 @@ public class MessengerController {
 		ArrayList<MessengerVO> messengerlist = dao.listMessenger(searchId, search1, navi1.getStartRecord(), navi1.getCountPerPage());	
 		ArrayList<MemberVO> memberlist = dao.listMember(searchId, search2, navi2.getStartRecord(), navi2.getCountPerPage());	
 		System.out.println(messengerlist);
+		
+
 		//페이지 정보 객체와 글 목록, 검색어를 모델에 저장
 		model1.addAttribute("messengerlist", messengerlist);
 		model1.addAttribute("navi1", navi1);
@@ -69,7 +76,10 @@ public class MessengerController {
 		model2.addAttribute("navi2", navi2);
 		model2.addAttribute("search2", search2);
 
-		
+		AlarmVO alarm = new AlarmVO();
+		alarm.setEmployee_num(searchId);
+		alarm.setMessenger(0);
+		mdao.updateMessengerAlarm(alarm);
 		
 		return "messenger/messengerList";
 	}
@@ -82,6 +92,11 @@ public class MessengerController {
 		model.addAttribute("messenger", messenger);
 		model.addAttribute("num", num);
 		remember_recieve_Id=num;
+		
+		AlarmVO alarm = new AlarmVO();
+		alarm.setEmployee_num(searchId);
+		alarm.setMessenger(0);
+		mdao.updateMessengerAlarm(alarm);
 		return "messenger/chat";
 	}
 	
@@ -94,9 +109,13 @@ public class MessengerController {
 		int result = dao.messenger_insert(remember_recieve_Id, searchId, chatcontent);
 		ArrayList<MessengerVO> messenger = dao.messenger(remember_recieve_Id, searchId);
 		model.addAttribute("messenger", messenger);
-
 		
-		return "messenger/chat";
+		AlarmVO alarm = new AlarmVO();
+		alarm.setEmployee_num(remember_recieve_Id);
+		alarm.setMessenger(1);
+		mdao.updateMessengerAlarm(alarm);
+		
+		return "redirect:chat?num="+remember_recieve_Id;
 	}
 	
 	

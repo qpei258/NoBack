@@ -13,6 +13,18 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="resources/css/home.css" />
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		
+		function chatPopup(num) { //팝업 기능 추가 작업중
+			window.open('messenger/chat?num='+num, 'win', 'top=400,left=600,width=560,height=600,location=no,status=no');
+
+		}
+		
+		function re() {
+			location.reload();
+		}
+		setTimeout(re, 2000);
+	</script>
 </head>
 <body>
 <div id="container">
@@ -62,7 +74,7 @@
 						<div style="font-size: 25px; margin: 10px auto; border: 1px solid rgb(238, 238, 238);">
 							<div class="pre" style="margin-left: 120px;">
 								<img src="<c:url value='/resources/img/새메신저.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); margin-left: 10px;">
-								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;">
+								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;" onclick="location.href='messenger/messengerList'">
 									새 메시지
 									<c:if test="${alarm.messenger == 1}">
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
@@ -105,14 +117,13 @@
 				</div>
 				<div id="messenger">
 					<div id="mess">
-						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/messenger/messenger"/>'>메신저</a></h2>
-						<div class="talk">
-							<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 15px 20px 40px; ">
-							<div class="talk" style="font-size: 25px; border: 1px solid rgb(238, 238, 238); color: rgb(100, 100, 100);"><h2 style="color: rgb(100, 100, 100); font-weight: 700; margin-top: 15px;">정대균</h2>테스트 메시지입니다.</div>
-						</div>
-						<div class="talk">
-							<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 0px 20px 40px;">
-						</div>
+						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/messenger/messengerList"/>'>메신저</a></h2>
+						<c:forEach items="${messengerlist }" var="mess">
+							<div class="talk" onclick="chatPopup('${mess.employee_num}')">
+								<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 15px 20px 40px; ">
+								<div class="talk" style="font-size: 25px; border: 1px solid rgb(238, 238, 238); color: rgb(100, 100, 100);"><h2 style="color: rgb(100, 100, 100); font-weight: 700; margin-top: 15px;">${mess.messenger_writer_name }</h2>${mess.messenger_content }</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
             </div>

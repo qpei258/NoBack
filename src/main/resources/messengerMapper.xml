@@ -25,21 +25,21 @@
 		</if>
 	</select>
 	<select id="listMessenger" parameterType="map" resultType="messenger">
-		select
-			s.employee_num
-			, m.employee_name as messenger_writer_name
-			, s.messenger_content
-			, to_char(s.messenger_date, 'YY/MM/DD') as messenger_date
-			, v.employee_name as messenger_reciever_name
-		from 
-			noback_messenger s, noback_member m, noback_member v
-		where s.employee_num = m.employee_num AND s.messenger_receiver = v.employee_num 
-		and s.messenger_receiver = (#{searchId})
+		SELECT  
+		tb.employee_num
+         , m.employee_name as messenger_writer_name
+         , tb.messenger_content
+         , to_char(tb.messenger_date, 'YY/MM/DD') as messenger_date
+         , v.employee_name as messenger_reciever_name
+
+		FROM(
+		SELECT ROW_NUMBER() OVER(PARTITION BY noback_messenger.employee_num, noback_messenger.MESSENGER_RECEIVER ORDER BY noback_messenger.messenger_date DESC ) AS RNUM, noback_messenger.*
+		FROM noback_messenger ) tb, noback_member m, noback_member v
+		WHERE tb.employee_num = m.employee_num AND tb.messenger_receiver = v.employee_num  and RNUM = 1 and tb.messenger_receiver=(#{searchId})
 		<if test="search != null">
-			and upper(s.messenger_content) like '%' || upper(#{search}) || '%'
+			and upper(tb.messenger_content) like '%' || upper(#{search}) || '%'
 		</if>
-		order by 
-			s.messenger_date desc
+		order by tb.MESSENGER_DATE desc
 	</select>
 	
 	<select id="listMember" parameterType="map" resultType="member">
@@ -66,6 +66,7 @@
 		select
 
 			 m.employee_name as messenger_writer_name
+			, m.employee_picture as picture
 			, s.messenger_content
 			, to_char(s.messenger_date, 'YY/MM/DD HH:MI:SS') as messenger_date
 			, v.employee_name as messenger_reciever_name 

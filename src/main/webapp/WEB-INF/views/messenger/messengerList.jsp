@@ -16,6 +16,7 @@
     	
     	
     	#boardList{
+    		border : 1px solid rgb(238, 238, 238);
     		margin:10px auto;
     		width: 620px;
     		height: 870px;
@@ -35,26 +36,41 @@
 			var page = document.getElementById('page');
 			page.value = currentPage;
 			form.submit();
-		
-			function chatPopup() { //팝업 기능 추가 작업중
-				let sign_receiver2 = document.getElementById('sign_receiver2'); 
-				if (sign_receiver2.value != '') {
-				document.getElementById('target_btn4').disabled = false;
-				window.open('check3', 'receiver', 'top=400,left=600,width=500,height=400,location=no,status=no');
+		}
+			function chatPopup(num) { //팝업 기능 추가 작업중
+				//let num = document.getElementById('num');
+				
+				
+					
+					window.open('chat?num='+num, 'win', 'top=400,left=600,width=560,height=600,location=no,status=no');
+				
+				
 				}
 		
-		
-		
-		
-		
-		}
+
+			
+			
+			
+			
+			
+			
+			
+			
 	</script>
 </head>
 <body>
-    <div id="container">
+
+    <div id="container" style="border : 1px solid  white;">
 		<%@ include file="../sidebar.jsp" %>
-        <div id="content">
-        <div id="both">
+		
+		
+		
+		
+		
+		
+		
+        <div id="content" style="border : 1px solid  white;">
+        <div id="both" style="border : 1px solid  white;">
         	<div id="boardList">
         		<h2 style="margin: 40px 0px 10px 0px;">신규 메세지</h2>
         		<div style="float: left; margin-bottom: 10px ; margin-left: 63px;  border: 0px;">
@@ -81,7 +97,8 @@
 				  	<tbody>
 						  <c:forEach var="messenger" items="${messengerlist}">
 						  <!--<input type="hidden" name="recieveId" value="${messenger.employee_num}">-->
-						  	<tr style="background-color: white;" onclick="location.href='chat?num=${messenger.employee_num}'">
+						  	<tr style="background-color: white;" onclick="chatPopup('${messenger.employee_num}')">
+						  	
 								
 						  		<td>${messenger.messenger_writer_name }</td>
 						  		<td>${messenger.messenger_content}</td>
@@ -135,7 +152,7 @@
 				  	<tbody>
 						  <c:forEach var="member" items="${memberlist}">
 						  <!--<input type="hidden" name="recieveId" value="${messenger.employee_num}">-->
-						  	<tr style="background-color: white;" onclick="location.href='chat?num=${member.employee_num}'">
+						  	<tr style="background-color: white;" onclick="chatPopup('${member.employee_num}')">
 						  		<td>${member.employee_name }</td>
 						  		<td>${member.employee_dep }</td>
 						  		<td>${member.employee_pos }</td>
