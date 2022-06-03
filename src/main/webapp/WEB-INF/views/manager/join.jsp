@@ -33,7 +33,6 @@
 	width: 800px;
 	height: 600px;
 	margin: 48px auto;
-	
 }
 
 a{
