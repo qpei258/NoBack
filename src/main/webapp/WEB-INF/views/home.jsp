@@ -31,17 +31,17 @@
 		<%@ include file="sidebar.jsp" %>
         <div id="content">
             <div id="menubar">
-                <div class="topmenu" ><a href='<c:url value="/"/>' style="color: white;">홈</a></div>
-                <div class="topmenu"><a href='<c:url value="/notice/noticeList"/>' style="color: rgb(80, 80, 80);">공지사항</a></div>
-                <div class="topmenu"><a href='<c:url value="/sign/sdelay"/>' style="color: rgb(80, 80, 80);">전자결재</a></div>
+                <div class="topmenu" ><a href='<c:url value="/"/>' style="color: white;">ホーム</a></div>
+                <div class="topmenu"><a href='<c:url value="/notice/noticeList"/>' style="color: rgb(80, 80, 80);">公知事項</a></div>
+                <div class="topmenu"><a href='<c:url value="/sign/sdelay"/>' style="color: rgb(80, 80, 80);">電子決裁</arhdw></div>
                 <c:if test="${LoginId == null }">
-                	<div class="topmenu"><a href='<c:url value="/manager/login"/>' style="color: rgb(80, 80, 80);">로그인</a></div>
+                	<div class="topmenu"><a href='<c:url value="/manager/login"/>' style="color: rgb(80, 80, 80);">ログイン</a></div>
                 </c:if>
                 <c:if test="${LoginId != null && LoginLevel <= 2}">
-                	<div class="topmenu" ><a href='<c:url value="/mypage/update"/>' style="color: rgb(80, 80, 80);">마이페이지</a></div>
+                	<div class="topmenu" ><a href='<c:url value="/mypage/update"/>' style="color: rgb(80, 80, 80);">マイページ</a></div>
                 </c:if>
                 <c:if test="${LoginId != null && LoginLevel >= 3}">
-                	<div class="topmenu"><a href='<c:url value="/manager/memberlist"/>' style="color: rgb(80, 80, 80);">관리자페이지</a></div>
+                	<div class="topmenu"><a href='<c:url value="/manager/memberlist"/>' style="color: rgb(80, 80, 80);">管理者ページ</a></div>
                 </c:if>
             </div>
             <div id="maincontent1">
@@ -56,7 +56,7 @@
 								<span style="font-size: 25px;">${member.employee_dep } ${member.employee_pos }</span>
 							</div>
 							<div style="clear: both; font-size: 25px; margin: 245px 20px; text-align: center; border: 1px solid rgb(148, 202, 238);">
-								최근접속일 2022-06-01
+								最近の接続日 2022-06-16
 							</div>
 						</div>
 					</c:if>
@@ -69,13 +69,13 @@
 				<div id="alarm">
 					<div id="precent">
 						<div style="font-size: 25px; margin: 40px 20px 20px 20px; text-align: center; border: 1px solid rgb(238, 238, 238);">
-							${currentTime } <b>${member.employee_name }</b> 님의 현황입니다.
+							${currentTime } <b>${member.employee_name }</b> 様の現況です。
 						</div>
 						<div style="font-size: 25px; margin: 10px auto; border: 1px solid rgb(238, 238, 238);">
 							<div class="pre" style="margin-left: 120px;">
 								<img src="<c:url value='/resources/img/새메신저.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); margin-left: 10px;">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;" onclick="location.href='messenger/messengerList'">
-									새 메시지
+									新メッセージ
 									<c:if test="${alarm.messenger == 1}">
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
 									</c:if>
@@ -84,7 +84,7 @@
 							<div class="pre" style="margin-left: 30px;">
 								<img src="<c:url value='/resources/img/새일정.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); ">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;" onclick="location.href='schedule/schedule'">
-									새 일정
+									新日程
 									<c:if test="${alarm.schedule == 1}">
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
 									</c:if>
@@ -93,7 +93,7 @@
 							<div class="pre">
 								<img src="<c:url value='/resources/img/새결제.png'/>" style="width: 80px; height: 80px; border: 1px solid rgb(238, 238, 238); clear: both;">
 								<button type="button" class="btn btn-outline-secondary position-relative" style="border: 1px solid rgb(238, 238, 238); font-weight: 700;" onclick="location.href='sign/sdelay'">
-									새 결제
+									新 決裁
 									<c:if test="${alarm.sign == 1}">
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">new<span class="visually-hidden">unread messages</span></span>
 									</c:if>
@@ -107,7 +107,7 @@
             <div id="maincontent2">
 				<div id="notice">
 					<div id="list">
-						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></h2>
+						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/notice/noticeList"/>'>公知事項</a></h2>
 						<c:forEach var="notice" items="${noticelist }">
 							<div class="noti" style="font-size: 25px; margin:0px 80px 0px 40px; color: rgb(120, 120, 120); border-bottom: 1px solid rgb(100, 100, 100);">
 								<a href='<c:url value="/notice/notice?num=${notice.notice_num }"/>'>・${notice.notice_title}</a>
@@ -117,7 +117,7 @@
 				</div>
 				<div id="messenger">
 					<div id="mess">
-						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/messenger/messengerList"/>'>메신저</a></h2>
+						<h2 style="margin: 25px 40px 10px 40px; color: rgb(100, 100, 100); font-weight: 700"><a href='<c:url value="/messenger/messengerList"/>'>メッセンジャー</a></h2>
 						<c:forEach items="${messengerlist }" var="mess">
 							<div class="talk" onclick="chatPopup('${mess.employee_num}')">
 								<img src="<c:url value='/resources/img/프로필.png'/>" class="photo" style="width: 80px; height: 80px; clear: both; margin: 20px 15px 20px 40px; ">

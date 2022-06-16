@@ -48,27 +48,27 @@
         <div id="content">
           <ul class="nav nav-tabs" style="margin: 10px;">
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/main"/>'>결제작성 리스트</a>
+             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/main"/>'>決裁作成リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/sdelay"/>'>결제대기 리스트</a>
+             <a class="nav-link"  href='<c:url value="../sign/sdelay"/>'>決裁待機リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
+             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>決裁作成</a>
            </li>
          </ul>
         	<div id="signList">
-        		<h2 style="margin: 40px 0px 10px 0px;">결제 작성 리스트</h2>
+        		<h2 style="margin: 40px 0px 10px 0px;">決裁作成リスト</h2>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				</div>
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-				      	    <th style="width: 15%;">글번호</th>
-        					<th style="width: 20%;">기안일</th>
-	        				<th style="width: 35%;">제목</th>
-	        				<th style="width: 15%;">기안자</th>
-	        				<th style="width: 15%;">결제상태</th>
+				      	    <th style="width: 15%;">順番</th>
+        					<th style="width: 20%;">起案日</th>
+	        				<th style="width: 35%;">タイトル</th>
+	        				<th style="width: 15%;">起案者</th>
+	        				<th style="width: 15%;">決裁状態</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
@@ -83,49 +83,49 @@
 	                     <!-- 수신자 1명일떄 -->
 	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 == null && sign.sign_receiver3 == null && sign.sign_receiver4 == null}">
 	                     <c:if test="${sign.sign_ok1 == 0}">
-	                     <td class="center">대기</td>
+	                     <td class="center">待機</td>
 	                     </c:if> 
 	                     <c:if test="${sign.sign_ok1 == 1}">
-	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     <td class="center"  style="font-weight: bold; color: blue">承認</td>
 	                     </c:if>
 	                     <c:if test="${sign.sign_ok1 == -1}">
-	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     <td class="center"  style="font-weight: bold; color: red">返戻</td>
 	                     </c:if>  
 	                     </c:if>
 	                     <!-- 수신자 2명일떄 -->
 	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 == null && sign.sign_receiver4 == null}">
 	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1}">
-	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     <td class="center"  style="font-weight: bold; color: red">返戻</td>
 	                     </c:if>  
 	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0) }">
-	                     <td class="center">대기</td>
+	                     <td class="center">待機</td>
 	                     </c:if> 
 	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1}">
-	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     <td class="center"  style="font-weight: bold; color: blue">承認</td>
 	                     </c:if>
 	                     </c:if>
 	                      <!-- 수신자 3명일떄 -->
 	                      <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 != null && sign.sign_receiver4 == null}">
 	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1 || sign.sign_ok3 == -1}">
-	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     <td class="center"  style="font-weight: bold; color: red">返戻</td>
 	                     </c:if>  
 	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1 && sign.sign_ok3 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0 || sign.sign_ok3 == 0) }">
-	                     <td class="center">대기</td>
+	                     <td class="center">待機</td>
 	                     </c:if> 
 	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1  && sign.sign_ok3 == 1 }">
-	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     <td class="center"  style="font-weight: bold; color: blue">承認</td>
 	                     </c:if>
 	                     </c:if>
 	                      <!-- 수신자  4명일떄 -->
 	                     <c:if test="${sign.sign_receiver1 != null && sign.sign_receiver2 != null && sign.sign_receiver3 != null && sign.sign_receiver4 != null}">
 	                     <c:if test="${sign.sign_ok1 == -1 || sign.sign_ok2 == -1 || sign.sign_ok3 == -1 || sign.sign_ok4 == -1}">
-	                     <td class="center"  style="font-weight: bold; color: red">반려</td>
+	                     <td class="center"  style="font-weight: bold; color: red">返戻</td>
 	                     </c:if>  
 	                     <c:if test="${(sign.sign_ok1 != -1 && sign.sign_ok2 != -1 && sign.sign_ok3 != -1 && sign.sign_ok4 != -1) && (sign.sign_ok1 == 0 || sign.sign_ok2 == 0 || sign.sign_ok3 == 0 || sign.sign_ok4 == 0) }">
-	                     <td class="center">대기</td>
+	                     <td class="center">待機</td>
 	                     </c:if> 
 	                     <c:if test="${sign.sign_ok1 == 1 && sign.sign_ok2 == 1  && sign.sign_ok3 == 1 && sign.sign_ok4 == 1}">
-	                     <td class="center"  style="font-weight: bold; color: blue">승인</td>
+	                     <td class="center"  style="font-weight: bold; color: blue">承認</td>
 	                     </c:if>
 	                     </c:if>
 	                              

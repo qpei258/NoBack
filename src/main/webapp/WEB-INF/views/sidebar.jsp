@@ -14,18 +14,18 @@
             </div>
             <div id="sidebar">
                 <ul style="list-style: none; padding-left:25px;">
-                    <span style="line-height: 60px; font-size: 40px; font-weight: 700;">카테고리</span>
-                    <li><a href='<c:url value="/"/>'>홈</a></li>
-                    <li><a href='<c:url value="/notice/noticeList"/>'>공지사항</a></li>
-                    <li><a href='<c:url value="/schedule/schedule"/>'>사내일정</a></li>
-                    <li><a href='<c:url value="/sign/sdelay"/>'>전자결재</a></li>
-                    <li><a href='<c:url value="/board/boardList"/>'>자유게시판</a></li>
-                    <li><a href='<c:url value="/messenger/messengerList"/>'>메신저</a></li>
+                    <span style="line-height: 60px; font-size: 40px; font-weight: 700;">カテゴリー</span>
+                    <li><a href='<c:url value="/"/>'>ホーム</a></li>
+                    <li><a href='<c:url value="/notice/noticeList"/>'>公知事項</a></li>
+                    <li><a href='<c:url value="/schedule/schedule"/>'>社内日程</a></li>
+                    <li><a href='<c:url value="/sign/sdelay"/>'>電子決裁</a></li>
+                    <li><a href='<c:url value="/board/boardList"/>'>自由掲示板</a></li>
+                    <li><a href='<c:url value="/messenger/messengerList"/>'>メッセンジャー</a></li>
                     <c:if test="${LoginId == null }">
-                    	<li><a href='<c:url value="/manager/login"/>'>로그인</a></li>
+                    	<li><a href='<c:url value="/manager/login"/>'>ログイン</a></li>
                     </c:if>
                     <c:if test="${LoginId != null }">
-                    	<li><a href='<c:url value="/manager/logout"/>'>로그아웃</a></li>
+                    	<li><a href='<c:url value="/manager/logout"/>'>ログアウト</a></li>
                     </c:if>
                 </ul>
             </div>

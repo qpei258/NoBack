@@ -52,112 +52,112 @@ function receiverOpen() {
 		<div id="content">
           <ul class="nav nav-tabs" style="margin: 10px;">
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/main"/>'>결제작성 리스트</a>
+             <a class="nav-link"  href='<c:url value="../sign/main"/>'>決裁作成リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/sdelay"/>'>결제대기 리스트</a>
+             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/sdelay"/>'>決裁待機リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
+             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>決裁作成</a>
            </li>
          </ul>
          
         <div id="content" style="height: 800px;">
         	<div id="sign">
-        	<h1 style="margin: 30px 0px 25px 0px;  font-size: 30px;">결제 서류</h1>
+        	<h1 style="margin: 30px 0px 25px 0px;  font-size: 30px;">決裁 書類</h1>
         		<form id="scomplete" action="scomplete"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data" style="margin-left: 260px;">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 15px auto;">
-					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">기안일</span>
+					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">起案日</span>
 					  	<input type="text" name="signsign_cdate" id="signsign_cdate" style="width:400px; height : 40px;  font-size: 20px;" value="${sign.sign_cdate}" readonly="readonly">
 					</div>
 	        		<div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">제목</span>
+					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">タイトル</span>
 					  	<input type="text" name="sign_title" id="sign_title" style="width:400px; height : 40px;   font-size: 20px;" value="${sign.sign_title}" readonly="readonly">	
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold;">내용</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;">内容</span>
 						 <input type="text" name="sign_content" id="sign_content" style="width:400px; height:100px;  font-size: 20px;" value="${sign.sign_content}" readonly="readonly" >					 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;" >작성자</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;" >作成者</span>
 						 <input type="text" name="sign_sender" id="sign_sender" size="30" style="height : 40px;   font-size: 20px;" value="${sign.sign_nsender}" readonly="readonly">						 
 					</div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; " >수신자1</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; " >受信者1</span>
 						 <input type="hidden" name="sign_receiver1" id="sign_receiver1" size="10" value="${sign.sign_receiver1}" readonly="readonly">
-						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1"   style="height : 40px;   font-size: 20px;" value="${sign.sign_nreceiver1}" readonly="readonly">
+						  <input type="text" name="sign_nreceiver1" id="sign_nreceiver1"   size="10" style="height : 40px;   font-size: 20px;" value="${sign.sign_nreceiver1}" readonly="readonly">
 						  <c:if test="${sign.sign_ok1 == 0}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >승인여부</span>
-						  <input type="text" size="10" value="대기" readonly="readonly" style="height : 40px;  font-size: 20px;">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >決裁状態</span>
+						  <input type="text" size="10" value="待機" readonly="readonly" style="height : 40px;  font-size: 20px;">
 						  </c:if>
 						   <c:if test="${sign.sign_ok1 == 1}">
-						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">승인여부</span>
-						  <input type="text" size="10" value="승인" readonly="readonly" style="height : 40px;   font-size: 20px;">
+						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">決裁状態</span>
+						  <input type="text" size="10" value="承認" readonly="readonly" style="height : 40px;   font-size: 20px;">
 						  </c:if>
 						   <c:if test="${sign.sign_ok1 == -1}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >승인여부</span>
-						  <input type="text" size="10" value="반려" readonly="readonly" style="height : 40px;   font-size: 20px;">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >決裁状態</span>
+						  <input type="text" size="10" value="返戻" readonly="readonly" style="height : 40px;   font-size: 20px;">
 						  </c:if>
 					</div>
 					<c:if test="${sign.sign_receiver2 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">수신자2</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">受信者2</span>
 						 <input type="hidden" name="sign_receiver2" id="sign_receiver2" size="10" value="${sign.sign_receiver2}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver2" id="sign_nreceiver2" size="10" style="height : 40px;   font-size: 20px;" value="${sign.sign_nreceiver2}" readonly="readonly">
 						  <c:if test="${sign.sign_ok2 == 0}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >승인여부</span>
-						  <input type="text" size="10" value="대기" readonly="readonly"style="height : 40px;   font-size: 20px;" >
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >決裁状態</span>
+						  <input type="text" size="10" value="待機" readonly="readonly"style="height : 40px;   font-size: 20px;" >
 						  </c:if>
 						   <c:if test="${sign.sign_ok2 == 1}">
-						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">승인여부</span>
-						  <input type="text" size="10" value="승인" readonly="readonly" style="height : 40px;   font-size: 20px;">
+						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px;">決裁状態</span>
+						  <input type="text" size="10" value="承認" readonly="readonly" style="height : 40px;   font-size: 20px;">
 						  </c:if>
 						   <c:if test="${sign.sign_ok2 == -1}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >승인여부</span>
-						  <input type="text" size="10" value="반려" readonly="readonly" style="height : 40px;">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px;" >決裁状態</span>
+						  <input type="text" size="10" value="返戻" readonly="readonly" style="height : 40px;">
 						  </c:if>
 					</div>
 					</c:if>
 					<c:if test="${sign.sign_receiver3 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold;"style="height : 40px; ">수신자3</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold;"style="height : 40px; ">受信者3</span>
 						 <input type="hidden" name="sign_receiver3" id="sign_receiver3" size="10" value="${sign.sign_receiver3}" readonly="readonly"style="height : 40px; ">
 						  <input type="text" name="sign_nreceiver3" id="sign_nreceiver3" size="10"  style="height : 40px;   font-size: 20px;" value="${sign.sign_nreceiver3}" readonly="readonly"style="height : 40px; ">
 						  <c:if test="${sign.sign_ok3 == 0}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; ">승인여부</span>
-						  <input type="text" size="10" value="대기" readonly="readonly"style="height : 40px ;  font-size: 20px; ">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; ">決裁状態</span>
+						  <input type="text" size="10" value="待機" readonly="readonly"style="height : 40px ;  font-size: 20px; ">
 						  </c:if>
 						   <c:if test="${sign.sign_ok3 == 1}">
-						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">승인여부</span>
-						  <input type="text" size="10" value="승인" readonly="readonly"style="height : 40px; font-size: 20px; ">
+						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">決裁状態</span>
+						  <input type="text" size="10" value="承認" readonly="readonly"style="height : 40px; font-size: 20px; ">
 						  </c:if>
 						   <c:if test="${sign.sign_ok3 == -1}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; ">승인여부</span>
-						  <input type="text" size="10" value="반려" readonly="readonly"style="height : 40px;   font-size: 20px;">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; ">決裁状態</span>
+						  <input type="text" size="10" value="返戻" readonly="readonly"style="height : 40px;   font-size: 20px;">
 						  </c:if>
 					</div>
 					</c:if>
 					<c:if test="${sign.sign_receiver4 != null}">
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text"style="width: 100px;" >수신자4</span>
+						 <span class="input-group-text"style="width: 100px;" >受信者4</span>
 						 <input type="hidden" name="sign_receiver4" id="sign_receiver4" size="10" value="${sign.sign_receiver4}" readonly="readonly">
 						  <input type="text" name="sign_nreceiver4" id="sign_nreceiver4" size="10" value="${sign.sign_nreceiver4}" readonly="readonly" style="font-size: 20px;">
 						  <c:if test="${sign.sign_ok4 == 0}">
-						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; " >승인여부</span>
-						  <input type="text" size="10" value="대기" readonly="readonly"style="height : 40px;   font-size: 20px; ">
+						  <span class="input-group-text"style="width: 100px; font-weight: bold; height : 40px; " >決裁状態</span>
+						  <input type="text" size="10" value="待機" readonly="readonly"style="height : 40px;   font-size: 20px; ">
 						  </c:if>
 						   <c:if test="${sign.sign_ok4 == 1}">
-						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">승인여부</span>
-						  <input type="text" size="10" value="승인" readonly="readonly"style="height : 40px;  font-size: 20px; ">
+						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">決裁状態</span>
+						  <input type="text" size="10" value="承認" readonly="readonly"style="height : 40px;  font-size: 20px; ">
 						  </c:if>
 						   <c:if test="${sign.sign_ok4 == -1}">
-						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">승인여부</span>
-						  <input type="text" size="10" value="반려" readonly="readonly"style="height : 40px; font-size: 20px; ">
+						  <span class="input-group-text" style="width: 100px; font-weight: bold; height : 40px; ">決裁状態</span>
+						  <input type="text" size="10" value="返戻" readonly="readonly"style="height : 40px; font-size: 20px; ">
 						  </c:if>
 					</div>
 					</c:if>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 30px; ">첨부파일</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; height : 30px; ">添付</span>
 						 <a href="download?sign_num=${sign.sign_num}" style="font-size: 20px;">${sign.sign_originfile}</a>						 
 					</div>
 			
@@ -166,16 +166,16 @@ function receiverOpen() {
 					<div style="border: 1px solid rgb(238, 238, 238);">
 						<div style="margin-right: 250px; border: 1px solid rgb(238, 238, 238);">
 					       <input type="radio" id="sign_ok1" name="sign_ok1" value='1' style="font-size: 16px;">
-					       <label for="sign_ok1" style="font-size: 25px;">승인1 </label>
+					       <label for="sign_ok1" style="font-size: 25px;">承認1 </label>
 					       <input type="radio" id="sign_no1" name="sign_ok1" value='-1' checked="checked" style="margin-left: 20px;">
-					       	<label for="sign_no1" style="font-size: 25px; ">반려1</label>
+					       	<label for="sign_no1" style="font-size: 25px; ">返戻1</label>
 					    </div>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; font-size: 16px;" >메모</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; font-size: 16px;" >メモ</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px; font-size: 17px; resize:none;" ></textarea>						 
 					</div> 
 					</div>   
-					   <input type="submit" class="btn btn-primary" style="margin-right: 233px;" value="처리완료" />                                                   
+					   <input type="submit" class="btn btn-primary" style="margin-right: 233px;" value="処理完了" />                                                   
 					</c:if>
 					</c:if>
 					
@@ -183,15 +183,15 @@ function receiverOpen() {
 					<c:if test="${sign.sign_ok2 == 0}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
 					       <input type="radio" id="sign_ok2" name="sign_ok2" value='1' >
-					       <label for="sign_ok2" style="font-size: 25px;">승인2 </label>
+					       <label for="sign_ok2" style="font-size: 25px;">承認2 </label>
 					       <input type="radio" id="sign_no2" name="sign_ok2" value='-1' checked="checked">
-					       <label for="sign_no2" style="font-size: 25px; ">반려2</label>
+					       <label for="sign_no2" style="font-size: 25px; ">返戻2</label>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text"style="width: 100px; font-weight: bold; font-size: 20px;" >메모</span>
+						 <span class="input-group-text"style="width: 100px; font-weight: bold; font-size: 20px;" >メモ</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px;resize:none; font-size: 17px;" ></textarea>						 
 					</div> 
 					</div>       
-					   <input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="처리완료" />                                                    
+					   <input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="処理完了" />                                                    
 					</c:if>
 					</c:if>
 					
@@ -199,15 +199,15 @@ function receiverOpen() {
 					<c:if test="${sign.sign_ok3 == 0}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
 					       <input type="radio" id="sign_ok3" name="sign_ok3" value='1'>
-					       <label for="sign_ok3" style="font-size: 25px;">승인3 </label>
+					       <label for="sign_ok3" style="font-size: 25px;">承認3 </label>
 					       <input type="radio" id="sign_ok3" name="sign_ok3" value='-1' checked="checked">
-					       <label for="sign_no3" style="font-size: 25px; ">반려3</label>
+					       <label for="sign_no3" style="font-size: 25px; ">返戻3</label>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text"style="width: 100px; font-weight: bold; font-size: 20px;" >메모</span>
+						 <span class="input-group-text"style="width: 100px; font-weight: bold; font-size: 20px;" >メモ</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px; font-size: 17px;; resize:none;" ></textarea>						 
 					</div>  
 					</div>     
-					   <input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="처리완료" />                                
+					   <input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="処理完了" />                                
 					</c:if>
 					</c:if>
 					
@@ -215,15 +215,15 @@ function receiverOpen() {
 					<c:if test="${sign.sign_ok4 == 0}">
 					<div style="border: 1px solid rgb(238, 238, 238);">
 					       <input type="radio" id="sign_ok4" name="sign_ok4" value='1'>
-					       <label for="sign_ok4" style="font-size: 25px;">승인4 </label>
+					       <label for="sign_ok4" style="font-size: 25px;">承認4 </label>
 					       <input type="radio" id="sign_ok4" name="sign_ok4" value='-1' checked="checked">
-					       <label for="sign_no4" style="font-size: 25px; ">반려4</label>
+					       <label for="sign_no4" style="font-size: 25px; ">返戻4</label>
 					<div class="input-group" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
-						 <span class="input-group-text" style="width: 100px; font-weight: bold; font-size: 20px; " >메모</span>
+						 <span class="input-group-text" style="width: 100px; font-weight: bold; font-size: 20px; " >メモ</span>
 						 <textarea name="sign_memo" id="sign_memo" style="width:500px;height:50px; font-size: 17px; resize:none;" ></textarea>						 
 					</div>
 					</div>
-					<input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="처리완료" />                             
+					<input type="submit" class="btn btn-primary" style=" margin-right: 233px;" value="処理完了" />                             
 					</c:if>
 					</c:if>
 					   <input type ="hidden"  name="sign_num" id="sign_num" value="${sign.sign_num}"> 

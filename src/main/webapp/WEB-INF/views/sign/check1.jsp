@@ -41,20 +41,20 @@ function searchname(num, name) {
 </head>
 <body>
 <div class="centerdiv">
-<h2 style="font-weight:bold; text-align:center">[사원 검색]</h2>
+<h2 style="font-weight:bold; text-align:center">[社員検索]</h2>
 
 <form action="check1" method="post" onSubmit="return formCheck();">
-	<h3 class="centerdiv" style="font-weight:bold; text-align:right; margin-right: 85px;" >검색할 사원 : <input type="text" name="searchname" id="searchname" />
+	<h3 class="centerdiv" style="font-weight:bold; text-align:right; margin-right: 85px;" >社員検索 : <input type="text" name="searchname" id="searchname" />
 			<input type="submit" class="btn btn-primary" value="검색" /></h3>
 </form>
 <table class="table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-				      	    <th style="width: 30%;">사원번호</th>
-        					<th style="width: 20%;">이름</th>
-	        				<th style="width: 20%;">부서</th>
-	        				<th style="width: 20%;">직위</th>
-	        				<th style="width: 10%;">선택</th>
+				      	    <th style="width: 30%;">社員番号</th>
+        					<th style="width: 20%;">名</th>
+	        				<th style="width: 20%;">部署</th>
+	        				<th style="width: 20%;">職位</th>
+	        				<th style="width: 10%;">選択</th>
         				</tr>
 				  	</thead>
 			          <c:if test="${searchname != null}">
@@ -66,7 +66,7 @@ function searchname(num, name) {
 	                        <td class="center">${m.employee_dep}</td>   
 		                     <td class="center">${m.employee_pos}</td>
 	                        <td>
-	                        <p><input type="button" value="선택하기" onclick="searchname('${m.employee_num}','${m.employee_name}')"></p>
+	                        <p><input type="button" value="選択する" onclick="searchname('${m.employee_num}','${m.employee_name}')"></p>
 	                         </td>
 	                         </tr>
 	                        </c:forEach>

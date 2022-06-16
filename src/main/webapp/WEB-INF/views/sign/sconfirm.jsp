@@ -38,18 +38,18 @@
 		<div id="content">
           <ul class="nav nav-tabs" style="margin: 10px;">
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/main"/>'>결제작성 리스트</a>
+             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/main"/>'>決裁作成リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/sdelay"/>'>결제대기 리스트</a>
+             <a class="nav-link"  href='<c:url value="../sign/sdelay"/>'>決裁待機リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
+             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>決裁作成</a>
            </li>
          </ul>
         <div id="content">
         	<div id="sign" style="background-color: rgb(238, 238, 238);">
-        	<h1 style="margin: 30px 0px 30px 0px;  font-size: 30px;">결제 서류</h1>
+        	<h1 style="margin: 30px 0px 30px 0px;  font-size: 30px;">決裁 書類</h1>
         		<form id="swrite" action="swrite"  method="post" onsubmit="return formCheck();" enctype="multipart/form-data" style="margin-left: 260px;">
         		    <div class="input-group mb-3" style="border: 1px solid rgb(238, 238, 238); width: 90%; margin: 0px auto 10px auto;">
 					  	<span class="input-group-text" id="basic-addon1" style="width: 100px; font-weight: bold; height : 40px;">기안일</span>

@@ -40,26 +40,26 @@
         <div id="content">
          <ul class="nav nav-tabs" style="margin: 10px;">
            <li class="nav-item">
-             <a class="nav-link" href='<c:url value="../sign/main"/>'>결제작성 리스트</a>
+             <a class="nav-link" href='<c:url value="../sign/main"/>'>決裁作成リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/sdelay"/>'>결제대기 리스트</a>
+             <a class="nav-link active" aria-current="page"  href='<c:url value="../sign/sdelay"/>'>決裁待機リスト</a>
            </li>
            <li class="nav-item">
-             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>결제 작성</a>
+             <a class="nav-link"  href='<c:url value="../sign/swrite"/>'>決裁作成</a>
            </li>
          </ul>
          <div id="signList" style="background-color: rgb(238, 238, 238);">
-        		<h2 style="margin: 40px 0px 10px 0px;">결제 대기 리스트</h2>
+        		<h2 style="margin: 40px 0px 10px 0px;">決裁待機リスト</h2>
         		<div style="float: right; margin-bottom: 0px; margin-right: 62px; border: 0px; height: 50px;">
 				</div>
 				<table class="table table-hover" style="width: 90%;font-size: 20px;margin: 0px auto 20px auto; border-spacing: 0;">
 				  	<thead>
 				      	<tr style="background-color: rgb(200, 200, 200);">
-				      	    <th style="width: 20%;">글번호</th>
-        					<th style="width: 30%;">기안일</th>
-	        				<th style="width: 35%;">제목</th>
-	        				<th style="width: 15%;">기안자</th>
+				      	    <th style="width: 20%;">順番</th>
+        					<th style="width: 30%;">起案日</th>
+	        				<th style="width: 35%;">タイトル</th>
+	        				<th style="width: 15%;">起案者</th>
         				</tr>
 				  	</thead>
 				  	<tbody>
